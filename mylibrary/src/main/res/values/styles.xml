@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="popwin_anim_style">
+        <item name="android:windowEnterAnimation">@anim/form_2_up</item>
+        <item name="android:windowExitAnimation">@anim/go_2_down</item>
+    </style>
+
+    <style name="popwin_anim_up_and_down">
+        <item name="android:windowEnterAnimation">@anim/form_2_up</item>
+        <item name="android:windowExitAnimation">@anim/go_2_down</item>
+    </style>
+
+
+    <style name="FeelyouWindowAnimTheme" parent="@android:style/Animation.Activity">
+        <item name="android:activityOpenEnterAnimation">@anim/in_from_right</item>
+        <item name="android:activityOpenExitAnimation">@anim/out_from_left</item>
+        <item name="android:activityCloseEnterAnimation">@anim/in_from_left</item>
+        <item name="android:activityCloseExitAnimation">@anim/out_from_right</item>
+    </style>
+
+    <style name="small_2_big">
+        <item name="android:windowEnterAnimation">@anim/small_2_big</item>
+        <item name="android:windowExitAnimation">@anim/big_2_small</item>
+    </style>
+</resources>

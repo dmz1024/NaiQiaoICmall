@@ -1,0 +1,37 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion 24
+    buildToolsVersion "24.0.2"
+
+    defaultConfig {
+        minSdkVersion 14
+        targetSdkVersion 24
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    //https://github.com/gzu-liyujiang/ViewAnimator#download
+    compile 'com.github.florent37:viewanimator:1.0.2@aar'
+    compile 'com.nineoldandroids:library:2.4.0'
+    compile 'io.reactivex:rxjava:1.2.2'
+    compile 'io.reactivex:rxandroid:1.2.1'
+    //https://github.com/JakeWharton/butterknife
+    compile 'com.jakewharton:butterknife:8.4.0'
+    //https://github.com/yanzhenjie/NoHttp
+    compile 'com.yolanda.nohttp:nohttp:1.1.0'
+    compile 'com.yanzhenjie.nohttp:okhttp:1.1.0'
+    compile 'com.github.bumptech.glide:glide:3.7.0'
+    compile files('libs/gson-2.2.4.jar')
+}
