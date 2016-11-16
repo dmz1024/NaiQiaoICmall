@@ -68,7 +68,7 @@ public class TipLoading extends PopBaseView {
 
     public void setShowDrawable(@DrawableRes int rid, String content) {
         iv_img.setImageResource(rid);
-        if (rid != R.mipmap.tip_loading) {
+        if (rid != R.mipmap.loading) {
             stopAnimation();
         } else {
             startAnimation();

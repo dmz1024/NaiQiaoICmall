@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.NoActionBar">
+        <!-- 状态栏颜色 -->
+        <item name="colorPrimaryDark">#fff</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
     <style name="popwin_anim_style">
         <item name="android:windowEnterAnimation">@anim/form_2_up</item>
         <item name="android:windowExitAnimation">@anim/go_2_down</item>

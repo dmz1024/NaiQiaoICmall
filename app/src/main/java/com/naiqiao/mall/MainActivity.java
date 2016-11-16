@@ -38,12 +38,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
-        findViewById(R.id.bt_send).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, SecondActivity.class));
-            }
-        });
+        getSupportFragmentManager().beginTransaction().replace(R.id.fg_content, new MyFragment()).commit();
+
     }
 
     @OnClick(R.id.bt_send)

@@ -22,6 +22,7 @@ android {
 }
 
 dependencies {
+    compile 'com.android.support:appcompat-v7:24.2.1'
     //https://github.com/gzu-liyujiang/ViewAnimator#download
     compile 'com.github.florent37:viewanimator:1.0.2@aar'
     compile 'com.nineoldandroids:library:2.4.0'
@@ -34,4 +35,6 @@ dependencies {
     compile 'com.yanzhenjie.nohttp:okhttp:1.1.0'
     compile 'com.github.bumptech.glide:glide:3.7.0'
     compile files('libs/gson-2.2.4.jar')
+    compile 'com.android.support:support-compat:24.2.1'
+    compile 'com.android.support:support-v4:24.2.1'
 }
