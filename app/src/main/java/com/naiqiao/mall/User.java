@@ -12,5 +12,6 @@ public class User extends BaseBean<List<User.Data>> {
 
     public static class Data {
         public String name;
+
     }
 }

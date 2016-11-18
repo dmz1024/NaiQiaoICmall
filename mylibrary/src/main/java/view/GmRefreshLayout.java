@@ -162,7 +162,7 @@ public class GmRefreshLayout extends ViewGroup {
         if (!hasMeasureHeader) { // 防止header重复测量
             hasMeasureHeader = true;
             headerHeight = refreshHeader.getMeasuredHeight(); // header高度
-            totalDragDistance = headerHeight;   // 需要pull这个距离才进入松手刷新状态
+            totalDragDistance = headerHeight/2;   // 需要pull这个距离才进入松手刷新状态
             if (maxDragDistance == 0) {  // 默认最大下拉距离为控件高度的五分之四
                 maxDragDistance = totalDragDistance * 3;
             }
@@ -413,7 +413,7 @@ public class GmRefreshLayout extends ViewGroup {
             @Override
             public void run() {
                 dispatchTouchEvent(MotionEvent.obtain(0, 0, MotionEvent.ACTION_DOWN, 0, 0, 0));
-                final int count = (2 * height) / 20;
+                final int count = (4 * height/3) / 20;
                 for (int i = 0; i < 20; i++) {
                     final int finalI = i;
                     postDelayed(new Runnable() {

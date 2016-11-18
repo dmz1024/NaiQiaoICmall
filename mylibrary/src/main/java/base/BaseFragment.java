@@ -3,24 +3,24 @@ package base;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
-import android.widget.PopupWindow;
+import android.widget.RelativeLayout;
 
-import butterknife.ButterKnife;
+import util.Util;
 import view.GmRefreshLayout;
 
 /**
  * Created by dengmingzhi on 16/6/16.
  */
-public abstract class BaseFragment extends Fragment implements GmRefreshLayout.OnRefreshListener {
+public abstract class BaseFragment extends Fragment implements GmRefreshLayout.OnRefreshListener, View.OnClickListener {
     protected boolean isRefresh;
     protected boolean isFirst = true;
     protected boolean isVisible;
     protected GmRefreshLayout gmRefreshLayout;
+    protected FrameLayout root;
     /**
      * 标志位，标志视图已经初始化完成
      */
@@ -44,7 +44,7 @@ public abstract class BaseFragment extends Fragment implements GmRefreshLayout.O
      */
     protected void onVisible() {
 
-        if (isOnlyInitOne() &&!isFirst) {
+        if (isOnlyInitOne() && !isFirst) {
             return;
         }
 
@@ -61,9 +61,9 @@ public abstract class BaseFragment extends Fragment implements GmRefreshLayout.O
             return;
         }
 
-        if(isCanRefresh()){
+        if (isCanRefresh()) {
             gmRefreshLayout.startRefresh();
-        }else {
+        } else {
             onRefresh();
         }
 
@@ -77,7 +77,7 @@ public abstract class BaseFragment extends Fragment implements GmRefreshLayout.O
 
     }
 
-    public void startRefresh(){
+    public void startRefresh() {
         gmRefreshLayout.startRefresh();
     }
 
@@ -86,30 +86,41 @@ public abstract class BaseFragment extends Fragment implements GmRefreshLayout.O
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         gmRefreshLayout = new GmRefreshLayout(getContext());
-        ViewGroup.LayoutParams layoutParams= new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
-        gmRefreshLayout.setLayoutParams(layoutParams);
+        gmRefreshLayout.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
+        root = new FrameLayout(getContext());
+        gmRefreshLayout.addView(root);
+        root.setLayoutParams(getParams());
         View view = getShowView();
-        gmRefreshLayout.addView(view);
+        root.addView(view);
         View header = getHeaderView();
         if (header != null) {
             gmRefreshLayout.setRefreshHeader(header);
         }
+        gmRefreshLayout.setHeight(getHeaderHeight());
 
-        initView(view);
         isPrepared = true;
         setRefresh(isCanRefresh());
-        if(isCanFirstInitData()){
-            if(isCanRefresh()){
+        if (isCanFirstInitData()) {
+            if (isCanRefresh()) {
                 gmRefreshLayout.startRefresh();
-            }else {
+            } else {
                 onRefresh();
             }
         }
         return gmRefreshLayout;
     }
 
+    protected ViewGroup.LayoutParams getParams() {
+        return new GmRefreshLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+    }
+
+    protected int getHeaderHeight() {
+        return Util.dp2Px(105);
+    }
+
     /**
      * 设置是否可以下拉刷新
+     *
      * @param isRefresh
      */
     public void setRefresh(boolean isRefresh) {
@@ -119,6 +130,7 @@ public abstract class BaseFragment extends Fragment implements GmRefreshLayout.O
 
     /**
      * 设置在setUserVisibleHint可见的是否重复刷新数据
+     *
      * @return
      */
     protected boolean isOnlyInitOne() {
@@ -138,7 +150,7 @@ public abstract class BaseFragment extends Fragment implements GmRefreshLayout.O
     }
 
 
-    protected void setStopRefresh() {
+    protected void stopRefresh() {
         isRefresh = false;
         gmRefreshLayout.refreshComplete();
     }
@@ -168,11 +180,6 @@ public abstract class BaseFragment extends Fragment implements GmRefreshLayout.O
      */
     protected abstract void initData();
 
-    /**
-     * 初始化视图
-     */
-    protected abstract void initView(View view);
-
 
     /**
      * 获取视图
@@ -190,4 +197,8 @@ public abstract class BaseFragment extends Fragment implements GmRefreshLayout.O
         return null;
     }
 
+    @Override
+    public void onClick(View v) {
+
+    }
 }

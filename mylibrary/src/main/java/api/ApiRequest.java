@@ -4,17 +4,17 @@ import android.content.Context;
 import android.text.TextUtils;
 import android.util.Log;
 
+import com.yolanda.nohttp.Network;
 import com.yolanda.nohttp.RequestMethod;
+import com.yolanda.nohttp.error.NetworkError;
 import com.yolanda.nohttp.rest.Response;
 
-import java.util.HashMap;
 import java.util.Map;
 
 import base.BaseBean;
 import base.TipLoadingBean;
-import interfaces.OnControlListeren;
 import interfaces.OnMyResponseListener;
-import interfaces.OnRequestListeren;
+import interfaces.OnRequestListener;
 import util.FileUtil;
 import util.JLogUtils;
 import util.JsonUtil;
@@ -53,6 +53,10 @@ public abstract class ApiRequest<T extends BaseBean> {
         return false;
     }
 
+    protected Object getSign() {
+        return getClx();
+    }
+
     public ApiRequest creatRequestGet() {
         JavaBeanRequest<T> request = new JavaBeanRequest<>(getUrl(), getClx());
         creatRequest(request, null);
@@ -83,6 +87,16 @@ public abstract class ApiRequest<T extends BaseBean> {
     }
 
     private void creatRequest(final JavaBeanRequest<T> request, final TipLoadingBean tip) {
+
+        if (!Util.isNetworkAvailable()) {
+            if (onRequestListeren != null) {
+                onRequestListeren.onFailed(new NetworkError());
+            }
+            return;
+        }
+
+
+        request.setCancelSign(getSign());
         TipLoading tipLoading = null;
         if (tip != null) {
             tipLoading = getLoading();
@@ -105,7 +119,10 @@ public abstract class ApiRequest<T extends BaseBean> {
 
     }
 
+
     private void request(JavaBeanRequest<T> request, final TipLoadingBean tip, final TipLoading finalTipLoading) {
+
+
         Map<String, String> map = getMap();
         if (map != null) {
             request.add(map);
@@ -118,9 +135,27 @@ public abstract class ApiRequest<T extends BaseBean> {
                 result(true, finalTipLoading, tip, JsonUtil.json2Bean(json, getClx()));
             }
         }
+
         saveCache(request, url);
 
+
         CallServer.getInstance().add(1, request, new OnMyResponseListener<T>() {
+            @Override
+            protected void onStart() {
+                super.onStart();
+                if (onRequestListeren != null) {
+                    onRequestListeren.start();
+                }
+            }
+
+            @Override
+            protected void onFinish() {
+                super.onFinish();
+                if (onRequestListeren != null) {
+                    onRequestListeren.finish();
+                }
+            }
+
             @Override
             protected void onSucceed(Response<T> response) {
                 result(false, finalTipLoading, tip, response.get());
@@ -132,6 +167,10 @@ public abstract class ApiRequest<T extends BaseBean> {
                 if (finalTipLoading != null) {
                     finalTipLoading.showError("请求错误");
                 }
+                if (onRequestListeren != null) {
+                    onRequestListeren.onFailed(response.getException());
+                }
+
             }
         });
     }
@@ -147,7 +186,7 @@ public abstract class ApiRequest<T extends BaseBean> {
 
             }
             if (onRequestListeren != null) {
-                onRequestListeren.succes(t.data);
+                onRequestListeren.succes(isWrite, t);
             }
 
         } else {
@@ -160,7 +199,7 @@ public abstract class ApiRequest<T extends BaseBean> {
 
             }
             if (onRequestListeren != null) {
-                onRequestListeren.error(t.msg);
+                onRequestListeren.error(isWrite, t, t.msg);
             }
         }
     }
@@ -177,9 +216,9 @@ public abstract class ApiRequest<T extends BaseBean> {
         return new TipLoading(getContext());
     }
 
-    private OnRequestListeren onRequestListeren;
+    private OnRequestListener onRequestListeren;
 
-    public ApiRequest setOnRequestListeren(OnRequestListeren onRequestListeren) {
+    public ApiRequest setOnRequestListeren(OnRequestListener onRequestListeren) {
         this.onRequestListeren = onRequestListeren;
         return this;
     }

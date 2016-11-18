@@ -9,7 +9,7 @@ import android.content.Context;
 public interface OnBaseControl<T> {
     T setContext(Context ctx);
 
-    T setOnControlListeren(OnControlListeren onControlListeren);
+    T setOnControlListener(OnControlListener onControlListeren);
 
 
 }

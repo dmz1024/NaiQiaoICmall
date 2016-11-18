@@ -6,7 +6,6 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.FrameLayout;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.mall.naiqiao.mylibrary.R;
@@ -17,27 +16,43 @@ import interfaces.State;
 /**
  * Created by dengmingzhi on 2016/11/16.
  */
-public class GmDefaultHeaderView extends FrameLayout implements OnRefreshHeader {
+public class GmQQHeaderView extends FrameLayout implements OnRefreshHeader {
 
+
+    private Animation rotate_up;
+    private Animation rotate_down;
     private Animation rotate_infinite;
     private TextView textView;
-    private ImageView loadingIcon;
+    private View arrowIcon;
+    private View successIcon;
+    private View loadingIcon;
 
-    public GmDefaultHeaderView(Context context) {
+    public GmQQHeaderView(Context context) {
         this(context, null);
     }
 
-    public GmDefaultHeaderView(Context context, AttributeSet attrs) {
+    public GmQQHeaderView(Context context, AttributeSet attrs) {
         super(context, attrs);
+
+        // 初始化动画
+        rotate_up = AnimationUtils.loadAnimation(context, R.anim.rotate_up);
+        rotate_down = AnimationUtils.loadAnimation(context, R.anim.rotate_down);
         rotate_infinite = AnimationUtils.loadAnimation(context, R.anim.rotate_infinite);
-        inflate(context, R.layout.mg_default_refresh_header, this);
+
+        inflate(context, R.layout.mg_qq_refresh_header, this);
+
         textView = (TextView) findViewById(R.id.text);
-        loadingIcon = (ImageView) findViewById(R.id.loadingIcon);
+        arrowIcon = findViewById(R.id.arrowIcon);
+        successIcon = findViewById(R.id.successIcon);
+        loadingIcon = findViewById(R.id.loadingIcon);
     }
 
     @Override
     public void reset() {
         textView.setText("下拉刷新");
+        successIcon.setVisibility(INVISIBLE);
+        arrowIcon.setVisibility(VISIBLE);
+        arrowIcon.clearAnimation();
         loadingIcon.setVisibility(INVISIBLE);
         loadingIcon.clearAnimation();
     }
@@ -49,9 +64,10 @@ public class GmDefaultHeaderView extends FrameLayout implements OnRefreshHeader 
 
     @Override
     public void refreshing() {
-        loadingIcon.setImageResource(R.mipmap.gpt);
+        arrowIcon.setVisibility(INVISIBLE);
         loadingIcon.setVisibility(VISIBLE);
         textView.setText("正在刷新...");
+        arrowIcon.clearAnimation();
         loadingIcon.startAnimation(rotate_infinite);
     }
 
@@ -61,20 +77,24 @@ public class GmDefaultHeaderView extends FrameLayout implements OnRefreshHeader 
         if (currentPos < refreshPos && lastPos >= refreshPos) {
             if (isTouch && state == State.PULL) {
                 textView.setText("下拉刷新");
+                arrowIcon.clearAnimation();
+                arrowIcon.startAnimation(rotate_down);
             }
             // 往下拉
         } else if (currentPos > refreshPos && lastPos <= refreshPos) {
             if (isTouch && state == State.PULL) {
                 textView.setText("释放立即刷新");
+                arrowIcon.clearAnimation();
+                arrowIcon.startAnimation(rotate_up);
             }
         }
     }
 
     @Override
     public void complete() {
-        loadingIcon.setImageResource(R.mipmap.enm);
-        loadingIcon.setVisibility(VISIBLE);
+        loadingIcon.setVisibility(INVISIBLE);
         loadingIcon.clearAnimation();
+        successIcon.setVisibility(VISIBLE);
         textView.setText("刷新成功");
     }
 }

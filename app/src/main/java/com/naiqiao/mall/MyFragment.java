@@ -1,31 +1,77 @@
 package com.naiqiao.mall;
 
+import android.util.Log;
 import android.view.View;
-import android.widget.Button;
+import android.widget.TextView;
 
-import base.BaseFragment;
-import butterknife.BindView;
+import java.util.Map;
+
+import base.NetworkBaseFragment;
+import base.TipLoadingBean;
 
 /**
  * Created by dengmingzhi on 2016/11/16.
  */
 
-public class MyFragment extends BaseFragment {
-    private Button bt_send;
+public class MyFragment extends NetworkBaseFragment<User> {
+
+    private TextView tv_content;
+
 
     @Override
-    protected void initData() {
-        bt_send.setText("刷新成功");
-        setStopRefresh();
+    protected void manageError(boolean isWrite, User user, String msg) {
+        Log.d("城市", msg);
     }
 
     @Override
-    protected void initView(View view) {
-        bt_send= (Button) view.findViewById(R.id.bt_send);
+    protected void writeData(boolean isWrite, User bean) {
+        getCurrentView(ShowCurrentViewENUM.VIEW_HAVE_DATA);
+        if (!isWrite) {
+            stopRefresh();
+        }
+        for (int i = 0; i < bean.data.size(); i++) {
+            tv_content.append(bean.data.get(i).name + "\n");
+        }
     }
 
     @Override
-    protected View getShowView() {
-        return View.inflate(getContext(), R.layout.activity_main, null);
+    protected ShowCurrentViewENUM getDefaultView() {
+        return ShowCurrentViewENUM.VIEW_HAVE_DATA;
     }
+
+    @Override
+    protected String url() {
+        return "http://www.ediancha.com/app.php";
+    }
+
+    @Override
+    protected Map<String, String> map() {
+        map.put("c", "area");
+        map.put("a", "index");
+        return map;
+    }
+
+
+    @Override
+    protected Class<User> getTClass() {
+        return User.class;
+    }
+
+    @Override
+    protected View getHaveDataView() {
+        tv_content = new TextView(getContext());
+        tv_content.setTextColor(getResources().getColor(R.color.colorf00));
+        return tv_content;
+    }
+
+    @Override
+    protected boolean writeCache() {
+        return false;
+    }
+
+    @Override
+    protected boolean shouldCache() {
+        return true;
+    }
+
 }

@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
-        getSupportFragmentManager().beginTransaction().replace(R.id.fg_content, new MyFragment()).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.fg_content,new MyFragment()).commit();
 
     }
 
