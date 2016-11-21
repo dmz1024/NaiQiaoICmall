@@ -1,11 +1,8 @@
 package base;
 
-import com.yolanda.nohttp.error.NetworkError;
-import com.yolanda.nohttp.error.ServerError;
-import com.yolanda.nohttp.error.TimeoutError;
 
 /**
- * Created by dengmingzhi on 16/10/11.
+ * Created by dengmingzhi on 16/11/21.
  */
 
 public abstract class SingleNetWorkBaseFragment<D extends BaseBean> extends NetworkBaseFragment<D> {
@@ -15,5 +12,11 @@ public abstract class SingleNetWorkBaseFragment<D extends BaseBean> extends Netw
         return ShowCurrentViewENUM.VIEW_IS_LOADING;
     }
 
-    
+
+    @Override
+    protected void writeData(boolean isWrite, D bean) {
+        if (!isWrite) {
+            stopRefresh();
+        }
+    }
 }

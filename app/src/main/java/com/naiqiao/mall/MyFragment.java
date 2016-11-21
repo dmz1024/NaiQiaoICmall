@@ -1,42 +1,27 @@
 package com.naiqiao.mall;
 
-import android.util.Log;
-import android.view.View;
-import android.widget.TextView;
+import android.support.v7.widget.RecyclerView;
 
+import java.util.ArrayList;
 import java.util.Map;
 
-import base.NetworkBaseFragment;
-import base.TipLoadingBean;
+import base.ListNetWorkBaseFragment;
 
 /**
  * Created by dengmingzhi on 2016/11/16.
  */
 
-public class MyFragment extends NetworkBaseFragment<User> {
-
-    private TextView tv_content;
-
+public class MyFragment extends ListNetWorkBaseFragment<User> {
 
     @Override
-    protected void manageError(boolean isWrite, User user, String msg) {
-        Log.d("城市", msg);
+    protected RecyclerView.Adapter getAdapter() {
+        return new MyAdapter(getContext(), (ArrayList<User.Data>) totalList);
     }
 
-    @Override
-    protected void writeData(boolean isWrite, User bean) {
-        getCurrentView(ShowCurrentViewENUM.VIEW_HAVE_DATA);
-        if (!isWrite) {
-            stopRefresh();
-        }
-        for (int i = 0; i < bean.data.size(); i++) {
-            tv_content.append(bean.data.get(i).name + "\n");
-        }
-    }
 
     @Override
     protected ShowCurrentViewENUM getDefaultView() {
-        return ShowCurrentViewENUM.VIEW_HAVE_DATA;
+        return ShowCurrentViewENUM.VIEW_IS_LOADING;
     }
 
     @Override
@@ -46,11 +31,11 @@ public class MyFragment extends NetworkBaseFragment<User> {
 
     @Override
     protected Map<String, String> map() {
-        map.put("c", "area");
+        map.put("c", "chahui");
         map.put("a", "index");
-        return map;
+        map.put("type", "1");
+        return super.map();
     }
-
 
     @Override
     protected Class<User> getTClass() {
@@ -58,20 +43,7 @@ public class MyFragment extends NetworkBaseFragment<User> {
     }
 
     @Override
-    protected View getHaveDataView() {
-        tv_content = new TextView(getContext());
-        tv_content.setTextColor(getResources().getColor(R.color.colorf00));
-        return tv_content;
-    }
-
-    @Override
-    protected boolean writeCache() {
+    protected boolean isCanRefresh() {
         return false;
     }
-
-    @Override
-    protected boolean shouldCache() {
-        return true;
-    }
-
 }

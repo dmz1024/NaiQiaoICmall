@@ -7,6 +7,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
+import com.naiqiao.mall.fragment.IndexBottomFragment;
+
 import java.util.List;
 
 import butterknife.BindString;
@@ -28,24 +30,22 @@ public class MainActivity extends AppCompatActivity {
     Observable<String> observable;
     Subscriber<String> subscriber;
     private Observable<User> zhang;
-    @BindView(R.id.bt_send)
-    Button bt_send;
-    @BindString(R.string.app_name)
     String app_name;
-
+    private MyFragment myFragment;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
-        getSupportFragmentManager().beginTransaction().replace(R.id.fg_content,new MyFragment()).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.fg_content,new IndexBottomFragment()).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.fg_list,new MyFragment()).commit();
+
 
     }
 
     @OnClick(R.id.bt_send)
     void send() {
         Log.d(LOG_TAG, app_name);
-        startActivity(new Intent(this, SecondActivity.class));
     }
 
     /**

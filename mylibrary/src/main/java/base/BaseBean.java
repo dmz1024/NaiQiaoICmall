@@ -8,4 +8,8 @@ public class BaseBean<T> {
     public int result;
     public String msg;
     public T data;
+
+    public T getData(){
+        return data;
+    }
 }

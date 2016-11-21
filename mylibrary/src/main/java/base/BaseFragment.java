@@ -79,6 +79,7 @@ public abstract class BaseFragment extends Fragment implements GmRefreshLayout.O
 
     public void startRefresh() {
         gmRefreshLayout.startRefresh();
+
     }
 
 

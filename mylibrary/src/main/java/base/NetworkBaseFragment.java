@@ -31,7 +31,6 @@ public abstract class NetworkBaseFragment<D extends BaseBean> extends BaseFragme
 
     @Override
     protected void initData() {
-
         getData();
     }
 
@@ -112,20 +111,23 @@ public abstract class NetworkBaseFragment<D extends BaseBean> extends BaseFragme
         }.setOnRequestListeren(new OnSingleRequestListener<D>() {
             @Override
             public void succes(boolean isWrite, D bean) {
+                getCurrentView(ShowCurrentViewENUM.VIEW_HAVE_DATA);
                 writeData(isWrite, bean);
+                manageFinish();
             }
-
 
             @Override
             public void error(boolean isWrite, D d, String msg) {
                 stopRefresh();
                 manageError(isWrite, d, msg);
+                manageFinish();
             }
 
             @Override
             public void onFailed(Exception e) {
                 stopRefresh();
                 failed(e);
+                manageFinish();
             }
         });
 
@@ -147,6 +149,10 @@ public abstract class NetworkBaseFragment<D extends BaseBean> extends BaseFragme
 
     }
 
+    protected void manageFinish(){
+
+    }
+
 
     /**
      * 延时加载数据时间
@@ -154,7 +160,7 @@ public abstract class NetworkBaseFragment<D extends BaseBean> extends BaseFragme
      * @return
      */
     protected int time() {
-        return 500;
+        return 0;
     }
 
 
