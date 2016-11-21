@@ -1,141 +1,147 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="65dp"
-    >
+    android:layout_height="@dimen/size60">
 
     <LinearLayout
-        android:background="#dffeff"
         android:layout_width="match_parent"
-        android:layout_height="52dp"
+        android:layout_height="@dimen/size46"
         android:layout_gravity="bottom"
-        android:gravity="center_horizontal"
+        android:background="#fbd"
         android:orientation="horizontal">
 
         <FrameLayout
-            android:id="@+id/frame_home"
-            android:layout_width="fill_parent"
-            android:layout_height="48.0dip"
-            android:layout_weight="1.0">
+            android:id="@+id/frame_one"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
 
             <ImageView
-                android:id="@+id/tab_home_click"
-                android:layout_width="28.0dip"
-                android:layout_height="28.0dip"
+                android:id="@+id/iv_one"
+                android:layout_width="@dimen/size28"
+                android:layout_height="@dimen/size28"
                 android:layout_gravity="top|center"
-                android:layout_marginTop="5.0dip"
+                android:layout_marginTop="@dimen/size2"
                 android:src="@mipmap/ic_launcher" />
 
             <TextView
-                android:id="@+id/tab_home_text"
+                android:id="@+id/tv_one"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom|center"
-                android:layout_marginBottom="2.0dip"
+                android:layout_marginBottom="@dimen/size2"
                 android:text="首页"
                 android:textColor="#f00"
-                android:textSize="10.0dip" />
+                android:textSize="@dimen/sp10" />
         </FrameLayout>
 
         <FrameLayout
-            android:id="@+id/frame_forum"
-            android:layout_width="fill_parent"
-            android:layout_height="48.0dip"
-            android:layout_marginRight="10.0dip"
-            android:layout_weight="1.0">
+            android:id="@+id/frame_two"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginRight="@dimen/size10"
+            android:layout_weight="1">
 
             <ImageView
-                android:id="@+id/tab_bang"
-                android:layout_width="28.0dip"
-                android:layout_height="28.0dip"
+                android:id="@+id/iv_two"
+                android:layout_width="@dimen/size28"
+                android:layout_height="@dimen/size28"
                 android:layout_gravity="top|center"
-                android:layout_marginTop="5.0dip"
+                android:layout_marginTop="@dimen/size2"
                 android:src="@mipmap/ic_launcher" />
 
             <TextView
-                android:id="@+id/tab_bang_text"
+                android:id="@+id/tv_two"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom|center"
-                android:layout_marginBottom="2.0dip"
+                android:layout_marginBottom="@dimen/size2"
                 android:text="分类"
                 android:textColor="#f00"
-                android:textSize="10.0dip" />
+                android:textSize="@dimen/sp10" />
         </FrameLayout>
 
         <FrameLayout
-            android:layout_width="fill_parent"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1.0" />
+            android:layout_weight="1" />
 
         <FrameLayout
-            android:layout_width="fill_parent"
-            android:layout_height="48.0dip"
-            android:layout_marginLeft="10.0dip"
-            android:layout_weight="1.0">
+            android:id="@+id/frame_three"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/size10"
+            android:layout_weight="1">
 
             <ImageView
-                android:layout_width="27.0dip"
-                android:layout_height="27.0dip"
+                android:id="@+id/iv_three"
+                android:layout_width="@dimen/size27"
+                android:layout_height="@dimen/size27"
                 android:layout_gravity="top|center"
-                android:layout_marginTop="5.0dip"
+                android:layout_marginTop="@dimen/size2"
                 android:src="@mipmap/ic_launcher" />
 
             <TextView
+                android:id="@+id/tv_three"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom|center"
-                android:layout_marginBottom="2.0dip"
+                android:layout_marginBottom="@dimen/size2"
                 android:text="发货"
                 android:textColor="#f00"
-                android:textSize="10.0dip" />
+                android:textSize="@dimen/sp10" />
         </FrameLayout>
 
         <FrameLayout
-            android:layout_width="fill_parent"
-            android:layout_height="48.0dip"
-            android:layout_weight="1.0">
+            android:id="@+id/frame_four"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
 
             <ImageView
-                android:layout_width="27.0dip"
-                android:layout_height="27.0dip"
+                android:id="@+id/iv_four"
+                android:layout_width="@dimen/size27"
+                android:layout_height="@dimen/size27"
                 android:layout_gravity="top|center"
-                android:layout_marginTop="5.0dip"
+                android:layout_marginTop="@dimen/size2"
                 android:src="@mipmap/ic_launcher" />
 
             <TextView
+                android:id="@+id/tv_four"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom|center"
-                android:layout_marginBottom="2.0dip"
+                android:layout_marginBottom="@dimen/size2"
                 android:text="我的"
                 android:textColor="#f00"
-                android:textSize="10.0dip" />
+                android:textSize="@dimen/sp10" />
         </FrameLayout>
     </LinearLayout>
 
     <RelativeLayout
+        android:id="@+id/rv_center"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/size60"
         android:layout_gravity="center_horizontal"
-        android:layout_marginBottom="@dimen/size5"
-        android:layout_weight="1.0">
+        >
 
         <ImageView
-            android:id="@+id/iv_bh"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:id="@+id/iv_center"
+            android:layout_width="@dimen/size42"
+            android:layout_height="@dimen/size42"
             android:scaleType="fitCenter"
-            android:src="@mipmap/ic_launcher" />
+            android:src="@mipmap/tab_ask" />
 
         <TextView
+            android:id="@+id/tv_center"
+            android:layout_alignParentBottom="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/iv_bh"
             android:layout_centerHorizontal="true"
+            android:layout_marginBottom="@dimen/size2"
             android:text="极速补货"
             android:textColor="#f00"
-            android:textSize="10dp" />
+            android:textSize="@dimen/sp10" />
     </RelativeLayout>
 
 </FrameLayout>

@@ -28,8 +28,6 @@ dependencies {
     compile 'com.nineoldandroids:library:2.4.0'
     compile 'io.reactivex:rxjava:1.2.2'
     compile 'io.reactivex:rxandroid:1.2.1'
-    //https://github.com/JakeWharton/butterknife
-    compile 'com.jakewharton:butterknife:8.4.0'
     //https://github.com/yanzhenjie/NoHttp
     compile 'com.yolanda.nohttp:nohttp:1.1.0'
     compile 'com.yanzhenjie.nohttp:okhttp:1.1.0'

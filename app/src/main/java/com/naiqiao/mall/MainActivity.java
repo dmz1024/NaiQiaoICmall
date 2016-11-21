@@ -43,10 +43,6 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    @OnClick(R.id.bt_send)
-    void send() {
-        Log.d(LOG_TAG, app_name);
-    }
 
     /**
      * rxjava
