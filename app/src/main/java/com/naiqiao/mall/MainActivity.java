@@ -1,46 +1,32 @@
 package com.naiqiao.mall;
 
-import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
-import android.widget.Button;
 
 import com.naiqiao.mall.fragment.IndexBottomFragment;
+import com.naiqiao.mall.fragment.IndexContentFragment;
 
-import java.util.List;
-
-import butterknife.BindString;
-import butterknife.BindView;
-import butterknife.BindViews;
+import base.BaseActivity;
+import base.TitleBarFragment;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 import rx.Observable;
-import rx.Observer;
-import rx.Scheduler;
 import rx.Subscriber;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.functions.Action1;
 import rx.functions.Func1;
-import rx.schedulers.Schedulers;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
     public static final String LOG_TAG = "LOG_TAG";
     Observable<String> observable;
     Subscriber<String> subscriber;
     private Observable<User> zhang;
     String app_name;
-    private MyFragment myFragment;
+    private MyFragmentRefresh myFragment;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
-        getSupportFragmentManager().beginTransaction().replace(R.id.fg_content,new IndexBottomFragment()).commit();
-        getSupportFragmentManager().beginTransaction().replace(R.id.fg_list,new MyFragment()).commit();
-
-
+        getSupportFragmentManager().beginTransaction().replace(R.id.fg_bottom,new IndexBottomFragment()).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.fg_content,new TitleBarFragment()).commit();
     }
 
 

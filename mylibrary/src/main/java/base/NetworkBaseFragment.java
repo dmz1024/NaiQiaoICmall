@@ -19,7 +19,7 @@ import interfaces.OnSingleRequestListener;
 /**
  * Created by dengmingzhi on 16/6/14.
  */
-public abstract class NetworkBaseFragment<D extends BaseBean> extends BaseFragment {
+public abstract class NetworkBaseFragment<D extends BaseBean> extends RefreshBaseFragment {
     protected Map<String, String> map = new HashMap<>();
     protected View noDataView;
     protected View havaDataView;

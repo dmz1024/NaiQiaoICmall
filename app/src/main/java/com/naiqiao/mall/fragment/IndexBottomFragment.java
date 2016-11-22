@@ -1,32 +1,29 @@
 package com.naiqiao.mall.fragment;
 
-import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.util.Log;
-import android.view.LayoutInflater;
+import android.content.Intent;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.naiqiao.mall.R;
+import com.naiqiao.mall.SecondActivity;
 
-import java.util.ArrayList;
 import java.util.List;
 
+import base.BaseFragment;
 import butterknife.BindView;
 import butterknife.BindViews;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import util.RxBus;
 
 /**
  * Created by dengmingzhi on 2016/11/21.
  */
 
-public class IndexBottomFragment extends Fragment {
+public class IndexBottomFragment extends BaseFragment {
     @BindViews({R.id.frame_one, R.id.frame_two, R.id.frame_three, R.id.frame_four})
     List<FrameLayout> frams;
     @BindViews({R.id.iv_one, R.id.iv_two, R.id.iv_three, R.id.iv_four, R.id.iv_center})
@@ -36,18 +33,39 @@ public class IndexBottomFragment extends Fragment {
     @BindView(R.id.rv_center)
     RelativeLayout rv_center;
 
-    @Nullable
+
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = View.inflate(getContext(), R.layout.fragment_index_bottom, null);
-        ButterKnife.bind(this, view);
-        tvs.get(0).setText("你好");
-        return view;
+    protected int getRId() {
+        return R.layout.fragment_index_bottom;
+    }
+
+    @Override
+    protected void initData() {
+
     }
 
     @OnClick({R.id.frame_one, R.id.frame_two, R.id.frame_three, R.id.frame_four, R.id.rv_center})
     void chooseView(View view) {
-        Log.d("ddd", "订单");
+        int position = 0;
+        switch (view.getId()) {
+            case R.id.frame_one:
+                position = 0;
+                break;
+            case R.id.frame_two:
+                position = 1;
+                break;
+            case R.id.frame_three:
+                position = 2;
+                break;
+            case R.id.frame_four:
+                position = 3;
+                break;
+            case R.id.rv_center:
+                startActivity(new Intent(getContext(), SecondActivity.class));
+                return;
+        }
+
+        RxBus.get().post("indexBottomTabChange", position);
     }
 
 }

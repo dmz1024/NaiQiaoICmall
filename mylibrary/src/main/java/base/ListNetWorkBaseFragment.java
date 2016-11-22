@@ -47,6 +47,7 @@ public abstract class ListNetWorkBaseFragment<D extends ListBaseBean> extends Ne
     }
 
 
+
     @Override
     protected Map<String, String> map() {
         initMap();
@@ -55,9 +56,9 @@ public abstract class ListNetWorkBaseFragment<D extends ListBaseBean> extends Ne
 
     @Override
     protected void manageFinish() {
-        if(layoutManager!=null &&isCanRefresh()){
+        if (layoutManager != null && isCanRefresh()) {
             setRefresh(layoutManager.findFirstCompletelyVisibleItemPosition() == 0);
-        }else {
+        } else {
             setRefresh(false);
         }
     }
@@ -189,7 +190,7 @@ public abstract class ListNetWorkBaseFragment<D extends ListBaseBean> extends Ne
             @Override
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
                 super.onScrolled(recyclerView, dx, dy);
-                isSlidingToLast = dy > 0 ? true : false;
+                isSlidingToLast = dy > 0;
                 if (getLoadMore() && !isLoading) {
                     int page = (layoutManager.findLastVisibleItemPosition() + (getSize() - 1)) / getSize();
                     if (page != totalPage) {
@@ -211,28 +212,29 @@ public abstract class ListNetWorkBaseFragment<D extends ListBaseBean> extends Ne
 //
                 // 当不滚动时
                 if (newState == RecyclerView.SCROLL_STATE_IDLE) {
-                    if (isRefresh || isLoading || !getLoadMore()) {
-                        return;
-                    }
+
+                }
+                if (isRefresh || isLoading || !getLoadMore()) {
+                    return;
+                }
 //
-                    //获取最后一个完全显示的ItemPosition,进行加载更多
-                    int lastVisibleItem = layoutManager.findLastCompletelyVisibleItemPosition();
-                    int totalItemCount = layoutManager.getItemCount();
-                    if (lastVisibleItem == (totalItemCount - 1) && isSlidingToLast && currentPage < totalPage) {
-                        isLoading = true;
-                        setRefresh(false);
-                        view.loadMore();
-                        currentPage = page;
-                        page += 1;
-                        currentType = RequestType.LOAD_MORE;
-                        layoutManager.scrollToPosition(totalList.size() - 1);
-                        recyclerView.postDelayed(new Runnable() {
-                            @Override
-                            public void run() {
-                                getData();
-                            }
-                        }, 500);
-                    }
+                //获取最后一个完全显示的ItemPosition,进行加载更多
+                int lastVisibleItem = layoutManager.findLastVisibleItemPosition();
+                int totalItemCount = layoutManager.getItemCount();
+                if (lastVisibleItem >= (totalItemCount - 3) && currentPage < totalPage) {
+                    isLoading = true;
+                    setRefresh(false);
+                    view.loadMore();
+                    currentPage = page;
+                    page += 1;
+                    currentType = RequestType.LOAD_MORE;
+//                    layoutManager.scrollToPosition(totalList.size() - 1);
+                    recyclerView.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            getData();
+                        }
+                    }, 500);
                 }
 
 

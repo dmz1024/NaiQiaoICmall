@@ -11,7 +11,7 @@ import base.ListNetWorkBaseFragment;
  * Created by dengmingzhi on 2016/11/16.
  */
 
-public class MyFragment extends ListNetWorkBaseFragment<User> {
+public class MyFragmentRefresh extends ListNetWorkBaseFragment<User> {
 
     @Override
     protected RecyclerView.Adapter getAdapter() {
@@ -43,7 +43,12 @@ public class MyFragment extends ListNetWorkBaseFragment<User> {
     }
 
     @Override
-    protected boolean isCanRefresh() {
+    protected boolean isCanFirstInitData() {
+        return false;
+    }
+
+    @Override
+    protected boolean isOnlyInitOne() {
         return false;
     }
 }
