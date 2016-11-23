@@ -3,10 +3,9 @@ package com.naiqiao.mall;
 import android.os.Bundle;
 
 import com.naiqiao.mall.bean.AddFragmentBean;
-import com.naiqiao.mall.fragment.IndexFragment;
+import com.naiqiao.mall.fragment.index.IndexFragment;
 
 import base.activity.BaseActivity;
-import base.fragment.BaseFragment;
 import rx.Observable;
 import rx.functions.Action1;
 import util.RxBus;
@@ -23,7 +22,9 @@ public class MainActivity extends BaseActivity {
     }
 
     private void sendFragment() {
-        RxBus.get().post("addFragment", new AddFragmentBean(new IndexFragment()));
+        AddFragmentBean addFragmentBean = new AddFragmentBean(new IndexFragment());
+        addFragmentBean.setAddBack(true);
+        RxBus.get().post("addFragment", addFragmentBean);
     }
 
     private void initFragmentRxBus() {
@@ -36,15 +37,13 @@ public class MainActivity extends BaseActivity {
         });
     }
 
-    private boolean isFirst;
 
     private void replace(AddFragmentBean bean) {
-        if(!isFirst){
+        if (bean.isAddBack()) {
             getSupportFragmentManager().beginTransaction().add(R.id.fg_base, bean.getFragment()).commit();
-        }else {
-            getSupportFragmentManager().beginTransaction().setCustomAnimations(bean.getInAnimation(),bean.getOutAnimation(),bean.getInAnimation(),bean.getOutAnimation()).add(R.id.fg_base, bean.getFragment()).addToBackStack(null).commit();
+        } else {
+            getSupportFragmentManager().beginTransaction().setCustomAnimations(bean.getInAnimation(), bean.getOutAnimation(), bean.getInAnimation(), bean.getOutAnimation()).add(R.id.fg_base, bean.getFragment()).addToBackStack(null).commit();
         }
-        isFirst = true;
     }
 
     @Override

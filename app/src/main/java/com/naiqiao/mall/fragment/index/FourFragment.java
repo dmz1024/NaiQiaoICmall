@@ -1,4 +1,4 @@
-package com.naiqiao.mall.fragment;
+package com.naiqiao.mall.fragment.index;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;

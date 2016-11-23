@@ -1,11 +1,13 @@
-package com.naiqiao.mall.fragment;
+package com.naiqiao.mall.fragment.index;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+
 import com.naiqiao.mall.MyAdapter;
 import com.naiqiao.mall.User;
+
 import java.util.ArrayList;
 import java.util.Map;
 
@@ -15,13 +17,13 @@ import base.fragment.DefaultTitleBarListNetWorkBaseFragment;
  * Created by dengmingzhi on 2016/11/16.
  */
 
-public class OneFragment extends DefaultTitleBarListNetWorkBaseFragment<User> {
+public class TwoFragment extends DefaultTitleBarListNetWorkBaseFragment<User> {
     private String page;
 
-    public static OneFragment getInstance(String page) {
+    public static TwoFragment getInstance(String page) {
         Bundle bundle = new Bundle();
         bundle.putString("page", page);
-        OneFragment myFragment = new OneFragment();
+        TwoFragment myFragment = new TwoFragment();
         myFragment.setArguments(bundle);
         return myFragment;
     }
@@ -63,7 +65,7 @@ public class OneFragment extends DefaultTitleBarListNetWorkBaseFragment<User> {
 
     @Override
     protected boolean isCanFirstInitData() {
-        return true;
+        return false;
     }
 
     @Override

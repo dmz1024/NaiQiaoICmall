@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.naiqiao.mall.bean.AddFragmentBean;
-import com.naiqiao.mall.fragment.OneFragment;
+import com.naiqiao.mall.fragment.index.OneFragment;
 
 import java.util.ArrayList;
 

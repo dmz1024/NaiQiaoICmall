@@ -1,4 +1,4 @@
-package com.naiqiao.mall.fragment;
+package com.naiqiao.mall.fragment.index;
 
 import com.naiqiao.mall.R;
 

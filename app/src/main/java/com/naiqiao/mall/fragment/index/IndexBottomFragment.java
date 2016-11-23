@@ -1,6 +1,5 @@
-package com.naiqiao.mall.fragment;
-
-import android.content.Intent;
+package com.naiqiao.mall.fragment.index;
+import android.graphics.Color;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
@@ -8,7 +7,6 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.naiqiao.mall.R;
-import com.naiqiao.mall.SecondActivity;
 
 import java.util.List;
 
@@ -31,7 +29,8 @@ public class IndexBottomFragment extends NotNetWorkBaseFragment {
     List<TextView> tvs;
     @BindView(R.id.rv_center)
     RelativeLayout rv_center;
-
+    private final int[] curImages = {R.mipmap.icon_common_index_cur, R.mipmap.icon_common_type_cur, R.mipmap.icon_common_send_cur, R.mipmap.icon_common_personal_cur,R.mipmap.icon_common_contact};
+    private final int[] images = {R.mipmap.icon_common_index, R.mipmap.icon_common_type, R.mipmap.icon_common_send, R.mipmap.icon_common_personal,R.mipmap.icon_common_contact};
 
     @Override
     protected int getRId() {
@@ -60,12 +59,22 @@ public class IndexBottomFragment extends NotNetWorkBaseFragment {
                 position = 3;
                 break;
             case R.id.rv_center:
-                startActivity(new Intent(getContext(), SecondActivity.class));
-                return;
+                position = 4;
+                break;
         }
-
+        changeImageColor(position);
         RxBus.get().post("indexBottomTabChange", position);
 
+    }
+
+
+    private void changeImageColor(int position) {
+        for (int i = 0; i < ivs.size(); i++) {
+            ivs.get(i).setImageResource(images[i]);
+            tvs.get(i).setTextColor(Color.parseColor("#666666"));
+        }
+        ivs.get(position).setImageResource(curImages[position]);
+        tvs.get(position).setTextColor(Color.parseColor("#f73f5f"));
     }
 
 

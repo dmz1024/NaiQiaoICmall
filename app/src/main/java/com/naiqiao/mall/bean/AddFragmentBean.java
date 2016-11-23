@@ -12,6 +12,23 @@ public class AddFragmentBean {
     private Fragment fragment;
     private int inAnimation;
     private int outAnimation;
+    private boolean addBack;
+
+    public boolean isAddBack() {
+        return addBack;
+    }
+
+    public void setAddBack(boolean addBack) {
+        this.addBack = addBack;
+    }
+
+    public AddFragmentBean(String backName, Fragment fragment, int inAnimation, int outAnimation, boolean addBack) {
+        this.backName = backName;
+        this.fragment = fragment;
+        this.inAnimation = inAnimation;
+        this.outAnimation = outAnimation;
+        this.addBack = addBack;
+    }
 
     public AddFragmentBean() {
     }

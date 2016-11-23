@@ -1,21 +1,12 @@
-package com.naiqiao.mall.fragment;
+package com.naiqiao.mall.fragment.index;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v7.widget.RecyclerView;
-import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
-import com.naiqiao.mall.MyAdapter;
 import com.naiqiao.mall.R;
-import com.naiqiao.mall.User;
+import com.naiqiao.mall.fragment.SendCarFragment;
 
-import java.util.ArrayList;
-import java.util.Map;
-
-import base.fragment.DefaultTitleBarListNetWorkBaseFragment;
 import base.fragment.DefaultTitleBarNotNetWorkBaseFragment;
 import butterknife.BindView;
 import butterknife.OnClick;

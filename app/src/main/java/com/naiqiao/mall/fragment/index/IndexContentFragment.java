@@ -1,4 +1,4 @@
-package com.naiqiao.mall.fragment;
+package com.naiqiao.mall.fragment.index;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
@@ -42,6 +42,7 @@ public class IndexContentFragment extends NotNetWorkBaseFragment {
         fragments.add(TwoFragment.getInstance("2"));
         fragments.add(ThreeFragment.getInstance("3"));
         fragments.add(new FourFragment());
+        fragments.add(new FiveFragment());
         vp_content.setOffscreenPageLimit(fragments.size());
         vp_content.setAdapter(new FragmentPagerAdapter(getChildFragmentManager()) {
             @Override
