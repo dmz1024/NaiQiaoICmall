@@ -16,16 +16,6 @@ import base.fragment.SingleNetWorkBaseFragment;
 public class FiveFragment extends SingleNetWorkBaseFragment<User> {
 
     @Override
-    protected void writeData(boolean isWrite, User bean) {
-        super.writeData(isWrite, bean);
-    }
-
-    @Override
-    protected void manageError(boolean isWrite, User user, String msg) {
-        super.manageError(isWrite, user, msg);
-    }
-
-    @Override
     protected String url() {
         return "http://www.ediancha.com/app.php";
     }
@@ -57,5 +47,10 @@ public class FiveFragment extends SingleNetWorkBaseFragment<User> {
     @Override
     protected boolean isCanRefresh() {
         return false;
+    }
+
+    @Override
+    protected View getTitleBarView() {
+        return null;
     }
 }

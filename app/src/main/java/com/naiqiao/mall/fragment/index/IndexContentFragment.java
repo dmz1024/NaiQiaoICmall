@@ -76,4 +76,5 @@ public class IndexContentFragment extends NotNetWorkBaseFragment {
         super.onDestroy();
         RxBus.get().unregister("indexBottomTabChange", indexBottomTabChange);
     }
+
 }

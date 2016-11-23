@@ -1,36 +1,17 @@
-package base.fragment;
+package base.recycleBin;
 
 import android.view.View;
 
 import com.mall.naiqiao.mylibrary.R;
-
 import base.bean.BaseBean;
+import base.fragment.NetworkBaseFragment;
 import interfaces.OnTitleBarListener;
 import view.DefaultTitleBarView;
 
 /**
- * Created by dengmingzhi on 2016/11/23.
+ * Created by dengmingzhi on 16/6/14.
  */
-
-public abstract class DefaultTitleBarSingleNetWorkFragment<D extends BaseBean> extends SingleNetWorkBaseFragment<D> implements OnTitleBarListener {
-    @Override
-    protected void manageError(boolean isWrite, BaseBean baseBean, String msg) {
-        if(!isWrite){
-            stopRefresh();
-        }
-    }
-
-    @Override
-    protected void writeData(boolean isWrite, BaseBean bean) {
-        if(!isWrite){
-            stopRefresh();
-        }
-    }
-
-    @Override
-    protected ShowCurrentViewENUM getDefaultView() {
-        return ShowCurrentViewENUM.VIEW_IS_LOADING;
-    }
+public abstract class DefaultTitleBarNetworkBaseFragment<D extends BaseBean> extends NetworkBaseFragment implements OnTitleBarListener {
 
     @Override
     protected void initTitleView() {

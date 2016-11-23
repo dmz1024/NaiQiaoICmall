@@ -88,4 +88,5 @@ public class IndexBottomFragment extends NotNetWorkBaseFragment {
     protected String getBackColor() {
         return "#00000000";
     }
+
 }

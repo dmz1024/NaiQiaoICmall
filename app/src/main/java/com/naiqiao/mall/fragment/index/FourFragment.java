@@ -1,20 +1,15 @@
 package com.naiqiao.mall.fragment.index;
 
-import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v7.widget.RecyclerView;
-import android.text.TextUtils;
 import android.view.View;
 
-import com.naiqiao.mall.MyAdapter;
+import com.bumptech.glide.Glide;
 import com.naiqiao.mall.R;
 import com.naiqiao.mall.User;
+import com.recker.flyshapeimageview.ShapeImageView;
 
-import java.util.ArrayList;
 import java.util.Map;
 
-import base.fragment.DefaultTitleBarListNetWorkBaseFragment;
-import base.fragment.NetworkBaseFragment;
+import api.TestConstant;
 import base.fragment.SingleNetWorkBaseFragment;
 
 /**
@@ -22,16 +17,6 @@ import base.fragment.SingleNetWorkBaseFragment;
  */
 
 public class FourFragment extends SingleNetWorkBaseFragment<User> {
-
-    @Override
-    protected void writeData(boolean isWrite, User bean) {
-        super.writeData(isWrite, bean);
-    }
-
-    @Override
-    protected void manageError(boolean isWrite, User user, String msg) {
-        super.manageError(isWrite, user, msg);
-    }
 
     @Override
     protected String url() {
@@ -54,6 +39,8 @@ public class FourFragment extends SingleNetWorkBaseFragment<User> {
     @Override
     protected View getHaveDataView() {
         View view = View.inflate(getContext(), R.layout.fragment_four, null);
+        ShapeImageView iv_head= (ShapeImageView) view.findViewById(R.id.iv_head);
+        Glide.with(getContext()).load(TestConstant.IMAGE).into(iv_head);
         return view;
     }
 
@@ -65,5 +52,10 @@ public class FourFragment extends SingleNetWorkBaseFragment<User> {
     @Override
     protected boolean isCanRefresh() {
         return false;
+    }
+
+    @Override
+    protected View getTitleBarView() {
+        return null;
     }
 }

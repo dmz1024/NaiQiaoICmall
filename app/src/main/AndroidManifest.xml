@@ -24,6 +24,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".SecondActivity"/>
+
+        <!--Glide配置文件-->
+        <meta-data android:name="com.naiqiao.mall.GlideConfiguration" android:value="GlideModule" />
     </application>
 
 </manifest>

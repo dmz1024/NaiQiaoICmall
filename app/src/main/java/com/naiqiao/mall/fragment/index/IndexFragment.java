@@ -1,5 +1,7 @@
 package com.naiqiao.mall.fragment.index;
 
+import android.view.View;
+
 import com.naiqiao.mall.R;
 
 import base.fragment.NotNetWorkBaseFragment;
@@ -18,5 +20,10 @@ public class IndexFragment extends NotNetWorkBaseFragment {
     @Override
     protected int getRId() {
         return R.layout.fragment_index;
+    }
+
+    @Override
+    protected View getTitleBarView() {
+        return null;
     }
 }

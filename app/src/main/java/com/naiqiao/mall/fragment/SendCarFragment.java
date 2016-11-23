@@ -41,8 +41,8 @@ public class SendCarFragment extends ListNetWorkBaseFragment<User> {
 
 
     @Override
-    protected ShowCurrentViewENUM getDefaultView() {
-        return ShowCurrentViewENUM.VIEW_IS_LOADING;
+    protected View getTitleBarView() {
+        return null;
     }
 
     @Override

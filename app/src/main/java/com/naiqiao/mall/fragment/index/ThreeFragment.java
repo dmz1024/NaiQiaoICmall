@@ -7,15 +7,17 @@ import android.widget.Button;
 import com.naiqiao.mall.R;
 import com.naiqiao.mall.fragment.SendCarFragment;
 
-import base.fragment.DefaultTitleBarNotNetWorkBaseFragment;
+import base.fragment.NotNetWorkBaseFragment;
+import base.recycleBin.DefaultTitleBarNotNetWorkBaseFragment;
 import butterknife.BindView;
 import butterknife.OnClick;
+import view.DefaultTitleBarView;
 
 /**
  * Created by dengmingzhi on 2016/11/16.
  */
 
-public class ThreeFragment extends DefaultTitleBarNotNetWorkBaseFragment {
+public class ThreeFragment extends NotNetWorkBaseFragment {
     private String page;
 
     @BindView(R.id.bt_send_car)
@@ -31,19 +33,10 @@ public class ThreeFragment extends DefaultTitleBarNotNetWorkBaseFragment {
 
 
     @Override
-    protected String getTitleContent() {
-        return "我要发货";
-    }
-
-    @Override
-    protected int getLeftVisi() {
-        return View.INVISIBLE;
-    }
-
-    @Override
     protected int getRId() {
         return R.layout.fragment_three;
     }
+
     private SendCarFragment sendCarFragment;
 
     @Override
@@ -66,5 +59,14 @@ public class ThreeFragment extends DefaultTitleBarNotNetWorkBaseFragment {
         return false;
     }
 
+    @Override
+    protected boolean isOnlyInitOne() {
+        return false;
+    }
 
+    @Override
+    protected void initTitleView() {
+        DefaultTitleBarView defaultTitleBarView= (DefaultTitleBarView) getTitleBar();
+        defaultTitleBarView.showVisiLeft(View.GONE).setTitleContent("我要发货");
+    }
 }

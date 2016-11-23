@@ -50,7 +50,7 @@ public abstract class BaseFragment extends Fragment {
     }
 
     protected View getTitleBarView() {
-        return null;
+        return new DefaultTitleBarView(getContext());
     }
 
     protected int getTop() {

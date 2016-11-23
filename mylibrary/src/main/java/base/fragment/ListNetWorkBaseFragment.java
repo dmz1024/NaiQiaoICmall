@@ -157,7 +157,12 @@ public abstract class ListNetWorkBaseFragment<D extends ListBaseBean> extends Ne
             return;
         }
         setRefresh(true);
-        super.startRefresh();
+        if(isFirst){
+            onRefresh();
+        }else {
+            super.startRefresh();
+        }
+
     }
 
 

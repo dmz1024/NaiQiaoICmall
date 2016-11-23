@@ -1,8 +1,9 @@
-package base.fragment;
+package base.recycleBin;
 
 import android.view.View;
 import com.mall.naiqiao.mylibrary.R;
 import base.bean.ListBaseBean;
+import base.fragment.ListNetWorkBaseFragment;
 import interfaces.OnTitleBarListener;
 import view.DefaultTitleBarView;
 

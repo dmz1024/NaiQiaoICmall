@@ -9,9 +9,7 @@ import android.view.View;
 import java.util.ArrayList;
 import java.util.Map;
 
-import base.fragment.DefaultTitleBarListNetWorkBaseFragment;
-import base.fragment.ListNetWorkBaseFragment;
-import view.DefaultTitleBarView;
+import base.recycleBin.DefaultTitleBarListNetWorkBaseFragment;
 
 /**
  * Created by dengmingzhi on 2016/11/16.

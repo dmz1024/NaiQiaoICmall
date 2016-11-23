@@ -9,13 +9,15 @@ import com.naiqiao.mall.User;
 import java.util.ArrayList;
 import java.util.Map;
 
-import base.fragment.DefaultTitleBarListNetWorkBaseFragment;
+import base.fragment.ListNetWorkBaseFragment;
+import base.recycleBin.DefaultTitleBarListNetWorkBaseFragment;
+import view.DefaultTitleBarView;
 
 /**
  * Created by dengmingzhi on 2016/11/16.
  */
 
-public class OneFragment extends DefaultTitleBarListNetWorkBaseFragment<User> {
+public class OneFragment extends ListNetWorkBaseFragment<User> {
     private String page;
 
     public static OneFragment getInstance(String page) {
@@ -37,11 +39,6 @@ public class OneFragment extends DefaultTitleBarListNetWorkBaseFragment<User> {
         return new MyAdapter(getContext(), (ArrayList<User.Data>) totalList);
     }
 
-
-    @Override
-    protected ShowCurrentViewENUM getDefaultView() {
-        return ShowCurrentViewENUM.VIEW_IS_LOADING;
-    }
 
     @Override
     protected String url() {
@@ -67,18 +64,8 @@ public class OneFragment extends DefaultTitleBarListNetWorkBaseFragment<User> {
     }
 
     @Override
-    protected String getTitleContent() {
-        return "当前页数" + page;
+    protected void initTitleView() {
+        DefaultTitleBarView defaultTitleBarView= (DefaultTitleBarView) getTitleBar();
+        defaultTitleBarView.showVisiLeft(View.GONE).setTitleContent("首页");
     }
-
-    @Override
-    protected int getLeftVisi() {
-        return View.INVISIBLE;
-    }
-
-    @Override
-    public void left() {
-        getActivity().finish();
-    }
-
 }
