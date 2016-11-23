@@ -1,9 +1,8 @@
 package com.naiqiao.mall;
 
 import java.util.ArrayList;
-import java.util.List;
 
-import base.ListBaseBean;
+import base.bean.ListBaseBean;
 
 /**
  * Created by dengmingzhi on 2016/11/15.

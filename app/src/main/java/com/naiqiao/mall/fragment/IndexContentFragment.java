@@ -1,19 +1,14 @@
 package com.naiqiao.mall.fragment;
 
-import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 
-import com.naiqiao.mall.MyFragmentRefresh;
 import com.naiqiao.mall.R;
 
 import java.util.ArrayList;
 
-import base.BaseFragment;
+import base.fragment.NotNetWorkBaseFragment;
 import butterknife.BindView;
 import rx.Observable;
 import rx.functions.Action1;
@@ -24,7 +19,7 @@ import view.NoScrollViewPager;
  * Created by dengmingzhi on 2016/11/22.
  */
 
-public class IndexContentFragment extends BaseFragment {
+public class IndexContentFragment extends NotNetWorkBaseFragment {
     @BindView(R.id.vp_content)
     NoScrollViewPager vp_content;
     ArrayList<Fragment> fragments;
@@ -36,12 +31,17 @@ public class IndexContentFragment extends BaseFragment {
     }
 
     @Override
+    protected View getTitleBarView() {
+        return null;
+    }
+
+    @Override
     protected void initData() {
         fragments = new ArrayList<>();
-        fragments.add(new MyFragmentRefresh());
-        fragments.add(new MyFragmentRefresh());
-        fragments.add(new MyFragmentRefresh());
-        fragments.add(new MyFragmentRefresh());
+        fragments.add(OneFragment.getInstance("1"));
+        fragments.add(TwoFragment.getInstance("2"));
+        fragments.add(ThreeFragment.getInstance("3"));
+        fragments.add(new FourFragment());
         vp_content.setOffscreenPageLimit(fragments.size());
         vp_content.setAdapter(new FragmentPagerAdapter(getChildFragmentManager()) {
             @Override

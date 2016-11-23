@@ -1,19 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="@dimen/size50"
+    android:layout_height="@dimen/size45"
     android:background="#fff">
 
     <ImageView
         android:id="@+id/title_bar_iv_left"
-        android:layout_width="@dimen/size60"
+        android:layout_width="@dimen/size45"
         android:layout_height="match_parent"
         android:scaleType="center"
-        android:src="@mipmap/icon_left" />
+         />
 
 
     <TextView
-
         android:id="@+id/title_bar_tv_right"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -28,9 +27,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:layout_marginRight="@dimen/size15"
-        android:layout_toLeftOf="@id/title_bar_tv_right"
-        android:layout_toRightOf="@id/title_bar_iv_left"
+        android:maxLength="10"
         android:ellipsize="end"
         android:gravity="center"
         android:maxLines="1"

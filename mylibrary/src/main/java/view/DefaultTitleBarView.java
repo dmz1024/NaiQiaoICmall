@@ -105,4 +105,9 @@ public class DefaultTitleBarView extends FrameLayout implements View.OnClickList
         return this;
     }
 
+    public DefaultTitleBarView showVisiLeft(int visi) {
+        title_bar_iv_left.setVisibility(visi);
+        return this;
+    }
+
 }

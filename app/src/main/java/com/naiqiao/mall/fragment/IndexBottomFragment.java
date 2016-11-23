@@ -12,10 +12,9 @@ import com.naiqiao.mall.SecondActivity;
 
 import java.util.List;
 
-import base.BaseFragment;
+import base.fragment.NotNetWorkBaseFragment;
 import butterknife.BindView;
 import butterknife.BindViews;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 import util.RxBus;
 
@@ -23,7 +22,7 @@ import util.RxBus;
  * Created by dengmingzhi on 2016/11/21.
  */
 
-public class IndexBottomFragment extends BaseFragment {
+public class IndexBottomFragment extends NotNetWorkBaseFragment {
     @BindViews({R.id.frame_one, R.id.frame_two, R.id.frame_three, R.id.frame_four})
     List<FrameLayout> frams;
     @BindViews({R.id.iv_one, R.id.iv_two, R.id.iv_three, R.id.iv_four, R.id.iv_center})
@@ -66,6 +65,18 @@ public class IndexBottomFragment extends BaseFragment {
         }
 
         RxBus.get().post("indexBottomTabChange", position);
+
     }
 
+
+    @Override
+    protected View getTitleBarView() {
+        return null;
+    }
+
+
+    @Override
+    protected String getBackColor() {
+        return "#00000000";
+    }
 }

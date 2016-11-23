@@ -2,13 +2,12 @@ package view.pop;
 
 import android.content.Context;
 import android.text.TextUtils;
-import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 
 import com.mall.naiqiao.mylibrary.R;
 
-import base.PopBaseView;
+import base.other.PopBaseView;
 import view.Color2Text;
 
 /**

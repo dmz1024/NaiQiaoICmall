@@ -4,15 +4,14 @@ import android.content.Context;
 import android.text.TextUtils;
 import android.util.Log;
 
-import com.yolanda.nohttp.Network;
 import com.yolanda.nohttp.RequestMethod;
 import com.yolanda.nohttp.error.NetworkError;
 import com.yolanda.nohttp.rest.Response;
 
 import java.util.Map;
 
-import base.BaseBean;
-import base.TipLoadingBean;
+import base.bean.BaseBean;
+import base.bean.TipLoadingBean;
 import interfaces.OnMyResponseListener;
 import interfaces.OnRequestListener;
 import util.FileUtil;

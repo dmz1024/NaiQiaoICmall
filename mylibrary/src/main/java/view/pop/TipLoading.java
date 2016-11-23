@@ -1,9 +1,7 @@
 package view.pop;
 
-import android.app.Activity;
 import android.content.Context;
 import android.support.annotation.DrawableRes;
-import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -11,12 +9,9 @@ import android.view.animation.LinearInterpolator;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
-import com.github.florent37.viewanimator.AnimationListener;
-import com.github.florent37.viewanimator.ViewAnimator;
 import com.mall.naiqiao.mylibrary.R;
 
-import base.PopBaseView;
+import base.other.PopBaseView;
 import util.Util;
 
 /**
