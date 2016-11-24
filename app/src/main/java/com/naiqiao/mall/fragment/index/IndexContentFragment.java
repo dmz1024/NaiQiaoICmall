@@ -38,11 +38,11 @@ public class IndexContentFragment extends NotNetWorkBaseFragment {
     @Override
     protected void initData() {
         fragments = new ArrayList<>();
-        fragments.add(OneFragment.getInstance("1"));
-        fragments.add(TwoFragment.getInstance("2"));
-        fragments.add(ThreeFragment.getInstance("3"));
+        fragments.add(new OneFragment());
+        fragments.add(new TwoFragment());
+        fragments.add(new ThreeFragment());
         fragments.add(new FourFragment());
-        fragments.add(new FiveFragment());
+        fragments.add(new AfterServiceFragment());
         vp_content.setOffscreenPageLimit(fragments.size());
         vp_content.setAdapter(new FragmentPagerAdapter(getChildFragmentManager()) {
             @Override

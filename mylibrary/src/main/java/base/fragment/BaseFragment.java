@@ -4,11 +4,13 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 
+import base.other.TitleBarBaseView;
 import util.Util;
 import view.DefaultTitleBarView;
 
@@ -40,7 +42,7 @@ public abstract class BaseFragment extends Fragment {
     }
 
     protected String getBackColor() {
-        return "#ffffff";
+        return "#f5f5f5";
     }
 
     protected abstract void rootAddContentView(FrameLayout rootView);
@@ -54,6 +56,10 @@ public abstract class BaseFragment extends Fragment {
     }
 
     protected int getTop() {
-        return titleBarView == null ? 0 : Util.dp2Px(45);
+        return titleBarView == null ? 0 : Util.dp2Px(top());
+    }
+
+    protected float top() {
+        return 45;
     }
 }

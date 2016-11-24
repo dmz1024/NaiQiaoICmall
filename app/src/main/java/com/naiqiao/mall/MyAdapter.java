@@ -56,7 +56,7 @@ public class MyAdapter extends BaseAdapter<User.Data> {
         protected void onClick(int layoutPosition) {
             super.onClick(layoutPosition);
             AddFragmentBean addFragmentBean = new AddFragmentBean();
-            addFragmentBean.setFragment(OneFragment.getInstance("" + (count = count + 1)));
+            addFragmentBean.setFragment(new OneFragment());
             addFragmentBean.setInAnimation(R.anim.form_2_up);
             addFragmentBean.setOutAnimation(R.anim.go_2_down);
             RxBus.get().post("addFragment", addFragmentBean);

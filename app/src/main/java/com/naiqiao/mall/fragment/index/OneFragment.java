@@ -6,11 +6,12 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import com.naiqiao.mall.MyAdapter;
 import com.naiqiao.mall.User;
+import com.naiqiao.mall.view.OneAndTwoTitleBarView;
+
 import java.util.ArrayList;
 import java.util.Map;
 
 import base.fragment.ListNetWorkBaseFragment;
-import base.recycleBin.DefaultTitleBarListNetWorkBaseFragment;
 import view.DefaultTitleBarView;
 
 /**
@@ -18,21 +19,6 @@ import view.DefaultTitleBarView;
  */
 
 public class OneFragment extends ListNetWorkBaseFragment<User> {
-    private String page;
-
-    public static OneFragment getInstance(String page) {
-        Bundle bundle = new Bundle();
-        bundle.putString("page", page);
-        OneFragment myFragment = new OneFragment();
-        myFragment.setArguments(bundle);
-        return myFragment;
-    }
-
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        page = getArguments().getString("page");
-    }
 
     @Override
     protected RecyclerView.Adapter getAdapter() {
@@ -65,7 +51,16 @@ public class OneFragment extends ListNetWorkBaseFragment<User> {
 
     @Override
     protected void initTitleView() {
-        DefaultTitleBarView defaultTitleBarView= (DefaultTitleBarView) getTitleBar();
-        defaultTitleBarView.showVisiLeft(View.GONE).setTitleContent("首页");
+
+    }
+
+    @Override
+    protected View getTitleBarView() {
+        return new OneAndTwoTitleBarView(getContext());
+    }
+
+    @Override
+    protected float top() {
+        return 65;
     }
 }

@@ -18,22 +18,6 @@ import base.fragment.ListNetWorkBaseFragment;
  */
 
 public class SendCarFragment extends ListNetWorkBaseFragment<User> {
-    private String page;
-
-    public static SendCarFragment getInstance(String page) {
-        Bundle bundle = new Bundle();
-        bundle.putString("page", page);
-        SendCarFragment myFragment = new SendCarFragment();
-        myFragment.setArguments(bundle);
-        return myFragment;
-    }
-
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        page = getArguments().getString("page");
-    }
-
     @Override
     protected RecyclerView.Adapter getAdapter() {
         return new MyAdapter(getContext(), (ArrayList<User.Data>) totalList);

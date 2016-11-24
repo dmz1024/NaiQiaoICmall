@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="45dp"
+    android:background="#f73f5f">
+
+    <ImageView
+        android:id="@+id/title_bar_iv_left"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="@dimen/size12"
+        android:scaleType="center"
+        android:src="@mipmap/icon_personal_sz" />
+
+    <TextView
+        android:id="@+id/title_bar_tv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:ellipsize="end"
+        android:maxLength="10"
+        android:maxLines="1"
+        android:textColor="#fff"
+        android:textSize="@dimen/sp16" />
+    <RelativeLayout
+
+        android:layout_centerVertical="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="@dimen/size10"
+        android:id="@+id/title_bar_rl_right"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/title_bar_tv_right"
+            android:text="89"
+            android:background="#fff"
+            android:layout_marginLeft="@dimen/size10"
+            android:paddingTop="@dimen/size1"
+            android:paddingBottom="@dimen/size1"
+            android:paddingLeft="@dimen/size3"
+            android:paddingRight="@dimen/size3"
+            android:textColor="#d7000f"
+            style="@style/TextSize9Color999" />
+        <ImageView
+            android:layout_below="@id/title_bar_tv_right"
+            android:id="@+id/title_bar_iv_right"
+            android:layout_marginTop="-5dp"
+            android:src="@mipmap/icon_personal_mess"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
+</RelativeLayout>

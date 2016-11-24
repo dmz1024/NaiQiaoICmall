@@ -4,7 +4,7 @@
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.NoActionBar">
         <!-- 状态栏颜色 -->
-        <item name="colorPrimaryDark">#fff</item>
+        <item name="colorPrimaryDark">#f5f5f5</item>
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
@@ -85,6 +85,9 @@
     <style name="TextSize14Color999" parent="Text">
         <item name="android:textSize">@dimen/sp14</item>
         <item name="android:textColor">#999</item>
+    </style> <style name="TextSize15Color999" parent="Text">
+        <item name="android:textSize">@dimen/sp15</item>
+        <item name="android:textColor">#999</item>
     </style>
 
     <style name="TextSize12Color333" parent="Text">
@@ -110,6 +113,12 @@
     <style name="TextSize12Color999" parent="Text">
         <item name="android:textSize">@dimen/sp12</item>
         <item name="android:textColor">#999</item>
+    </style>
+
+    <style name="TextSize13Colorf73f5f" parent="Text">
+        <item name="android:textSize">@dimen/sp13</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">#f73f5f</item>
     </style>
 
     <style name="TextSize9Colorfff" parent="Text">

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="65dp"
+    android:background="#fff">
+
+    <view.TextImage
+        style="@style/TextSize12Color999"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="@dimen/size20"
+        android:drawablePadding="@dimen/size2"
+        android:gravity="center"
+        android:text="极速补货"
+        android:textColor="#f73f5f"
+        app:TextImage_drawable="@mipmap/icon_buhuo"
+        app:TextImage_height="@dimen/size21"
+        app:TextImage_seat="2"
+        app:TextImage_width="@dimen/size18" />
+
+    <view.TextImage
+        style="@style/TextSize12Color999"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="@dimen/size30"
+        android:drawablePadding="@dimen/size2"
+        android:gravity="center"
+        android:text="进货单"
+        android:textColor="#f73f5f"
+        app:TextImage_drawable="@mipmap/icon_jinhuo"
+        app:TextImage_height="@dimen/size21"
+        app:TextImage_seat="2"
+        app:TextImage_width="@dimen/size18" />
+    <View
+        android:id="@+id/title_bar_view"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size0.5"
+        android:layout_alignParentBottom="true"
+        android:background="#e1e1e1" />
+</RelativeLayout>

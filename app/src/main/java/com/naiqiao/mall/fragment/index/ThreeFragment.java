@@ -8,7 +8,6 @@ import com.naiqiao.mall.R;
 import com.naiqiao.mall.fragment.SendCarFragment;
 
 import base.fragment.NotNetWorkBaseFragment;
-import base.recycleBin.DefaultTitleBarNotNetWorkBaseFragment;
 import butterknife.BindView;
 import butterknife.OnClick;
 import view.DefaultTitleBarView;
@@ -18,19 +17,6 @@ import view.DefaultTitleBarView;
  */
 
 public class ThreeFragment extends NotNetWorkBaseFragment {
-    private String page;
-
-    @BindView(R.id.bt_send_car)
-    Button bt_send_car;
-
-    public static ThreeFragment getInstance(String page) {
-        Bundle bundle = new Bundle();
-        bundle.putString("page", page);
-        ThreeFragment myFragment = new ThreeFragment();
-        myFragment.setArguments(bundle);
-        return myFragment;
-    }
-
 
     @Override
     protected int getRId() {
@@ -41,7 +27,7 @@ public class ThreeFragment extends NotNetWorkBaseFragment {
 
     @Override
     protected void initView() {
-        getChildFragmentManager().beginTransaction().replace(R.id.fg_content, sendCarFragment = SendCarFragment.getInstance("1")).commit();
+        getChildFragmentManager().beginTransaction().replace(R.id.fg_content, sendCarFragment = new SendCarFragment()).commit();
     }
 
     @Override

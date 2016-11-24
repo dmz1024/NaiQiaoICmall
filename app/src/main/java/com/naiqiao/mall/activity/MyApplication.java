@@ -1,4 +1,4 @@
-package com.naiqiao.mall;
+package com.naiqiao.mall.activity;
 
 import android.app.Application;
 

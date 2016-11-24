@@ -1,4 +1,5 @@
 package com.naiqiao.mall.fragment.index;
+
 import android.graphics.Color;
 import android.view.View;
 import android.widget.FrameLayout;
@@ -29,8 +30,8 @@ public class IndexBottomFragment extends NotNetWorkBaseFragment {
     List<TextView> tvs;
     @BindView(R.id.rv_center)
     RelativeLayout rv_center;
-    private final int[] curImages = {R.mipmap.icon_common_index_cur, R.mipmap.icon_common_type_cur, R.mipmap.icon_common_send_cur, R.mipmap.icon_common_personal_cur,R.mipmap.icon_common_contact};
-    private final int[] images = {R.mipmap.icon_common_index, R.mipmap.icon_common_type, R.mipmap.icon_common_send, R.mipmap.icon_common_personal,R.mipmap.icon_common_contact};
+    private final int[] curImages = {R.mipmap.icon_common_index_cur, R.mipmap.icon_common_type_cur, R.mipmap.icon_common_send_cur, R.mipmap.icon_common_personal_cur, R.mipmap.icon_common_contact};
+    private final int[] images = {R.mipmap.icon_common_index, R.mipmap.icon_common_type, R.mipmap.icon_common_send, R.mipmap.icon_common_personal, R.mipmap.icon_common_contact};
 
     @Override
     protected int getRId() {
@@ -61,6 +62,11 @@ public class IndexBottomFragment extends NotNetWorkBaseFragment {
             case R.id.rv_center:
                 position = 4;
                 break;
+        }
+        if (position != 3) {
+            RxBus.get().post("changeBarColor", "#ffffff");
+        } else {
+            RxBus.get().post("changeBarColor", "#f73f5f");
         }
         changeImageColor(position);
         RxBus.get().post("indexBottomTabChange", position);
