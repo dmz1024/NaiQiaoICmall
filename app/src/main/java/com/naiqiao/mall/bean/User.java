@@ -1,4 +1,4 @@
-package com.naiqiao.mall;
+package com.naiqiao.mall.bean;
 
 import java.util.ArrayList;
 

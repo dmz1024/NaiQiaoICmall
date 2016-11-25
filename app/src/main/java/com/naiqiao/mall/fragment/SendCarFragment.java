@@ -1,12 +1,10 @@
 package com.naiqiao.mall.fragment;
 
-import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.naiqiao.mall.MyAdapter;
-import com.naiqiao.mall.User;
+import com.naiqiao.mall.bean.User;
 
 import java.util.ArrayList;
 import java.util.Map;

@@ -2,11 +2,12 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="65dp"
+    android:layout_height="55dp"
     android:background="#fff">
 
     <view.TextImage
-        style="@style/TextSize12Color999"
+        android:id="@+id/title_bar_tv_left"
+        style="@style/TextSize11Color999"
         android:layout_centerVertical="true"
         android:layout_marginLeft="@dimen/size20"
         android:drawablePadding="@dimen/size2"
@@ -14,27 +15,65 @@
         android:text="极速补货"
         android:textColor="#f73f5f"
         app:TextImage_drawable="@mipmap/icon_buhuo"
-        app:TextImage_height="@dimen/size21"
+        app:TextImage_height="@dimen/size22"
         app:TextImage_seat="2"
         app:TextImage_width="@dimen/size18" />
 
     <view.TextImage
-        style="@style/TextSize12Color999"
+        android:id="@+id/title_bar_tv_right"
+        style="@style/TextSize11Color999"
         android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
-        android:layout_marginRight="@dimen/size30"
+        android:layout_marginRight="@dimen/size20"
         android:drawablePadding="@dimen/size2"
         android:gravity="center"
         android:text="进货单"
         android:textColor="#f73f5f"
         app:TextImage_drawable="@mipmap/icon_jinhuo"
-        app:TextImage_height="@dimen/size21"
+        app:TextImage_height="@dimen/size22"
         app:TextImage_seat="2"
         app:TextImage_width="@dimen/size18" />
+
     <View
         android:id="@+id/title_bar_view"
         android:layout_width="match_parent"
         android:layout_height="@dimen/size0.5"
         android:layout_alignParentBottom="true"
         android:background="#e1e1e1" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="@dimen/size20"
+        android:layout_marginRight="@dimen/size20"
+        android:layout_toLeftOf="@id/title_bar_tv_right"
+        android:layout_toRightOf="@id/title_bar_tv_left"
+        android:background="@drawable/icon_edit_line"
+        android:padding="@dimen/size10">
+
+        <view.TextImage
+            android:id="@+id/title_bar_tv_search"
+            style="@style/TextSize13Color999"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/size20"
+            android:drawablePadding="@dimen/size2"
+            android:gravity="center"
+
+            android:text="品牌名称及商品关键字"
+            android:textColor="#a1a1a1"
+            app:TextImage_drawable="@mipmap/icon_search_gray"
+            app:TextImage_height="@dimen/size15"
+            app:TextImage_seat="1"
+            app:TextImage_width="@dimen/size15" />
+
+        <ImageView
+            android:id="@+id/title_bar_iv_sao"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/icon_sao" />
+    </RelativeLayout>
+
 </RelativeLayout>

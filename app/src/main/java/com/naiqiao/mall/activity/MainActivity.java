@@ -3,13 +3,14 @@ package com.naiqiao.mall.activity;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
+import android.support.v4.app.FragmentTransaction;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 
 import com.naiqiao.mall.R;
-import com.naiqiao.mall.bean.AddFragmentBean;
+import com.naiqiao.mall.bean.rxbus.AddFragmentBean;
+import com.naiqiao.mall.fragment.WelComeFragment;
 import com.naiqiao.mall.fragment.index.IndexFragment;
 
 import base.activity.BaseActivity;
@@ -37,7 +38,9 @@ public class MainActivity extends BaseActivity {
             initChangeBarColor();
         }
         initFragmentRxBus();
+
         sendFragment();
+
     }
 
     private void initChangeBarColor() {
@@ -51,9 +54,12 @@ public class MainActivity extends BaseActivity {
     }
 
     private void sendFragment() {
-        AddFragmentBean addFragmentBean = new AddFragmentBean(new IndexFragment());
+        AddFragmentBean addFragmentBean = new AddFragmentBean(new WelComeFragment());
         addFragmentBean.setAddBack(true);
+        addFragmentBean.setHaveAnima(true);
         RxBus.get().post("addFragment", addFragmentBean);
+
+
     }
 
     private void initFragmentRxBus() {
@@ -68,11 +74,14 @@ public class MainActivity extends BaseActivity {
 
 
     private void replace(AddFragmentBean bean) {
-        if (bean.isAddBack()) {
-            getSupportFragmentManager().beginTransaction().add(R.id.fg_base, bean.getFragment()).commit();
-        } else {
-            getSupportFragmentManager().beginTransaction().setCustomAnimations(bean.getInAnimation(), bean.getOutAnimation(), bean.getInAnimation(), bean.getOutAnimation()).add(R.id.fg_base, bean.getFragment()).addToBackStack(null).commit();
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        if (!bean.isHaveAnima()) {
+            fragmentTransaction.setCustomAnimations(bean.getInAnimation(), bean.getOutAnimation(), bean.getInAnimation(), bean.getOutAnimation());
         }
+        if (!bean.isAddBack()) {
+            fragmentTransaction.addToBackStack(bean.getBackName());
+        }
+        fragmentTransaction.add(R.id.fg_base, bean.getFragment(), bean.getBackName()).commit();
     }
 
     @Override

@@ -10,7 +10,7 @@
         android:layout_height="@dimen/size100"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="@dimen/size30"
-        android:background="@drawable/rectangle_999_radius_5">
+        android:background="@drawable/rectangle_f6415f">
 
         <ImageView
             android:id="@+id/iv_huan"
@@ -35,7 +35,7 @@
         android:layout_below="@id/rl_huan"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="@dimen/size15"
-        android:background="@drawable/rectangle_999_radius_5">
+        android:background="@drawable/rectangle_f6415f">
 
         <ImageView
             android:id="@+id/iv_tui"
@@ -60,7 +60,7 @@
         android:layout_below="@id/rl_tui"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="@dimen/size15"
-        android:background="@drawable/rectangle_999_radius_5">
+        android:background="@drawable/rectangle_f6415f">
 
         <ImageView
             android:id="@+id/iv_qq"

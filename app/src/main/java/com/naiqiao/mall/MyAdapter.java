@@ -6,7 +6,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.naiqiao.mall.bean.AddFragmentBean;
+import com.naiqiao.mall.bean.User;
+import com.naiqiao.mall.bean.rxbus.AddFragmentBean;
 import com.naiqiao.mall.fragment.index.OneFragment;
 
 import java.util.ArrayList;
@@ -32,24 +33,24 @@ public class MyAdapter extends BaseAdapter<User.Data> {
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return new MyView(View.inflate(ctx, R.layout.tv_content, null));
+        return new MyView(View.inflate(ctx, R.layout.item_two_left_content, null));
     }
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         if (list.get(position).r == 2) {
-            ((MyView) holder).tv_content.setText(list.get(position).data2.name);
+            ((MyView) holder).tv_title.setText(list.get(position).data2.name);
         }
     }
 
 
     public class MyView extends BaseViewHolder {
-        public TextView tv_content;
+        public TextView tv_title;
 
         public MyView(View itemView) {
             super(itemView);
-            tv_content = (TextView) itemView;
-            tv_content.setOnClickListener(this);
+            tv_title = (TextView) itemView.findViewById(R.id.tv_title);
+            itemView.setOnClickListener(this);
         }
 
         @Override
@@ -57,8 +58,8 @@ public class MyAdapter extends BaseAdapter<User.Data> {
             super.onClick(layoutPosition);
             AddFragmentBean addFragmentBean = new AddFragmentBean();
             addFragmentBean.setFragment(new OneFragment());
-            addFragmentBean.setInAnimation(R.anim.form_2_up);
-            addFragmentBean.setOutAnimation(R.anim.go_2_down);
+//            addFragmentBean.setInAnimation(R.anim.small_2_big);
+//            addFragmentBean.setOutAnimation(R.anim.big_2_small);
             RxBus.get().post("addFragment", addFragmentBean);
         }
     }

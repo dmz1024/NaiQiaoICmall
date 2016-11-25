@@ -6,6 +6,7 @@ import android.widget.TextView;
 
 import com.mall.naiqiao.mylibrary.R;
 import com.yolanda.nohttp.error.NetworkError;
+import com.yolanda.nohttp.error.ParseError;
 import com.yolanda.nohttp.error.ServerError;
 import com.yolanda.nohttp.error.TimeoutError;
 
@@ -17,6 +18,7 @@ import api.CallServer;
 import base.bean.BaseBean;
 import base.bean.TipLoadingBean;
 import interfaces.OnSingleRequestListener;
+import util.MyToast;
 
 /**
  * Created by dengmingzhi on 16/6/14.
@@ -134,7 +136,7 @@ public abstract class NetworkBaseFragment<D extends BaseBean> extends RefreshBas
         });
 
 
-        TipLoadingBean loadingBean = getTipLoadingBean();
+        TipLoadingBean loadingBean = isFormListNet() ? getTipLoadingBeanForListNet() : getTipLoadingBean();
         if (loadingBean != null) {
             if (getMethod()) {
                 apiRequest.creatRequestPost(loadingBean);
@@ -151,7 +153,16 @@ public abstract class NetworkBaseFragment<D extends BaseBean> extends RefreshBas
 
     }
 
-    protected void manageFinish(){
+    protected TipLoadingBean getTipLoadingBeanForListNet() {
+        return null;
+    }
+
+
+    protected boolean isFormListNet() {
+        return false;
+    }
+
+    protected void manageFinish() {
 
     }
 
@@ -185,6 +196,8 @@ public abstract class NetworkBaseFragment<D extends BaseBean> extends RefreshBas
             networkError();
         } else if (e instanceof ServerError || e instanceof TimeoutError) {
             serverError();
+        } else if (e instanceof ParseError) {
+            MyToast.showToast("数据格式异常");
         }
     }
 
@@ -220,7 +233,7 @@ public abstract class NetworkBaseFragment<D extends BaseBean> extends RefreshBas
      * @return
      */
     protected boolean writeCache() {
-        return false;
+        return true;
     }
 
     /**
@@ -229,7 +242,7 @@ public abstract class NetworkBaseFragment<D extends BaseBean> extends RefreshBas
      * @return
      */
     protected boolean shouldCache() {
-        return false;
+        return true;
     }
 
 
@@ -342,9 +355,20 @@ public abstract class NetworkBaseFragment<D extends BaseBean> extends RefreshBas
     protected View getServerErrView() {
         TextView view = (TextView) View.inflate(getContext(), R.layout.net_work_show_view, null);
         view.setText("服务器出现错误，请重试");
+        view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getCurrentView(ShowCurrentViewENUM.VIEW_IS_LOADING);
+                loadingFromServerErr();
+            }
+        });
         return view;
     }
 
+    protected void loadingFromServerErr() {
+        isFirst = true;
+        startRefresh();
+    }
 
     /**
      * 网络异常
@@ -396,4 +420,6 @@ public abstract class NetworkBaseFragment<D extends BaseBean> extends RefreshBas
         super.onDestroy();
         CallServer.getInstance().cancelBySign(getTClass());
     }
+
+
 }

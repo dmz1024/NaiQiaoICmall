@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<view.ScrollChangeScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/sc_root"
     android:layout_width="match_parent"
@@ -64,7 +64,7 @@
                 android:divider="@drawable/linear_fff_shpe"
                 android:orientation="horizontal"
                 android:showDividers="middle"
-                android:weightSum="5">
+                android:weightSum="0">
 
                 <TextView
                     android:id="@+id/tv_1_1"
@@ -74,7 +74,7 @@
                     android:layout_weight="1"
                     android:gravity="center"
                     android:lineSpacingExtra="@dimen/size4"
-                    android:text="库存预警\n5"
+                    android:text="库存预警\n0"
                     android:textColor="#fff"
                     android:textSize="@dimen/sp13"
                     android:textStyle="bold" />
@@ -87,7 +87,7 @@
                     android:layout_weight="1"
                     android:gravity="center"
                     android:lineSpacingExtra="@dimen/size4"
-                    android:text="到货通知\n5"
+                    android:text="到货通知\n0"
                     android:textColor="#fff"
                     android:textSize="@dimen/sp13"
                     android:textStyle="bold" />
@@ -100,7 +100,7 @@
                     android:layout_weight="1"
                     android:gravity="center"
                     android:lineSpacingExtra="@dimen/size4"
-                    android:text="在途中\n5"
+                    android:text="在途中\n0"
                     android:textColor="#fff"
                     android:textSize="@dimen/sp13"
                     android:textStyle="bold" />
@@ -113,7 +113,7 @@
                     android:layout_weight="1"
                     android:gravity="center"
                     android:lineSpacingExtra="@dimen/size4"
-                    android:text="虚拟仓\n5"
+                    android:text="虚拟仓\n0"
                     android:textColor="#fff"
                     android:textSize="@dimen/sp13"
                     android:textStyle="bold" />
@@ -126,7 +126,7 @@
                     android:layout_weight="1"
                     android:gravity="center"
                     android:lineSpacingExtra="@dimen/size4"
-                    android:text="积分\n5"
+                    android:text="积分\n0"
                     android:textColor="#fff"
                     android:textSize="@dimen/sp13"
                     android:textStyle="bold" />
@@ -346,7 +346,7 @@
                 android:paddingBottom="@dimen/size14"
                 android:paddingLeft="@dimen/size10"
                 android:paddingTop="@dimen/size14"
-                android:text="全部商品\n65种876件"
+                android:text="全部商品"
                 android:textStyle="bold"
                 app:TextImage_drawable="@mipmap/icon_personal_all"
                 app:TextImage_height="@dimen/size26"
@@ -506,4 +506,4 @@
             </FrameLayout>
         </LinearLayout>
     </LinearLayout>
-</ScrollView>
+</view.ScrollChangeScrollView>

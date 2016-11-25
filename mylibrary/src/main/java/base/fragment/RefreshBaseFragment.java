@@ -34,6 +34,10 @@ public abstract class RefreshBaseFragment extends BaseFragment implements GmRefr
         }
     }
 
+    public void setFirst(boolean isFirst) {
+        this.isFirst = isFirst;
+    }
+
 
     /**
      * 可见

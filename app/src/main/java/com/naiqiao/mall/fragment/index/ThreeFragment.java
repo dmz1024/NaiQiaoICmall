@@ -45,10 +45,6 @@ public class ThreeFragment extends NotNetWorkBaseFragment {
         return false;
     }
 
-    @Override
-    protected boolean isOnlyInitOne() {
-        return false;
-    }
 
     @Override
     protected void initTitleView() {

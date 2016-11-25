@@ -1,59 +1,23 @@
 package com.naiqiao.mall.fragment.index;
 
-import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
-import com.naiqiao.mall.MyAdapter;
-import com.naiqiao.mall.User;
+import com.naiqiao.mall.R;
+import com.naiqiao.mall.bean.rxbus.ChangeTwoRightBean;
+import com.naiqiao.mall.fragment.TwoLeftFragment;
+import com.naiqiao.mall.fragment.TwoRightFragment;
 import com.naiqiao.mall.view.OneAndTwoTitleBarView;
 
-import java.util.ArrayList;
-import java.util.Map;
-
-import base.fragment.ListNetWorkBaseFragment;
-import view.DefaultTitleBarView;
+import base.fragment.NotNetWorkBaseFragment;
+import rx.Observable;
+import rx.functions.Action1;
+import util.RxBus;
 
 /**
  * Created by dengmingzhi on 2016/11/16.
  */
 
-public class TwoFragment extends ListNetWorkBaseFragment<User> {
-
-    @Override
-    protected RecyclerView.Adapter getAdapter() {
-        return new MyAdapter(getContext(), (ArrayList<User.Data>) totalList);
-    }
-
-
-    @Override
-    protected String url() {
-        return "http://www.ediancha.com/app.php";
-    }
-
-    @Override
-    protected Map<String, String> map() {
-        map.put("c", "chahui");
-        map.put("a", "index");
-        map.put("type", "1");
-        return super.map();
-    }
-
-    @Override
-    protected Class<User> getTClass() {
-        return User.class;
-    }
-
-    @Override
-    protected boolean isCanFirstInitData() {
-        return false;
-    }
-
-    @Override
-    protected void initTitleView() {
-
-    }
+public class TwoFragment extends NotNetWorkBaseFragment {
 
     @Override
     protected View getTitleBarView() {
@@ -62,6 +26,45 @@ public class TwoFragment extends ListNetWorkBaseFragment<User> {
 
     @Override
     protected float top() {
-        return 65;
+        return 55;
+    }
+
+    private TwoLeftFragment twoLeftFragment;
+    private TwoRightFragment twoRightFragment;
+    private Observable<ChangeTwoRightBean> changeTwoRightRxBus;
+
+    @Override
+    protected void initView() {
+        getChildFragmentManager().beginTransaction().replace(R.id.fg_left, twoLeftFragment = new TwoLeftFragment()).commit();
+        getChildFragmentManager().beginTransaction().replace(R.id.fg_right, twoRightFragment = new TwoRightFragment()).commit();
+        changeTwoRightRxBus = RxBus.get().register("changeTwoRight", ChangeTwoRightBean.class);
+        changeTwoRightRxBus.subscribe(new Action1<ChangeTwoRightBean>() {
+            @Override
+            public void call(ChangeTwoRightBean changeTwoRightBean) {
+                twoRightFragment.setFirst(true);
+                twoRightFragment.startRefresh();
+            }
+        });
+    }
+
+    @Override
+    protected void initData() {
+        twoLeftFragment.startRefresh();
+    }
+
+    @Override
+    protected boolean isCanFirstInitData() {
+        return false;
+    }
+
+    @Override
+    protected int getRId() {
+        return R.layout.fragment_two;
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        RxBus.get().unregister("changeTwoRight", changeTwoRightRxBus);
     }
 }

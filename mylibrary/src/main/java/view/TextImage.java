@@ -70,6 +70,7 @@ public class TextImage extends TextView {
         }
         Drawable drawable = getResources().getDrawable(mDrawable);
         drawable.setBounds(0, 0, width, height);
+
         switch (mSeat) {
             case 1:
                 setCompoundDrawables(drawable, null, null, null);

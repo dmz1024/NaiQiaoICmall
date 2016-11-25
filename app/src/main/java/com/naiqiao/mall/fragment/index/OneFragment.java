@@ -1,18 +1,16 @@
 package com.naiqiao.mall.fragment.index;
 
-import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import com.naiqiao.mall.MyAdapter;
-import com.naiqiao.mall.User;
+import com.naiqiao.mall.bean.User;
 import com.naiqiao.mall.view.OneAndTwoTitleBarView;
 
 import java.util.ArrayList;
 import java.util.Map;
 
+import base.bean.TipLoadingBean;
 import base.fragment.ListNetWorkBaseFragment;
-import view.DefaultTitleBarView;
 
 /**
  * Created by dengmingzhi on 2016/11/16.
@@ -54,6 +52,7 @@ public class OneFragment extends ListNetWorkBaseFragment<User> {
 
     }
 
+
     @Override
     protected View getTitleBarView() {
         return new OneAndTwoTitleBarView(getContext());
@@ -61,6 +60,6 @@ public class OneFragment extends ListNetWorkBaseFragment<User> {
 
     @Override
     protected float top() {
-        return 65;
+        return 55;
     }
 }

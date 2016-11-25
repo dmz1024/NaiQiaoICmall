@@ -94,7 +94,7 @@ public abstract class ApiRequest<T extends BaseBean> {
             return;
         }
 
-
+        CallServer.getInstance().cancelBySign(getSign());
         request.setCancelSign(getSign());
         TipLoading tipLoading = null;
         if (tip != null) {

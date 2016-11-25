@@ -20,11 +20,13 @@ import view.DefaultTitleBarView;
 
 public abstract class BaseFragment extends Fragment {
     private View titleBarView;
+    private FrameLayout rootView;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        FrameLayout rootView = new FrameLayout(getContext());
+
+        rootView = new FrameLayout(getContext());
         rootView.setBackgroundColor(Color.parseColor(getBackColor()));
         ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
         rootView.setLayoutParams(params);
@@ -62,4 +64,11 @@ public abstract class BaseFragment extends Fragment {
     protected float top() {
         return 45;
     }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        rootView = null;
+    }
+
 }

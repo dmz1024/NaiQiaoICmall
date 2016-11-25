@@ -10,6 +10,7 @@ import java.util.Map;
 
 import base.adapter.BaseAdapter;
 import base.bean.ListBaseBean;
+import base.bean.TipLoadingBean;
 import interfaces.OnAdapterDataListener;
 import interfaces.OnShowListDataListener;
 import util.MyToast;
@@ -144,7 +145,7 @@ public abstract class ListNetWorkBaseFragment<D extends ListBaseBean> extends Ne
     public void onRefresh() {
         page = 1;
         currentType = RequestType.LOAD_NEW;
-        if(layoutManager!=null){
+        if (layoutManager != null) {
             view.hide(1);
             isLoading = false;
         }
@@ -157,9 +158,9 @@ public abstract class ListNetWorkBaseFragment<D extends ListBaseBean> extends Ne
             return;
         }
         setRefresh(true);
-        if(isFirst){
+        if (isFirst) {
             onRefresh();
-        }else {
+        } else {
             super.startRefresh();
         }
 
@@ -275,6 +276,31 @@ public abstract class ListNetWorkBaseFragment<D extends ListBaseBean> extends Ne
      */
     protected abstract RecyclerView.Adapter getAdapter();
 
+
+    /**
+     * 加载更多时是否显示进度框
+     */
+
+    protected boolean getLoadMoreCanShowTipLoading() {
+        return false;
+    }
+
+    @Override
+    protected TipLoadingBean getTipLoadingBeanForListNet() {
+        if (currentType == RequestType.LOAD_MORE) {
+            if (getLoadMoreCanShowTipLoading()) {
+                return getTipLoadingBean();
+            } else {
+                return null;
+            }
+        }
+        return getTipLoadingBean();
+    }
+
+    @Override
+    protected boolean isFormListNet() {
+        return true;
+    }
 
     /**
      * 返回分割线

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/size57"
+    android:background="#fff">
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="@dimen/size10"
+        android:layout_height="@dimen/size57"
+        android:background="#f00" />
+
+    <FrameLayout
+        android:id="@+id/fg_back"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="@dimen/size10"
+        android:background="#60ff0000">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center">
+
+            <TextView
+                android:id="@+id/tv_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:text="个人洗护"
+                android:gravity="center"
+                android:textColor="#fff"
+                android:textSize="@dimen/sp13" />
+
+            <View
+                android:id="@+id/view_line"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/size1"
+                android:layout_below="@id/tv_title"
+                android:layout_marginLeft="@dimen/size5"
+                android:layout_marginRight="@dimen/size5"
+                android:layout_marginTop="@dimen/size2"
+                android:background="#f00" />
+
+            <TextView
+                android:id="@+id/tv_alias_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/view_line"
+                android:gravity="center"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/size2"
+                android:text="個人の洗濯护"
+                android:textColor="#f00"
+                android:textSize="@dimen/sp11" />
+        </RelativeLayout>
+    </FrameLayout>
+    <View
+        android:layout_gravity="bottom"
+        android:background="#f5f5f5"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size0.5"/>
+</FrameLayout>
