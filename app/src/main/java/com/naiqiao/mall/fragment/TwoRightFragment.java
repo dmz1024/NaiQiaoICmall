@@ -5,6 +5,8 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.naiqiao.mall.MyAdapter;
+import com.naiqiao.mall.adapter.TwoRightAdapter;
+import com.naiqiao.mall.bean.TwoRightBean;
 import com.naiqiao.mall.bean.User;
 
 import java.util.ArrayList;
@@ -17,12 +19,11 @@ import base.fragment.ListNetWorkBaseFragment;
  * Created by dengmingzhi on 2016/11/23.
  */
 
-public class TwoRightFragment extends ListNetWorkBaseFragment<User> {
+public class TwoRightFragment extends ListNetWorkBaseFragment<TwoRightBean> {
     @Override
     protected RecyclerView.Adapter getAdapter() {
-        return new MyAdapter(getContext(), (ArrayList<User.Data>) totalList);
+        return new TwoRightAdapter(getContext(), (ArrayList<TwoRightBean.Data>) totalList);
     }
-
 
 
     @Override
@@ -37,9 +38,8 @@ public class TwoRightFragment extends ListNetWorkBaseFragment<User> {
 
     @Override
     protected Map<String, String> map() {
-        map.put("c", "chahui");
         map.put("a", "index");
-        map.put("type", "1");
+        map.put("c", "area");
         return super.map();
     }
 
@@ -50,8 +50,8 @@ public class TwoRightFragment extends ListNetWorkBaseFragment<User> {
     }
 
     @Override
-    protected Class<User> getTClass() {
-        return User.class;
+    protected Class<TwoRightBean> getTClass() {
+        return TwoRightBean.class;
     }
 
     @Override

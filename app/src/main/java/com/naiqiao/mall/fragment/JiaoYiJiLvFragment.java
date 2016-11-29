@@ -1,9 +1,11 @@
 package com.naiqiao.mall.fragment;
 
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 
 import com.naiqiao.mall.adapter.JiaoYiJiLvAdapter;
 import com.naiqiao.mall.bean.JiaoYiJiLvBean;
+import com.naiqiao.mall.view.JiaoYiJilvTitleBarView;
 
 import java.util.ArrayList;
 import java.util.Map;
@@ -42,12 +44,21 @@ public class JiaoYiJiLvFragment extends ListNetWorkBaseFragment<JiaoYiJiLvBean> 
 
     @Override
     protected TipLoadingBean getTipLoadingBean() {
-        return null;
+        return new TipLoadingBean();
     }
 
     @Override
     protected void initTitleView() {
-        ((DefaultTitleBarView) getTitleBar()).setTitleContent("交易记录");
+        ((JiaoYiJilvTitleBarView) getTitleBar()).setTitleContent("交易记录");
     }
 
+    @Override
+    protected View getTitleBarView() {
+        return new JiaoYiJilvTitleBarView(getContext());
+    }
+
+    @Override
+    protected float top() {
+        return 80;
+    }
 }

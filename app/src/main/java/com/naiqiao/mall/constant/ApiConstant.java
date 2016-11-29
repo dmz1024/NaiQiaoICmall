@@ -5,6 +5,7 @@ package com.naiqiao.mall.constant;
  */
 
 public interface ApiConstant {
-    String BASE_URL = "http://api.nohttp.net/";
+    String BASE_URL = "http://nq.website-art.com/app/";
     String JSON_OBJECT = BASE_URL + "jsonObject";
+    String USER = BASE_URL + "user.php";
 }

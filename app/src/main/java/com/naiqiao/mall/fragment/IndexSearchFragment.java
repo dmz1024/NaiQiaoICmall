@@ -28,8 +28,6 @@ import util.Util;
  */
 
 public class IndexSearchFragment extends NotNetWorkBaseFragment implements IndexSearchTitleBarView.OnIndexSearchTitleBarListener {
-    @BindViews({R.id.tv_change, R.id.tv_cancel})
-    List<TextView> tvs;
     @BindView(R.id.rv_history)
     RecyclerView rv_history;
 

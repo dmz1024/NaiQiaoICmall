@@ -25,7 +25,8 @@ public abstract class PopBaseView implements PopupWindow.OnDismissListener {
 
     public PopBaseView(Context ctx) {
         this.ctx = ctx;
-        ViewAnimator.animate(((Activity) ctx).findViewById(android.R.id.content)).alpha(1f, getAlpha()).duration(getShowTime()).start();
+//        ViewAnimator.animate(((Activity) ctx).findViewById(android.R.id.content)).alpha(1f, getAlpha()).duration(getShowTime()).start();
+        ((Activity) ctx).findViewById(android.R.id.content).setAlpha(0.5f);
     }
 
     protected long getShowTime() {
@@ -112,7 +113,9 @@ public abstract class PopBaseView implements PopupWindow.OnDismissListener {
 
     @Override
     public void onDismiss() {
-        ViewAnimator.animate(((Activity) ctx).findViewById(android.R.id.content)).alpha(getAlpha(), 1f).duration(getShowTime() + getDismissTime()).start();
+//        ViewAnimator.animate(((Activity) ctx).findViewById(android.R.id.content)).alpha(getAlpha(), 1f).duration(getShowTime() + getDismissTime()).start();
+//        (Activity) ctx).findViewById(android.R.id.content
+        ((Activity) ctx).findViewById(android.R.id.content).setAlpha(1f);
         popupWindow = null;
     }
 

@@ -11,6 +11,7 @@ import com.naiqiao.mall.R;
 import com.naiqiao.mall.bean.User;
 import com.naiqiao.mall.bean.rxbus.AddFragmentBean;
 import com.naiqiao.mall.fragment.JiaoYiJiLvFragment;
+import com.naiqiao.mall.fragment.login.LoginFragment;
 import com.naiqiao.mall.view.FourTitleBarView;
 import com.recker.flyshapeimageview.ShapeImageView;
 
@@ -182,6 +183,7 @@ public class FourFragment extends SingleNetWorkBaseFragment<User> implements Scr
     @OnClick(R.id.iv_head)
     void headClick() {
         Log.d("点击了", "图像点击了");
+        RxBus.get().post("addFragment",new AddFragmentBean(new LoginFragment()));
     }
 
     @OnClick({R.id.trl_1, R.id.trl_2})

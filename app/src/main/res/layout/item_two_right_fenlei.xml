@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#fff"
+    android:orientation="vertical">
+
+    <view.TitleRelativeLayout
+        android:id="@+id/trl_title"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size45"
+        android:background="#f73f5f"
+        app:TitleRelativeLayout_content="更多推荐"
+        app:TitleRelativeLayout_content_style="@style/TextSize13Colorfff"
+        app:TitleRelativeLayout_title="品牌推荐|ブランドの推薦"
+        app:TitleRelativeLayout_title_style="@style/TextSize13Colorfff" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+</LinearLayout>
