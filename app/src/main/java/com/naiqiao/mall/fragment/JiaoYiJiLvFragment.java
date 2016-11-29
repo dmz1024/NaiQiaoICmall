@@ -19,7 +19,7 @@ import view.DefaultTitleBarView;
 public class JiaoYiJiLvFragment extends ListNetWorkBaseFragment<JiaoYiJiLvBean> {
     @Override
     protected RecyclerView.Adapter getAdapter() {
-        return new JiaoYiJiLvAdapter(getContext(), (ArrayList<JiaoYiJiLvBean>) totalList);
+        return new JiaoYiJiLvAdapter(getContext(), (ArrayList<JiaoYiJiLvBean.Data>) totalList);
     }
 
     @Override

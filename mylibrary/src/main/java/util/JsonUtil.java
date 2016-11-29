@@ -55,8 +55,8 @@ public class JsonUtil {
      * @param cls
      * @return
      */
-    public static <T> List<T> json2List(String json, Class<T> cls) {
-        return gson.fromJson(json, new TypeToken<List<T>>() {
+    public static <T> ArrayList<T> json2List(String json, Class<T> cls) {
+        return gson.fromJson(json, new TypeToken<ArrayList<T>>() {
         }.getType());
     }
 
@@ -70,7 +70,7 @@ public class JsonUtil {
      * @return
      */
     public <T> List<T> jsonToList(String json, Class<T> cls) {
-        List<T> list = new ArrayList<T>();
+        ArrayList<T> list = new ArrayList<T>();
         JsonArray array = new JsonParser().parse(json).getAsJsonArray();
         for (final JsonElement elem : array) {
             list.add(gson.fromJson(elem, cls));

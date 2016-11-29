@@ -6,6 +6,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
@@ -18,15 +19,15 @@ import view.DefaultTitleBarView;
  * Created by dengmingzhi on 2016/11/22.
  */
 
-public abstract class BaseFragment extends Fragment {
+public abstract class BaseFragment extends Fragment implements View.OnTouchListener {
     private View titleBarView;
     private FrameLayout rootView;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-
         rootView = new FrameLayout(getContext());
+        rootView.setOnTouchListener(this);
         rootView.setBackgroundColor(Color.parseColor(getBackColor()));
         ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
         rootView.setLayoutParams(params);
@@ -71,4 +72,8 @@ public abstract class BaseFragment extends Fragment {
         rootView = null;
     }
 
+    @Override
+    public boolean onTouch(View v, MotionEvent event) {
+        return true;
+    }
 }

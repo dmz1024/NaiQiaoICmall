@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="50dp"
+    android:background="#fff">
+
+    <TextView
+        android:id="@+id/title_bar_tv_right"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="@dimen/size12"
+        android:text="取消"
+        android:textColor="#666"
+        android:textSize="@dimen/sp15" />
+
+    <AutoCompleteTextView
+        android:id="@+id/title_bar_ed_search"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="@dimen/size20"
+        android:layout_marginRight="@dimen/size10"
+        android:layout_toLeftOf="@id/title_bar_tv_right"
+        android:background="@drawable/icon_edit_line"
+        android:drawableLeft="@mipmap/icon_search_gray"
+        android:drawablePadding="@dimen/size10"
+        android:hint="请输入品牌及商品关键字"
+        android:textColor="#999"
+
+        android:textColorHint="#999"
+        android:paddingLeft="@dimen/size10"
+        android:textSize="@dimen/sp14" />
+
+    <View
+        android:id="@+id/title_bar_view"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size0.5"
+        android:layout_alignParentBottom="true"
+        android:background="#e1e1e1" />
+
+</RelativeLayout>

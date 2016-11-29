@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="#fff"
+    android:paddingRight="@dimen/size5"
+    android:paddingBottom="@dimen/size5"
+    android:paddingTop="@dimen/size5">
+
+    <TextView
+        android:id="@+id/tv_content"
+        style="@style/TextSize14Color333"
+        android:background="@drawable/rectangle_30333333_ra"
+        android:gravity="center"
+        android:paddingBottom="@dimen/size5"
+        android:paddingLeft="@dimen/size12"
+        android:paddingRight="@dimen/size12"
+        android:paddingTop="@dimen/size5"
+        android:text="洗发水" />
+
+</FrameLayout>
