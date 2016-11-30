@@ -6,6 +6,7 @@ import android.widget.TextView;
 
 import com.naiqiao.mall.adapter.TwoLeftAdapter;
 import com.naiqiao.mall.bean.TwoLeftBean;
+import com.naiqiao.mall.constant.ApiConstant;
 
 import java.util.ArrayList;
 import java.util.Map;
@@ -32,13 +33,12 @@ public class TwoLeftFragment extends ListNetWorkBaseFragment<TwoLeftBean> {
 
     @Override
     protected String url() {
-        return "http://www.ediancha.com/app.php";
+        return ApiConstant.CATEGORY;
     }
 
     @Override
     protected Map<String, String> map() {
-        map.put("a", "index");
-        map.put("c", "area");
+        map.put("act", "get_categories");
         return super.map();
     }
 

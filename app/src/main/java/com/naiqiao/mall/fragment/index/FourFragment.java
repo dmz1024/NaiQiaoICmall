@@ -11,6 +11,7 @@ import com.naiqiao.mall.R;
 import com.naiqiao.mall.bean.User;
 import com.naiqiao.mall.bean.rxbus.AddFragmentBean;
 import com.naiqiao.mall.fragment.JiaoYiJiLvFragment;
+import com.naiqiao.mall.fragment.XiaoLiangPaiHangFragment;
 import com.naiqiao.mall.fragment.login.LoginFragment;
 import com.naiqiao.mall.view.FourTitleBarView;
 import com.recker.flyshapeimageview.ShapeImageView;
@@ -120,7 +121,7 @@ public class FourFragment extends SingleNetWorkBaseFragment<User> implements Scr
                 Log.d("点击了", tv2s.get(0).getText().toString());
                 break;
             case R.id.tv_2_2:
-                RxBus.get().post("addFragment",new AddFragmentBean(new JiaoYiJiLvFragment()));
+                RxBus.get().post("addFragment", new AddFragmentBean(new JiaoYiJiLvFragment()));
                 break;
             case R.id.tv_2_3:
                 Log.d("点击了", tv2s.get(2).getText().toString());
@@ -176,6 +177,7 @@ public class FourFragment extends SingleNetWorkBaseFragment<User> implements Scr
                 break;
             case R.id.fg_2:
                 Log.d("点击了", tv5s.get(1).getText().toString());
+                RxBus.get().post("addFragment", new AddFragmentBean(new XiaoLiangPaiHangFragment()));
                 break;
         }
     }
@@ -183,7 +185,7 @@ public class FourFragment extends SingleNetWorkBaseFragment<User> implements Scr
     @OnClick(R.id.iv_head)
     void headClick() {
         Log.d("点击了", "图像点击了");
-        RxBus.get().post("addFragment",new AddFragmentBean(new LoginFragment()));
+        RxBus.get().post("addFragment", new AddFragmentBean(new LoginFragment()));
     }
 
     @OnClick({R.id.trl_1, R.id.trl_2})

@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.naiqiao.mall.R;
+import com.naiqiao.mall.bean.rxbus.AddFragmentBean;
 import com.naiqiao.mall.controller.AccountController;
 import com.naiqiao.mall.controller.VerificationCodeController;
 import com.naiqiao.mall.interfaces.SingleTextWatcher;
@@ -23,6 +24,8 @@ import butterknife.BindView;
 import butterknife.BindViews;
 import butterknife.OnClick;
 import interfaces.OnSingleRequestListener;
+import util.RxBus;
+import util.SharedPreferenUtil;
 import view.DefaultTitleBarView;
 
 /**
@@ -43,7 +46,24 @@ public class RegFragment extends NotNetWorkBaseFragment {
 
     @Override
     protected void initData() {
+        regCode = new VerificationCodeController(getContext(), bts.get(1), "reg") {
+            @Override
+            protected void printTime() {
+                bts.get(1).setText("获取验证码");
+            }
 
+            @Override
+            protected void printTime(int time) {
+                bts.get(1).setText("重新获取" + time + "S");
+            }
+
+            @Override
+            protected boolean getEnable() {
+                return ets.get(0).getText().toString().length() == 11;
+            }
+        };
+
+        regCode.check();
     }
 
     @Override
@@ -97,25 +117,6 @@ public class RegFragment extends NotNetWorkBaseFragment {
             }
         });
 
-
-        regCode = new VerificationCodeController(getContext(), bts.get(1), "reg") {
-            @Override
-            protected void printTime() {
-                bts.get(1).setText("获取验证码");
-            }
-
-            @Override
-            protected void printTime(int time) {
-                bts.get(1).setText("重新获取" + time + "S");
-            }
-
-            @Override
-            protected boolean getEnable() {
-                return ets.get(0).getText().toString().length() == 11;
-            }
-        };
-
-        regCode.check();
 
     }
 
@@ -188,14 +189,17 @@ public class RegFragment extends NotNetWorkBaseFragment {
      * 注册
      */
     private void reg() {
+
         new AccountController(getContext()).setOnRequestListeren(new OnSingleRequestListener<SingleBaseBean>() {
             @Override
             public void succes(boolean isWrite, SingleBaseBean bean) {
-
+                regCode.write(0);
+                RxBus.get().post("addFragment",new AddFragmentBean(new RegSuccessFragment()));
             }
 
             @Override
             public void error(boolean isWrite, SingleBaseBean bean, String msg) {
+
 
             }
         }).reg(ets.get(0).getText().toString(), ets.get(1).getText().toString(), ets.get(3).getText().toString());

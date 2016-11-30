@@ -54,7 +54,7 @@ public class MainActivity extends BaseActivity {
     }
 
     private void sendFragment() {
-        AddFragmentBean addFragmentBean = new AddFragmentBean(new WelComeFragment());
+        AddFragmentBean addFragmentBean = new AddFragmentBean(new IndexFragment());
         addFragmentBean.setAddBack(true);
         addFragmentBean.setHaveAnima(true);
         RxBus.get().post("addFragment", addFragmentBean);

@@ -22,7 +22,7 @@ public class MyApplication extends Application {
         LeakCanary.install(this);//检测内存泄漏
 
         initNoHttp();
-        JLogUtils.setDebug(true);
+        JLogUtils.setDebug(false);
         Util.setApplication(this);
     }
 

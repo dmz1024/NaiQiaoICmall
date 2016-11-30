@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fff"
+    android:orientation="vertical">
+
+    <view.Color2Text
+        style="@style/TextSize15Color333"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/size60"
+        android:drawablePadding="@dimen/size10"
+        android:drawableTop="@mipmap/icon_tijiao_ok"
+        android:lineSpacingExtra="@dimen/size25"
+        android:text="注册成功\n"
+        app:Color2Text_color="#666"
+        app:Color2Text_content="成为我们的代理商享有更多权限"
+        app:Color2Text_size="@dimen/sp14" />
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/size50">
+
+        <TextView
+            android:id="@+id/tv_tip"
+            style="@style/TextSize13Color999"
+            android:text="即将跳转到申请加盟界面3s,   " />
+
+        <TextView
+            android:id="@+id/tv_skip"
+            style="@style/TextSize13Color333"
+            android:layout_toRightOf="@id/tv_tip"
+            android:text="立即跳转" />
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_marginTop="@dimen/size1"
+            android:layout_height="2px"
+            android:layout_alignLeft="@id/tv_skip"
+            android:layout_alignRight="@id/tv_skip"
+            android:layout_below="@id/tv_skip"
+            android:background="#d8d8d8" />
+    </RelativeLayout>
+
+
+    <Button
+        android:id="@+id/bt_skip"
+        android:layout_width="@dimen/size90"
+        android:layout_height="@dimen/size30"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/size65"
+        android:background="#f75f3f"
+        android:text="返回首页"
+        android:textColor="#fff"
+        android:textSize="@dimen/sp13" />
+</LinearLayout>

@@ -3,6 +3,7 @@ package com.naiqiao.mall.adapter;
 import android.content.Context;
 import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
@@ -40,12 +41,21 @@ public class TwoLeftAdapter extends BaseAdapter<TwoLeftBean.Data> {
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+        TwoLeftBean.Data data = list.get(position);
         if (holder instanceof TitleViewHolder) {
             TitleViewHolder viewHolder = ((TitleViewHolder) holder);
-            viewHolder.tv_title.setText(list.get(position).name);
+            viewHolder.tv_title.setText(data.name);
+            viewHolder.tv_alias_title.setText(data.othername);
+            if(data.color.length()>6){
+                viewHolder.view.setBackgroundColor(Color.parseColor(data.color));
+                viewHolder.view_line.setBackgroundColor(Color.parseColor(data.color));
+                viewHolder.fg_back.setBackgroundColor(Color.parseColor("#60" + data.color.substring(1, data.color.length())));
+                viewHolder.tv_alias_title.setTextColor(Color.parseColor(data.color));
+            }
+
         } else {
             ContentViewHolder viewHolder = ((ContentViewHolder) holder);
-            viewHolder.tv_title.setText(list.get(position).name);
+            viewHolder.tv_title.setText(data.name);
             if (currentChoose == position) {
                 viewHolder.tv_title.setTextColor(Color.parseColor("#f73f5f"));
                 viewHolder.itemView.setBackgroundColor(Color.parseColor("#f5f5f5"));
@@ -58,6 +68,8 @@ public class TwoLeftAdapter extends BaseAdapter<TwoLeftBean.Data> {
                 isFirst = false;
                 RxBus.get().post("changeTwoRight", new ChangeTwoRightBean());
             }
+
+
         }
     }
 

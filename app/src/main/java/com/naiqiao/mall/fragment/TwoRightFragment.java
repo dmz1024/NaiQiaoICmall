@@ -4,10 +4,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
 
-import com.naiqiao.mall.MyAdapter;
 import com.naiqiao.mall.adapter.TwoRightAdapter;
 import com.naiqiao.mall.bean.TwoRightBean;
-import com.naiqiao.mall.bean.User;
 
 import java.util.ArrayList;
 import java.util.Map;
@@ -67,12 +65,12 @@ public class TwoRightFragment extends ListNetWorkBaseFragment<TwoRightBean> {
 
     @Override
     protected boolean writeCache() {
-        return false;
+        return true;
     }
 
     @Override
     protected boolean shouldCache() {
-        return false;
+        return true;
     }
 
     @Override

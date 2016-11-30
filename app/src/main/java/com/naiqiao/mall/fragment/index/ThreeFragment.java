@@ -5,11 +5,14 @@ import android.view.View;
 import android.widget.Button;
 
 import com.naiqiao.mall.R;
+import com.naiqiao.mall.bean.rxbus.AddFragmentBean;
 import com.naiqiao.mall.fragment.SendCarFragment;
+import com.naiqiao.mall.fragment.SendMonadContentFragment;
 
 import base.fragment.NotNetWorkBaseFragment;
 import butterknife.BindView;
 import butterknife.OnClick;
+import util.RxBus;
 import view.DefaultTitleBarView;
 
 /**
@@ -37,7 +40,7 @@ public class ThreeFragment extends NotNetWorkBaseFragment {
 
     @OnClick(R.id.bt_send_car)
     void sendCar() {
-
+        RxBus.get().post("addFragment",new AddFragmentBean(new SendMonadContentFragment()));
     }
 
     @Override

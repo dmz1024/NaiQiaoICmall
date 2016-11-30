@@ -1,4 +1,4 @@
-package com.naiqiao.mall;
+package com.naiqiao.mall.other;
 
 /**
  * Created by dengmingzhi on 2016/11/9.
