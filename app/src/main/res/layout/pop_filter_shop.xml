@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#fff">
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_content"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+         />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:transformPivotY="-0.5dp"
+        android:layout_below="@id/rv_content"
+        android:background="#dadada" />
+
+    <LinearLayout
+        android:id="@+id/ll_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/rv_content"
+        android:layout_marginTop="@dimen/size1">
+
+        <TextView
+            android:id="@+id/tv_clear"
+            style="@style/TextSize12Color666"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:padding="@dimen/size10"
+            android:text="重置" />
+
+        <TextView
+            android:id="@+id/tv_ok"
+            style="@style/TextSize12Colorfff"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:background="#f8405f"
+            android:gravity="center"
+            android:padding="@dimen/size10"
+            android:text="确定" />
+    </LinearLayout>
+    <View
+        android:transformPivotY="-0.5dp"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_below="@id/ll_bottom"
+        android:background="#dadada" />
+
+</RelativeLayout>

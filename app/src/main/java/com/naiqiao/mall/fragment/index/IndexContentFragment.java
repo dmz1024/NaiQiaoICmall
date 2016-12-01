@@ -77,4 +77,9 @@ public class IndexContentFragment extends NotNetWorkBaseFragment {
         RxBus.get().unregister("indexBottomTabChange", indexBottomTabChange);
     }
 
+
+    public int currentPosition() {
+        return vp_content.getCurrentItem();
+    }
+
 }

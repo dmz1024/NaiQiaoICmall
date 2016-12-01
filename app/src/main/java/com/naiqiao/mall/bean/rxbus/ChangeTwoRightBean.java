@@ -7,20 +7,20 @@ import android.text.TextUtils;
  */
 
 public class ChangeTwoRightBean {
-    private String id;
+    private String cat_id;
 
-    public ChangeTwoRightBean(String id) {
-        this.id = id;
+    public ChangeTwoRightBean(String cat_id) {
+        this.cat_id = cat_id;
     }
 
     public ChangeTwoRightBean() {
     }
 
-    public String getId() {
-        return id;
+    public String getCat_id() {
+        return cat_id;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setCat_id(String cat_id) {
+        this.cat_id = cat_id;
     }
 }

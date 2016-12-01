@@ -94,7 +94,7 @@ public class TipLoading extends PopBaseView {
             public void run() {
                 dismiss();
             }
-        }, 1500);
+        }, 1000);
     }
 
     public void showError(String content) {

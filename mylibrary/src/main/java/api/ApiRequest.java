@@ -197,6 +197,7 @@ public abstract class ApiRequest<T extends BaseBean> {
                 }
 
             }
+
             if (onRequestListeren != null) {
                 onRequestListeren.error(isWrite, t, t.msg);
             }

@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import base.fragment.NotNetWorkBaseFragment;
 import butterknife.BindView;
 import butterknife.OnClick;
+import util.DrawableUtil;
 import view.Color2Text;
 import view.DefaultTitleBarView;
 
@@ -44,7 +45,7 @@ public class SendMonadContentFragment extends NotNetWorkBaseFragment {
 
     @Override
     protected void initView() {
-        data = new ArrayList<SendMonadBean.Data>();
+        data = new ArrayList<>();
         for (int i = 0; i < 10; i++) {
             SendMonadBean.Data send = new SendMonadBean.Data();
             send.count = i;
@@ -102,9 +103,7 @@ public class SendMonadContentFragment extends NotNetWorkBaseFragment {
     }
 
     private void changeChoose() {
-        Drawable drawable = isChoose ? getResources().getDrawable(R.mipmap.icon_checked) : getResources().getDrawable(R.mipmap.icon_check);
-        drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
-        tv_choose.setCompoundDrawables(drawable, null, null, null);
+        tv_choose.setCompoundDrawables(DrawableUtil.setBounds(isChoose ? getResources().getDrawable(R.mipmap.icon_checked) : getResources().getDrawable(R.mipmap.icon_check)), null, null, null);
     }
 
     private boolean isFirst = true;

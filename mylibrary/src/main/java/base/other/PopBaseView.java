@@ -22,12 +22,20 @@ public abstract class PopBaseView implements PopupWindow.OnDismissListener {
     protected Context ctx;
     protected PopupWindow popupWindow;
     private View view;
+    protected boolean isAlpha() {
+        return true;
+    }
+
 
     public PopBaseView(Context ctx) {
         this.ctx = ctx;
 //        ViewAnimator.animate(((Activity) ctx).findViewById(android.R.id.content)).alpha(1f, getAlpha()).duration(getShowTime()).start();
-        ((Activity) ctx).findViewById(android.R.id.content).setAlpha(0.5f);
+
+        if (isAlpha()) {
+            ((Activity) ctx).findViewById(android.R.id.content).setAlpha(0.5f);
+        }
     }
+
 
     protected long getShowTime() {
         return 400;
@@ -43,7 +51,7 @@ public abstract class PopBaseView implements PopupWindow.OnDismissListener {
 
     private void creatPop(boolean cancel) {
         popupWindow = new PopupWindow((view = getView()), Util.getWidth() - width(), height(), true);
-        if (cancel) {
+        if (!cancel) {
             popupWindow.setBackgroundDrawable(new ColorDrawable());
         }
         popupWindow.setOnDismissListener(this);
@@ -65,6 +73,7 @@ public abstract class PopBaseView implements PopupWindow.OnDismissListener {
     public void showAtLocation(boolean cancel) {
         creatPop(cancel);
         popupWindow.showAtLocation(((Activity) ctx).findViewById(android.R.id.content), getGravity(), x(), y());
+
     }
 
     public void showAsDropDown(View v) {

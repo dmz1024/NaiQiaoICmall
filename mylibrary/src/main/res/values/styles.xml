@@ -19,6 +19,11 @@
         <item name="android:windowExitAnimation">@anim/go_2_down</item>
     </style>
 
+    <style name="popwin_anim_down_and_up">
+        <item name="android:windowEnterAnimation">@anim/go_2_down</item>
+        <item name="android:windowExitAnimation">@anim/form_2_up</item>
+    </style>
+
 
     <style name="FeelyouWindowAnimTheme" parent="@android:style/Animation.Activity">
         <item name="android:activityOpenEnterAnimation">@anim/in_from_right</item>

@@ -46,7 +46,7 @@ public class TwoLeftAdapter extends BaseAdapter<TwoLeftBean.Data> {
             TitleViewHolder viewHolder = ((TitleViewHolder) holder);
             viewHolder.tv_title.setText(data.name);
             viewHolder.tv_alias_title.setText(data.othername);
-            if(data.color.length()>6){
+            if (data.color.length() > 6) {
                 viewHolder.view.setBackgroundColor(Color.parseColor(data.color));
                 viewHolder.view_line.setBackgroundColor(Color.parseColor(data.color));
                 viewHolder.fg_back.setBackgroundColor(Color.parseColor("#60" + data.color.substring(1, data.color.length())));
@@ -66,7 +66,7 @@ public class TwoLeftAdapter extends BaseAdapter<TwoLeftBean.Data> {
 
             if (position == 1 && isFirst) {
                 isFirst = false;
-                RxBus.get().post("changeTwoRight", new ChangeTwoRightBean());
+                RxBus.get().post("changeTwoRight", list.get(position).id);
             }
 
 
@@ -112,7 +112,7 @@ public class TwoLeftAdapter extends BaseAdapter<TwoLeftBean.Data> {
             if (currentChoose != layoutPosition) {
                 currentChoose = layoutPosition;
                 notifyDataSetChanged();
-                RxBus.get().post("changeTwoRight", new ChangeTwoRightBean());
+                RxBus.get().post("changeTwoRight", list.get(layoutPosition).id);
             }
         }
     }

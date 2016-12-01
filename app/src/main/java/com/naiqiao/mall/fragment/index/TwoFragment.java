@@ -31,18 +31,17 @@ public class TwoFragment extends NotNetWorkBaseFragment {
 
     private TwoLeftFragment twoLeftFragment;
     private TwoRightFragment twoRightFragment;
-    private Observable<ChangeTwoRightBean> changeTwoRightRxBus;
+    private Observable<String> changeTwoRightRxBus;
 
     @Override
     protected void initView() {
         getChildFragmentManager().beginTransaction().replace(R.id.fg_left, twoLeftFragment = new TwoLeftFragment()).commit();
         getChildFragmentManager().beginTransaction().replace(R.id.fg_right, twoRightFragment = new TwoRightFragment()).commit();
-        changeTwoRightRxBus = RxBus.get().register("changeTwoRight", ChangeTwoRightBean.class);
-        changeTwoRightRxBus.subscribe(new Action1<ChangeTwoRightBean>() {
+        changeTwoRightRxBus = RxBus.get().register("changeTwoRight", String.class);
+        changeTwoRightRxBus.subscribe(new Action1<String>() {
             @Override
-            public void call(ChangeTwoRightBean changeTwoRightBean) {
-                twoRightFragment.setFirst(true);
-                twoRightFragment.startRefresh();
+            public void call(String cat_id) {
+                twoRightFragment.filter(cat_id);
             }
         });
     }

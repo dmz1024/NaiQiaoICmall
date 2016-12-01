@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fff">
+
+    <LinearLayout
+        android:id="@+id/ll_filter"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="3">
+
+        <TextView
+            android:id="@+id/tv_filter"
+            style="@style/TextSize12Color999"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:padding="@dimen/size10"
+            android:text="分类"
+            android:textColor="#f54262" />
+
+        <FrameLayout
+            android:id="@+id/fg_price"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="#f5f5f5">
+
+            <TextView
+                android:id="@+id/tv_price"
+                style="@style/TextSize12Color666"
+                android:layout_gravity="center"
+                android:drawablePadding="@dimen/size1"
+                android:drawableRight="@mipmap/icon_updown"
+                android:gravity="center"
+                android:padding="@dimen/size10"
+                android:text="价格" />
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/fg_count"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="#f5f5f5">
+
+            <TextView
+                android:id="@+id/tv_count"
+                style="@style/TextSize12Color666"
+                android:layout_gravity="center"
+                android:drawablePadding="@dimen/size1"
+                android:drawableRight="@mipmap/icon_updown"
+                android:gravity="center"
+                android:padding="@dimen/size10"
+                android:text="销量" />
+        </FrameLayout>
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/fg_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/ll_filter" />
+</RelativeLayout>

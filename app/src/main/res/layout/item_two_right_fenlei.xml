@@ -9,12 +9,13 @@
     <view.TitleRelativeLayout
         android:id="@+id/trl_title"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/size45"
+        android:layout_height="@dimen/size35"
+        app:TitleRelativeLayout_view_visi="false"
         android:background="#f73f5f"
         app:TitleRelativeLayout_content="更多推荐"
-        app:TitleRelativeLayout_content_style="@style/TextSize13Colorfff"
+        app:TitleRelativeLayout_content_style="@style/TextSize11Colorfff"
         app:TitleRelativeLayout_title="品牌推荐|ブランドの推薦"
-        app:TitleRelativeLayout_title_style="@style/TextSize13Colorfff" />
+        app:TitleRelativeLayout_title_style="@style/TextSize11Colorfff" />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rv_content"

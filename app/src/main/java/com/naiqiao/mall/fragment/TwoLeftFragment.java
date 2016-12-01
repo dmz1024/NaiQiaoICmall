@@ -78,11 +78,8 @@ public class TwoLeftFragment extends ListNetWorkBaseFragment<TwoLeftBean> {
 
     @Override
     protected boolean writeCache() {
-        return false;
+        return true;
     }
 
-    @Override
-    protected TipLoadingBean getTipLoadingBean() {
-        return new TipLoadingBean();
-    }
+
 }
