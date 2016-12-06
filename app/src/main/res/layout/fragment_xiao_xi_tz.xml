@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:divider="@drawable/divider_e1e1e1"
+    android:orientation="vertical"
+    android:showDividers="middle">
+
+    <RelativeLayout
+        android:id="@+id/rl_tzgg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#fff"
+        android:paddingBottom="@dimen/size5"
+        android:paddingLeft="@dimen/size10"
+        android:paddingRight="@dimen/size5"
+        android:paddingTop="@dimen/size10">
+
+        <RelativeLayout
+            android:id="@+id/rl_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true">
+
+            <ImageView
+                android:id="@+id/iv_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/size4"
+                android:scaleType="centerCrop"
+                android:src="@mipmap/icon_notice_one" />
+
+            <TextView
+                android:id="@+id/tv_count_tzgg"
+                style="@style/TextSize10Colorfff"
+                android:layout_gravity="right"
+                android:layout_marginLeft="-3dp"
+                android:layout_toRightOf="@id/iv_1"
+                android:background="@drawable/shape_oval_f73f5f"
+                android:gravity="center"
+                android:text="9"
+                android:textSize="@dimen/sp9" />
+        </RelativeLayout>
+
+        <view.Color2Text
+            android:id="@+id/tv_title_tzgg"
+            style="@style/TextSize14Color333"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/size15"
+            android:layout_toRightOf="@id/rl_1"
+            android:lineSpacingExtra="@dimen/size7"
+            android:text="通知公告\n"
+            app:Color2Text_color="#999"
+            app:Color2Text_content="简短介绍介介绍简短介绍简短介绍短介绍"
+            app:Color2Text_size="@dimen/sp12" />
+
+        <TextView
+            style="@style/TextSize12Color999"
+            android:layout_alignParentRight="true"
+            android:layout_alignTop="@id/tv_title_tzgg"
+            android:text="00:00" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_dhtz"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#fff"
+        android:paddingBottom="@dimen/size5"
+        android:paddingLeft="@dimen/size10"
+        android:paddingRight="@dimen/size10"
+        android:paddingTop="@dimen/size5">
+
+        <RelativeLayout
+            android:id="@+id/rl_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true">
+
+            <ImageView
+                android:id="@+id/iv_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/size4"
+                android:scaleType="centerCrop"
+                android:src="@mipmap/icon_notice_two" />
+
+            <TextView
+                android:id="@+id/tv_count_dhtz"
+                style="@style/TextSize10Colorfff"
+                android:layout_gravity="right"
+                android:layout_marginLeft="-9dp"
+                android:layout_toRightOf="@id/iv_2"
+                android:background="@drawable/shape_oval_f73f5f"
+                android:gravity="center"
+                android:text="9"
+                android:textSize="@dimen/sp9" />
+        </RelativeLayout>
+
+        <view.Color2Text
+            android:id="@+id/tv_title_dhtz"
+            style="@style/TextSize14Color333"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/size15"
+            android:layout_toRightOf="@id/rl_2"
+            android:lineSpacingExtra="@dimen/size7"
+            android:text="到货通知\n"
+            app:Color2Text_color="#999"
+            app:Color2Text_content="简短介短介绍简短介绍简短介绍短介绍"
+            app:Color2Text_size="@dimen/sp12" />
+
+        <TextView
+            style="@style/TextSize12Color999"
+            android:layout_alignParentRight="true"
+            android:layout_alignTop="@id/tv_title_dhtz"
+            android:text="昨天" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_zxhd"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#fff"
+        android:paddingBottom="@dimen/size5"
+        android:paddingLeft="@dimen/size10"
+        android:paddingRight="@dimen/size10"
+        android:paddingTop="@dimen/size5">
+
+        <RelativeLayout
+            android:id="@+id/rl_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true">
+
+            <ImageView
+                android:id="@+id/iv_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/size4"
+                android:scaleType="centerCrop"
+                android:src="@mipmap/icon_notice_three" />
+
+            <TextView
+                android:id="@+id/tv_count_zxhd"
+                style="@style/TextSize10Colorfff"
+                android:layout_gravity="right"
+                android:layout_marginLeft="-8dp"
+                android:layout_toRightOf="@id/iv_3"
+                android:background="@drawable/shape_oval_f73f5f"
+                android:gravity="center"
+                android:text="9"
+                android:textSize="@dimen/sp9" />
+        </RelativeLayout>
+
+        <view.Color2Text
+            android:id="@+id/tv_title_zxhd"
+            style="@style/TextSize14Color333"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/size15"
+            android:layout_toRightOf="@id/rl_3"
+            android:lineSpacingExtra="@dimen/size7"
+            android:text="最新活动\n"
+            app:Color2Text_color="#999"
+            app:Color2Text_content="简短介绍简简简短介绍简短介绍短介绍"
+            app:Color2Text_size="@dimen/sp12" />
+
+        <TextView
+            style="@style/TextSize12Color999"
+            android:layout_alignParentRight="true"
+            android:layout_alignTop="@id/tv_title_zxhd"
+            android:text="11月11日" />
+    </RelativeLayout>
+</LinearLayout>

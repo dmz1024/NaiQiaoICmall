@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#f5f5f5"
+    android:orientation="vertical"
+    android:paddingTop="@dimen/size10">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#fafafa">
+
+        <TextView
+            android:id="@+id/tv_tip"
+            style="@style/TextSize11Color333"
+            android:layout_gravity="right"
+            android:drawableLeft="@mipmap/icon_point"
+            android:drawablePadding="@dimen/size4"
+            android:gravity="right|center_vertical"
+            android:padding="@dimen/size5"
+            android:layout_marginRight="@dimen/size6"
+            android:text="本产品可获得12积分" />
+    </FrameLayout>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#fff"
+        android:padding="@dimen/size10">
+
+        <ImageView
+            android:id="@+id/iv_choose"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:scaleType="center"
+            android:src="@mipmap/icon_checked" />
+
+        <FrameLayout
+            android:id="@+id/fg_img"
+            android:layout_width="@dimen/size100"
+            android:layout_height="@dimen/size100"
+            android:layout_marginLeft="@dimen/size10"
+            android:layout_toRightOf="@id/iv_choose"
+            android:background="@drawable/shape_fff_f5f5f5_ra"
+            android:padding="1dp">
+
+            <ImageView
+                android:id="@+id/iv_img"
+                android:layout_width="@dimen/size100"
+                android:layout_height="@dimen/size100"
+                android:scaleType="fitXY"
+                android:src="@mipmap/icon_search_gray" />
+        </FrameLayout>
+
+        <TextView
+            android:id="@+id/tv_title"
+            style="@style/TextSize13Color333"
+            android:layout_marginLeft="@dimen/size4"
+            android:layout_toRightOf="@id/fg_img"
+            android:lineSpacingExtra="@dimen/size1"
+            android:maxLines="2"
+            android:text="肌肤之钥CPB淡斑精华光透白精华液肌肤之钥CPB淡斑精华光透白精华液" />
+
+        <TextView
+            android:id="@+id/tv_price"
+            style="@style/TextSize12Color666"
+            android:layout_alignBottom="@id/fg_img"
+            android:layout_alignLeft="@id/tv_title"
+            android:layout_marginBottom="@dimen/size3"
+            android:text="￥300"
+            android:textColor="#f73f5f" />
+
+        <TextView
+            android:id="@+id/tv_old_price"
+            style="@style/TextSize12Color999"
+            android:layout_alignBottom="@id/tv_price"
+            android:layout_marginLeft="@dimen/size15"
+            android:layout_toRightOf="@id/tv_price"
+            android:text="￥400" />
+
+
+        <TextView
+            android:id="@+id/tv_have_count"
+            style="@style/TextSize12Color666"
+
+            android:layout_alignBottom="@id/tv_guige"
+            android:layout_alignParentRight="true"
+            android:text="剩余：12件" />
+
+        <TextView
+            android:id="@+id/tv_guige"
+            style="@style/TextSize12Color666"
+            android:layout_alignLeft="@id/tv_title"
+            android:layout_below="@id/tv_title"
+            android:layout_marginTop="@dimen/size10"
+            android:text="规格：30ml" />
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size0.5"
+            android:layout_below="@id/fg_img"
+            android:layout_marginTop="@dimen/size10"
+            android:background="#f5f5f5" />
+
+        <TextView
+            android:id="@+id/tv_total"
+            style="@style/TextSize12Color333"
+            android:layout_alignParentRight="true"
+            android:layout_below="@id/view"
+            android:layout_marginTop="@dimen/size10"
+            android:text="小计：￥123.00" />
+    </RelativeLayout>
+</LinearLayout>

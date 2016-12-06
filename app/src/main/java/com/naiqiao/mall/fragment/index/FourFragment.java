@@ -11,7 +11,15 @@ import com.naiqiao.mall.R;
 import com.naiqiao.mall.bean.User;
 import com.naiqiao.mall.bean.rxbus.AddFragmentBean;
 import com.naiqiao.mall.fragment.JiaoYiJiLvFragment;
+import com.naiqiao.mall.fragment.MyCollectFragment;
+import com.naiqiao.mall.fragment.MyFanDianFragment;
+import com.naiqiao.mall.fragment.MyJInHuoDanContentFragment;
+import com.naiqiao.mall.fragment.MyJiFenFragment;
+import com.naiqiao.mall.fragment.OrderSearchFragment;
+import com.naiqiao.mall.fragment.TongzhiGGFragment;
 import com.naiqiao.mall.fragment.XiaoLiangPaiHangFragment;
+import com.naiqiao.mall.fragment.XiaoXiTZFragment;
+import com.naiqiao.mall.fragment.ZaiTuDingDanFragment;
 import com.naiqiao.mall.fragment.login.LoginFragment;
 import com.naiqiao.mall.view.FourTitleBarView;
 import com.recker.flyshapeimageview.ShapeImageView;
@@ -20,13 +28,12 @@ import java.util.List;
 import java.util.Map;
 
 import api.TestConstant;
-import base.bean.TipLoadingBean;
-import base.fragment.NetworkBaseFragment;
 import base.fragment.SingleNetWorkBaseFragment;
 import butterknife.BindView;
 import butterknife.BindViews;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import interfaces.OnTitleBarListener;
 import interfaces.ScrollChangeViewListener;
 import util.RxBus;
 import view.ScrollChangeScrollView;
@@ -37,7 +44,7 @@ import view.TitleRelativeLayout;
  * Created by dengmingzhi on 2016/11/16.
  */
 
-public class FourFragment extends SingleNetWorkBaseFragment<User> implements ScrollChangeViewListener {
+public class FourFragment extends SingleNetWorkBaseFragment<User> implements ScrollChangeViewListener, OnTitleBarListener {
     @BindViews({R.id.tv_1_1, R.id.tv_1_2, R.id.tv_1_3, R.id.tv_1_4, R.id.tv_1_5})
     List<TextView> tv1s;
     @BindViews({R.id.tv_2_1, R.id.tv_2_2, R.id.tv_2_3, R.id.tv_2_4})
@@ -119,14 +126,17 @@ public class FourFragment extends SingleNetWorkBaseFragment<User> implements Scr
         switch (view.getId()) {
             case R.id.tv_2_1:
                 Log.d("点击了", tv2s.get(0).getText().toString());
+                RxBus.get().post("addFragment", new AddFragmentBean(new OrderSearchFragment()));
                 break;
             case R.id.tv_2_2:
                 RxBus.get().post("addFragment", new AddFragmentBean(new JiaoYiJiLvFragment()));
                 break;
             case R.id.tv_2_3:
+                RxBus.get().post("addFragment", new AddFragmentBean(new MyJInHuoDanContentFragment()));
                 Log.d("点击了", tv2s.get(2).getText().toString());
                 break;
             case R.id.tv_2_4:
+                RxBus.get().post("addFragment", new AddFragmentBean(new ZaiTuDingDanFragment()));
                 Log.d("点击了", tv2s.get(3).getText().toString());
                 break;
         }
@@ -136,12 +146,15 @@ public class FourFragment extends SingleNetWorkBaseFragment<User> implements Scr
     void tv3Click(View view) {
         switch (view.getId()) {
             case R.id.tv_3_1:
+                RxBus.get().post("addFragment", new AddFragmentBean(new MyJiFenFragment()));
                 Log.d("点击了", tv3s.get(0).getText().toString());
                 break;
             case R.id.tv_3_2:
+                RxBus.get().post("addFragment", new AddFragmentBean(new MyFanDianFragment()));
                 Log.d("点击了", tv3s.get(1).getText().toString());
                 break;
             case R.id.tv_3_3:
+                RxBus.get().post("addFragment", new AddFragmentBean(new MyCollectFragment()));
                 Log.d("点击了", tv3s.get(2).getText().toString());
                 break;
             case R.id.tv_3_4:
@@ -221,6 +234,7 @@ public class FourFragment extends SingleNetWorkBaseFragment<User> implements Scr
     @Override
     protected void initTitleView() {
         titleBarView = (FourTitleBarView) getTitleBar();
+        titleBarView.setOnTitleBarListener(this);
     }
 
 
@@ -237,5 +251,20 @@ public class FourFragment extends SingleNetWorkBaseFragment<User> implements Scr
     @Override
     protected boolean writeCache() {
         return false;
+    }
+
+    @Override
+    public void left() {
+
+    }
+
+    @Override
+    public void right() {
+        RxBus.get().post("addFragment", new AddFragmentBean(new XiaoXiTZFragment()));
+    }
+
+    @Override
+    public void center() {
+
     }
 }

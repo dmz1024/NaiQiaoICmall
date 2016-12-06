@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#fff"
+    android:padding="@dimen/size5">
+
+    <TextView
+        android:id="@+id/tv_content"
+        style="@style/TextSize12Color999"
+        android:layout_gravity="center"
+        android:background="@drawable/shape_fff_a2a2a2_ra"
+        android:gravity="center"
+        android:paddingRight="@dimen/size9"
+        android:paddingLeft="@dimen/size9"
+        android:paddingBottom="@dimen/size4"
+        android:paddingTop="@dimen/size4"
+        android:text="近一个月"
+        android:textColor="#a1a1a1" />
+</FrameLayout>

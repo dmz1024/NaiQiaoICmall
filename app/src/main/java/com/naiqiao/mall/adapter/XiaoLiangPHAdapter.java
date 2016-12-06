@@ -11,7 +11,6 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.naiqiao.mall.R;
-import com.naiqiao.mall.bean.JiaoYiJiLvBean;
 import com.naiqiao.mall.bean.XiaoLiangPHBean;
 
 import java.util.ArrayList;

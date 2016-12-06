@@ -16,9 +16,10 @@ import base.fragment.ListNetWorkBaseFragment;
 
 /**
  * Created by dengmingzhi on 2016/11/25.
+ * 我的积分
  */
 
-public class JiaoYiJiLvFragment extends JiaoYiJiFenFanDianBaseFragment {
+public class MyJiFenFragment extends JiaoYiJiFenFanDianBaseFragment {
 
     @Override
     protected String url() {
@@ -36,7 +37,8 @@ public class JiaoYiJiLvFragment extends JiaoYiJiFenFanDianBaseFragment {
 
     @Override
     protected void initTitleView() {
-        titleBarView.setTitleContent("交易记录");
+        titleBarView.setTitleContent("我的积分");
+        titleBarView.setButtonTitle("积分商城");
     }
 
 }

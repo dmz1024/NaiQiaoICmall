@@ -167,13 +167,15 @@ public abstract class ListNetWorkBaseFragment<D extends ListBaseBean> extends Ne
     }
 
 
-    private LinearLayoutManager layoutManager;
+    protected LinearLayoutManager layoutManager;
     private OnShowListDataListener view;
-
+    protected RecyclerView recyclerView;
     @Override
     protected View getHaveDataView() {
         view = showListView();
-        RecyclerView recyclerView = view.getRecy();
+
+        recyclerView = view.getRecy();
+
         recyclerView.setAdapter(mAdapter = (BaseAdapter) getAdapter());
         mAdapter.setOnDataCountListener(new OnAdapterDataListener() {
             @Override
@@ -204,18 +206,6 @@ public abstract class ListNetWorkBaseFragment<D extends ListBaseBean> extends Ne
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
                 super.onScrolled(recyclerView, dx, dy);
                 isSlidingToLast = dy > 0;
-                if (getLoadMore() && !isLoading) {
-                    int page = (layoutManager.findLastVisibleItemPosition() + (getSize() - 1)) / getSize();
-                    view.showPage(page, totalPage);
-//                    if (page != totalPage) {
-//                        view.showPage(page, totalPage);
-//                    } else {
-//                        view.lastPage();
-//                    }
-
-                } else if (isLoading && layoutManager.findLastCompletelyVisibleItemPosition() == layoutManager.getItemCount() - 1) {
-                    view.loadMore();
-                }
             }
 
             @Override

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#f5f5f5"
+    android:padding="@dimen/size5">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#fff"
+        android:paddingBottom="@dimen/size10">
+
+        <ImageView
+            android:id="@+id/iv_img"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size170"
+            android:scaleType="fitXY"
+            android:src="@mipmap/icon_search_gray" />
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_below="@id/iv_img"
+            android:background="#f5f5f5" />
+
+        <TextView
+            android:id="@+id/tv_title"
+            style="@style/TextSize13Color333"
+            android:layout_below="@id/view"
+            android:layout_marginLeft="@dimen/size5"
+            android:layout_marginTop="@dimen/size10"
+            android:lineSpacingExtra="@dimen/size1"
+            android:maxLines="2"
+            android:text="肌肤之钥CPB淡斑精华光透白精华液肌肤之钥CPB淡斑精华光透白精华液" />
+
+        <TextView
+            android:id="@+id/tv_price"
+            style="@style/TextSize14Color666"
+            android:layout_alignLeft="@id/tv_title"
+            android:layout_below="@id/tv_title"
+            android:layout_marginTop="@dimen/size10"
+            android:text="￥300.00" />
+
+        <TextView
+            android:id="@+id/tv_guige"
+            style="@style/TextSize12Color666"
+            android:layout_alignBottom="@id/tv_price"
+            android:layout_marginLeft="@dimen/size40"
+            android:layout_toRightOf="@id/tv_price"
+            android:text="规格：30ml" />
+
+        <Button
+            android:id="@+id/bt_add"
+            android:layout_width="@dimen/size70"
+            android:layout_height="@dimen/size25"
+            android:layout_alignLeft="@id/tv_title"
+            android:layout_below="@id/tv_guige"
+            android:layout_marginTop="@dimen/size10"
+            android:background="@drawable/shape_f73f5f_radius_3"
+            android:text="加入购物车"
+            android:textColor="#fff"
+            android:textSize="@dimen/sp11" />
+
+        <ImageView
+            android:id="@+id/iv_delete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/bt_add"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="@dimen/size2"
+            android:layout_marginRight="@dimen/size5"
+            android:src="@mipmap/icon_del_trash" />
+    </RelativeLayout>
+</FrameLayout>

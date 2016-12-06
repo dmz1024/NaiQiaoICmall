@@ -60,6 +60,11 @@ public class IndexSearchTitleBarView extends RelativeLayout implements TextWatch
         title_bar_tv_right.setOnClickListener(this);
     }
 
+    public IndexSearchTitleBarView setEdHint(String hint) {
+        title_bar_ed_search.setHint(hint);
+        return this;
+    }
+
 
     @Override
     public void beforeTextChanged(CharSequence s, int start, int count, int after) {

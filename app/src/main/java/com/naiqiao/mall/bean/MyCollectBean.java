@@ -5,10 +5,10 @@ import java.util.ArrayList;
 import base.bean.ListBaseBean;
 
 /**
- * Created by dengmingzhi on 2016/11/25.
+ * Created by dengmingzhi on 2016/11/30.
  */
 
-public class JiaoYiJiLvBean extends ListBaseBean<ArrayList<JiaoYiJiLvBean.Data>> {
+public class MyCollectBean extends ListBaseBean<ArrayList<MyCollectBean.Data>> {
     public static class Data {
 
     }
