@@ -10,8 +10,6 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
-
-import base.other.TitleBarBaseView;
 import util.Util;
 import view.DefaultTitleBarView;
 

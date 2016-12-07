@@ -409,10 +409,8 @@
             android:layout_marginTop="@dimen/size8"
             android:background="#fff"
             app:TitleRelativeLayout_title="我要加盟"
-            app:TitleRelativeLayout_title_h="@dimen/size20"
             app:TitleRelativeLayout_title_image="@mipmap/icon_personal_jm"
             app:TitleRelativeLayout_title_style="@style/TextSize13Colorf73f5f"
-            app:TitleRelativeLayout_title_w="@dimen/size20"
             app:TitleRelativeLayout_view_visi="false">
 
         </view.TitleRelativeLayout>
@@ -424,10 +422,8 @@
             android:layout_marginTop="3px"
             android:background="#fff"
             app:TitleRelativeLayout_title="帮助中心"
-            app:TitleRelativeLayout_title_h="@dimen/size20"
             app:TitleRelativeLayout_title_image="@mipmap/icon_personal_help"
             app:TitleRelativeLayout_title_style="@style/TextSize13Colorf73f5f"
-            app:TitleRelativeLayout_title_w="@dimen/size20"
             app:TitleRelativeLayout_view_visi="false">
 
         </view.TitleRelativeLayout>

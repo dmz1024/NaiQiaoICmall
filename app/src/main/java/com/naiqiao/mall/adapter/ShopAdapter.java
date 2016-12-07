@@ -2,15 +2,13 @@ package com.naiqiao.mall.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
-import android.text.Html;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.naiqiao.mall.R;
-import com.naiqiao.mall.bean.SendCarBean;
+import com.naiqiao.mall.bean.ShopBean;
 import com.naiqiao.mall.bean.ZaiTuDingDanBean;
 
 import java.util.ArrayList;
@@ -25,15 +23,15 @@ import butterknife.BindView;
  * Created by dengmingzhi on 2016/11/21.
  */
 
-public class ZaiTuDingDanShopAdapter extends BaseAdapter<ZaiTuDingDanBean.ShopBean> {
+public class ShopAdapter extends BaseAdapter<ShopBean> {
 
-    public ZaiTuDingDanShopAdapter(Context ctx, ArrayList<ZaiTuDingDanBean.ShopBean> list) {
+    public ShopAdapter(Context ctx, ArrayList<ShopBean> list) {
         super(ctx, list);
     }
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return new ViewHolder(View.inflate(ctx, R.layout.item_zai_tu_ding_dan_shop, null));
+        return new ViewHolder(View.inflate(ctx, R.layout.item_shop, null));
     }
 
     @Override

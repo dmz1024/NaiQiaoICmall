@@ -57,17 +57,17 @@ public class MyCollectFragment extends ListNetWorkBaseFragment<MyCollectBean> im
         return MyCollectBean.class;
     }
 
-    @Override
-    protected LinearLayoutManager getLayoutManager() {
-        GridLayoutManager layoutManager = new GridLayoutManager(getActivity(), 2);
-        layoutManager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
-            @Override
-            public int getSpanSize(int position) {
-                return isVertical ? 2 : 1;
-            }
-        });
-        return layoutManager;
-    }
+//    @Override
+//    protected LinearLayoutManager getLayoutManager() {
+//        GridLayoutManager layoutManager = new GridLayoutManager(getActivity(), 2);
+//        layoutManager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
+//            @Override
+//            public int getSpanSize(int position) {
+//                return isVertical ? 2 : 1;
+//            }
+//        });
+//        return layoutManager;
+//    }
 
     private RightImageTitleBarView titleBarView;
 
@@ -83,19 +83,22 @@ public class MyCollectFragment extends ListNetWorkBaseFragment<MyCollectBean> im
 
     }
 
+    /**
+     * 切换视图
+     */
     @Override
     public void right() {
         titleBarView.setRightImage((isVertical = !isVertical) ? R.mipmap.icon_display_list : R.mipmap.icon_display_block);
-        ((MyCollectAdapter) mAdapter).setVertical(isVertical);
+        ((MyCollectAdapter) mAdapter).setVertical(isVertical ? 1 : 2);
+        int firstVisiItem = layoutManager.findFirstVisibleItemPosition();
+        recyclerView.setLayoutManager(layoutManager = (isVertical ? new LinearLayoutManager(getContext()) : new GridLayoutManager(getContext(), 2)));
         mAdapter.notifyDataSetChanged();
+        layoutManager.scrollToPosition(firstVisiItem);
     }
 
     @Override
     public void center() {
 
     }
-
-    // 3，（可选）如果可以确定每个item的高度是固定的，设置这个选项可以提高性能
-//    mRecyclerView.setHasFixedSize(true);
 
 }

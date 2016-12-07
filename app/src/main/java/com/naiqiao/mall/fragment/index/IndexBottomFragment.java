@@ -15,6 +15,7 @@ import base.fragment.NotNetWorkBaseFragment;
 import butterknife.BindView;
 import butterknife.BindViews;
 import butterknife.OnClick;
+import rx.functions.Action1;
 import util.RxBus;
 
 /**
@@ -43,10 +44,40 @@ public class IndexBottomFragment extends NotNetWorkBaseFragment {
 
     }
 
+    @Override
+    protected void initView() {
+        RxBus.get().register("indexBottomTabChangeFromOther", Integer.class).subscribe(new Action1<Integer>() {
+            @Override
+            public void call(Integer integer) {
+                switch (integer) {
+                    case 0:
+                        chooseView(R.id.frame_one);
+                        break;
+                    case 1:
+                        chooseView(R.id.frame_two);
+                        break;
+                    case 2:
+                        chooseView(R.id.frame_three);
+                        break;
+                    case 3:
+                        chooseView(R.id.frame_four);
+                        break;
+                    case 4:
+                        chooseView(R.id.rv_center);
+                        break;
+                }
+            }
+        });
+    }
+
     @OnClick({R.id.frame_one, R.id.frame_two, R.id.frame_three, R.id.frame_four, R.id.rv_center})
     void chooseView(View view) {
+        chooseView(view.getId());
+    }
+
+    private void chooseView(int id) {
         int position = 0;
-        switch (view.getId()) {
+        switch (id) {
             case R.id.frame_one:
                 position = 0;
                 break;
@@ -71,7 +102,6 @@ public class IndexBottomFragment extends NotNetWorkBaseFragment {
         } else {
             RxBus.get().post("changeBarColor", "#f73f5f");
         }
-
     }
 
 

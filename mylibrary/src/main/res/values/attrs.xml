@@ -15,10 +15,6 @@
         <attr name="TitleRelativeLayout_title_style" format="reference"></attr>
         <attr name="TitleRelativeLayout_content_style" format="reference"></attr>
         <attr name="TitleRelativeLayout_content" format="string"></attr>
-        <attr name="TitleRelativeLayout_title_w" format="dimension"></attr>
-        <attr name="TitleRelativeLayout_content_w" format="dimension"></attr>
-        <attr name="TitleRelativeLayout_title_h" format="dimension"></attr>
-        <attr name="TitleRelativeLayout_content_h" format="dimension"></attr>
         <attr name="TitleRelativeLayout_view_visi" format="boolean"></attr>
         <attr name="TitleRelativeLayout_content_visi" format="boolean"></attr>
         <attr name="TitleRelativeLayout_show_view" format="integer"></attr>

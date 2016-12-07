@@ -9,7 +9,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.naiqiao.mall.R;
-import com.naiqiao.mall.bean.ZaiTuDingDanBean;
+import com.naiqiao.mall.bean.YuCunHuoBean;
 
 import java.util.ArrayList;
 
@@ -21,20 +21,21 @@ import base.adapter.BaseViewHolder;
  * Created by dengmingzhi on 2016/11/21.
  */
 
-public class ZaiTuDingDanAdapter extends BaseAdapter<ZaiTuDingDanBean.Data> {
+public class YuCunHuoAdapter extends BaseAdapter<YuCunHuoBean.Data> {
 
-    public ZaiTuDingDanAdapter(Context ctx, ArrayList<ZaiTuDingDanBean.Data> list) {
+    public YuCunHuoAdapter(Context ctx, ArrayList<YuCunHuoBean.Data> list) {
         super(ctx, list);
     }
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return new ViewHolder(View.inflate(ctx, R.layout.item_zai_tu_ding_dan, null));
+        return new ViewHolder(View.inflate(ctx, R.layout.item_yucunhuo, null));
     }
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         final ViewHolder mHolder = (ViewHolder) holder;
+        YuCunHuoBean.Data data = list.get(position);
         creatShop(mHolder.rv_shop, position);
     }
 
@@ -51,7 +52,8 @@ public class ZaiTuDingDanAdapter extends BaseAdapter<ZaiTuDingDanBean.Data> {
         public TextView tv_sn;
         public TextView tv_statu;
         public TextView tv_price;
-        public Button bt_show;
+        public Button bt_left;
+        public Button bt_right;
         public RecyclerView rv_shop;
 
         public ViewHolder(View itemView) {
@@ -59,10 +61,10 @@ public class ZaiTuDingDanAdapter extends BaseAdapter<ZaiTuDingDanBean.Data> {
             tv_sn = (TextView) itemView.findViewById(R.id.tv_sn);
             tv_statu = (TextView) itemView.findViewById(R.id.tv_statu);
             tv_price = (TextView) itemView.findViewById(R.id.tv_price);
-            bt_show = (Button) itemView.findViewById(R.id.bt_show);
+            bt_left = (Button) itemView.findViewById(R.id.bt_left);
+            bt_right = (Button) itemView.findViewById(R.id.bt_right);
             rv_shop = (RecyclerView) itemView.findViewById(R.id.rv_shop);
         }
-
 
     }
 }

@@ -44,6 +44,6 @@ public class DaoHuoTZFragment extends ListNetWorkBaseFragment<DaoHuoTZBean> {
     @Override
     protected void initTitleView() {
         DefaultTitleBarView titleBarView = (DefaultTitleBarView) getTitleBar();
-        titleBarView.setTitleContent("通知公告");
+        titleBarView.setTitleContent("到货通知");
     }
 }

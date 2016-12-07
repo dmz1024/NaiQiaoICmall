@@ -18,7 +18,7 @@ public class XiaoLiangPHBean extends ListBaseBean<ArrayList<XiaoLiangPHBean.Data
     public ArrayList<Data> getData() {
         for (int i = 0; i < data.size(); i++) {
 
-            data.get(i).length = 100 - (i * 10)<=0?0:100 - (i * 10);
+            data.get(i).length = 100 - (i * 10) <= 0 ? 0 : 100 - (i * 10);
         }
         return data;
     }

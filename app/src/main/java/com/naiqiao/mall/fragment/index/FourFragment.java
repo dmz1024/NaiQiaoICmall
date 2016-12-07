@@ -12,13 +12,18 @@ import com.naiqiao.mall.bean.User;
 import com.naiqiao.mall.bean.rxbus.AddFragmentBean;
 import com.naiqiao.mall.fragment.JiaoYiJiLvFragment;
 import com.naiqiao.mall.fragment.MyCollectFragment;
+import com.naiqiao.mall.fragment.MyFaPiaoFragment;
 import com.naiqiao.mall.fragment.MyFanDianFragment;
 import com.naiqiao.mall.fragment.MyJInHuoDanContentFragment;
 import com.naiqiao.mall.fragment.MyJiFenFragment;
 import com.naiqiao.mall.fragment.OrderSearchFragment;
+import com.naiqiao.mall.fragment.SetFragment;
 import com.naiqiao.mall.fragment.TongzhiGGFragment;
 import com.naiqiao.mall.fragment.XiaoLiangPaiHangFragment;
 import com.naiqiao.mall.fragment.XiaoXiTZFragment;
+import com.naiqiao.mall.fragment.YiFaHuoContentFragment;
+import com.naiqiao.mall.fragment.YiFaHuoRootFragment;
+import com.naiqiao.mall.fragment.YuCunHuoContentFragment;
 import com.naiqiao.mall.fragment.ZaiTuDingDanFragment;
 import com.naiqiao.mall.fragment.login.LoginFragment;
 import com.naiqiao.mall.view.FourTitleBarView;
@@ -158,6 +163,7 @@ public class FourFragment extends SingleNetWorkBaseFragment<User> implements Scr
                 Log.d("点击了", tv3s.get(2).getText().toString());
                 break;
             case R.id.tv_3_4:
+                RxBus.get().post("addFragment", new AddFragmentBean(new MyFaPiaoFragment()));
                 Log.d("点击了", tv3s.get(3).getText().toString());
                 break;
         }
@@ -170,13 +176,13 @@ public class FourFragment extends SingleNetWorkBaseFragment<User> implements Scr
                 Log.d("点击了", tv4s.get(0).getText().toString());
                 break;
             case R.id.tv_4_2:
-                Log.d("点击了", tv4s.get(1).getText().toString());
+                RxBus.get().post("addFragment", new AddFragmentBean(new YuCunHuoContentFragment()));
                 break;
             case R.id.tv_4_3:
-                Log.d("点击了", tv4s.get(2).getText().toString());
+                RxBus.get().post("indexBottomTabChangeFromOther", 2);
                 break;
             case R.id.tv_4_4:
-                Log.d("点击了", tv4s.get(3).getText().toString());
+                RxBus.get().post("addFragment", new AddFragmentBean(new YiFaHuoRootFragment()));
                 break;
         }
     }
@@ -248,14 +254,10 @@ public class FourFragment extends SingleNetWorkBaseFragment<User> implements Scr
         }
     }
 
-    @Override
-    protected boolean writeCache() {
-        return false;
-    }
 
     @Override
     public void left() {
-
+        RxBus.get().post("addFragment", new AddFragmentBean(new SetFragment()));
     }
 
     @Override

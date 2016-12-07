@@ -192,12 +192,6 @@ public abstract class ListNetWorkBaseFragment<D extends ListBaseBean> extends Ne
             recyclerView.addItemDecoration(itemDecoration);
         }
 
-        /**
-         * 1-10  1
-         * 11-20 2
-         * 21-30 3
-         */
-
         recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
             //用来标记是否正在向最后一个滑动
             boolean isSlidingToLast = false;

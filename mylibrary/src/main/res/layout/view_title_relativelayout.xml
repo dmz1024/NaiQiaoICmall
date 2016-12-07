@@ -4,19 +4,16 @@
     android:layout_width="match_parent"
     android:layout_height="@dimen/size42">
 
-    <view.TextImage
+    <TextView
         android:id="@+id/tv_title1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
         android:layout_marginLeft="@dimen/size12"
         android:drawablePadding="@dimen/size10"
-        android:gravity="center"
-        tool:TextImage_height="@dimen/size10"
-        tool:TextImage_seat="1"
-        tool:TextImage_width="@dimen/size10" />
+        android:gravity="center" />
 
-    <view.TextImage
+    <TextView
         android:id="@+id/tv_content1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -24,14 +21,11 @@
         android:layout_centerVertical="true"
         android:layout_marginRight="@dimen/size12"
         android:drawablePadding="@dimen/size5"
+        android:drawableRight="@mipmap/go"
         android:ellipsize="end"
         android:gravity="center"
         android:maxEms="15"
-        android:maxLines="1"
-        tool:TextImage_drawable="@mipmap/go"
-        tool:TextImage_height="@dimen/size10"
-        tool:TextImage_seat="3"
-        tool:TextImage_width="@dimen/size5" />
+        android:maxLines="1" />
 
     <View
         android:id="@+id/view_11"

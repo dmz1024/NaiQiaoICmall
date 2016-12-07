@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/size10"
+        android:background="#fff"
+        android:divider="@drawable/linear_f0f0f0_shpe"
+        android:orientation="vertical"
+        android:showDividers="middle">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                style="@style/TextSize13Color333"
+                android:layout_width="match_parent"
+                android:layout_centerVertical="true"
+                android:drawableRight="@mipmap/icon_go"
+                android:paddingLeft="@dimen/size12"
+                android:paddingRight="@dimen/size12"
+                android:text="头像" />
+
+            <com.recker.flyshapeimageview.ShapeImageView
+                android:id="@+id/iv_head"
+                android:layout_marginBottom="@dimen/size10"
+                android:layout_width="@dimen/size50"
+                android:layout_height="@dimen/size50"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="@dimen/size25"
+                android:layout_marginTop="@dimen/size10"
+                android:scaleType="fitXY"
+                android:src="@mipmap/success"
+                app:shape_mode="circle" />
+            />
+        </RelativeLayout>
+
+        <view.TitleRelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size42"
+            app:TitleRelativeLayout_content="邓如果"
+            app:TitleRelativeLayout_content_style="@style/TextSize13Color666"
+            app:TitleRelativeLayout_title="用户名"
+            app:TitleRelativeLayout_title_style="@style/TextSize13Color333"
+            app:TitleRelativeLayout_view_visi="false" />
+
+        <view.TitleRelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size42"
+            app:TitleRelativeLayout_content="北京"
+            app:TitleRelativeLayout_content_image_visi="false"
+            app:TitleRelativeLayout_content_style="@style/TextSize13Color666"
+            app:TitleRelativeLayout_title="所属区域"
+            app:TitleRelativeLayout_title_style="@style/TextSize13Color333"
+            app:TitleRelativeLayout_view_visi="false" />
+
+        <TextView
+            style="@style/TextSize13Color333"
+            android:paddingLeft="@dimen/size12"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size42"
+            android:gravity="center_vertical"
+            android:text="会员等级" />
+
+        <view.TitleRelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size42"
+            app:TitleRelativeLayout_content="183****7257"
+            app:TitleRelativeLayout_content_style="@style/TextSize13Color666"
+            app:TitleRelativeLayout_title="手机号"
+            app:TitleRelativeLayout_title_style="@style/TextSize13Color333"
+            app:TitleRelativeLayout_view_visi="false" />
+
+        <view.TitleRelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size42"
+            app:TitleRelativeLayout_content="894350911@qq.com"
+            app:TitleRelativeLayout_content_style="@style/TextSize13Color666"
+            app:TitleRelativeLayout_title="邮箱"
+            app:TitleRelativeLayout_title_style="@style/TextSize13Color333"
+            app:TitleRelativeLayout_view_visi="false" />
+
+        <view.TitleRelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size42"
+            app:TitleRelativeLayout_content="邓如果"
+            app:TitleRelativeLayout_content_image_visi="false"
+            app:TitleRelativeLayout_content_style="@style/TextSize13Color666"
+            app:TitleRelativeLayout_title="真实姓名"
+            app:TitleRelativeLayout_title_style="@style/TextSize13Color333"
+            app:TitleRelativeLayout_view_visi="false" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_gs"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/size10"
+        android:background="#fff"
+        android:divider="@drawable/linear_f0f0f0_shpe"
+        android:orientation="vertical"
+        android:showDividers="middle">
+
+        <view.TitleRelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size42"
+            app:TitleRelativeLayout_content="公司名"
+            app:TitleRelativeLayout_content_image_visi="false"
+            app:TitleRelativeLayout_content_style="@style/TextSize13Color666"
+            app:TitleRelativeLayout_title="东方盈"
+            app:TitleRelativeLayout_title_style="@style/TextSize13Color333"
+            app:TitleRelativeLayout_view_visi="false" />
+
+        <view.TitleRelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size42"
+            app:TitleRelativeLayout_content="邓如果"
+            app:TitleRelativeLayout_content_style="@style/TextSize13Color666"
+            app:TitleRelativeLayout_title="联系人"
+            app:TitleRelativeLayout_title_style="@style/TextSize13Color333"
+            app:TitleRelativeLayout_view_visi="false" />
+
+        <view.TitleRelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size42"
+            app:TitleRelativeLayout_content="183****7257"
+            app:TitleRelativeLayout_content_style="@style/TextSize13Color666"
+            app:TitleRelativeLayout_title="联系电话"
+            app:TitleRelativeLayout_title_style="@style/TextSize13Color333"
+            app:TitleRelativeLayout_view_visi="false" />
+    </LinearLayout>
+</LinearLayout>

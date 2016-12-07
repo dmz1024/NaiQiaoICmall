@@ -28,7 +28,7 @@
         android:drawablePadding="@dimen/size10"
         android:hint="请输入品牌及商品关键字"
         android:textColor="#999"
-
+        android:maxLines="1"
         android:textColorHint="#999"
         android:paddingLeft="@dimen/size10"
         android:textSize="@dimen/sp14" />

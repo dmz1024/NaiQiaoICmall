@@ -8,7 +8,7 @@ import base.bean.ListBaseBean;
  * Created by dengmingzhi on 2016/12/5.
  */
 
-public class ZaiTuDingDanBean extends ListBaseBean<ArrayList<ZaiTuDingDanBean.Data>> {
+public class YuCunHuoBean extends ListBaseBean<ArrayList<YuCunHuoBean.Data>> {
     public static class Data {
         public ArrayList<ShopBean> shops=new ArrayList<>();
     }

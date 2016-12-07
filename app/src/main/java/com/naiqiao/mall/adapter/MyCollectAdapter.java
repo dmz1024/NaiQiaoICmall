@@ -1,6 +1,8 @@
 package com.naiqiao.mall.adapter;
 
 import android.content.Context;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,10 +27,10 @@ import base.adapter.BaseViewHolder;
  */
 
 public class MyCollectAdapter extends BaseAdapter<MyCollectBean.Data> {
-    private boolean isVertical = true;
+    private int type = 1;
 
-    public void setVertical(boolean vertical) {
-        isVertical = vertical;
+    public void setVertical(int type) {
+        this.type = type;
     }
 
     public MyCollectAdapter(Context ctx, ArrayList<MyCollectBean.Data> list) {
@@ -37,26 +39,23 @@ public class MyCollectAdapter extends BaseAdapter<MyCollectBean.Data> {
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return isVertical ? new VerticalViewHolder(View.inflate(ctx, R.layout.item_my_collect_vertical, null)) : new HorizontalViewHolder(View.inflate(ctx, R.layout.item_my_collect_horizontal, null));
+        return new ViewHolder(View.inflate(ctx, type == 1 ? R.layout.item_my_collect_vertical : R.layout.item_my_collect_horizontal, null));
+    }
+
+
+    @Override
+    public int getItemViewType(int position) {
+        return type;
     }
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-        if (holder instanceof VerticalViewHolder) {
-            VerticalViewHolder mHolder = ((VerticalViewHolder) holder);
-            Glide.with(ctx).load(TestConstant.IMAGE).into(mHolder.iv_img);
-        }else {
-            HorizontalViewHolder mHolder = ((HorizontalViewHolder) holder);
-            Glide.with(ctx).load(TestConstant.IMAGE).into(mHolder.iv_img);
-        }
+        ViewHolder mHolder = ((ViewHolder) holder);
+        Glide.with(ctx).load(TestConstant.IMAGE).into(mHolder.iv_img);
+        mHolder.tv_guige.setText(position + "");
     }
 
-    @Override
-    public int getItemViewType(int position) {
-        return 2;
-    }
-
-    public class VerticalViewHolder extends BaseViewHolder {
+    public class ViewHolder extends BaseViewHolder {
         public TextView tv_guige;
         public TextView tv_title;
         public TextView tv_price;
@@ -64,7 +63,7 @@ public class MyCollectAdapter extends BaseAdapter<MyCollectBean.Data> {
         public ImageView iv_img;
         public ImageView iv_delete;
 
-        public VerticalViewHolder(View itemView) {
+        public ViewHolder(View itemView) {
             super(itemView);
             tv_title = (TextView) itemView.findViewById(R.id.tv_title);
             tv_guige = (TextView) itemView.findViewById(R.id.tv_guige);
@@ -76,23 +75,4 @@ public class MyCollectAdapter extends BaseAdapter<MyCollectBean.Data> {
         }
     }
 
-    public class HorizontalViewHolder extends BaseViewHolder {
-        public TextView tv_guige;
-        public TextView tv_title;
-        public TextView tv_price;
-        public Button bt_add;
-        public ImageView iv_img;
-        public ImageView iv_delete;
-
-        public HorizontalViewHolder(View itemView) {
-            super(itemView);
-            tv_title = (TextView) itemView.findViewById(R.id.tv_title);
-            tv_guige = (TextView) itemView.findViewById(R.id.tv_guige);
-            tv_price = (TextView) itemView.findViewById(R.id.tv_price);
-            iv_img = (ImageView) itemView.findViewById(R.id.iv_img);
-            bt_add = (Button) itemView.findViewById(R.id.bt_add);
-            iv_delete = (ImageView) itemView.findViewById(R.id.iv_delete);
-            itemView.setOnClickListener(this);
-        }
-    }
 }

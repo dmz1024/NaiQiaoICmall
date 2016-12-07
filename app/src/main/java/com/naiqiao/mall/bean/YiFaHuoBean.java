@@ -5,18 +5,17 @@ import java.util.ArrayList;
 import base.bean.ListBaseBean;
 
 /**
- * Created by dengmingzhi on 2016/12/5.
+ * Created by dengmingzhi on 2016/11/25.
  */
 
-public class ZaiTuDingDanBean extends ListBaseBean<ArrayList<ZaiTuDingDanBean.Data>> {
+public class YiFaHuoBean extends ListBaseBean<ArrayList<YiFaHuoBean.Data>> {
     public static class Data {
+        public boolean isChoose;
         public ArrayList<ShopBean> shops=new ArrayList<>();
     }
 
-
-
     @Override
-    public ArrayList<Data> getData() {
+    public ArrayList<YiFaHuoBean.Data> getData() {
         for (int i = 0; i < data.size(); i++) {
             data.get(i).shops.add(new ShopBean());
             data.get(i).shops.add(new ShopBean());

@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.naiqiao.mall.R;
-import com.naiqiao.mall.bean.JiaoYi_JiFen_FanDianBean;
+import com.naiqiao.mall.bean.MyFaPiaoBean;
 
 import java.util.ArrayList;
 
@@ -18,14 +18,14 @@ import base.adapter.BaseViewHolder;
  * Created by dengmingzhi on 2016/11/25.
  */
 
-public class JiaoYi_JiFen_FanDianAdapter extends BaseAdapter<JiaoYi_JiFen_FanDianBean.Data> {
-    public JiaoYi_JiFen_FanDianAdapter(Context ctx, ArrayList<JiaoYi_JiFen_FanDianBean.Data> list) {
+public class MyFaPiaoAdapter extends BaseAdapter<MyFaPiaoBean.Data> {
+    public MyFaPiaoAdapter(Context ctx, ArrayList<MyFaPiaoBean.Data> list) {
         super(ctx, list);
     }
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return new ViewHolder(View.inflate(ctx, R.layout.item_jiaoyi_jifen_fandian, null));
+        return new ViewHolder(View.inflate(ctx, R.layout.item_my_fapiao, null));
     }
 
     @Override
@@ -36,13 +36,15 @@ public class JiaoYi_JiFen_FanDianAdapter extends BaseAdapter<JiaoYi_JiFen_FanDia
     public class ViewHolder extends BaseViewHolder {
         public TextView tv_time;
         public TextView tv_content;
-        public TextView tv_count;
+        public TextView tv_price;
+        public TextView tv_statu;
 
         public ViewHolder(View itemView) {
             super(itemView);
             tv_time = (TextView) itemView.findViewById(R.id.tv_time);
             tv_content = (TextView) itemView.findViewById(R.id.tv_content);
-            tv_count = (TextView) itemView.findViewById(R.id.tv_count);
+            tv_price = (TextView) itemView.findViewById(R.id.tv_price);
+            tv_statu = (TextView) itemView.findViewById(R.id.tv_statu);
             itemView.setOnClickListener(this);
         }
 
@@ -51,7 +53,6 @@ public class JiaoYi_JiFen_FanDianAdapter extends BaseAdapter<JiaoYi_JiFen_FanDia
 
         }
     }
-
 
 
 }

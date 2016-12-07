@@ -5,16 +5,19 @@ import android.content.res.TypedArray;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.mall.naiqiao.mylibrary.R;
+
+import util.DrawableUtil;
 
 
 /**
  * Created by dengmingzhi on 16/6/12.
  */
 public class TitleRelativeLayout extends RelativeLayout {
-    private TextImage tv_title1;
-    private TextImage tv_content1;
+    private TextView tv_title1;
+    private TextView tv_content1;
     private View view_11;
     private View view_22;
     private int show_view;
@@ -34,8 +37,8 @@ public class TitleRelativeLayout extends RelativeLayout {
 
     private void init(AttributeSet attrs) {
         View.inflate(getContext(), R.layout.view_title_relativelayout, this);
-        tv_title1 = (TextImage) findViewById(R.id.tv_title1);
-        tv_content1 = (TextImage) findViewById(R.id.tv_content1);
+        tv_title1 = (TextView) findViewById(R.id.tv_title1);
+        tv_content1 = (TextView) findViewById(R.id.tv_content1);
         view_11 = findViewById(R.id.view_11);
         view_22 = findViewById(R.id.view_22);
         /**
@@ -45,12 +48,8 @@ public class TitleRelativeLayout extends RelativeLayout {
         int title_style = typedArray.getResourceId(R.styleable.TitleRelativeLayout_TitleRelativeLayout_title_style, R.style.TextSize14Color333);
         int content_style = typedArray.getResourceId(R.styleable.TitleRelativeLayout_TitleRelativeLayout_content_style, R.style.TextSize13Color999);
         int title_image = typedArray.getResourceId(R.styleable.TitleRelativeLayout_TitleRelativeLayout_title_image, 0);
-        int content_image = typedArray.getResourceId(R.styleable.TitleRelativeLayout_TitleRelativeLayout_content_image, R.mipmap.go);
+        int content_image = typedArray.getResourceId(R.styleable.TitleRelativeLayout_TitleRelativeLayout_content_image, 0);
         boolean view_visi = typedArray.getBoolean(R.styleable.TitleRelativeLayout_TitleRelativeLayout_view_visi, true);
-        int title_w = typedArray.getDimensionPixelSize(R.styleable.TitleRelativeLayout_TitleRelativeLayout_title_w, 0);
-        int title_h = typedArray.getDimensionPixelSize(R.styleable.TitleRelativeLayout_TitleRelativeLayout_title_h, 0);
-        int content_w = typedArray.getDimensionPixelSize(R.styleable.TitleRelativeLayout_TitleRelativeLayout_content_w, 0);
-        int content_h = typedArray.getDimensionPixelSize(R.styleable.TitleRelativeLayout_TitleRelativeLayout_content_h, 0);
 
         show_view = typedArray.getInt(R.styleable.TitleRelativeLayout_TitleRelativeLayout_show_view, 1);
         boolean content_visi = typedArray.getBoolean(R.styleable.TitleRelativeLayout_TitleRelativeLayout_content_visi, true);
@@ -60,21 +59,16 @@ public class TitleRelativeLayout extends RelativeLayout {
         typedArray.recycle();
         tv_title1.setTextAppearance(getContext(), title_style);
         tv_content1.setTextAppearance(getContext(), content_style);
-        if (title_image != 0 && title_h != 0 && title_h != 0) {
-            tv_title1.setDrawable(title_image, title_w, title_h);
-        } else if (title_image != 0) {
-            tv_title1.setDrawable(title_image);
+        if (title_image != 0) {
+            tv_title1.setCompoundDrawables(DrawableUtil.setBounds(getResources().getDrawable(title_image)), null, null, null);
         }
 
-        if (content_image != R.mipmap.go && content_h != 0 && content_h != 0) {
-            tv_content1.setDrawable(content_image, content_w, content_h);
-        } else if (title_image != 0) {
-            tv_content1.setDrawable(content_image);
+        if (content_image != 0) {
+            tv_content1.setCompoundDrawables( null, null,DrawableUtil.setBounds(getResources().getDrawable(content_image)), null);
         }
-
 
         if (!content_image_visi) {
-            tv_content1.drawable(false);
+            tv_content1.setCompoundDrawables(null, null, null, null);
         }
 
         tv_title1.setText(title);
@@ -84,18 +78,6 @@ public class TitleRelativeLayout extends RelativeLayout {
 
     }
 
-
-    public void setTitleImage(int drawable) {
-        tv_title1.setDrawable(drawable);
-    }
-
-    public void setContentImage(int drawable) {
-        tv_content1.setDrawable(drawable);
-    }
-
-    public void setTitleImageVisi(boolean visi) {
-        tv_title1.drawable(visi);
-    }
 
     public void setTitle(String title) {
         tv_title1.setText(title);
@@ -120,7 +102,7 @@ public class TitleRelativeLayout extends RelativeLayout {
         }
     }
 
-    public TextImage getTv_content() {
+    public TextView getTv_content() {
         return tv_content1;
     }
 
