@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        style="@style/TextSize13Color999"
+        android:layout_gravity="center_horizontal"
+        android:padding="@dimen/size10"
+        android:text="请上传本人手持身份证、身份证正反面照片"
+        android:textColor="#f73f5f" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#fff"
+        android:padding="@dimen/size16">
+
+        <view.Color2Text
+            style="@style/TextSize13Color666"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/size20"
+
+            android:gravity="center_vertical"
+            android:text="手持身份证"
+            app:Color2Text_color="#f73f5f"
+            app:Color2Text_content="*"
+            app:Color2Text_size="@dimen/sp13" />
+
+        <ImageView
+            android:layout_width="@dimen/size80"
+            android:layout_height="@dimen/size80"
+            android:layout_centerInParent="true"
+            android:scaleType="fitXY"
+            android:src="@mipmap/icon_pic_add" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/size10"
+        android:background="#fff"
+        android:padding="@dimen/size16">
+
+        <view.Color2Text
+            style="@style/TextSize13Color666"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/size20"
+            android:gravity="center_vertical"
+            android:text="身份证正面"
+            app:Color2Text_color="#f73f5f"
+            app:Color2Text_content="*"
+            app:Color2Text_size="@dimen/sp13" />
+
+        <ImageView
+            android:layout_width="@dimen/size80"
+            android:layout_height="@dimen/size80"
+            android:layout_centerInParent="true"
+            android:scaleType="fitXY"
+            android:src="@mipmap/icon_pic_add" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#fff"
+        android:padding="@dimen/size16">
+
+        <view.Color2Text
+            style="@style/TextSize13Color666"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/size20"
+            android:gravity="center_vertical"
+            android:text="身份证反面"
+            app:Color2Text_color="#f73f5f"
+            app:Color2Text_content="*"
+            app:Color2Text_size="@dimen/sp13" />
+
+        <ImageView
+            android:layout_width="@dimen/size80"
+            android:layout_height="@dimen/size80"
+            android:layout_centerInParent="true"
+            android:scaleType="fitXY"
+            android:src="@mipmap/icon_pic_add" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/tv_tips"
+        style="@style/TextSize14Color333"
+        android:layout_gravity="center_horizontal"
+        android:drawableLeft="@mipmap/icon_yaoqiu"
+        android:padding="@dimen/size10"
+        android:drawablePadding="@dimen/size5"
+        android:gravity="center_vertical"
+        android:text="查看牌照要求"
+        android:textColor="#f73f5f" />
+
+    <Button
+        android:id="@+id/bt_next"
+        android:text="上传，下一步"
+        android:textColor="#fff"
+        android:background="#f73f5f"
+        android:textSize="@dimen/sp15"
+        android:layout_marginTop="@dimen/size10"
+        android:layout_marginLeft="@dimen/size10"
+        android:layout_marginRight="@dimen/size10"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size40" />
+</LinearLayout>

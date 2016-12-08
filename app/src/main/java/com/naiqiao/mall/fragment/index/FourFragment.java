@@ -16,6 +16,7 @@ import com.naiqiao.mall.fragment.MyFaPiaoFragment;
 import com.naiqiao.mall.fragment.MyFanDianFragment;
 import com.naiqiao.mall.fragment.MyJInHuoDanContentFragment;
 import com.naiqiao.mall.fragment.MyJiFenFragment;
+import com.naiqiao.mall.fragment.MyOrderContentFragment;
 import com.naiqiao.mall.fragment.OrderSearchFragment;
 import com.naiqiao.mall.fragment.SetFragment;
 import com.naiqiao.mall.fragment.TongzhiGGFragment;
@@ -27,6 +28,8 @@ import com.naiqiao.mall.fragment.YuCunHuoContentFragment;
 import com.naiqiao.mall.fragment.ZaiTuDingDanFragment;
 import com.naiqiao.mall.fragment.login.LoginFragment;
 import com.naiqiao.mall.view.FourTitleBarView;
+import com.naiqiao.mall.view.pop.JiaMengSQPopView;
+import com.naiqiao.mall.view.pop.PaiZhaoYQPopView;
 import com.recker.flyshapeimageview.ShapeImageView;
 
 import java.util.List;
@@ -131,7 +134,7 @@ public class FourFragment extends SingleNetWorkBaseFragment<User> implements Scr
         switch (view.getId()) {
             case R.id.tv_2_1:
                 Log.d("点击了", tv2s.get(0).getText().toString());
-                RxBus.get().post("addFragment", new AddFragmentBean(new OrderSearchFragment()));
+                RxBus.get().post("addFragment", new AddFragmentBean(new MyOrderContentFragment()));
                 break;
             case R.id.tv_2_2:
                 RxBus.get().post("addFragment", new AddFragmentBean(new JiaoYiJiLvFragment()));
@@ -211,10 +214,10 @@ public class FourFragment extends SingleNetWorkBaseFragment<User> implements Scr
     void trlClick(View view) {
         switch (view.getId()) {
             case R.id.trl_1:
-                Log.d("点击了", trls.get(0).getTitleContent());
+                new JiaMengSQPopView(getContext()).showAtLocation(false);
                 break;
             case R.id.trl_2:
-                Log.d("点击了", trls.get(1).getTitleContent());
+                new PaiZhaoYQPopView(getContext()).showAtLocation(false);
                 break;
         }
     }

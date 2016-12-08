@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f5f5f5"
+    android:orientation="vertical">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/size100"
+        android:src="@mipmap/icon_empty" />
+
+    <TextView
+        style="@style/TextSize12Color999"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/size30"
+        android:text="您还没购买任何商品" />
+
+    <TextView
+        android:id="@+id/tv_guangguang"
+        android:autoLink="all"
+        style="@style/TextSize13Color333"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/size20"
+        android:text="马上去逛逛" />
+</LinearLayout>

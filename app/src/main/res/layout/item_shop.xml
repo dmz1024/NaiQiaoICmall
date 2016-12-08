@@ -13,21 +13,21 @@
 
         <FrameLayout
             android:id="@+id/fg_img"
-            android:layout_width="@dimen/size100"
-            android:layout_height="@dimen/size100"
+            android:layout_width="@dimen/size80"
+            android:layout_height="@dimen/size80"
             android:background="@drawable/shape_fff_f5f5f5_ra"
             android:padding="1dp">
 
             <ImageView
                 android:id="@+id/iv_img"
-                android:layout_width="@dimen/size100"
-                android:layout_height="@dimen/size100"
+                android:layout_width="@dimen/size80"
+                android:layout_height="@dimen/size80"
                 android:scaleType="fitXY" />
         </FrameLayout>
 
         <TextView
             android:id="@+id/tv_title"
-            style="@style/TextSize13Color333"
+            style="@style/TextSize12Color333"
             android:layout_marginLeft="@dimen/size4"
             android:layout_toRightOf="@id/fg_img"
             android:lineSpacingExtra="@dimen/size1"
@@ -36,7 +36,7 @@
 
         <TextView
             android:id="@+id/tv_guige"
-            style="@style/TextSize13Color666"
+            style="@style/TextSize12Color666"
             android:layout_alignLeft="@id/tv_title"
             android:layout_below="@id/tv_title"
             android:layout_marginTop="@dimen/size6"
@@ -44,7 +44,7 @@
 
         <TextView
             android:id="@+id/tv_price"
-            style="@style/TextSize13Color666"
+            style="@style/TextSize12Color666"
             android:layout_alignBottom="@id/fg_img"
             android:layout_alignLeft="@id/tv_title"
             android:layout_marginBottom="@dimen/size6"
@@ -53,7 +53,7 @@
 
         <TextView
             android:id="@+id/tv_old_price"
-            style="@style/TextSize13Color999"
+            style="@style/TextSize12Color999"
             android:layout_alignBottom="@id/tv_price"
             android:layout_marginLeft="@dimen/size20"
             android:layout_toRightOf="@id/tv_price"
@@ -61,7 +61,7 @@
 
         <TextView
             android:id="@+id/tv_count"
-            style="@style/TextSize13Color999"
+            style="@style/TextSize12Color999"
             android:layout_alignBottom="@id/tv_price"
             android:layout_alignParentRight="true"
             android:text="x10" />
@@ -69,7 +69,6 @@
     </RelativeLayout>
     <View
         android:id="@+id/view_line"
-
         android:background="#e0e0e0"
         android:layout_width="match_parent"
         android:layout_height="1px"

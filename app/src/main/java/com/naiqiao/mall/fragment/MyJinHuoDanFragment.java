@@ -1,8 +1,11 @@
 package com.naiqiao.mall.fragment;
 
+import android.graphics.Paint;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.TextView;
 
+import com.naiqiao.mall.R;
 import com.naiqiao.mall.adapter.MyJinHuoDanAdapter;
 import com.naiqiao.mall.bean.MyJinHuoDanBean;
 import com.naiqiao.mall.bean.SendCarBean;
@@ -47,4 +50,12 @@ public class MyJinHuoDanFragment extends ListNetWorkBaseFragment<MyJinHuoDanBean
     }
 
 
+    @Override
+    protected View getNoDataView() {
+        View view = View.inflate(getContext(), R.layout.view_no_data_jin_huo_dan, null);
+        TextView tv_guangguang= (TextView) view.findViewById(R.id.tv_guangguang);
+        tv_guangguang.getPaint().setFlags(Paint.UNDERLINE_TEXT_FLAG); //下划线
+        tv_guangguang.getPaint().setAntiAlias(true);//抗锯齿
+        return view;
+    }
 }

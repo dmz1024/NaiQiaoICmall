@@ -12,4 +12,6 @@ public class MyJinHuoDanBean extends ListBaseBean<ArrayList<MyJinHuoDanBean.Data
     public static class Data {
         public boolean isChoose = true;
     }
+
+
 }

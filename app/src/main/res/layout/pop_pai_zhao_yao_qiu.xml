@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TextView
+        style="@style/TextSize15Color333"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/size30"
+        android:text="身份证拍照要求" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5px"
+        android:layout_marginLeft="@dimen/size20"
+        android:layout_marginRight="@dimen/size20"
+        android:layout_marginTop="@dimen/size20"
+        android:background="#e0e0e0" />
+
+    <TextView
+        style="@style/TextSize13Color333"
+        android:layout_marginBottom="@dimen/size40"
+        android:layout_marginLeft="@dimen/size25"
+        android:layout_marginTop="@dimen/size30"
+        android:lineSpacingExtra="@dimen/size20"
+        android:text="1.请上传清晰的彩色, 完整的原件扫描或照片。\n2.手持照需要免冠、五官可见，完整的漏出手臂耳朵。\n3.身份证各项信息及头像清晰可见，容易识别。\n4.证件必须真实拍摄，不可以使用复印件。\n5.建议横屏拍摄，以满足照片上传效果。" />
+</LinearLayout>

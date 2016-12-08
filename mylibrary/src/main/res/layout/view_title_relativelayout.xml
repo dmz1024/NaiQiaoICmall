@@ -21,7 +21,7 @@
         android:layout_centerVertical="true"
         android:layout_marginRight="@dimen/size12"
         android:drawablePadding="@dimen/size5"
-        android:drawableRight="@mipmap/go"
+        android:drawableRight="@mipmap/icon_go"
         android:ellipsize="end"
         android:gravity="center"
         android:maxEms="15"

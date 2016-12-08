@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal">
+
+    <LinearLayout
+        android:id="@+id/ll_left"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#fff"
+        android:orientation="vertical">
+
+        <TextView
+            style="@style/TextSize15Color666"
+            android:padding="@dimen/size10"
+            android:text="姓       名" />
+
+        <TextView
+            style="@style/TextSize15Color666"
+            android:padding="@dimen/size10"
+            android:text="联系地址" />
+
+        <TextView
+            style="@style/TextSize15Color666"
+            android:padding="@dimen/size10"
+            android:text="详细地址" />
+
+        <TextView
+            style="@style/TextSize15Color666"
+            android:padding="@dimen/size10"
+            android:text="联系电话" />
+
+        <TextView
+            style="@style/TextSize15Color666"
+            android:padding="@dimen/size10"
+            android:text="微        信" />
+
+        <TextView
+            style="@style/TextSize15Color666"
+            android:padding="@dimen/size10"
+            android:text="Q           Q" />
+
+        <TextView
+            style="@style/TextSize15Color666"
+            android:padding="@dimen/size10"
+            android:text=" E - mail" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/ll_left"
+        android:layout_alignTop="@id/ll_left"
+        android:layout_toRightOf="@id/ll_left"
+        android:background="#fff"
+        android:divider="@drawable/linear_f5f5f5_shpe"
+        android:orientation="vertical"
+        android:showDividers="middle"
+        android:weightSum="7">
+
+        <EditText
+            android:id="@+id/et_name"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="@null" />
+
+        <TextView
+            android:id="@+id/tv_address"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:drawableRight="@mipmap/icon_go"
+            android:paddingRight="@dimen/size10" />
+
+        <EditText
+            android:id="@+id/et_address_desc"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="@null" />
+
+        <EditText
+            android:id="@+id/et_tel"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="@null" />
+
+        <EditText
+            android:id="@+id/et_wechat"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="@null" />
+
+        <EditText
+            android:id="@+id/et_qq"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="@null" />
+
+        <EditText
+            android:id="@+id/et_email"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="@null" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/bt_next"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size40"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="@dimen/size10"
+        android:layout_marginRight="@dimen/size10"
+        android:background="#f73f5f"
+        android:text="下一步"
+        android:layout_marginBottom="@dimen/size10"
+        android:textColor="#fff"
+        android:textSize="@dimen/sp15" />
+</RelativeLayout>
