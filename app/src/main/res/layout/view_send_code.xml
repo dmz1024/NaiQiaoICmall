@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+    <TextView
+        style="@style/TextSize15Color333"
+        android:layout_gravity="center_vertical"
+        android:text="验证码：" />
+
+    <EditText
+        android:id="@+id/et_send_code_code"
+        android:layout_width="@dimen/size115"
+        android:layout_height="@dimen/size35"
+        android:layout_gravity="center_vertical"
+        android:background="@drawable/rectangle_bdbdbd"
+        android:gravity="center"
+        android:inputType="number"
+        android:text="12345"
+        android:textColor="#666"
+        android:textSize="@dimen/sp13" />
+
+    <Button
+        android:id="@+id/bt_send_code_send"
+        android:layout_width="@dimen/size85"
+        android:layout_height="@dimen/size30"
+        android:layout_gravity="center_vertical"
+        android:layout_marginLeft="@dimen/size4"
+        android:background="@drawable/shape_f73f5f_radius_3"
+        android:text="发送验证码"
+        android:textColor="#fff"
+        android:textSize="@dimen/sp14" />
+</LinearLayout>

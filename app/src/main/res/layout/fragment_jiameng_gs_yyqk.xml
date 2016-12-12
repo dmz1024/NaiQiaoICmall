@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="utf-8"?>
+<view.ScrollChangeScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_marginBottom="@dimen/size20"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:id="@+id/ll_yw_1"
+            android:orientation="vertical"
+            android:background="#fff"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:text="现有业务一"
+                android:background="#fff"
+                android:layout_width="match_parent"
+                android:padding="@dimen/size10"
+                style="@style/TextSize14Color333"/>
+            <View
+                android:background="#b2b2b2"
+                android:layout_marginRight="@dimen/size10"
+                android:layout_marginLeft="@dimen/size10"
+                android:layout_width="match_parent"
+                android:layout_height="1px"/>
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/ll_left_1"
+            android:layout_below="@id/ll_yw_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#fff"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/TextSize15Color666"
+                android:padding="@dimen/size10"
+                android:text="产品品类" />
+
+            <TextView
+                style="@style/TextSize15Color666"
+                android:padding="@dimen/size10"
+                android:text="业务模式" />
+
+            <TextView
+                style="@style/TextSize15Color666"
+                android:padding="@dimen/size10"
+                android:text="规        模" />
+
+            <TextView
+                style="@style/TextSize15Color666"
+                android:padding="@dimen/size10"
+                android:text="年销售额" />
+        </LinearLayout>
+
+        <LinearLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/ll_left_1"
+            android:layout_alignTop="@id/ll_left_1"
+            android:layout_toRightOf="@id/ll_left_1"
+            android:background="#fff"
+            android:divider="@drawable/linear_f5f5f5_shpe"
+            android:orientation="vertical"
+            android:showDividers="middle"
+            android:weightSum="4">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:drawablePadding="@dimen/size10"
+                android:drawableRight="@mipmap/icon_go"
+                android:gravity="center_vertical|right"
+                android:paddingRight="@dimen/size10"
+                android:text="dddd"
+                android:textColor="#666"
+                android:textSize="@dimen/sp15" />
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:drawablePadding="@dimen/size10"
+                android:drawableRight="@mipmap/icon_go"
+                android:gravity="center_vertical|right"
+                android:paddingRight="@dimen/size10"
+                android:text="dddd"
+                android:textColor="#666"
+                android:textSize="@dimen/sp15" />
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:drawablePadding="@dimen/size10"
+                android:drawableRight="@mipmap/icon_go"
+                android:gravity="center_vertical|right"
+                android:paddingRight="@dimen/size10"
+                android:text="dddd"
+                android:textColor="#666" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:drawablePadding="@dimen/size10"
+                android:drawableRight="@mipmap/icon_go"
+                android:gravity="center_vertical|right"
+                android:paddingRight="@dimen/size10"
+                android:text="dddd"
+                android:textColor="#666" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_yw_2"
+            android:layout_below="@id/ll_left_1"
+            android:layout_marginTop="@dimen/size10"
+            android:orientation="vertical"
+            android:background="#fff"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:text="现有业务二"
+                android:background="#fff"
+                android:layout_width="match_parent"
+                android:padding="@dimen/size10"
+                style="@style/TextSize14Color333"/>
+            <View
+                android:background="#b2b2b2"
+                android:layout_marginRight="@dimen/size10"
+                android:layout_marginLeft="@dimen/size10"
+                android:layout_width="match_parent"
+                android:layout_height="1px"/>
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/ll_left_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/ll_yw_2"
+            android:background="#fff"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/TextSize15Color666"
+                android:padding="@dimen/size10"
+                android:text="产品品类" />
+
+            <TextView
+                style="@style/TextSize15Color666"
+                android:padding="@dimen/size10"
+                android:text="产品名称" />
+
+            <TextView
+                style="@style/TextSize15Color666"
+                android:padding="@dimen/size10"
+                android:text="营销渠道" />
+
+            <TextView
+                style="@style/TextSize15Color666"
+                android:padding="@dimen/size10"
+                android:text="销  售  额" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/ll_left_2"
+            android:layout_alignTop="@id/ll_left_2"
+            android:layout_toRightOf="@id/ll_left_2"
+            android:background="#fff"
+            android:divider="@drawable/linear_f5f5f5_shpe"
+            android:orientation="vertical"
+            android:showDividers="middle"
+            android:weightSum="4">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:drawablePadding="@dimen/size10"
+                android:drawableRight="@mipmap/icon_go"
+                android:gravity="center_vertical|right"
+                android:paddingRight="@dimen/size10"
+                android:text="dddd"
+                android:textColor="#666"
+                android:textSize="@dimen/sp15" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:background="@null"
+                android:gravity="center_vertical|right"
+                android:paddingRight="@dimen/size26"
+                android:text="ddd"
+                android:textColor="#666"
+                android:textSize="@dimen/sp15" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:drawablePadding="@dimen/size10"
+                android:drawableRight="@mipmap/icon_go"
+                android:gravity="center_vertical|right"
+                android:paddingRight="@dimen/size10"
+                android:text="dddd"
+                android:textColor="#666" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:drawablePadding="@dimen/size10"
+                android:drawableRight="@mipmap/icon_go"
+                android:gravity="center_vertical|right"
+                android:paddingRight="@dimen/size10"
+                android:text="dddd"
+                android:textColor="#666" />
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/bt_submit"
+            android:layout_below="@id/ll_left_2"
+            android:layout_marginTop="@dimen/size23"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size40"
+            android:layout_marginBottom="@dimen/size15"
+            android:layout_marginLeft="@dimen/size10"
+            android:layout_marginRight="@dimen/size10"
+            android:background="#f73f5f"
+            android:text="下一步"
+            android:textColor="#fff"
+            android:textSize="@dimen/sp15" />
+
+    </RelativeLayout>
+
+</view.ScrollChangeScrollView>

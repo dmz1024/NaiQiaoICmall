@@ -14,6 +14,7 @@
         android:drawableTop="@mipmap/icon_tijiao_ok"
         android:lineSpacingExtra="@dimen/size25"
         android:text="注册成功\n"
+        android:gravity="center_horizontal"
         app:Color2Text_color="#666"
         app:Color2Text_content="成为我们的代理商享有更多权限"
         app:Color2Text_size="@dimen/sp14" />

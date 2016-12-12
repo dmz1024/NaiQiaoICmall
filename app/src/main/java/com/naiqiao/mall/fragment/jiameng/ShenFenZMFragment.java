@@ -1,11 +1,13 @@
 package com.naiqiao.mall.fragment.jiameng;
 
 import com.naiqiao.mall.R;
+import com.naiqiao.mall.bean.rxbus.AddFragmentBean;
 import com.naiqiao.mall.view.pop.JiaMengSQPopView;
 import com.naiqiao.mall.view.pop.PaiZhaoYQPopView;
 
 import base.fragment.NotNetWorkBaseFragment;
 import butterknife.OnClick;
+import util.RxBus;
 import view.DefaultTitleBarView;
 
 /**
@@ -32,7 +34,7 @@ public class ShenFenZMFragment extends NotNetWorkBaseFragment {
 
     @OnClick(R.id.bt_next)
     void next() {
-        new PaiZhaoYQPopView(getContext()).showAtLocation(false);
+        RxBus.get().post("addFragment",new AddFragmentBean(new JiaMengGRSubmitFragment()));
     }
 
     @Override

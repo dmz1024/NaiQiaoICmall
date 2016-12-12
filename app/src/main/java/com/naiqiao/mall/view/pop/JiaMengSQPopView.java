@@ -6,6 +6,7 @@ import android.widget.Button;
 
 import com.naiqiao.mall.R;
 import com.naiqiao.mall.bean.rxbus.AddFragmentBean;
+import com.naiqiao.mall.fragment.jiameng.JiaMengGsJBQKFragment;
 import com.naiqiao.mall.fragment.jiameng.JiaMengJiBenQKFragment;
 
 import util.RxBus;
@@ -36,6 +37,7 @@ public class JiaMengSQPopView extends TitleBasePopView {
             @Override
             public void onClick(View v) {
                 dismiss();
+                RxBus.get().post("addFragment",new AddFragmentBean(new JiaMengGsJBQKFragment()));
             }
         });
         return view;

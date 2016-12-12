@@ -14,12 +14,12 @@
         <TextView
             style="@style/TextSize15Color666"
             android:padding="@dimen/size10"
-            android:text="姓       名" />
+            android:text="公司名称" />
 
         <TextView
             style="@style/TextSize15Color666"
             android:padding="@dimen/size10"
-            android:text="联系地址" />
+            android:text="具体经营地址" />
 
         <TextView
             style="@style/TextSize15Color666"
@@ -29,22 +29,38 @@
         <TextView
             style="@style/TextSize15Color666"
             android:padding="@dimen/size10"
-            android:text="联系电话" />
+            android:text="法定代表人" />
 
         <TextView
             style="@style/TextSize15Color666"
             android:padding="@dimen/size10"
-            android:text="微        信" />
+            android:text="公司性质" />
 
         <TextView
             style="@style/TextSize15Color666"
             android:padding="@dimen/size10"
-            android:text="Q           Q" />
+            android:text="注册时间" />
+        <TextView
+            style="@style/TextSize15Color666"
+            android:padding="@dimen/size10"
+            android:text="注册资金" />
+        <TextView
+            style="@style/TextSize15Color666"
+            android:padding="@dimen/size10"
+            android:text="电       话" />
+        <TextView
+            style="@style/TextSize15Color666"
+            android:padding="@dimen/size10"
+            android:text="传       真" />
 
         <TextView
             style="@style/TextSize15Color666"
             android:padding="@dimen/size10"
-            android:text=" E - mail" />
+            android:text="邮政编码" />
+        <TextView
+            style="@style/TextSize15Color666"
+            android:padding="@dimen/size10"
+            android:text="公司网址" />
     </LinearLayout>
 
     <LinearLayout
@@ -57,10 +73,9 @@
         android:divider="@drawable/linear_f5f5f5_shpe"
         android:orientation="vertical"
         android:showDividers="middle"
-        android:weightSum="7">
+        android:weightSum="11">
 
         <EditText
-            android:id="@+id/et_name"
             android:gravity="center_vertical|right"
             android:textSize="@dimen/sp15"
             android:textColor="#666"
@@ -72,7 +87,49 @@
             android:background="@null" />
 
         <TextView
-            android:id="@+id/tv_address"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:text="dddd"
+            android:textSize="@dimen/sp15"
+            android:drawablePadding="@dimen/size10"
+            android:gravity="center_vertical|right"
+            android:textColor="#666"
+            android:drawableRight="@mipmap/icon_go"
+            android:paddingRight="@dimen/size10"  />
+        <EditText
+            android:gravity="center_vertical|right"
+            android:textSize="@dimen/sp15"
+            android:textColor="#666"
+            android:textColorHint="#999"
+            android:hint="街道、楼牌号等"
+            android:paddingRight="@dimen/size26"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="@null" />
+        <EditText
+            android:gravity="center_vertical|right"
+            android:textSize="@dimen/sp15"
+            android:textColor="#666"
+            android:text="ddd"
+            android:paddingRight="@dimen/size26"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="@null" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:text="dddd"
+            android:textSize="@dimen/sp15"
+            android:drawablePadding="@dimen/size10"
+            android:gravity="center_vertical|right"
+            android:textColor="#666"
+            android:drawableRight="@mipmap/icon_go"
+            android:paddingRight="@dimen/size10"  />
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
@@ -85,7 +142,6 @@
             android:paddingRight="@dimen/size10"  />
 
         <EditText
-            android:id="@+id/et_address_desc"
             android:gravity="center_vertical|right"
             android:textSize="@dimen/sp15"
             android:textColor="#666"
@@ -97,7 +153,6 @@
             android:background="@null" />
 
         <EditText
-            android:id="@+id/et_tel"
             android:gravity="center_vertical|right"
             android:textSize="@dimen/sp15"
             android:textColor="#666"
@@ -109,7 +164,6 @@
             android:background="@null" />
 
         <EditText
-            android:id="@+id/et_wechat"
             android:gravity="center_vertical|right"
             android:textSize="@dimen/sp15"
             android:textColor="#666"
@@ -121,7 +175,6 @@
             android:background="@null" />
 
         <EditText
-            android:id="@+id/et_qq"
             android:gravity="center_vertical|right"
             android:textSize="@dimen/sp15"
             android:textColor="#666"
@@ -131,9 +184,7 @@
             android:layout_height="0dp"
             android:layout_weight="1"
             android:background="@null" />
-
         <EditText
-            android:id="@+id/et_email"
             android:gravity="center_vertical|right"
             android:textSize="@dimen/sp15"
             android:textColor="#666"

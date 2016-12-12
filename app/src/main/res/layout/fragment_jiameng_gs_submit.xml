@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/size20">
+
+    <RelativeLayout
+        android:padding="@dimen/size10"
+        android:background="#fff"
+        android:layout_marginTop="@dimen/size10"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/tv_1"
+            android:lineSpacingExtra="@dimen/size5"
+            style="@style/TextSize12Color666" />
+        <ImageView
+            android:src="@mipmap/icon_fang"
+            android:layout_below="@id/tv_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/tv_2"
+            android:layout_below="@id/tv_1"
+
+            android:lineSpacingExtra="@dimen/size5"
+            android:text="     以上文件只用作公司内容对代理商的信息档案进行存档，请予以配合，否则为无效代理信息。\n\n企业代理商加盟申请表填写完毕请以邮件的形式发送到："
+            style="@style/TextSize12Color666" />
+        <TextView
+            android:id="@+id/tv_3"
+            android:textColor="#f73f5f"
+            android:layout_below="@id/tv_2"
+            android:layout_marginTop="@dimen/size10"
+            android:text="zhaoshang@naiqiaoec.com"
+            style="@style/TextSize12Color666" />
+    </RelativeLayout>
+    <LinearLayout
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <com.naiqiao.mall.view.ViewSendCode
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/size27" />
+
+        <Button
+            android:id="@+id/bt_next"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size40"
+            android:layout_marginBottom="@dimen/size15"
+            android:layout_marginLeft="@dimen/size10"
+            android:layout_marginRight="@dimen/size10"
+            android:layout_marginTop="@dimen/size23"
+            android:background="#f73f5f"
+            android:text="提交，等待审核"
+            android:textColor="#fff"
+            android:textSize="@dimen/sp15" />
+    </LinearLayout>
+
+</RelativeLayout>

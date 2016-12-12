@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fff"
+    android:orientation="vertical">
+
+    <view.Color2Text
+        style="@style/TextSize15Color333"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/size60"
+        android:drawablePadding="@dimen/size30"
+        android:drawableTop="@mipmap/icon_tijiao_ok"
+        android:lineSpacingExtra="@dimen/size15"
+        android:paddingLeft="@dimen/size20"
+        android:paddingRight="@dimen/size20"
+        android:text="恭喜您提交成功，我们将在3个工作日审核完成将以短息、邮箱等形式通知您\n\n"
+        android:gravity="center_horizontal"
+        app:Color2Text_color="#666"
+        app:Color2Text_content="即将跳转首页，3s"
+        app:Color2Text_size="@dimen/sp14" />
+
+
+    <Button
+        android:id="@+id/bt_skip"
+        android:layout_width="@dimen/size110"
+        android:layout_height="@dimen/size30"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/size65"
+        android:background="#f73f5f"
+        android:text="立即跳转首页"
+        android:textColor="#fff"
+        android:textSize="@dimen/sp13" />
+</LinearLayout>
