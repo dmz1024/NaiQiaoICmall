@@ -15,7 +15,7 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/size170"
             android:scaleType="fitXY"
-            android:src="@mipmap/icon_search_gray" />
+             />
 
         <TextView
             android:id="@+id/tv_title"
@@ -26,7 +26,7 @@
             android:background="#40000000"
             android:lineSpacingExtra="@dimen/size4"
             android:maxLines="2"
-            android:padding="@dimen/size10"
+            android:padding="@dimen/size5"
             android:text="肌肤之钥CPB淡斑精华光透白精华液肌肤之钥CPB淡斑精华光透白精华液" />
 
         <TextView
@@ -34,7 +34,7 @@
             style="@style/TextSize14Color666"
             android:layout_below="@id/tv_title"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="@dimen/size10"
+            android:layout_marginTop="@dimen/size5"
             android:text="12345积分+234.00元" />
 
         <TextView
@@ -42,7 +42,7 @@
             style="@style/TextSize12Color666"
             android:layout_below="@id/tv_price"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="@dimen/size10"
+            android:layout_marginTop="@dimen/size5"
             android:text="市场价：￥1234.00" />
 
         <Button
@@ -51,7 +51,7 @@
             android:layout_height="@dimen/size25"
             android:layout_below="@id/tv_shi"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="@dimen/size10"
+            android:layout_marginTop="@dimen/size5"
             android:background="@drawable/shape_f73f5f_radius_3"
             android:text="立即兑换"
             android:textColor="#fff"

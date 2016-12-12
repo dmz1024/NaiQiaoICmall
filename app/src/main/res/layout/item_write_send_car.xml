@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#fff"
+    android:paddingLeft="@dimen/size10"
+    android:paddingRight="@dimen/size10"
+    android:paddingTop="@dimen/size10"
+    >
+
+    <FrameLayout
+        android:id="@+id/fg_img"
+        android:layout_width="@dimen/size80"
+        android:layout_height="@dimen/size80"
+        android:background="@drawable/shape_fff_f5f5f5_ra"
+        android:padding="1dp">
+
+        <ImageView
+            android:id="@+id/iv_img"
+            android:layout_width="@dimen/size80"
+            android:layout_height="@dimen/size80"
+            android:scaleType="fitXY" />
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/tv_title"
+        style="@style/TextSize12Color333"
+        android:layout_marginLeft="@dimen/size4"
+        android:layout_toRightOf="@id/fg_img"
+        android:lineSpacingExtra="@dimen/size1"
+        android:maxLines="2"
+        android:text="肌肤之钥CPB淡斑精华光透白精华液肌肤之钥CPB淡斑精华光透白精华液" />
+
+    <TextView
+        android:id="@+id/tv_guige"
+        style="@style/TextSize12Color666"
+        android:layout_alignLeft="@id/tv_title"
+        android:layout_below="@id/tv_title"
+        android:layout_marginTop="@dimen/size7"
+        android:text="规格：100g" />
+
+    <TextView
+        android:id="@+id/tv_price"
+        style="@style/TextSize12Color666"
+        android:layout_alignLeft="@id/tv_title"
+        android:layout_below="@id/tv_guige"
+        android:layout_marginTop="@dimen/size7"
+        android:text="￥300.00      总重量：300g" />
+
+    <TextView
+        android:id="@+id/tv_count"
+        style="@style/TextSize13Color666"
+        android:layout_alignBottom="@id/tv_price"
+        android:layout_alignParentRight="true"
+        android:text="x3" />
+    <View
+        android:id="@+id/view"
+        android:layout_below="@id/fg_img"
+        android:layout_marginTop="@dimen/size10"
+        android:background="#b2b2b2"
+        android:layout_width="match_parent"
+        android:layout_height="1px"/>
+</RelativeLayout>

@@ -8,7 +8,9 @@ import android.widget.TextView;
 
 import com.naiqiao.mall.R;
 import com.naiqiao.mall.adapter.SendMonadAdapter;
+import com.naiqiao.mall.bean.SendCarBean;
 import com.naiqiao.mall.bean.SendMonadBean;
+import com.naiqiao.mall.bean.rxbus.AddFragmentBean;
 
 import java.util.ArrayList;
 
@@ -16,6 +18,7 @@ import base.fragment.NotNetWorkBaseFragment;
 import butterknife.BindView;
 import butterknife.OnClick;
 import util.DrawableUtil;
+import util.RxBus;
 import view.Color2Text;
 import view.DefaultTitleBarView;
 
@@ -40,14 +43,14 @@ public class SendMonadContentFragment extends NotNetWorkBaseFragment {
         return R.layout.fragment_send_monad;
     }
 
-    ArrayList<SendMonadBean.Data> data;
+    ArrayList<SendCarBean.Data> data;
     private int count;
 
     @Override
     protected void initView() {
         data = new ArrayList<>();
         for (int i = 0; i < 10; i++) {
-            SendMonadBean.Data send = new SendMonadBean.Data();
+            SendCarBean.Data send = new SendCarBean.Data();
             send.count = i;
             data.add(send);
         }
@@ -72,7 +75,7 @@ public class SendMonadContentFragment extends NotNetWorkBaseFragment {
                         chooseCount += 1;
                     }
                 }
-                ChangeButton(chooseCount,count);
+                ChangeButton(chooseCount, count);
 
                 changeChoose();
             }
@@ -88,11 +91,21 @@ public class SendMonadContentFragment extends NotNetWorkBaseFragment {
             public void run() {
                 notifyData();
             }
-        },200);
+        }, 200);
     }
 
     @OnClick(R.id.bt_send_car)
     void sendCar() {
+        WriteSendShopFragment writeSendShopFragment = new WriteSendShopFragment();
+        ArrayList<SendCarBean.Data> sendData = new ArrayList<>();
+        for (int i = 0; i < data.size(); i++) {
+            if (data.get(i).isChoose) {
+                sendData.add(data.get(i));
+            }
+        }
+
+        writeSendShopFragment.setData(sendData);
+        RxBus.get().post("addFragment", new AddFragmentBean(writeSendShopFragment));
     }
 
     @OnClick(R.id.tv_choose)
@@ -120,7 +133,7 @@ public class SendMonadContentFragment extends NotNetWorkBaseFragment {
         }
 
 
-        ChangeButton(chooseCount,count);
+        ChangeButton(chooseCount, count);
         if (!isFirst) {
             mAdapter.notifyDataSetChanged();
         } else {
@@ -130,7 +143,7 @@ public class SendMonadContentFragment extends NotNetWorkBaseFragment {
     }
 
 
-    private void ChangeButton(int chooseCount,int count) {
+    private void ChangeButton(int chooseCount, int count) {
         if (count > 0) {
             bt_send_car.setEnabled(true);
             bt_send_car.setAlpha(1);

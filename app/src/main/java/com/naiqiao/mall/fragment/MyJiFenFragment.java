@@ -5,6 +5,7 @@ import android.view.View;
 
 import com.naiqiao.mall.adapter.JiaoYi_JiFen_FanDianAdapter;
 import com.naiqiao.mall.bean.JiaoYi_JiFen_FanDianBean;
+import com.naiqiao.mall.bean.rxbus.AddFragmentBean;
 import com.naiqiao.mall.fragment.base.JiaoYiJiFenFanDianBaseFragment;
 import com.naiqiao.mall.view.JiaoYi_JiFen_FanDianTitleBarView;
 
@@ -13,13 +14,14 @@ import java.util.Map;
 
 import base.bean.TipLoadingBean;
 import base.fragment.ListNetWorkBaseFragment;
+import util.RxBus;
 
 /**
  * Created by dengmingzhi on 2016/11/25.
  * 我的积分
  */
 
-public class MyJiFenFragment extends JiaoYiJiFenFanDianBaseFragment {
+public class MyJiFenFragment extends JiaoYiJiFenFanDianBaseFragment  {
 
     @Override
     protected String url() {
@@ -37,8 +39,13 @@ public class MyJiFenFragment extends JiaoYiJiFenFanDianBaseFragment {
 
     @Override
     protected void initTitleView() {
+        super.initTitleView();
         titleBarView.setTitleContent("我的积分");
         titleBarView.setButtonTitle("积分商城");
     }
 
+    @Override
+    public void rightBt() {
+        RxBus.get().post("addFragment",new AddFragmentBean(new JiFenDuiContentFragment()));
+    }
 }

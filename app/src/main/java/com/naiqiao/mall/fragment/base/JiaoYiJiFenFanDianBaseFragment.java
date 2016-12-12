@@ -5,6 +5,7 @@ import android.view.View;
 
 import com.naiqiao.mall.adapter.JiaoYi_JiFen_FanDianAdapter;
 import com.naiqiao.mall.bean.JiaoYi_JiFen_FanDianBean;
+import com.naiqiao.mall.interfaces.OnJiaoYi_JiFen_FanDianTitleBarListener;
 import com.naiqiao.mall.view.JiaoYi_JiFen_FanDianTitleBarView;
 
 import java.util.ArrayList;
@@ -17,7 +18,7 @@ import base.fragment.ListNetWorkBaseFragment;
  * Created by dengmingzhi on 2016/11/25.
  */
 
-public abstract class JiaoYiJiFenFanDianBaseFragment extends ListNetWorkBaseFragment<JiaoYi_JiFen_FanDianBean> {
+public abstract class JiaoYiJiFenFanDianBaseFragment extends ListNetWorkBaseFragment<JiaoYi_JiFen_FanDianBean> implements OnJiaoYi_JiFen_FanDianTitleBarListener {
     protected JiaoYi_JiFen_FanDianTitleBarView titleBarView;
 
     @Override
@@ -38,7 +39,32 @@ public abstract class JiaoYiJiFenFanDianBaseFragment extends ListNetWorkBaseFrag
     }
 
     @Override
+    protected void initTitleView() {
+        titleBarView.setOnTitleBarListener(this);
+    }
+
+    @Override
     protected float top() {
         return 80;
+    }
+
+    @Override
+    public void rightBt() {
+
+    }
+
+    @Override
+    public void left() {
+
+    }
+
+    @Override
+    public void right() {
+
+    }
+
+    @Override
+    public void center() {
+
     }
 }

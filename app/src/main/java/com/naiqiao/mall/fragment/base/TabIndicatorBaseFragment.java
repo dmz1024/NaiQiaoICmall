@@ -27,7 +27,7 @@ import view.DefaultTitleBarView;
 
 public abstract class TabIndicatorBaseFragment extends NotNetWorkBaseFragment {
     @BindView(R.id.tablayout)
-    TabLayout tab;
+    public TabLayout tab;
     @BindView(R.id.vp_content)
     ViewPager vp_content;
     ArrayList<Fragment> fragments;
@@ -75,8 +75,13 @@ public abstract class TabIndicatorBaseFragment extends NotNetWorkBaseFragment {
         return R.layout.fragment_base_indicator;
     }
 
+    @Override
+    protected View getTitleBarView() {
+        return new DefaultTitleBarView(getContext());
+    }
 
-
-
-
+    @Override
+    protected void initTitleView() {
+        ((DefaultTitleBarView) getTitleBar()).setTitleContent(getTitleContent());
+    }
 }

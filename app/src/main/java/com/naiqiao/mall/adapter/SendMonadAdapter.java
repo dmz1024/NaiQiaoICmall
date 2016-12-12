@@ -24,9 +24,9 @@ import base.adapter.BaseViewHolder;
  * Created by dengmingzhi on 2016/11/21.
  */
 
-public class SendMonadAdapter extends BaseAdapter<SendMonadBean.Data> {
+public class SendMonadAdapter extends BaseAdapter<SendCarBean.Data> {
 
-    public SendMonadAdapter(Context ctx, ArrayList<SendMonadBean.Data> list) {
+    public SendMonadAdapter(Context ctx, ArrayList<SendCarBean.Data> list) {
         super(ctx, list);
     }
 
@@ -38,7 +38,7 @@ public class SendMonadAdapter extends BaseAdapter<SendMonadBean.Data> {
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         final ViewHolder mHolder = (ViewHolder) holder;
-        SendMonadBean.Data data = list.get(position);
+        SendCarBean.Data data = list.get(position);
         Glide.with(ctx).load(TestConstant.IMAGE).into(mHolder.iv_img);
         mHolder.tv_have_count.setText(Html.fromHtml("发货数量：<font color='#f73f5f'><b>" + position + "</b></font>瓶"));
         mHolder.iv_choose.setImageResource(data.isChoose ? R.mipmap.icon_checked : R.mipmap.icon_check);

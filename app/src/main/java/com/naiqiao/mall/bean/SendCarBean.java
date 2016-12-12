@@ -10,6 +10,7 @@ import base.bean.ListBaseBean;
 
 public class SendCarBean extends ListBaseBean<ArrayList<SendCarBean.Data>> {
     public static class Data {
-
+        public boolean isChoose = true;
+        public int count;
     }
 }

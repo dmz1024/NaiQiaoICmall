@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:textColor="#666"
+    android:paddingBottom="@dimen/size10"
+    android:textSize="@dimen/sp12"
+    android:lineSpacingExtra="@dimen/size10"
+    android:text="商品名商品名称商品名称称\n规格：123g        ￥123.00        x3"
+    android:layout_height="wrap_content">
+
+</TextView>

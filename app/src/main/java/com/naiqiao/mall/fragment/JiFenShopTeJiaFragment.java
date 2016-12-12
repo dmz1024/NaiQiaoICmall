@@ -3,6 +3,7 @@ package com.naiqiao.mall.fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 
 import com.naiqiao.mall.adapter.JiFenShopTeJiaAdapter;
 import com.naiqiao.mall.bean.JiFenShopTeJiaBean;
@@ -43,5 +44,10 @@ public class JiFenShopTeJiaFragment extends ListNetWorkBaseFragment<JiFenShopTeJ
     @Override
     protected LinearLayoutManager getLayoutManager() {
         return new GridLayoutManager(getContext(),2);
+    }
+
+    @Override
+    protected View getTitleBarView() {
+        return null;
     }
 }

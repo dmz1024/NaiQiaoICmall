@@ -14,6 +14,7 @@
         app:tabIndicatorColor="#f73f5f"
         app:tabIndicatorHeight="4px"
         app:tabMode="scrollable"
+        android:layout_gravity="center_horizontal"
         app:tabSelectedTextColor="#f73f5f"
         app:tabTextColor="#666" />
 
