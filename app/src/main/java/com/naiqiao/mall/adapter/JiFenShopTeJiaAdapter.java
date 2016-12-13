@@ -12,6 +12,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.naiqiao.mall.R;
 import com.naiqiao.mall.bean.JiFenShopTeJiaBean;
+import com.naiqiao.mall.view.pop.JifenDuiHuanCountPopView;
 
 import java.util.ArrayList;
 
@@ -60,7 +61,12 @@ public class JiFenShopTeJiaAdapter extends BaseAdapter<JiFenShopTeJiaBean.Data> 
 
         public ViewHolder(View itemView) {
             super(itemView);
+            bt_dui.setOnClickListener(this);
         }
 
+        @Override
+        protected void itemOnclick(int id, int layoutPosition) {
+            new JifenDuiHuanCountPopView(ctx).showAtLocation(false);
+        }
     }
 }

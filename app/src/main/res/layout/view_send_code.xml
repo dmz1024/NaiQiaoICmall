@@ -12,12 +12,13 @@
     <EditText
         android:id="@+id/et_send_code_code"
         android:layout_width="@dimen/size115"
-        android:layout_height="@dimen/size35"
+        android:layout_height="@dimen/size30"
         android:layout_gravity="center_vertical"
         android:background="@drawable/rectangle_bdbdbd"
         android:gravity="center"
         android:inputType="number"
-        android:text="12345"
+        android:hint="短信验证码"
+        android:textColorHint="#666"
         android:textColor="#666"
         android:textSize="@dimen/sp13" />
 

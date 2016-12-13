@@ -7,6 +7,7 @@ import android.widget.RelativeLayout;
 
 import com.naiqiao.mall.R;
 import com.naiqiao.mall.bean.rxbus.AddFragmentBean;
+import com.naiqiao.mall.fragment.MyOrderBackContentFragment;
 import com.naiqiao.mall.fragment.TuiFragment;
 
 import java.util.List;
@@ -48,7 +49,7 @@ public class AfterServiceFragment extends NotNetWorkBaseFragment {
             case R.id.rl_huan:
                 break;
             case R.id.rl_tui:
-                RxBus.get().post("addFragment",new AddFragmentBean(new TuiFragment()));
+                RxBus.get().post("addFragment",new AddFragmentBean(new MyOrderBackContentFragment()));
                 break;
             case R.id.rl_qq:
                 String url = "mqqwpa://im/chat?chat_type=wpa&uin=1395386348";

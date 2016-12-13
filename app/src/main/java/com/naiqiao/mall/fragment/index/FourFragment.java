@@ -28,6 +28,7 @@ import com.naiqiao.mall.fragment.YuCunHuoContentFragment;
 import com.naiqiao.mall.fragment.ZaiTuDingDanFragment;
 import com.naiqiao.mall.fragment.login.LoginFragment;
 import com.naiqiao.mall.view.FourTitleBarView;
+import com.naiqiao.mall.view.pop.BackShopUpdateAccountPopView;
 import com.naiqiao.mall.view.pop.JiaMengSQPopView;
 import com.naiqiao.mall.view.pop.PaiZhaoYQPopView;
 import com.recker.flyshapeimageview.ShapeImageView;
@@ -217,7 +218,7 @@ public class FourFragment extends SingleNetWorkBaseFragment<User> implements Scr
                 new JiaMengSQPopView(getContext()).showAtLocation(false);
                 break;
             case R.id.trl_2:
-                new PaiZhaoYQPopView(getContext()).showAtLocation(false);
+                new BackShopUpdateAccountPopView(getContext()).showAtLocation(false);
                 break;
         }
     }

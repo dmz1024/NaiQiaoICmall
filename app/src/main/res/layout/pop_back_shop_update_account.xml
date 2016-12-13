@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingTop="@dimen/size12">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal">
+
+        <TextView
+            android:id="@+id/tv_private"
+            style="@style/TextSize14Color333"
+            android:drawableLeft="@mipmap/icon_checked"
+            android:drawablePadding="@dimen/size4"
+            android:gravity="center_vertical"
+            android:text="对私账户" />
+
+        <TextView
+            android:id="@+id/tv_public"
+            style="@style/TextSize14Color333"
+            android:layout_marginLeft="@dimen/size15"
+            android:drawableLeft="@mipmap/icon_check"
+            android:drawablePadding="@dimen/size4"
+            android:gravity="center_vertical"
+            android:text="对公账户" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_private"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/size15"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                style="@style/TextSize13Color666"
+                android:layout_gravity="center_vertical"
+                android:text="账号类型" />
+
+            <EditText
+                android:text="ddd"
+                android:paddingLeft="@dimen/size5"
+                android:textColor="#999"
+                android:textSize="@dimen/sp12"
+                android:drawableRight="@mipmap/icon_drop_zh"
+                android:paddingRight="@dimen/size5"
+                android:layout_width="@dimen/size190"
+                android:layout_height="@dimen/size30"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="@dimen/size10"
+                android:background="@drawable/rectangle_00000000_a2a2a2" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/size10">
+
+            <TextView
+                style="@style/TextSize13Color666"
+                android:layout_gravity="center_vertical"
+                android:text="收款账号" />
+
+            <EditText
+                android:paddingLeft="@dimen/size5"
+                android:text="ddd"
+                android:textColor="#999"
+                android:textSize="@dimen/sp12"
+                android:layout_width="@dimen/size190"
+                android:layout_height="@dimen/size30"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="@dimen/size10"
+                android:background="@drawable/rectangle_00000000_a2a2a2" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/size10">
+
+            <TextView
+                style="@style/TextSize13Color666"
+                android:layout_gravity="center_vertical"
+                android:text="    收款人" />
+
+            <EditText
+                android:text="ddd"
+                android:paddingLeft="@dimen/size5"
+                android:textColor="#999"
+                android:textSize="@dimen/sp12"
+                android:layout_width="@dimen/size190"
+                android:layout_height="@dimen/size30"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="@dimen/size10"
+                android:background="@drawable/rectangle_00000000_a2a2a2" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_public"
+        android:visibility="gone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/size15"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                style="@style/TextSize13Color666"
+                android:layout_gravity="center_vertical"
+                android:text="开户银行" />
+
+            <EditText
+                android:text="ddd"
+                android:paddingLeft="@dimen/size5"
+                android:textColor="#999"
+                android:textSize="@dimen/sp12"
+                android:drawableRight="@mipmap/icon_drop_zh"
+                android:paddingRight="@dimen/size5"
+                android:layout_width="@dimen/size190"
+                android:layout_height="@dimen/size30"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="@dimen/size10"
+                android:background="@drawable/rectangle_00000000_a2a2a2" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/size10">
+
+            <TextView
+                style="@style/TextSize13Color666"
+                android:layout_gravity="center_vertical"
+                android:text="开户网点" />
+
+            <EditText
+                android:text="ddd"
+                android:paddingLeft="@dimen/size5"
+                android:textColor="#999"
+                android:textSize="@dimen/sp12"
+                android:layout_width="@dimen/size190"
+                android:layout_height="@dimen/size30"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="@dimen/size10"
+                android:background="@drawable/rectangle_00000000_a2a2a2" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/size10">
+
+            <TextView
+                style="@style/TextSize13Color666"
+                android:layout_gravity="center_vertical"
+                android:text="        账号" />
+
+            <EditText
+                android:text="ddd"
+                android:paddingLeft="@dimen/size5"
+                android:textColor="#999"
+                android:textSize="@dimen/sp12"
+                android:layout_width="@dimen/size190"
+                android:layout_height="@dimen/size30"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="@dimen/size10"
+                android:background="@drawable/rectangle_00000000_a2a2a2" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/size10">
+
+            <TextView
+                style="@style/TextSize13Color666"
+                android:layout_gravity="center_vertical"
+                android:text="公司名称" />
+
+            <EditText
+                android:text="ddd"
+
+                android:textColor="#999"
+                android:textSize="@dimen/sp12"
+                android:layout_width="@dimen/size190"
+                android:layout_height="@dimen/size30"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="@dimen/size10"
+                android:background="@drawable/rectangle_00000000_a2a2a2" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <com.naiqiao.mall.view.ViewSendCode
+        android:id="@+id/view_vsc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/size30" />
+
+    <Button
+        android:id="@+id/bt_update"
+        android:layout_width="@dimen/size100"
+        android:layout_height="@dimen/size30"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="@dimen/size15"
+        android:layout_marginTop="@dimen/size18"
+        android:background="#f73f5f"
+        android:text="确认修改"
+        android:textColor="#fff"
+        android:textSize="@dimen/sp15" />
+</LinearLayout>

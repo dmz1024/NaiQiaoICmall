@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="@dimen/size94"
+    android:layout_height="@dimen/size21"
+    android:background="@drawable/rectangle_00000000_a2a2a2"
+    android:divider="@drawable/linear_a2a2a2_shpe"
+    android:orientation="horizontal"
+    android:showDividers="middle"
+    android:weightSum="33">
+
+    <FrameLayout
+        android:id="@+id/fg_add_and_sub_sub"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="10">
+        <View
+            android:layout_width="@dimen/size15"
+            android:layout_height="@dimen/size1"
+            android:layout_gravity="center"
+            android:background="#a2a2a2" />
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/tv_add_and_sub_count"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_weight="14"
+        android:gravity="center"
+        android:text="1"
+        android:textColor="#f73f5f"
+        android:textSize="@dimen/sp13" />
+
+    <FrameLayout
+        android:id="@+id/fg_add_and_sub_add"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="10">
+
+        <View
+            android:layout_width="@dimen/size15"
+            android:layout_height="@dimen/size1"
+            android:layout_gravity="center"
+            android:background="#a2a2a2" />
+
+        <View
+            android:layout_width="@dimen/size1"
+            android:layout_height="@dimen/size15"
+            android:layout_gravity="center"
+            android:background="#a2a2a2" />
+    </FrameLayout>
+</LinearLayout>
