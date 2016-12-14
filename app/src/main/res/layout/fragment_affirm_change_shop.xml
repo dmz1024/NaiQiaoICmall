@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingTop="@dimen/size10">
+
+    <RelativeLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#fff"
+        android:padding="@dimen/size10">
+
+        <LinearLayout
+            android:id="@+id/ll_1"
+            android:layout_width="@dimen/size240"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/rectangle_00000000_a2a2a2"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:paddingBottom="@dimen/size20"
+            android:paddingTop="@dimen/size20">
+
+            <TextView
+                style="@style/TextSize15Color333"
+                android:gravity="center_horizontal"
+                android:text="虚拟仓商品\n\n共9件" />
+
+            <TextView
+                style="@style/TextSize15Color333"
+                android:layout_marginTop="@dimen/size20"
+                android:text="总价值￥2368.00"
+                android:textColor="#f73f5f" />
+        </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/ll_1"
+            android:layout_marginTop="@dimen/size15">
+
+            <ImageView
+                android:id="@+id/iv_center"
+                android:src="@mipmap/icon_exchange"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerInParent="true" />
+
+            <view.Color2Text
+                android:id="@+id/tv_sub_price"
+                style="@style/TextSize13Color333"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/size10"
+                android:layout_toRightOf="@id/iv_center"
+                android:gravity="center_horizontal"
+                android:lineSpacingExtra="@dimen/size10"
+                android:text="差价\n"
+                app:Color2Text_color="#f73f5f"
+                app:Color2Text_content="100元"
+                app:Color2Text_size="@dimen/sp13" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_2"
+            android:layout_width="@dimen/size240"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/rl_center"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/size15"
+            android:background="@drawable/rectangle_00000000_a2a2a2"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:paddingBottom="@dimen/size20"
+            android:paddingTop="@dimen/size20">
+
+            <TextView
+                style="@style/TextSize15Color333"
+                android:gravity="center_horizontal"
+                android:text="新进商品\n\n共9件" />
+
+            <TextView
+                style="@style/TextSize15Color333"
+                android:layout_marginTop="@dimen/size20"
+                android:text="总价值￥2368.00"
+                android:textColor="#f73f5f" />
+        </LinearLayout>
+
+    </RelativeLayout>
+</FrameLayout>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:paddingTop="@dimen/size10"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#fff"
+        android:orientation="vertical"
+        >
+
+        <TextView
+            style="@style/TextSize15Color333"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/size120"
+            android:drawablePadding="@dimen/size15"
+            android:drawableTop="@mipmap/icon_tijiao_ok"
+            android:gravity="center_vertical"
+            android:text="提交成功" />
+
+        <TextView
+            style="@style/TextSize13Color666"
+            android:layout_marginLeft="@dimen/size75"
+            android:layout_marginRight="@dimen/size75"
+            android:layout_marginTop="@dimen/size40"
+            android:gravity="center"
+            android:lineSpacingExtra="@dimen/size10"
+            android:text="我们将会在1-3个工作日内审核。详情请咨询奈乔客服010-88888888" />
+
+    </LinearLayout>
+</FrameLayout>

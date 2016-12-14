@@ -10,6 +10,8 @@ import com.bumptech.glide.Glide;
 import com.naiqiao.mall.R;
 import com.naiqiao.mall.bean.User;
 import com.naiqiao.mall.bean.rxbus.AddFragmentBean;
+import com.naiqiao.mall.fragment.AllShopContentFragment;
+import com.naiqiao.mall.fragment.AllShopFragment;
 import com.naiqiao.mall.fragment.JiaoYiJiLvFragment;
 import com.naiqiao.mall.fragment.MyCollectFragment;
 import com.naiqiao.mall.fragment.MyFaPiaoFragment;
@@ -177,7 +179,7 @@ public class FourFragment extends SingleNetWorkBaseFragment<User> implements Scr
     void tv4Click(View view) {
         switch (view.getId()) {
             case R.id.tv_4_1:
-                Log.d("点击了", tv4s.get(0).getText().toString());
+                RxBus.get().post("addFragment", new AddFragmentBean(new AllShopContentFragment()));
                 break;
             case R.id.tv_4_2:
                 RxBus.get().post("addFragment", new AddFragmentBean(new YuCunHuoContentFragment()));

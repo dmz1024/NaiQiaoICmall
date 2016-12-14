@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:paddingBottom="@dimen/size50"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/tv_tip"
+        style="@style/TextSize12Color333"
+        android:padding="@dimen/size10"
+        android:text="温馨提示：换货比例不能超过虚拟仓总商品价格的30%" />
+
+    <LinearLayout
+        android:id="@+id/ll_bottom"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+
+        android:background="#fff">
+
+        <TextView
+            android:id="@+id/tv_choose"
+            style="@style/TextSize15Color666"
+            android:layout_gravity="center_vertical"
+            android:drawableLeft="@mipmap/icon_check"
+            android:drawablePadding="@dimen/size10"
+            android:gravity="center_vertical"
+            android:padding="@dimen/size10"
+            android:text="全选" />
+
+        <view.Color2Text
+            android:id="@+id/tv_total_price"
+            style="@style/TextSize12Color333"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="@dimen/size22"
+            android:gravity="center_vertical"
+            android:text="合计金额："
+            app:Color2Text_color="#f73f5f"
+            app:Color2Text_content="1234元"
+            app:Color2Text_size="@dimen/sp15" />
+
+        <view.Color2Text
+            android:id="@+id/tv_can_choose_price"
+            style="@style/TextSize12Color333"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="@dimen/size22"
+            android:gravity="center_vertical"
+            android:text="还可选择："
+            app:Color2Text_color="#f73f5f"
+            app:Color2Text_content="987元"
+            app:Color2Text_size="@dimen/sp15" />
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/fg_content"
+        android:layout_marginBottom="@dimen/size10"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/ll_bottom"
+        android:layout_below="@id/tv_tip" />
+</RelativeLayout>

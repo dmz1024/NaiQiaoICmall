@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fff">
+
+    <LinearLayout
+        android:id="@+id/ll_filter"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="3">
+
+        <FrameLayout
+            android:id="@+id/fg_xiaoliang"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/tv_xiaoliang"
+                style="@style/TextSize12Color666"
+                android:layout_gravity="center"
+                android:drawablePadding="@dimen/size1"
+                android:drawableRight="@mipmap/icon_updown"
+                android:gravity="center"
+                android:padding="@dimen/size10"
+                android:text="销量" />
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/fg_kucun"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/tv_kucun"
+                style="@style/TextSize12Color666"
+                android:layout_gravity="center"
+                android:drawablePadding="@dimen/size1"
+                android:drawableRight="@mipmap/icon_updown"
+                android:gravity="center"
+                android:padding="@dimen/size10"
+                android:text="库存" />
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/fg_price"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/tv_price"
+                style="@style/TextSize12Color666"
+                android:layout_gravity="center"
+                android:drawablePadding="@dimen/size1"
+                android:drawableRight="@mipmap/icon_updown"
+                android:gravity="center"
+                android:padding="@dimen/size10"
+                android:text="价格" />
+        </FrameLayout>
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/rl_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:weightSum="2">
+
+        <TextView
+            android:id="@+id/tv_change"
+            style="@style/TextSize15Colorfff"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:background="#80f73f5f"
+            android:gravity="center"
+            android:padding="@dimen/size15"
+            android:text="需要换货" />
+
+        <TextView
+            android:id="@+id/tv_send"
+            style="@style/TextSize15Colorfff"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:background="#f73f5f"
+            android:gravity="center"
+            android:padding="@dimen/size15"
+            android:text="去发货" />
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/fg_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/rl_bottom"
+        android:layout_below="@id/ll_filter" />
+</RelativeLayout>

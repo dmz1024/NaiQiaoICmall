@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#fff"
+    android:padding="@dimen/size10">
+
+    <ImageView
+        android:id="@+id/iv_choose"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:scaleType="center"
+        android:src="@mipmap/icon_checked" />
+
+    <FrameLayout
+        android:id="@+id/fg_img"
+        android:layout_width="@dimen/size80"
+        android:layout_height="@dimen/size80"
+        android:layout_marginLeft="@dimen/size10"
+        android:layout_toRightOf="@id/iv_choose"
+        android:background="@drawable/shape_fff_f5f5f5_ra"
+        android:padding="1dp">
+
+        <ImageView
+            android:id="@+id/iv_img"
+            android:layout_width="@dimen/size80"
+            android:layout_height="@dimen/size80"
+            android:scaleType="fitXY"
+            android:src="@mipmap/icon_search_gray" />
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/tv_title"
+        style="@style/TextSize12Color333"
+        android:layout_marginLeft="@dimen/size10"
+        android:layout_toRightOf="@id/fg_img"
+        android:lineSpacingExtra="@dimen/size1"
+        android:maxLines="2"
+        android:text="肌肤之钥CPB淡斑精华光透白精华液肌肤之钥CPB淡斑精华光透白精华液" />
+
+    <TextView
+        android:id="@+id/tv_price"
+        style="@style/TextSize12Color333"
+        android:layout_alignLeft="@id/tv_title"
+        android:layout_below="@id/tv_title"
+        android:layout_marginTop="@dimen/size6"
+        android:text="￥899.00" />
+
+    <com.naiqiao.mall.view.AddAndSubView
+        android:id="@+id/view_as"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/fg_img"
+        android:layout_alignLeft="@id/tv_title" />
+
+    <TextView
+        android:id="@+id/tv_have_count"
+        style="@style/TextSize12Color999"
+        android:layout_alignBottom="@id/view_as"
+        android:layout_marginLeft="@dimen/size20"
+        android:layout_toRightOf="@id/view_as"
+        android:text="剩余：3件" />
+</RelativeLayout>

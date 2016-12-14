@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#f5f5f5"
+    android:paddingBottom="@dimen/size10">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#fff"
+        android:padding="@dimen/size10">
+
+        <FrameLayout
+            android:id="@+id/fg_img"
+            android:layout_width="@dimen/size100"
+            android:layout_height="@dimen/size100"
+            android:background="@drawable/shape_fff_f5f5f5_ra"
+            android:padding="1dp">
+
+            <ImageView
+                android:id="@+id/iv_img"
+                android:layout_width="@dimen/size100"
+                android:layout_height="@dimen/size100"
+                android:scaleType="fitXY"
+                android:src="@mipmap/icon_search_gray" />
+            <TextView
+                android:id="@+id/tv_yj"
+
+                style="@style/TextSize10Colorfff"
+                android:background="@drawable/icon_tip_yj"
+                android:gravity="center_vertical"
+                android:text="预警值2" />
+        </FrameLayout>
+
+        <TextView
+            android:id="@+id/tv_title"
+            style="@style/TextSize13Color333"
+            android:layout_marginLeft="@dimen/size10"
+            android:layout_toRightOf="@id/fg_img"
+            android:lineSpacingExtra="@dimen/size1"
+            android:maxLines="2"
+            android:text="肌肤之钥CPB淡斑精华光透白精华液肌肤之钥CPB淡斑精华光透白精华液" />
+
+        <TextView
+            android:id="@+id/tv_guige"
+            style="@style/TextSize14Color666"
+            android:layout_alignLeft="@id/tv_title"
+            android:layout_below="@id/tv_title"
+            android:layout_marginTop="@dimen/size10"
+            android:text="规格：123ml" />
+
+        <TextView
+            android:id="@+id/tv_have_count"
+            style="@style/TextSize12Color666"
+            android:layout_alignBottom="@id/tv_guige"
+            android:layout_marginLeft="@dimen/size40"
+            android:layout_toRightOf="@id/tv_guige"
+            android:text="剩余4件" />
+
+        <TextView
+            android:id="@+id/tv_price"
+            style="@style/TextSize14Color666"
+            android:layout_alignBottom="@id/fg_img"
+            android:layout_alignLeft="@id/tv_title"
+            android:layout_marginBottom="@dimen/size5"
+            android:text="￥123.00"
+            android:textColor="#f73f5f" />
+
+        <TextView
+            android:id="@+id/tv_count"
+            style="@style/TextSize12Color666"
+            android:layout_alignBottom="@id/tv_price"
+            android:layout_marginLeft="@dimen/size40"
+            android:layout_toRightOf="@id/tv_price"
+            android:text="销量：1234件" />
+    </RelativeLayout>
+</FrameLayout>
