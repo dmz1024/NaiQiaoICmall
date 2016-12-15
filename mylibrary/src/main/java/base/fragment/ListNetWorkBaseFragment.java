@@ -40,7 +40,7 @@ public abstract class ListNetWorkBaseFragment<D extends ListBaseBean> extends Ne
     }
 
     protected int getSize() {
-        return 20;
+        return 15;
     }
 
 

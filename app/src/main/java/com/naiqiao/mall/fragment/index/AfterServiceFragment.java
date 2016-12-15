@@ -7,6 +7,8 @@ import android.widget.RelativeLayout;
 
 import com.naiqiao.mall.R;
 import com.naiqiao.mall.bean.rxbus.AddFragmentBean;
+import com.naiqiao.mall.fragment.ChangeShopRootFragment;
+import com.naiqiao.mall.fragment.MyBackShopFragment;
 import com.naiqiao.mall.fragment.MyOrderBackContentFragment;
 import com.naiqiao.mall.fragment.TuiFragment;
 
@@ -47,6 +49,7 @@ public class AfterServiceFragment extends NotNetWorkBaseFragment {
     void rlClick(View view) {
         switch (view.getId()) {
             case R.id.rl_huan:
+                RxBus.get().post("addFragment",new AddFragmentBean(new MyBackShopFragment()));
                 break;
             case R.id.rl_tui:
                 RxBus.get().post("addFragment",new AddFragmentBean(new MyOrderBackContentFragment()));

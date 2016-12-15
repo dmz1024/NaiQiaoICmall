@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.naiqiao.mall.R;
+import com.naiqiao.mall.view.ViewProgress;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,8 +30,8 @@ public class ChangeShopRootFragment extends NotNetWorkBaseFragment {
     NoScrollViewPager vp_content;
     @BindView(R.id.bt_next)
     Button bt_next;
-    @BindViews({R.id.tv_title_1, R.id.tv_title_2, R.id.tv_title_3, R.id.tv_title_4})
-    List<TextView> tvTitles;
+    @BindView(R.id.view_pro)
+    ViewProgress view_pro;
 
     @Override
     protected void initData() {
@@ -57,6 +58,7 @@ public class ChangeShopRootFragment extends NotNetWorkBaseFragment {
             }
         });
 
+        view_pro.setTitle("选择换货商品,选择进货商品,确认换货单,提交审核");
     }
 
     @Override
@@ -80,8 +82,7 @@ public class ChangeShopRootFragment extends NotNetWorkBaseFragment {
             bt_next.setVisibility(View.GONE);
         }
 
-        tvTitles.get(vp_content.getCurrentItem()).setTextColor(Color.parseColor("#f53f5f"));
-        tvTitles.get(vp_content.getCurrentItem()).setCompoundDrawables(null, null, null, DrawableUtil.setBounds(getResources().getDrawable(R.mipmap.icon_checked)));
+        view_pro.setCurrentPosition(vp_content.getCurrentItem());
     }
 
 }
