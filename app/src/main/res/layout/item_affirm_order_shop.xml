@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#fff">
+
+    <TextView
+        android:id="@+id/tv_title"
+        style="@style/TextSize13Color666"
+        android:maxLength="20"
+        android:paddingBottom="@dimen/size5"
+        android:paddingTop="@dimen/size5"
+        android:text="肌肤CPB淡斑精华光透(100ml)" />
+
+    <TextView
+        android:id="@+id/tv_count"
+        style="@style/TextSize13Color666"
+        android:layout_alignParentRight="true"
+        android:paddingBottom="@dimen/size5"
+        android:paddingTop="@dimen/size5"
+        android:text="x3" />
+</RelativeLayout>

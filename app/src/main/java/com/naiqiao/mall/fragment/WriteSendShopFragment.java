@@ -14,6 +14,7 @@ import base.fragment.NotNetWorkBaseFragment;
 import base.other.ItemDecoration;
 import butterknife.BindView;
 import butterknife.OnClick;
+import util.RxBus;
 import view.DefaultTitleBarView;
 
 /**

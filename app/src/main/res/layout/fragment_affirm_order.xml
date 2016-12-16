@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/rl_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="#fff"
+        android:padding="@dimen/size5">
+
+        <view.Color2Text
+            android:id="@+id/tv_price"
+            style="@style/TextSize15Color666"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/size10"
+            android:text="共需支付运费："
+            app:Color2Text_color="#f73f5f"
+            app:Color2Text_content="￥753.00"
+            app:Color2Text_size="@dimen/sp15" />
+
+        <Button
+            android:id="@+id/bt_affirm"
+            android:layout_width="@dimen/size75"
+            android:layout_height="@dimen/size35"
+            android:layout_alignParentRight="true"
+            android:background="#f73f5f"
+            android:text="确认订单"
+            android:textColor="#fff"
+            android:textSize="@dimen/sp14" />
+
+        <Button
+            android:id="@+id/bt_update"
+            android:layout_width="@dimen/size75"
+            android:layout_height="@dimen/size35"
+            android:layout_marginRight="@dimen/size10"
+            android:layout_toLeftOf="@id/bt_affirm"
+            android:background="@drawable/rectangle_00000000_a2a2a2"
+            android:text="返回修改"
+            android:textColor="#333"
+            android:textSize="@dimen/sp14" />
+    </RelativeLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_order"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/rl_bottom"
+        android:layout_alignParentTop="true" />
+</RelativeLayout>
