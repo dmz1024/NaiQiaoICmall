@@ -42,6 +42,7 @@
         </RelativeLayout>
 
         <view.TitleRelativeLayout
+            android:id="@+id/trl_name"
             android:layout_width="match_parent"
             android:layout_height="@dimen/size42"
             app:TitleRelativeLayout_content="邓如果"

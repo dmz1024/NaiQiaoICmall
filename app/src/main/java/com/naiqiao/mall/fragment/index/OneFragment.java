@@ -2,7 +2,10 @@ package com.naiqiao.mall.fragment.index;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+
+import com.naiqiao.mall.adapter.IndexOneAdapter;
 import com.naiqiao.mall.adapter.SendCarAdapter;
+import com.naiqiao.mall.bean.IndexOneBean;
 import com.naiqiao.mall.bean.SendCarBean;
 import com.naiqiao.mall.bean.User;
 import com.naiqiao.mall.bean.rxbus.AddFragmentBean;
@@ -20,11 +23,11 @@ import util.RxBus;
  * Created by dengmingzhi on 2016/11/16.
  */
 
-public class OneFragment extends ListNetWorkBaseFragment<SendCarBean> implements OnTitleBarListener {
+public class OneFragment extends ListNetWorkBaseFragment<IndexOneBean> implements OnTitleBarListener {
 
     @Override
     protected RecyclerView.Adapter getAdapter() {
-        return new SendCarAdapter(getContext(), (ArrayList<SendCarBean.Data>) totalList);
+        return new IndexOneAdapter(getContext(), (ArrayList<IndexOneBean.Data>) totalList);
     }
 
 
@@ -42,8 +45,8 @@ public class OneFragment extends ListNetWorkBaseFragment<SendCarBean> implements
     }
 
     @Override
-    protected Class<SendCarBean> getTClass() {
-        return SendCarBean.class;
+    protected Class<IndexOneBean> getTClass() {
+        return IndexOneBean.class;
     }
 
     @Override

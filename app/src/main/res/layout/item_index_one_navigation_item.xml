@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#fff"
+    android:paddingBottom="@dimen/size15"
+    android:paddingTop="@dimen/size15">
+
+    <ImageView
+        android:id="@+id/iv_img"
+        android:layout_width="@dimen/size65"
+        android:layout_height="@dimen/size65"
+        android:layout_centerHorizontal="true"
+        android:scaleType="fitXY" />
+
+    <TextView
+        android:id="@+id/tv_title"
+        style="@style/TextSize14Color666"
+        android:layout_below="@id/iv_img"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/size15"
+        android:text="火爆热销" />
+    <View
+        android:layout_alignParentRight="true"
+        android:layout_width="0dp"
+        android:layout_height="0dp"/>
+</RelativeLayout>

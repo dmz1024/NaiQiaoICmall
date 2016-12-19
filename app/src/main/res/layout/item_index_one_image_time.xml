@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="@dimen/size10">
+
+    <ImageView
+        android:id="@+id/iv_img"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size200"
+        android:scaleType="fitXY" />
+    <LinearLayout
+        android:layout_marginTop="@dimen/size20"
+        android:layout_marginLeft="@dimen/size20"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <TextView
+            android:text="01"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:paddingLeft="@dimen/size2"
+            android:paddingRight="@dimen/size2"
+            android:paddingTop="@dimen/size3"
+            android:paddingBottom="@dimen/size3"
+            android:background="@drawable/shape_333_radius_3"
+            style="@style/TextSize15Colorfff" />
+        <ImageView
+            android:src="@mipmap/icon_two_point"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="@dimen/size3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:text="32"
+            android:layout_marginLeft="@dimen/size2"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:paddingLeft="@dimen/size3"
+            android:paddingRight="@dimen/size2"
+            android:paddingTop="@dimen/size3"
+            android:paddingBottom="@dimen/size3"
+            android:background="@drawable/shape_333_radius_3"
+            style="@style/TextSize15Colorfff" />
+        <ImageView
+            android:src="@mipmap/icon_two_point"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="@dimen/size3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:text="47"
+            android:layout_marginLeft="@dimen/size2"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:paddingLeft="@dimen/size3"
+            android:paddingRight="@dimen/size2"
+            android:paddingTop="@dimen/size3"
+            android:paddingBottom="@dimen/size3"
+            android:background="@drawable/shape_333_radius_3"
+            style="@style/TextSize15Colorfff" />
+    </LinearLayout>
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/size200" />
+</FrameLayout>

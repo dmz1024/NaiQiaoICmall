@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="@dimen/size10">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size45"
+        android:background="#50ff0000"
+
+        android:paddingRight="@dimen/size10">
+        <View
+            android:background="#f00"
+            android:layout_width="@dimen/size13"
+            android:layout_height="match_parent"/>
+        <TextView
+            android:id="@+id/tv_title"
+            style="@style/TextSize15Colorfff"
+            android:layout_marginLeft="@dimen/size16"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center_vertical"
+            android:gravity="center_vertical"
+            android:text="个人洗护"
+            android:textSize="@dimen/sp18"
+            android:textStyle="bold" />
+
+        <View
+            android:id="@+id/view_line"
+            android:background="#f00"
+            android:layout_centerVertical="true"
+            android:layout_marginTop="@dimen/size10"
+            android:layout_marginBottom="@dimen/size10"
+            android:layout_toRightOf="@id/tv_title"
+            android:layout_marginLeft="@dimen/size5"
+            android:layout_width="@dimen/size1"
+            android:layout_height="match_parent"/>
+        <TextView
+            android:textColor="#f00"
+            android:text="個人の洗濯护"
+            android:layout_toRightOf="@id/view_line"
+            android:layout_marginLeft="@dimen/size5"
+            android:layout_centerVertical="true"
+            style="@style/TextSize13Colorfff"/>
+        <TextView
+            android:id="@+id/tv_go"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:gravity="center_vertical"
+            android:text=">"
+
+            android:textSize="@dimen/sp25" />
+
+        <TextView
+            android:id="@+id/tv_more"
+            style="@style/TextSize14Colorfff"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/size5"
+            android:layout_toLeftOf="@id/tv_go"
+            android:gravity="center_vertical"
+            android:text="更多" />
+    </RelativeLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/size50" />
+</FrameLayout>

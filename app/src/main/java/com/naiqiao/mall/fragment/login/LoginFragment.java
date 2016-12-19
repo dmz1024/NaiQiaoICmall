@@ -10,6 +10,7 @@ import android.widget.TextView;
 import com.naiqiao.mall.R;
 import com.naiqiao.mall.bean.UserLoginInfo;
 import com.naiqiao.mall.bean.rxbus.AddFragmentBean;
+import com.naiqiao.mall.constant.UserInfo;
 import com.naiqiao.mall.controller.AccountController;
 import com.naiqiao.mall.interfaces.SingleTextWatcher;
 
@@ -111,6 +112,8 @@ public class LoginFragment extends NotNetWorkBaseFragment {
                 Log.d("登录", bean.data.sign_token);
                 Log.d("登录", bean.data.user_name);
                 Log.d("登录", bean.data.user_id);
+                UserInfo.uid = bean.data.user_id;
+                UserInfo.token = bean.data.sign_token;
             }
 
             @Override

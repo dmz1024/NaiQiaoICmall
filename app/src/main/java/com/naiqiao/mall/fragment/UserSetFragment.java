@@ -6,6 +6,7 @@ import android.widget.LinearLayout;
 import com.bumptech.glide.Glide;
 import com.naiqiao.mall.R;
 import com.naiqiao.mall.bean.UserSetBean;
+import com.naiqiao.mall.view.pop.PopEdit;
 import com.recker.flyshapeimageview.ShapeImageView;
 
 import java.util.Map;
@@ -16,6 +17,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import view.DefaultTitleBarView;
+import view.TitleRelativeLayout;
 
 /**
  * Created by dengmingzhi on 2016/12/7.
@@ -26,6 +28,8 @@ public class UserSetFragment extends SingleNetWorkBaseFragment<UserSetBean> {
     ShapeImageView iv_head;
     @BindView(R.id.ll_gs)
     LinearLayout ll_gs;
+    @BindView(R.id.trl_name)
+    TitleRelativeLayout trl_name;
 
     @Override
     protected String url() {
@@ -59,7 +63,7 @@ public class UserSetFragment extends SingleNetWorkBaseFragment<UserSetBean> {
     }
 
 
-    @OnClick({R.id.iv_head})
+    @OnClick({R.id.iv_head, R.id.trl_name})
     void onclick(View view) {
         switch (view.getId()) {
             case R.id.iv_head:
@@ -69,6 +73,9 @@ public class UserSetFragment extends SingleNetWorkBaseFragment<UserSetBean> {
                     ll_gs.setVisibility(View.GONE);
                 }
 
+                break;
+            case R.id.trl_name:
+                new PopEdit(getContext(), false, trl_name.getContent()).showAtLocation(false);
                 break;
         }
     }

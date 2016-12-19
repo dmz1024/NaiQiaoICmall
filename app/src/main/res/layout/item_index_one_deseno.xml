@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:paddingRight="@dimen/size10"
+    android:paddingTop="@dimen/size10">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#fff"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/size10">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/size40"
+            android:background="#f73f5f"
+            android:paddingRight="@dimen/size20">
+
+            <TextView
+                style="@style/TextSize15Colorfff"
+                android:layout_gravity="center_vertical"
+                android:drawableLeft="@mipmap/index_time"
+                android:drawablePadding="@dimen/size4"
+                android:gravity="center_vertical"
+                android:paddingLeft="@dimen/size10"
+                android:text="限时特卖"
+                android:textStyle="bold" />
+
+            <View
+                android:layout_width="@dimen/size1"
+                android:layout_height="@dimen/size25"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="@dimen/size5"
+                android:background="#fff" />
+
+            <TextView
+                style="@style/TextSize13Colorfff"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="@dimen/size5"
+                android:gravity="center_vertical"
+                android:text="距结束" />
+
+            <TextView
+                style="@style/TextSize15Color666"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="@dimen/size10"
+                android:background="@drawable/shape_fff_radius_3"
+                android:gravity="center_vertical"
+                android:paddingBottom="@dimen/size2"
+                android:paddingLeft="@dimen/size3"
+                android:paddingRight="@dimen/size3"
+                android:paddingTop="@dimen/size2"
+                android:text="01" />
+
+            <TextView
+                style="@style/TextSize14Colorfff"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="@dimen/size2"
+                android:gravity="center_vertical"
+                android:text="时" />
+
+            <TextView
+                style="@style/TextSize14Color666"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="@dimen/size2"
+                android:background="@drawable/shape_fff_radius_3"
+                android:gravity="center_vertical"
+                android:paddingBottom="@dimen/size2"
+                android:paddingLeft="@dimen/size3"
+                android:paddingRight="@dimen/size3"
+                android:paddingTop="@dimen/size2"
+                android:text="32" />
+
+            <TextView
+                style="@style/TextSize14Colorfff"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="@dimen/size2"
+                android:gravity="center_vertical"
+                android:text="分" />
+
+            <TextView
+                style="@style/TextSize14Color666"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="@dimen/size2"
+                android:background="@drawable/shape_fff_radius_3"
+                android:gravity="center_vertical"
+                android:paddingBottom="@dimen/size2"
+                android:paddingLeft="@dimen/size3"
+                android:paddingRight="@dimen/size3"
+                android:paddingTop="@dimen/size2"
+                android:text="47" />
+
+            <TextView
+                style="@style/TextSize14Colorfff"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="@dimen/size2"
+                android:gravity="center_vertical"
+                android:text="秒" />
+
+            <TextView
+                style="@style/TextSize14Color666"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="@dimen/size2"
+                android:background="@drawable/shape_fff_radius_3"
+                android:gravity="center_vertical"
+                android:paddingBottom="@dimen/size2"
+                android:paddingLeft="@dimen/size3"
+                android:paddingRight="@dimen/size3"
+                android:paddingTop="@dimen/size2"
+                android:text="47" />
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/iv_img"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size160"
+            android:scaleType="fitXY" />
+
+        <TextView
+            android:id="@+id/tv_start_time"
+            style="@style/TextSize12Color333"
+            android:layout_marginLeft="@dimen/size13"
+            android:layout_marginTop="@dimen/size10"
+            android:text="12月12日上午10:00开抢" />
+
+        <TextView
+            android:id="@+id/tv_title"
+            style="@style/TextSize12Color666"
+            android:layout_marginLeft="@dimen/size13"
+            android:layout_marginTop="@dimen/size5"
+            android:text="丹姿水密码专场12小时疯抢" />
+    </LinearLayout>
+</FrameLayout>
