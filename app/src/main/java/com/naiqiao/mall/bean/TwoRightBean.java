@@ -1,4 +1,8 @@
 package com.naiqiao.mall.bean;
+
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,11 +34,43 @@ public class TwoRightBean extends ListBaseBean<ArrayList<TwoRightBean.Data>> {
 
         }
 
-        public static class Data3Bean {
+        public static class Data3Bean implements Parcelable {
             public String id;
             public String name;
             public String othername;
             public String cat_image;
+
+            protected Data3Bean(Parcel in) {
+                id = in.readString();
+                name = in.readString();
+                othername = in.readString();
+                cat_image = in.readString();
+            }
+
+            public static final Creator<Data3Bean> CREATOR = new Creator<Data3Bean>() {
+                @Override
+                public Data3Bean createFromParcel(Parcel in) {
+                    return new Data3Bean(in);
+                }
+
+                @Override
+                public Data3Bean[] newArray(int size) {
+                    return new Data3Bean[size];
+                }
+            };
+
+            @Override
+            public int describeContents() {
+                return 0;
+            }
+
+            @Override
+            public void writeToParcel(Parcel dest, int flags) {
+                dest.writeString(id);
+                dest.writeString(name);
+                dest.writeString(othername);
+                dest.writeString(cat_image);
+            }
         }
     }
 }

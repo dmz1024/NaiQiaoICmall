@@ -66,7 +66,7 @@ public class TwoRightFeiLAdapter extends BaseAdapter<TwoRightBean.Data.Data3Bean
 
         @Override
         protected void onClick(int layoutPosition) {
-            RxBus.get().post("addFragment",new AddFragmentBean(new FilterShopContentFragment()));
+            RxBus.get().post("addFragment", new AddFragmentBean(FilterShopContentFragment.getInstance(list.get(layoutPosition).id, 0,list.get(layoutPosition).name)));
         }
     }
 }

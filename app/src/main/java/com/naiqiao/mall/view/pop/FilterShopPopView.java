@@ -10,29 +10,43 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.naiqiao.mall.R;
+import com.naiqiao.mall.bean.FilterBean;
+import com.naiqiao.mall.bean.TwoRightBean;
+import com.naiqiao.mall.constant.ApiConstant;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
+import api.ApiRequest;
+import api.CallServer;
 import base.adapter.BaseAdapter;
 import base.adapter.BaseViewHolder;
 import base.other.PopBaseView;
+import interfaces.OnSingleRequestListener;
 import util.DrawableUtil;
+import util.MyToast;
 
 /**
  * Created by dengmingzhi on 2016/12/1.
  */
 
 public class FilterShopPopView extends PopBaseView {
-    private int currentPosition = -1;
-    private ArrayList<String> data = new ArrayList();
+    private ArrayList<FilterBean.Data> datas;
+    private int currentPosition;
+    private int type;
+    private String id;
 
     public FilterShopPopView(Context ctx) {
         super(ctx);
     }
 
-    public FilterShopPopView(Context ctx, int currentPosition) {
+    public FilterShopPopView(Context ctx, String id, int type, int currentPosition, ArrayList<FilterBean.Data> datas) {
         this(ctx);
         this.currentPosition = currentPosition;
+        this.datas = datas;
+        this.type = type;
+        this.id = id;
     }
 
 
@@ -41,9 +55,13 @@ public class FilterShopPopView extends PopBaseView {
         return 0;
     }
 
+    private RecyclerView rv_content;
+    private TextView tv_load;
+
     @Override
     protected View getView() {
         View view = View.inflate(ctx, R.layout.pop_filter_shop, null);
+        tv_load = (TextView) view.findViewById(R.id.tv_load);
         view.findViewById(R.id.tv_clear).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -54,21 +72,90 @@ public class FilterShopPopView extends PopBaseView {
         view.findViewById(R.id.tv_ok).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                dismiss();
                 ok(currentPosition);
             }
         });
 
-        RecyclerView rv_content = (RecyclerView) view.findViewById(R.id.rv_content);
-        for (int i = 0; i < 10; i++) {
-            data.add("洗发水" + i);
+        rv_content = (RecyclerView) view.findViewById(R.id.rv_content);
+        if (datas != null && datas.size() > 0) {
+            rv_content.setLayoutManager(new GridLayoutManager(ctx, 3));
+            rv_content.setAdapter(mAdapter = new FilterShopPopAdapter(ctx, datas));
+        } else {
+            getData();
         }
-        rv_content.setLayoutManager(new GridLayoutManager(ctx, 3));
-        rv_content.setAdapter(mAdapter = new FilterShopPopAdapter(ctx, data));
         return view;
     }
 
 
+    /**
+     * 获取分类列表
+     */
+    private void getData() {
+        tv_load.setText("加载中...");
+        tv_load.setVisibility(View.VISIBLE);
+        new ApiRequest<FilterBean>() {
+            @Override
+            protected Map<String, String> getMap() {
+                Map<String, String> map = new HashMap<>();
+                map.put("act", type == 0 ? "get_cat_brand" : "get_brand_cat");
+                map.put(type == 0 ? "cat_id" : "brand_id", id);
+                return map;
+            }
+
+            @Override
+            protected Context getContext() {
+                return ctx;
+            }
+
+            @Override
+            protected String getUrl() {
+                return ApiConstant.CATEGORY;
+            }
+
+            @Override
+            protected Class<FilterBean> getClx() {
+                return FilterBean.class;
+            }
+        }.setOnRequestListeren(new OnSingleRequestListener<FilterBean>() {
+
+            @Override
+            public void succes(boolean isWrite, FilterBean bean) {
+                if (bean.result == 0) {
+                    if (bean.data.size() > 0) {
+                        tv_load.setVisibility(View.GONE);
+                        rv_content.setLayoutManager(new GridLayoutManager(ctx, 3));
+                        rv_content.setAdapter(mAdapter = new FilterShopPopAdapter(ctx, datas));
+                    } else {
+                        tv_load.setVisibility(View.VISIBLE);
+                        tv_load.setText("暂无" + (type == 0 ? "品牌" : "分类") + "列表");
+                    }
+                    setData(bean.data);
+                } else {
+                    MyToast.showToast("获取" + (type == 0 ? "品牌" : "分类") + "列表失败!");
+                }
+
+            }
+
+            @Override
+            public void error(boolean isWrite, FilterBean bean, String msg) {
+                MyToast.showToast("获取" + (type == 0 ? "品牌" : "分类") + "列表失败!");
+            }
+        }).creatRequestPost();
+    }
+
+
+    @Override
+    public void dismiss() {
+        CallServer.getInstance().cancelBySign(FilterBean.class);
+        super.dismiss();
+    }
+
     protected void ok(int position) {
+
+    }
+
+    protected void setData(ArrayList<FilterBean.Data> datas) {
 
     }
 
@@ -80,14 +167,15 @@ public class FilterShopPopView extends PopBaseView {
     }
 
 
-    class FilterShopPopAdapter extends BaseAdapter<String> {
+    class FilterShopPopAdapter extends BaseAdapter<FilterBean.Data> {
 
-        public FilterShopPopAdapter(ArrayList<String> list) {
-            super(list);
+
+        public FilterShopPopAdapter(Context ctx, ArrayList<FilterBean.Data> list) {
+            super(ctx, list);
         }
 
-        public FilterShopPopAdapter(Context ctx, ArrayList<String> list) {
-            super(ctx, list);
+        public FilterShopPopAdapter(ArrayList<FilterBean.Data> list) {
+            super(list);
         }
 
         @Override
@@ -98,13 +186,12 @@ public class FilterShopPopView extends PopBaseView {
         @Override
         public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
             ViewHolder mHolder = (ViewHolder) holder;
-            mHolder.tv_content.setText(list.get(position));
+            mHolder.tv_content.setText(list.get(position).brand_name);
             if (position == currentPosition) {
                 mHolder.tv_content.setTextColor(Color.parseColor("#f54262"));
                 mHolder.iv_img.setVisibility(View.VISIBLE);
             } else {
                 mHolder.tv_content.setTextColor(Color.parseColor("#666666"));
-                mHolder.tv_content.setCompoundDrawables(null, null, null, null);
                 mHolder.iv_img.setVisibility(View.GONE);
             }
 

@@ -4,25 +4,37 @@
     android:layout_height="wrap_content"
     android:background="#fff">
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/rv_content"
 
+    <FrameLayout
+        android:id="@+id/fg_content"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-         />
+        android:layout_height="wrap_content">
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+        <TextView
+            android:id="@+id/tv_load"
+            android:text="加载中..."
+            android:padding="@dimen/size20"
+            android:visibility="gone"
+            android:layout_gravity="center"
+            style="@style/TextSize15Color333" />
+    </FrameLayout>
 
     <View
         android:layout_width="match_parent"
         android:layout_height="0.5dp"
         android:transformPivotY="-0.5dp"
-        android:layout_below="@id/rv_content"
+        android:layout_below="@id/fg_content"
         android:background="#dadada" />
 
     <LinearLayout
         android:id="@+id/ll_bottom"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/rv_content"
+        android:layout_below="@id/fg_content"
         android:layout_marginTop="@dimen/size1">
 
         <TextView

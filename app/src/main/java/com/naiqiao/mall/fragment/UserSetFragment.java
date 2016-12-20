@@ -75,7 +75,12 @@ public class UserSetFragment extends SingleNetWorkBaseFragment<UserSetBean> {
 
                 break;
             case R.id.trl_name:
-                new PopEdit(getContext(), false, trl_name.getContent()).showAtLocation(false);
+                new PopEdit(getContext(), false, trl_name.getContent()) {
+                    @Override
+                    protected void content(String content) {
+                        trl_name.setContent(content);
+                    }
+                }.showAtLocation(false);
                 break;
         }
     }

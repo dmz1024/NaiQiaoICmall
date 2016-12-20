@@ -39,13 +39,19 @@ public class FilterShopListAdapter extends BaseAdapter<FilterShopListBean.Data> 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         final ViewHolder mHolder = (ViewHolder) holder;
-        Glide.with(ctx).load(TestConstant.IMAGE).into(mHolder.iv_img);
+        FilterShopListBean.Data data = list.get(position);
+        Glide.with(ctx).load(data.goods_thumb).into(mHolder.iv_img);
+        mHolder.tv_title.setText(data.goods_name);
+        mHolder.tv_price.setText("￥" + data.shop_price);
+        mHolder.tv_old_price.setText("￥" + data.market_price);
+        mHolder.tv_count.setText("已卖出" + data.p + "件");
     }
 
 
     public class ViewHolder extends BaseViewHolder {
         public TextView tv_title;
         public TextView tv_guige;
+        public TextView tv_price;
         public TextView tv_yj;
         public TextView tv_count;
         public TextView tv_old_price;
@@ -55,12 +61,13 @@ public class FilterShopListAdapter extends BaseAdapter<FilterShopListBean.Data> 
             super(itemView);
             tv_title = (TextView) itemView.findViewById(R.id.tv_title);
             tv_guige = (TextView) itemView.findViewById(R.id.tv_guige);
+            tv_price = (TextView) itemView.findViewById(R.id.tv_price);
             tv_old_price = (TextView) itemView.findViewById(R.id.tv_old_price);
             tv_count = (TextView) itemView.findViewById(R.id.tv_count);
             tv_yj = (TextView) itemView.findViewById(R.id.tv_yj);
             iv_img = (ImageView) itemView.findViewById(R.id.iv_img);
             itemView.setOnClickListener(this);
-            tv_old_price.getPaint().setFlags(Paint. STRIKE_THRU_TEXT_FLAG); //中划线
+            tv_old_price.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG); //中划线
         }
 
         @Override
