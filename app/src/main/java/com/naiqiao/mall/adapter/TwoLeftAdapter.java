@@ -3,7 +3,6 @@ package com.naiqiao.mall.adapter;
 import android.content.Context;
 import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
-import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
@@ -11,7 +10,6 @@ import android.widget.TextView;
 
 import com.naiqiao.mall.R;
 import com.naiqiao.mall.bean.TwoLeftBean;
-import com.naiqiao.mall.bean.rxbus.ChangeTwoRightBean;
 
 import java.util.ArrayList;
 

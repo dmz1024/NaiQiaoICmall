@@ -1,6 +1,5 @@
 package com.naiqiao.mall.fragment.login;
 
-import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -9,27 +8,28 @@ import android.widget.TextView;
 
 import com.naiqiao.mall.R;
 import com.naiqiao.mall.bean.UserLoginInfo;
-import com.naiqiao.mall.bean.rxbus.AddFragmentBean;
 import com.naiqiao.mall.constant.UserInfo;
 import com.naiqiao.mall.controller.AccountController;
 import com.naiqiao.mall.interfaces.SingleTextWatcher;
 
-import java.util.ArrayList;
 import java.util.List;
 
+import base.bean.rxbus.AddFragmentBean;
 import base.fragment.NotNetWorkBaseFragment;
 import butterknife.BindView;
 import butterknife.BindViews;
 import butterknife.OnClick;
 import interfaces.OnSingleRequestListener;
+import interfaces.OnTitleBarListener;
 import util.RxBus;
+import util.SharedPreferenUtil;
 import view.DefaultTitleBarView;
 
 /**
  * Created by dengmingzhi on 2016/11/29.
  */
 
-public class LoginFragment extends NotNetWorkBaseFragment {
+public class LoginFragment extends NotNetWorkBaseFragment implements OnTitleBarListener {
     @BindViews({R.id.et_name, R.id.et_password})
     List<EditText> ets;
     @BindViews({R.id.tv_reg, R.id.tv_forget})
@@ -91,7 +91,7 @@ public class LoginFragment extends NotNetWorkBaseFragment {
     @Override
     protected void initTitleView() {
         DefaultTitleBarView titleBarView = (DefaultTitleBarView) getTitleBar();
-        titleBarView.setTitleContent("登录");
+        titleBarView.setTitleContent("登录").setOnTitleBarListener(this);
     }
 
     @OnClick({R.id.tv_reg, R.id.tv_forget})
@@ -114,6 +114,7 @@ public class LoginFragment extends NotNetWorkBaseFragment {
                 Log.d("登录", bean.data.user_id);
                 UserInfo.uid = bean.data.user_id;
                 UserInfo.token = bean.data.sign_token;
+                new SharedPreferenUtil(getContext(), "userLogin").setData(new String[]{"uid", UserInfo.uid, "token", UserInfo.token});
             }
 
             @Override
@@ -121,5 +122,20 @@ public class LoginFragment extends NotNetWorkBaseFragment {
 
             }
         }).login(ets.get(0).getText().toString(), ets.get(1).getText().toString());
+    }
+
+    @Override
+    public void left() {
+        RxBus.get().post("back","back");
+    }
+
+    @Override
+    public void right() {
+
+    }
+
+    @Override
+    public void center() {
+
     }
 }

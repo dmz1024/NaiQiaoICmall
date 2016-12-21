@@ -7,7 +7,16 @@ import base.bean.BaseBean;
  */
 
 public class UserSetBean extends BaseBean<UserSetBean.Data> {
-    public static class Data{
-
+    public static class Data {
+        public String addr;
+        public String avatar;
+        public String email;
+        public String mobile_phone;
+        public String user_name;
+        public String user_rank;
+        public int type;
+        public String company;
+        public String name;
+        public String company_tel;
     }
 }

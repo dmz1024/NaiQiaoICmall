@@ -5,7 +5,7 @@ import android.view.View;
 import android.widget.Button;
 
 import com.naiqiao.mall.R;
-import com.naiqiao.mall.bean.rxbus.AddFragmentBean;
+import base.bean.rxbus.AddFragmentBean;
 import com.naiqiao.mall.fragment.jiameng.JiaMengGsJBQKFragment;
 import com.naiqiao.mall.fragment.jiameng.JiaMengJiBenQKFragment;
 

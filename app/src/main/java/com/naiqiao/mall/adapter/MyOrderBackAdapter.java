@@ -10,15 +10,13 @@ import android.widget.TextView;
 
 import com.naiqiao.mall.R;
 import com.naiqiao.mall.bean.MyOrderBackBean;
-import com.naiqiao.mall.bean.MyOrderBean;
-import com.naiqiao.mall.bean.rxbus.AddFragmentBean;
 import com.naiqiao.mall.fragment.OrderDescFragment;
-import com.naiqiao.mall.view.pop.ChooseShouhouCountPopView;
 
 import java.util.ArrayList;
 
 import base.adapter.BaseAdapter;
 import base.adapter.BaseViewHolder;
+import base.bean.rxbus.AddFragmentBean;
 import util.RxBus;
 
 

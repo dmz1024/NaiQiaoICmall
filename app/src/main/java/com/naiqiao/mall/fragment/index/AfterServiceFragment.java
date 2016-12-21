@@ -6,14 +6,12 @@ import android.view.View;
 import android.widget.RelativeLayout;
 
 import com.naiqiao.mall.R;
-import com.naiqiao.mall.bean.rxbus.AddFragmentBean;
-import com.naiqiao.mall.fragment.ChangeShopRootFragment;
 import com.naiqiao.mall.fragment.MyBackShopFragment;
 import com.naiqiao.mall.fragment.MyOrderBackContentFragment;
-import com.naiqiao.mall.fragment.TuiFragment;
 
 import java.util.List;
 
+import base.bean.rxbus.AddFragmentBean;
 import base.fragment.NotNetWorkBaseFragment;
 import butterknife.BindViews;
 import butterknife.OnClick;

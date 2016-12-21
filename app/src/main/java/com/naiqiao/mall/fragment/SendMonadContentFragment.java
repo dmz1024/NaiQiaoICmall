@@ -9,8 +9,7 @@ import android.widget.TextView;
 import com.naiqiao.mall.R;
 import com.naiqiao.mall.adapter.SendMonadAdapter;
 import com.naiqiao.mall.bean.SendCarBean;
-import com.naiqiao.mall.bean.SendMonadBean;
-import com.naiqiao.mall.bean.rxbus.AddFragmentBean;
+import base.bean.rxbus.AddFragmentBean;
 
 import java.util.ArrayList;
 

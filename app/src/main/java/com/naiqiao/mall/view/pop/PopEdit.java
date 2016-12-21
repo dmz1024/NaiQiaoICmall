@@ -77,7 +77,6 @@ public class PopEdit extends PopBaseView {
         return view;
     }
 
-
     protected void content(String content) {
 
     }

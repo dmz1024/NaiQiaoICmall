@@ -4,6 +4,7 @@ import android.content.Context;
 
 import com.naiqiao.mall.bean.UserLoginInfo;
 import com.naiqiao.mall.constant.ApiConstant;
+import com.naiqiao.mall.constant.UserInfo;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -58,6 +59,40 @@ public class AccountController {
             }
         }.setOnRequestListeren(onRequestListeren).creatRequestGet(new TipLoadingBean("正在登录...", "登录成功", ""));
     }
+
+
+    /**
+     * 修改用户信息
+     *
+     * @param map
+     */
+    public void updateUserInfo(final Map<String, String> map) {
+        new ApiRequest<SingleBaseBean>() {
+            @Override
+            protected Map<String, String> getMap() {
+                map.put("act", "index");
+                map.put("user_id", UserInfo.uid);
+                map.put("sign_token", UserInfo.token);
+                return map;
+            }
+
+            @Override
+            protected Context getContext() {
+                return ctx;
+            }
+
+            @Override
+            protected String getUrl() {
+                return ApiConstant.PROFILE;
+            }
+
+            @Override
+            protected Class<SingleBaseBean> getClx() {
+                return SingleBaseBean.class;
+            }
+        }.setOnRequestListeren(onRequestListeren).creatRequestPost(new TipLoadingBean("提交中...", "提交成功", ""));
+    }
+
 
     /**
      * 注册

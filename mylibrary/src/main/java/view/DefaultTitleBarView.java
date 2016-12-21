@@ -59,7 +59,7 @@ public class DefaultTitleBarView extends FrameLayout implements View.OnClickList
 
     @Override
     public void onClick(View v) {
-        if (title_bar_iv_left == v) {
+        if (title_bar_fg_left == v) {
             onTitleBarListener.left();
         } else if (title_bar_tv_right == v) {
             onTitleBarListener.right();

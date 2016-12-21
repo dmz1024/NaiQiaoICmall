@@ -7,7 +7,7 @@ import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 import com.naiqiao.mall.R;
-import com.naiqiao.mall.bean.rxbus.AddFragmentBean;
+import base.bean.rxbus.AddFragmentBean;
 import com.naiqiao.mall.fragment.JiFenWriteOrderFragment;
 
 import api.TestConstant;

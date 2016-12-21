@@ -1,16 +1,13 @@
 package com.naiqiao.mall.fragment.index;
 
-import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 
 import com.naiqiao.mall.R;
-import com.naiqiao.mall.bean.rxbus.AddFragmentBean;
 import com.naiqiao.mall.fragment.SendCarFragment;
 import com.naiqiao.mall.fragment.SendMonadContentFragment;
 
+import base.bean.rxbus.AddFragmentBean;
 import base.fragment.NotNetWorkBaseFragment;
-import butterknife.BindView;
 import butterknife.OnClick;
 import util.RxBus;
 import view.DefaultTitleBarView;

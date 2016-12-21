@@ -1,30 +1,22 @@
 package com.naiqiao.mall.adapter;
 
 import android.content.Context;
-import android.graphics.Color;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.naiqiao.mall.R;
-import com.naiqiao.mall.bean.TwoLeftBean;
 import com.naiqiao.mall.bean.TwoRightBean;
-import com.naiqiao.mall.bean.rxbus.ChangeTwoRightBean;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import base.adapter.BaseAdapter;
 import base.adapter.BaseViewHolder;
 import base.other.ItemDecoration;
-import util.RxBus;
 import view.TitleRelativeLayout;
 
 /**

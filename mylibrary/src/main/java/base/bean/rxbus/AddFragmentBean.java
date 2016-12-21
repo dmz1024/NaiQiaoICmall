@@ -1,4 +1,4 @@
-package com.naiqiao.mall.bean.rxbus;
+package base.bean.rxbus;
 
 import android.support.v4.app.Fragment;
 
@@ -14,6 +14,7 @@ public class AddFragmentBean {
     private int outAnimation;
     private boolean addBack;
     private boolean isHaveAnima;
+
     public boolean isAddBack() {
         return addBack;
     }
@@ -83,7 +84,7 @@ public class AddFragmentBean {
     }
 
     public int getInAnimation() {
-        return inAnimation==0? com.mall.naiqiao.mylibrary.R.anim.in_from_right:inAnimation;
+        return inAnimation == 0 ? com.mall.naiqiao.mylibrary.R.anim.in_from_right : inAnimation;
     }
 
     public void setInAnimation(int inAnimation) {
@@ -91,7 +92,7 @@ public class AddFragmentBean {
     }
 
     public int getOutAnimation() {
-        return outAnimation==0? com.mall.naiqiao.mylibrary.R.anim.out_from_right:outAnimation;
+        return outAnimation == 0 ? com.mall.naiqiao.mylibrary.R.anim.out_from_right : outAnimation;
     }
 
     public void setOutAnimation(int outAnimation) {

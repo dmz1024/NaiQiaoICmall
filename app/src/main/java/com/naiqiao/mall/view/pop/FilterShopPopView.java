@@ -11,7 +11,6 @@ import android.widget.TextView;
 
 import com.naiqiao.mall.R;
 import com.naiqiao.mall.bean.FilterBean;
-import com.naiqiao.mall.bean.TwoRightBean;
 import com.naiqiao.mall.constant.ApiConstant;
 
 import java.util.ArrayList;
@@ -24,7 +23,6 @@ import base.adapter.BaseAdapter;
 import base.adapter.BaseViewHolder;
 import base.other.PopBaseView;
 import interfaces.OnSingleRequestListener;
-import util.DrawableUtil;
 import util.MyToast;
 
 /**
@@ -129,6 +127,7 @@ public class FilterShopPopView extends PopBaseView {
                     } else {
                         tv_load.setVisibility(View.VISIBLE);
                         tv_load.setText("暂无" + (type == 0 ? "品牌" : "分类") + "列表");
+
                     }
                     setData(bean.data);
                 } else {
@@ -173,11 +172,7 @@ public class FilterShopPopView extends PopBaseView {
         public FilterShopPopAdapter(Context ctx, ArrayList<FilterBean.Data> list) {
             super(ctx, list);
         }
-
-        public FilterShopPopAdapter(ArrayList<FilterBean.Data> list) {
-            super(list);
-        }
-
+        
         @Override
         public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
             return new ViewHolder(View.inflate(ctx, R.layout.pop_filter_shop_item, null));

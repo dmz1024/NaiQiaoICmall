@@ -1,18 +1,11 @@
 package com.naiqiao.mall;
 
 import android.os.Bundle;
-import android.util.Log;
+import android.support.v4.app.FragmentActivity;
 
 import com.naiqiao.mall.fragment.AffirmOrderFragment;
-import com.naiqiao.mall.fragment.ChangeShopContentFragment;
-import com.naiqiao.mall.fragment.ChangeShopDescContentFragment;
-import com.naiqiao.mall.fragment.ChangeShopDescFragment;
-import com.naiqiao.mall.fragment.ChangeShopRootFragment;
 
-import base.activity.BaseActivity;
-
-
-public class SecondActivity extends BaseActivity {
+public class SecondActivity extends FragmentActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,6 +13,5 @@ public class SecondActivity extends BaseActivity {
         setContentView(R.layout.activity_test);
         getSupportFragmentManager().beginTransaction().add(R.id.fg_content, new AffirmOrderFragment()).commit();
     }
-
 
 }

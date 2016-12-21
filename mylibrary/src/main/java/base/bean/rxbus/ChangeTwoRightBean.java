@@ -1,6 +1,4 @@
-package com.naiqiao.mall.bean.rxbus;
-
-import android.text.TextUtils;
+package base.bean.rxbus;
 
 /**
  * Created by dengmingzhi on 2016/11/25.

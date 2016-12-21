@@ -3,7 +3,6 @@ package com.naiqiao.mall.fragment.index;
 import android.view.View;
 
 import com.naiqiao.mall.R;
-import com.naiqiao.mall.bean.rxbus.ChangeTwoRightBean;
 import com.naiqiao.mall.fragment.TwoLeftFragment;
 import com.naiqiao.mall.fragment.TwoRightFragment;
 import com.naiqiao.mall.view.OneAndTwoTitleBarView;

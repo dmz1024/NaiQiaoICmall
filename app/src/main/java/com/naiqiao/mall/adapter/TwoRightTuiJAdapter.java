@@ -2,25 +2,21 @@ package com.naiqiao.mall.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
-import android.text.Html;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.naiqiao.mall.R;
-import com.naiqiao.mall.bean.SendCarBean;
 import com.naiqiao.mall.bean.TwoRightBean;
-import com.naiqiao.mall.bean.rxbus.AddFragmentBean;
 import com.naiqiao.mall.fragment.FilterShopContentFragment;
 
 import java.util.ArrayList;
 
-import api.TestConstant;
 import base.adapter.BaseAdapter;
 import base.adapter.BaseViewHolder;
+import base.bean.rxbus.AddFragmentBean;
 import util.RxBus;
 import util.Util;
 

@@ -8,15 +8,14 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.naiqiao.mall.R;
-import com.naiqiao.mall.bean.AddressBean;
 import com.naiqiao.mall.bean.MyBackShopBean;
-import com.naiqiao.mall.bean.rxbus.AddFragmentBean;
 import com.naiqiao.mall.fragment.ChangeShopDescContentFragment;
 
 import java.util.ArrayList;
 
 import base.adapter.BaseAdapter;
 import base.adapter.BaseViewHolder;
+import base.bean.rxbus.AddFragmentBean;
 import butterknife.BindView;
 import util.RxBus;
 

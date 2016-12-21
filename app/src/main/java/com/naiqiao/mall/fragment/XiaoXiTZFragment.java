@@ -5,12 +5,10 @@ import android.widget.RelativeLayout;
 
 import com.naiqiao.mall.R;
 import com.naiqiao.mall.bean.XiaoXiTZBean;
-import com.naiqiao.mall.bean.rxbus.AddFragmentBean;
+import base.bean.rxbus.AddFragmentBean;
 
 import java.util.List;
 import java.util.Map;
-
-import base.fragment.NetworkBaseFragment;
 import base.fragment.SingleNetWorkBaseFragment;
 import butterknife.BindViews;
 import butterknife.ButterKnife;

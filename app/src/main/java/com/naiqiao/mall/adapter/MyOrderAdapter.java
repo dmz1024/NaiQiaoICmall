@@ -10,8 +10,7 @@ import android.widget.TextView;
 
 import com.naiqiao.mall.R;
 import com.naiqiao.mall.bean.MyOrderBean;
-import com.naiqiao.mall.bean.YuCunHuoBean;
-import com.naiqiao.mall.bean.rxbus.AddFragmentBean;
+import base.bean.rxbus.AddFragmentBean;
 import com.naiqiao.mall.fragment.OrderDescFragment;
 import com.naiqiao.mall.view.pop.ChooseShouhouCountPopView;
 

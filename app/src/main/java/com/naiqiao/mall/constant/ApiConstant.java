@@ -9,5 +9,5 @@ public interface ApiConstant {
     String JSON_OBJECT = BASE_URL + "jsonObject";
     String USER = BASE_URL + "user.php";
     String CATEGORY = BASE_URL + "category.php";
-
+    String PROFILE = BASE_URL + "profile.php";
 }

@@ -5,10 +5,10 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.naiqiao.mall.R;
-import com.naiqiao.mall.bean.rxbus.AddFragmentBean;
 
 import java.util.List;
 
+import base.bean.rxbus.AddFragmentBean;
 import base.fragment.NotNetWorkBaseFragment;
 import butterknife.BindView;
 import butterknife.BindViews;

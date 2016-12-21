@@ -233,7 +233,7 @@ public abstract class NetworkBaseFragment<D extends BaseBean> extends RefreshBas
      * @return
      */
     protected boolean writeCache() {
-        return true;
+        return false;
     }
 
     /**
@@ -242,7 +242,7 @@ public abstract class NetworkBaseFragment<D extends BaseBean> extends RefreshBas
      * @return
      */
     protected boolean shouldCache() {
-        return true;
+        return false;
     }
 
 

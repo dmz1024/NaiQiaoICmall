@@ -1,22 +1,18 @@
 package com.naiqiao.mall.fragment.login;
 
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 
 import com.naiqiao.mall.R;
-import com.naiqiao.mall.bean.rxbus.AddFragmentBean;
 import com.naiqiao.mall.controller.AccountController;
 import com.naiqiao.mall.controller.VerificationCodeController;
 import com.naiqiao.mall.interfaces.SingleTextWatcher;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import base.bean.SingleBaseBean;
+import base.bean.rxbus.AddFragmentBean;
 import base.fragment.NotNetWorkBaseFragment;
-import butterknife.BindView;
 import butterknife.BindViews;
 import butterknife.OnClick;
 import interfaces.OnSingleRequestListener;

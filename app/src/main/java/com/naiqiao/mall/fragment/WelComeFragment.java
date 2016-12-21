@@ -1,20 +1,15 @@
 package com.naiqiao.mall.fragment;
 
-import android.os.Handler;
-import android.os.Message;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.naiqiao.mall.R;
 import com.naiqiao.mall.bean.User;
-import com.naiqiao.mall.bean.rxbus.AddFragmentBean;
+import base.bean.rxbus.AddFragmentBean;
 import com.naiqiao.mall.fragment.index.IndexFragment;
 
 import java.util.Map;
-
-import base.fragment.NetworkBaseFragment;
 import base.fragment.SingleNetWorkBaseFragment;
 import butterknife.BindView;
 import butterknife.ButterKnife;

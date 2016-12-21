@@ -4,7 +4,7 @@ import android.support.v4.app.Fragment;
 import android.view.View;
 
 import com.naiqiao.mall.R;
-import com.naiqiao.mall.bean.rxbus.AddFragmentBean;
+import base.bean.rxbus.AddFragmentBean;
 import com.naiqiao.mall.fragment.base.TabIndicatorBaseFragment;
 import com.naiqiao.mall.view.RightImageTitleBarView;
 

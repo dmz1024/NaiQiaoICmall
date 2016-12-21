@@ -3,15 +3,13 @@ package com.naiqiao.mall.fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
-import com.naiqiao.mall.adapter.AddressAdapter;
 import com.naiqiao.mall.adapter.MyBackShopAdapter;
-import com.naiqiao.mall.bean.AddressBean;
 import com.naiqiao.mall.bean.MyBackShopBean;
-import com.naiqiao.mall.bean.rxbus.AddFragmentBean;
 
 import java.util.ArrayList;
 import java.util.Map;
 
+import base.bean.rxbus.AddFragmentBean;
 import base.fragment.ListNetWorkBaseFragment;
 import base.other.ItemDecoration;
 import interfaces.OnTitleBarListener;

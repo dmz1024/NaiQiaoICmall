@@ -27,7 +27,7 @@
                 android:paddingRight="@dimen/size12"
                 android:text="头像" />
 
-            <com.recker.flyshapeimageview.ShapeImageView
+            <ImageView
                 android:id="@+id/iv_head"
                 android:layout_marginBottom="@dimen/size10"
                 android:layout_width="@dimen/size50"
@@ -36,8 +36,7 @@
                 android:layout_marginRight="@dimen/size25"
                 android:layout_marginTop="@dimen/size10"
                 android:scaleType="fitXY"
-                android:src="@mipmap/success"
-                app:shape_mode="circle" />
+                 />
             />
         </RelativeLayout>
 
@@ -52,6 +51,7 @@
             app:TitleRelativeLayout_view_visi="false" />
 
         <view.TitleRelativeLayout
+            android:id="@+id/trl_address"
             android:layout_width="match_parent"
             android:layout_height="@dimen/size42"
             app:TitleRelativeLayout_content="北京"
@@ -62,6 +62,7 @@
             app:TitleRelativeLayout_view_visi="false" />
 
         <TextView
+            android:id="@+id/tv_level"
             style="@style/TextSize13Color333"
             android:paddingLeft="@dimen/size12"
             android:layout_width="match_parent"
@@ -70,6 +71,7 @@
             android:text="会员等级" />
 
         <view.TitleRelativeLayout
+            android:id="@+id/trl_tel"
             android:layout_width="match_parent"
             android:layout_height="@dimen/size42"
             app:TitleRelativeLayout_content="183****7257"
@@ -79,6 +81,7 @@
             app:TitleRelativeLayout_view_visi="false" />
 
         <view.TitleRelativeLayout
+            android:id="@+id/trl_email"
             android:layout_width="match_parent"
             android:layout_height="@dimen/size42"
             app:TitleRelativeLayout_content="894350911@qq.com"
@@ -88,6 +91,7 @@
             app:TitleRelativeLayout_view_visi="false" />
 
         <view.TitleRelativeLayout
+            android:id="@+id/trl_true_name"
             android:layout_width="match_parent"
             android:layout_height="@dimen/size42"
             app:TitleRelativeLayout_content="邓如果"
@@ -110,16 +114,18 @@
         android:showDividers="middle">
 
         <view.TitleRelativeLayout
+            android:id="@+id/trl_gs_name"
             android:layout_width="match_parent"
             android:layout_height="@dimen/size42"
-            app:TitleRelativeLayout_content="公司名"
+            app:TitleRelativeLayout_content="东方盈"
             app:TitleRelativeLayout_content_image_visi="false"
             app:TitleRelativeLayout_content_style="@style/TextSize13Color666"
-            app:TitleRelativeLayout_title="东方盈"
+            app:TitleRelativeLayout_title="公司名"
             app:TitleRelativeLayout_title_style="@style/TextSize13Color333"
             app:TitleRelativeLayout_view_visi="false" />
 
         <view.TitleRelativeLayout
+            android:id="@+id/trl_gs_linkman"
             android:layout_width="match_parent"
             android:layout_height="@dimen/size42"
             app:TitleRelativeLayout_content="邓如果"
@@ -129,6 +135,7 @@
             app:TitleRelativeLayout_view_visi="false" />
 
         <view.TitleRelativeLayout
+            android:id="@+id/trl_gs_tel"
             android:layout_width="match_parent"
             android:layout_height="@dimen/size42"
             app:TitleRelativeLayout_content="183****7257"

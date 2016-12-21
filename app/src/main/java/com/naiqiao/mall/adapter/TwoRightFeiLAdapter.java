@@ -11,13 +11,13 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.naiqiao.mall.R;
 import com.naiqiao.mall.bean.TwoRightBean;
-import com.naiqiao.mall.bean.rxbus.AddFragmentBean;
 import com.naiqiao.mall.fragment.FilterShopContentFragment;
 
 import java.util.ArrayList;
 
 import base.adapter.BaseAdapter;
 import base.adapter.BaseViewHolder;
+import base.bean.rxbus.AddFragmentBean;
 import util.RxBus;
 import util.Util;
 

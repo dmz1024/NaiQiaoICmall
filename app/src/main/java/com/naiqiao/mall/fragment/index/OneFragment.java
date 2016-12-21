@@ -4,17 +4,14 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.naiqiao.mall.adapter.IndexOneAdapter;
-import com.naiqiao.mall.adapter.SendCarAdapter;
 import com.naiqiao.mall.bean.IndexOneBean;
-import com.naiqiao.mall.bean.SendCarBean;
-import com.naiqiao.mall.bean.User;
-import com.naiqiao.mall.bean.rxbus.AddFragmentBean;
 import com.naiqiao.mall.fragment.IndexSearchFragment;
 import com.naiqiao.mall.view.OneAndTwoTitleBarView;
 
 import java.util.ArrayList;
 import java.util.Map;
 
+import base.bean.rxbus.AddFragmentBean;
 import base.fragment.ListNetWorkBaseFragment;
 import interfaces.OnTitleBarListener;
 import util.RxBus;

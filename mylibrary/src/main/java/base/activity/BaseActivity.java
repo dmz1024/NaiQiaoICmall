@@ -1,38 +1,51 @@
 package base.activity;
 
 import android.content.Context;
+import android.graphics.Color;
+import android.os.Bundle;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+
+import com.mall.naiqiao.mylibrary.R;
+
+import base.bean.rxbus.AddFragmentBean;
+import rx.Observable;
+import rx.functions.Action1;
+import util.ContextUtil;
+import util.RxBus;
+import util.WindowUtil;
 
 /**
  * Created by dengmingzhi on 2016/11/22.
  */
 
-public class BaseActivity extends AppCompatActivity {
-    protected void setShowBar(View view) {
-        RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) view.getLayoutParams();
-        params.height = getStatusBarHeight();
-        view.setLayoutParams(params);
+public abstract class BaseActivity extends AppCompatActivity {
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);//防止编辑框被键盘遮住
+        ContextUtil.setContext(this);
+        ContextUtil.setActivity(this);
+        setContentView(R.layout.activity_main);
+        if (WindowUtil.setBarTrans()) {
+            setShowBar(barView = findViewById(R.id.fg_bar));
+            initChangeBarColor();
+        }
+        initBackRxBus();
+        initFragmentRxBus();
+        initData();
     }
 
-    /**
-     * 获取状态栏高度
-     *
-     * @return
-     */
-    public int getStatusBarHeight() {
-        int result = 0;
-        int resourceId = getResources().getIdentifier("status_bar_height", "dimen", "android");
-        if (resourceId > 0) {
-            result = getResources().getDimensionPixelSize(resourceId);
-        }
-        return result;
-    }
+    protected abstract void initData();
+
 
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {
@@ -55,9 +68,9 @@ public class BaseActivity extends AppCompatActivity {
     }
 
 
-    public  boolean isShouldHideInput(View v, MotionEvent event) {
+    public boolean isShouldHideInput(View v, MotionEvent event) {
         if (v != null && (v instanceof EditText)) {
-            int[] leftTop = { 0, 0 };
+            int[] leftTop = {0, 0};
             //获取输入框当前的location位置
             v.getLocationInWindow(leftTop);
             int left = leftTop[0];
@@ -76,57 +89,69 @@ public class BaseActivity extends AppCompatActivity {
     }
 
 
-    /**
-     * rxjava
-     * Observable (可观察者，即被观察者)、 Observer (观察者)、 subscribe (订阅)、事件。
-     * Observable 和 Observer 通过 subscribe() 方法实现订阅关系，从而 Observable 可以在需要的时候发出事件来通知 Observer。
-     */
-//    private void initRxjava() {
+    private Observable<AddFragmentBean> addFragmentRxBus;
+    private Observable<String> changeBarColorRxBus;
+    private Observable<String> backRxBus;
+    private View barView;
 
-//        subscriber = new Subscriber<String>() {
-//            @Override
-//            public void onStart() {
-//                super.onStart();
-//            }
-//
-//
-//            @Override
-//            public void onCompleted() {
-//                Log.d(LOG_TAG, "执行结束");
-//            }
-//
-//            @Override
-//            public void onError(Throwable e) {
-//                Log.d(LOG_TAG, e.toString());
-//            }
-//
-//            @Override
-//            public void onNext(String s) {
-//                Log.d(LOG_TAG, s);
-//            }
-//        };
-//
-//        observable = Observable.create(new Observable.OnSubscribe<String>() {
-//
-//            @Override
-//            public void call(Subscriber<? super String> subscriber) {
-//                subscriber.onNext("你好1");
-//                subscriber.onNext("你好2");
-//                subscriber.onNext("你好3");
-//                subscriber.onCompleted();
-//            }
-//        }).map(new Func1<String, String>() {
-//            @Override
-//            public String call(String s) {
-//                return s + s;
-//            }
-//        });
-//        .subscribeOn(Schedulers.io())// 指定 subscribe() 发生在 IO 线程
-//        .observeOn(AndroidSchedulers.mainThread());//指定 Subscriber 的回调发生在主线程
-//        String[] words = {"你好1", "你好2", "你好3"};
-//        observable = Observable.from(words);//只会在绑定的时候注册一次
-//        observable = Observable.just("你好1", "你好2", "你好3");//只会在绑定的时候注册一次
+    protected void setShowBar(View view) {
+        RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) view.getLayoutParams();
+        params.height = WindowUtil.getStatusBarHeight();
+        view.setLayoutParams(params);
+    }
 
 
-//    }
+    private void initChangeBarColor() {
+        changeBarColorRxBus = RxBus.get().register("changeBarColor", String.class);
+        changeBarColorRxBus.subscribe(new Action1<String>() {
+            @Override
+            public void call(String color) {
+                barView.setBackgroundColor(Color.parseColor(color));
+            }
+        });
+    }
+
+
+    private void initFragmentRxBus() {
+        addFragmentRxBus = RxBus.get().register("addFragment", AddFragmentBean.class);
+        addFragmentRxBus.subscribe(new Action1<AddFragmentBean>() {
+            @Override
+            public void call(AddFragmentBean bean) {
+                replace(bean);
+            }
+        });
+    }
+
+    private void initBackRxBus() {
+        backRxBus = RxBus.get().register("back", String.class);
+        backRxBus.subscribe(new Action1<String>() {
+            @Override
+            public void call(String bean) {
+                getSupportFragmentManager().popBackStack();
+            }
+        });
+    }
+
+    private void replace(AddFragmentBean bean) {
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        if (!bean.isHaveAnima()) {
+            fragmentTransaction.setCustomAnimations(bean.getInAnimation(), bean.getOutAnimation(), bean.getInAnimation(), bean.getOutAnimation());
+        }
+        if (!bean.isAddBack()) {
+            fragmentTransaction.addToBackStack(bean.getBackName());
+        }
+        fragmentTransaction.add(R.id.fg_base, bean.getFragment(), bean.getBackName()).commit();
+
+        Log.d("个数", getSupportFragmentManager().getBackStackEntryCount() + "");
+    }
+
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        RxBus.get().unregister("addFragment", addFragmentRxBus);
+        RxBus.get().unregister("changeBarColor", changeBarColorRxBus);
+        RxBus.get().unregister("back", backRxBus);
+    }
+
 }

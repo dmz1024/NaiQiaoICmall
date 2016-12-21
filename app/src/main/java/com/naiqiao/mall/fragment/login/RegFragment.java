@@ -1,8 +1,7 @@
 package com.naiqiao.mall.fragment.login;
 
-import android.text.Editable;
+
 import android.text.TextUtils;
-import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -10,12 +9,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.naiqiao.mall.R;
-import com.naiqiao.mall.bean.rxbus.AddFragmentBean;
+import base.bean.rxbus.AddFragmentBean;
 import com.naiqiao.mall.controller.AccountController;
 import com.naiqiao.mall.controller.VerificationCodeController;
 import com.naiqiao.mall.interfaces.SingleTextWatcher;
 
-import java.util.ArrayList;
+
 import java.util.List;
 
 import base.bean.SingleBaseBean;
@@ -25,7 +24,6 @@ import butterknife.BindViews;
 import butterknife.OnClick;
 import interfaces.OnSingleRequestListener;
 import util.RxBus;
-import util.SharedPreferenUtil;
 import view.DefaultTitleBarView;
 
 /**
