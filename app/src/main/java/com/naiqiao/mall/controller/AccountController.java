@@ -13,7 +13,6 @@ import api.ApiRequest;
 import base.bean.SingleBaseBean;
 import base.bean.TipLoadingBean;
 import interfaces.OnRequestListener;
-import interfaces.OnSingleRequestListener;
 
 /**
  * Created by dengmingzhi on 2016/11/29.
@@ -57,7 +56,7 @@ public class AccountController {
             protected Class<UserLoginInfo> getClx() {
                 return UserLoginInfo.class;
             }
-        }.setOnRequestListeren(onRequestListeren).creatRequestGet(new TipLoadingBean("正在登录...", "登录成功", ""));
+        }.setOnRequestListeren(onRequestListeren).get(new TipLoadingBean("正在登录...", "登录成功", ""));
     }
 
 
@@ -90,7 +89,7 @@ public class AccountController {
             protected Class<SingleBaseBean> getClx() {
                 return SingleBaseBean.class;
             }
-        }.setOnRequestListeren(onRequestListeren).creatRequestPost(new TipLoadingBean("提交中...", "提交成功", ""));
+        }.setOnRequestListeren(onRequestListeren).post(new TipLoadingBean("提交中...", "提交成功", ""));
     }
 
 
@@ -128,7 +127,7 @@ public class AccountController {
             protected Class<SingleBaseBean> getClx() {
                 return SingleBaseBean.class;
             }
-        }.setOnRequestListeren(onRequestListeren).creatRequestGet(new TipLoadingBean("正在注册...", "注册成功", ""));
+        }.setOnRequestListeren(onRequestListeren).get(new TipLoadingBean("正在注册...", "注册成功", ""));
     }
 
     private OnRequestListener onRequestListeren;
@@ -166,7 +165,7 @@ public class AccountController {
             protected Class<SingleBaseBean> getClx() {
                 return SingleBaseBean.class;
             }
-        }.setOnRequestListeren(onRequestListeren).creatRequestGet(new TipLoadingBean("正在获取验证码...", "验证码已发送", ""));
+        }.setOnRequestListeren(onRequestListeren).get(new TipLoadingBean("正在获取验证码...", "验证码已发送", ""));
     }
 
 }

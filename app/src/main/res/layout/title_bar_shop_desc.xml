@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="#fff"
+    android:id="@+id/title_bar_rl_top"
+    android:layout_width="match_parent"
+    android:layout_height="45dp">
+
+    <FrameLayout
+        android:id="@+id/title_bar_fg_left"
+        android:layout_width="45dp"
+        android:layout_centerVertical="true"
+        android:layout_height="45dp">
+        <ImageView
+            android:id="@+id/title_bar_iv_left"
+            android:layout_width="@dimen/size12"
+            android:layout_height="@dimen/size20"
+            android:layout_gravity="center"
+            android:scaleType="fitXY"
+            android:src="@mipmap/icon_left" />
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/title_bar_tv_right"
+        style="@style/TextSize11Color999"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="@dimen/size10"
+        android:drawablePadding="@dimen/size2"
+        android:drawableTop="@mipmap/icon_jinhuo"
+        android:gravity="center"
+        android:text="进货单"
+        android:textColor="#f73f5f" />
+</RelativeLayout>

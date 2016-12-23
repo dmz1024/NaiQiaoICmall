@@ -1,6 +1,7 @@
 package api;
 
 import android.content.Context;
+import android.os.Handler;
 import android.text.TextUtils;
 import android.util.Log;
 
@@ -25,7 +26,7 @@ import view.pop.TipLoading;
  */
 
 public abstract class ApiRequest<T extends BaseBean> {
-
+    private static Handler mHandler=new Handler();
     protected abstract Map<String, String> getMap();
 
     protected abstract String getUrl();
@@ -56,25 +57,26 @@ public abstract class ApiRequest<T extends BaseBean> {
         return getClx();
     }
 
-    public ApiRequest creatRequestGet() {
+    public ApiRequest get() {
         JavaBeanRequest<T> request = new JavaBeanRequest<>(getUrl(), getClx());
         creatRequest(request, null);
         return this;
     }
 
-    public ApiRequest creatRequestGet(TipLoadingBean tip) {
+
+    public ApiRequest get(TipLoadingBean tip) {
         JavaBeanRequest<T> request = new JavaBeanRequest<>(getUrl(), getClx());
         creatRequest(request, tip);
         return this;
     }
 
-    public ApiRequest creatRequestPost() {
+    public ApiRequest post() {
         JavaBeanRequest<T> request = new JavaBeanRequest<>(getUrl(), RequestMethod.POST, getClx());
         creatRequest(request, null);
         return this;
     }
 
-    public ApiRequest creatRequestPost(TipLoadingBean tip) {
+    public ApiRequest post(TipLoadingBean tip) {
         JavaBeanRequest<T> request = new JavaBeanRequest<>(getUrl(), RequestMethod.POST, getClx());
         creatRequest(request, tip);
         return this;
@@ -105,10 +107,10 @@ public abstract class ApiRequest<T extends BaseBean> {
 
 
         final TipLoading finalTipLoading = tipLoading;
-        if (getTime() == 0 || tipLoading == null) {
+        if (getTime() == 0) {
             request(request, tip, finalTipLoading);
         } else {
-            tipLoading.view().postDelayed(new Runnable() {
+            mHandler.postDelayed(new Runnable() {
                 @Override
                 public void run() {
                     request(request, tip, finalTipLoading);

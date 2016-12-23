@@ -115,6 +115,7 @@ public class LoginFragment extends NotNetWorkBaseFragment implements OnTitleBarL
                 UserInfo.uid = bean.data.user_id;
                 UserInfo.token = bean.data.sign_token;
                 new SharedPreferenUtil(getContext(), "userLogin").setData(new String[]{"uid", UserInfo.uid, "token", UserInfo.token});
+                RxBus.get().post("back", "back");
             }
 
             @Override
@@ -126,7 +127,7 @@ public class LoginFragment extends NotNetWorkBaseFragment implements OnTitleBarL
 
     @Override
     public void left() {
-        RxBus.get().post("back","back");
+        RxBus.get().post("back", "back");
     }
 
     @Override

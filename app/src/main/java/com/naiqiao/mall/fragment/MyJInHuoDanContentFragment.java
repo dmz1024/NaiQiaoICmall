@@ -1,16 +1,8 @@
 package com.naiqiao.mall.fragment;
 
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.widget.Button;
 import android.widget.TextView;
-
 import com.naiqiao.mall.R;
-import com.naiqiao.mall.adapter.SendMonadAdapter;
-import com.naiqiao.mall.bean.SendMonadBean;
-
-import java.util.ArrayList;
-
 import base.fragment.NotNetWorkBaseFragment;
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -38,14 +30,10 @@ public class MyJInHuoDanContentFragment extends NotNetWorkBaseFragment {
 
     private MyJinHuoDanFragment danFragment;
 
-    @Override
-    protected void initView() {
-        getChildFragmentManager().beginTransaction().add(R.id.fg_content, danFragment = new MyJinHuoDanFragment()).commit();
-    }
-
 
     @Override
     protected void initData() {
+        getChildFragmentManager().beginTransaction().add(R.id.fg_content, danFragment = new MyJinHuoDanFragment()).commit();
         tv_count.setTextNotChange("共10件");
     }
 

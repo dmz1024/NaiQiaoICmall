@@ -19,7 +19,7 @@ import view.DefaultTitleBarView;
 
 public abstract class BaseFragment extends Fragment implements View.OnTouchListener {
     private View titleBarView;
-    private FrameLayout rootView;
+    protected FrameLayout rootView;
 
     @Nullable
     @Override

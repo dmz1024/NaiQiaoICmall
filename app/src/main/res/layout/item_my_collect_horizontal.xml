@@ -15,8 +15,7 @@
             android:id="@+id/iv_img"
             android:layout_width="match_parent"
             android:layout_height="@dimen/size170"
-            android:scaleType="fitXY"
-            android:src="@mipmap/icon_search_gray" />
+            android:scaleType="fitXY" />
 
         <View
             android:id="@+id/view"
@@ -32,24 +31,26 @@
             android:layout_marginLeft="@dimen/size5"
             android:layout_marginTop="@dimen/size10"
             android:lineSpacingExtra="@dimen/size1"
-            android:maxLines="2"
-            android:text="肌肤之钥CPB淡斑精华光透白精华液肌肤之钥CPB淡斑精华光透白精华液" />
+            android:maxLines="1" />
 
         <TextView
             android:id="@+id/tv_price"
             style="@style/TextSize14Color666"
             android:layout_alignLeft="@id/tv_title"
             android:layout_below="@id/tv_title"
-            android:layout_marginTop="@dimen/size10"
-            android:text="￥300.00" />
+            android:layout_marginTop="@dimen/size5"
+            android:textColor="#f73f5f" />
 
         <TextView
             android:id="@+id/tv_guige"
             style="@style/TextSize12Color666"
             android:layout_alignBottom="@id/tv_price"
-            android:layout_marginLeft="@dimen/size40"
+            android:layout_alignParentRight="true"
+            android:maxLines="1"
             android:layout_toRightOf="@id/tv_price"
-            android:text="规格：30ml" />
+            android:layout_marginLeft="@dimen/size10"
+            android:gravity="right"
+             />
 
         <Button
             android:id="@+id/bt_add"

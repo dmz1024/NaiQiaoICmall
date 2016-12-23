@@ -35,15 +35,15 @@ public abstract class BaseAdapter<D> extends RecyclerView.Adapter<RecyclerView.V
     }
 
 
-    protected void remove(int position) {
+    public void remove(int position) {
         list.remove(position);
         notifyItemRemoved(position);
         notifyItemRangeChanged(position, list.size() - 1 - position);
         if (onAdapterDataListener != null) {
             onAdapterDataListener.totalCount(list.size());
         }
-
     }
+
 
     public void setOnDataCountListener(OnAdapterDataListener onAdapterDataListener) {
         this.onAdapterDataListener = onAdapterDataListener;

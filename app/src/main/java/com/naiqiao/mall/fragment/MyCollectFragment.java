@@ -1,17 +1,18 @@
 package com.naiqiao.mall.fragment;
 
-import android.support.v4.app.LoaderManager;
+import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
 
 import com.naiqiao.mall.R;
 import com.naiqiao.mall.adapter.MyCollectAdapter;
-import com.naiqiao.mall.adapter.MyJinHuoDanAdapter;
 import com.naiqiao.mall.bean.MyCollectBean;
-import com.naiqiao.mall.bean.MyJinHuoDanBean;
+import com.naiqiao.mall.bean.rxbus.CollectRxbus;
+import com.naiqiao.mall.constant.ApiConstant;
+import com.naiqiao.mall.constant.UserInfo;
 import com.naiqiao.mall.view.RightImageTitleBarView;
 
 import java.util.ArrayList;
@@ -19,7 +20,9 @@ import java.util.Map;
 
 import base.fragment.ListNetWorkBaseFragment;
 import interfaces.OnTitleBarListener;
-import view.DefaultTitleBarView;
+import rx.Observable;
+import rx.functions.Action1;
+import util.RxBus;
 
 /**
  * Created by dengmingzhi on 2016/11/23.
@@ -41,14 +44,46 @@ public class MyCollectFragment extends ListNetWorkBaseFragment<MyCollectBean> im
 
     @Override
     protected String url() {
-        return "http://www.ediancha.com/app.php";
+        return ApiConstant.SHOUCANG;
+    }
+
+
+    private Observable<CollectRxbus> collect;
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        if (collect == null) {
+            collect = RxBus.get().register("collect", CollectRxbus.class);
+            collect.subscribe(new Action1<CollectRxbus>() {
+                @Override
+                public void call(CollectRxbus rxbus) {
+                    switch (rxbus.act) {
+                        case "cancel":
+                            if (mAdapter != null) {
+                                mAdapter.remove(rxbus.position);
+                            }
+                            break;
+                    }
+
+                }
+            });
+        }
+    }
+
+
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        RxBus.get().unregister("collect", collect);
     }
 
     @Override
     protected Map<String, String> map() {
-        map.put("c", "chahui");
-        map.put("a", "index");
-        map.put("type", "1");
+        map.put("act", "collect");
+        map.put("user_id", UserInfo.uid);
+        map.put("sign_token", UserInfo.token);
         return super.map();
     }
 
@@ -88,6 +123,9 @@ public class MyCollectFragment extends ListNetWorkBaseFragment<MyCollectBean> im
      */
     @Override
     public void right() {
+        if(mAdapter==null){
+            return;
+        }
         titleBarView.setRightImage((isVertical = !isVertical) ? R.mipmap.icon_display_list : R.mipmap.icon_display_block);
         ((MyCollectAdapter) mAdapter).setVertical(isVertical ? 1 : 2);
         int firstVisiItem = layoutManager.findFirstVisibleItemPosition();

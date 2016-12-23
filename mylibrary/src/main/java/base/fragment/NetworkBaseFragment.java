@@ -139,15 +139,15 @@ public abstract class NetworkBaseFragment<D extends BaseBean> extends RefreshBas
         TipLoadingBean loadingBean = isFormListNet() ? getTipLoadingBeanForListNet() : getTipLoadingBean();
         if (loadingBean != null) {
             if (getMethod()) {
-                apiRequest.creatRequestPost(loadingBean);
+                apiRequest.post(loadingBean);
             } else {
-                apiRequest.creatRequestGet(loadingBean);
+                apiRequest.get(loadingBean);
             }
         } else {
             if (getMethod()) {
-                apiRequest.creatRequestPost();
+                apiRequest.post();
             } else {
-                apiRequest.creatRequestGet();
+                apiRequest.get();
             }
         }
 
@@ -173,7 +173,7 @@ public abstract class NetworkBaseFragment<D extends BaseBean> extends RefreshBas
      * @return
      */
     protected int time() {
-        return 0;
+        return 500;
     }
 
 

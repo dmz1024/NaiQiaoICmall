@@ -14,12 +14,15 @@ import com.bumptech.glide.Glide;
 import com.naiqiao.mall.R;
 import com.naiqiao.mall.bean.DaoHuoTZBean;
 import com.naiqiao.mall.bean.MyCollectBean;
+import com.naiqiao.mall.bean.rxbus.CollectRxbus;
+import com.naiqiao.mall.controller.MyCollectController;
 
 import java.util.ArrayList;
 
 import api.TestConstant;
 import base.adapter.BaseAdapter;
 import base.adapter.BaseViewHolder;
+import view.pop.TipMessage;
 
 
 /**
@@ -33,8 +36,10 @@ public class MyCollectAdapter extends BaseAdapter<MyCollectBean.Data> {
         this.type = type;
     }
 
+
     public MyCollectAdapter(Context ctx, ArrayList<MyCollectBean.Data> list) {
         super(ctx, list);
+
     }
 
     @Override
@@ -51,8 +56,11 @@ public class MyCollectAdapter extends BaseAdapter<MyCollectBean.Data> {
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         ViewHolder mHolder = ((ViewHolder) holder);
-        Glide.with(ctx).load(TestConstant.IMAGE).into(mHolder.iv_img);
-        mHolder.tv_guige.setText(position + "");
+        MyCollectBean.Data data = list.get(position);
+        Glide.with(ctx).load(data.goods_thumb).into(mHolder.iv_img);
+        mHolder.tv_price.setText(data.shop_price);
+        mHolder.tv_title.setText(data.goods_name);
+        mHolder.tv_guige.setText("规格："+data.goods_attr);
     }
 
     public class ViewHolder extends BaseViewHolder {
@@ -72,6 +80,22 @@ public class MyCollectAdapter extends BaseAdapter<MyCollectBean.Data> {
             bt_add = (Button) itemView.findViewById(R.id.bt_add);
             iv_delete = (ImageView) itemView.findViewById(R.id.iv_delete);
             itemView.setOnClickListener(this);
+            iv_delete.setOnClickListener(this);
+        }
+
+        @Override
+        protected void itemOnclick(int id, final int layoutPosition) {
+            switch (id) {
+                case R.id.iv_delete:
+                    new TipMessage(ctx,new TipMessage.TipMessageBean("提示","是否取消收藏？","取消","确定")){
+                        @Override
+                        protected void right() {
+                            super.right();
+                            MyCollectController.getInstance().collect(list.get(layoutPosition).goods_id, new CollectRxbus("cancel", layoutPosition));
+                        }
+                    }.showAtLocation(false);
+                    break;
+            }
         }
     }
 

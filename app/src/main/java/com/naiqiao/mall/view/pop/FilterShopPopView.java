@@ -140,7 +140,7 @@ public class FilterShopPopView extends PopBaseView {
             public void error(boolean isWrite, FilterBean bean, String msg) {
                 MyToast.showToast("获取" + (type == 0 ? "品牌" : "分类") + "列表失败!");
             }
-        }).creatRequestPost();
+        }).post();
     }
 
 

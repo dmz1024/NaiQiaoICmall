@@ -15,12 +15,11 @@
             android:id="@+id/tv_tip"
             style="@style/TextSize11Color333"
             android:layout_gravity="right"
+            android:layout_marginRight="@dimen/size6"
             android:drawableLeft="@mipmap/icon_point"
             android:drawablePadding="@dimen/size4"
             android:gravity="right|center_vertical"
-            android:padding="@dimen/size5"
-            android:layout_marginRight="@dimen/size6"
-            android:text="本产品可获得12积分" />
+            android:padding="@dimen/size5" />
     </FrameLayout>
 
 
@@ -51,8 +50,7 @@
                 android:id="@+id/iv_img"
                 android:layout_width="@dimen/size100"
                 android:layout_height="@dimen/size100"
-                android:scaleType="fitXY"
-                android:src="@mipmap/icon_search_gray" />
+                android:scaleType="fitXY" />
         </FrameLayout>
 
         <TextView
@@ -61,16 +59,30 @@
             android:layout_marginLeft="@dimen/size4"
             android:layout_toRightOf="@id/fg_img"
             android:lineSpacingExtra="@dimen/size1"
-            android:maxLines="2"
-            android:text="肌肤之钥CPB淡斑精华光透白精华液肌肤之钥CPB淡斑精华光透白精华液" />
+            android:maxLines="2" />
+
+        <TextView
+            android:id="@+id/tv_have_count"
+            style="@style/TextSize12Color666"
+            android:layout_alignBottom="@id/tv_guige"
+            android:layout_alignParentRight="true" />
+
+        <TextView
+            android:id="@+id/tv_guige"
+            style="@style/TextSize12Color666"
+            android:layout_alignLeft="@id/tv_title"
+            android:layout_below="@id/tv_title"
+            android:layout_marginRight="@dimen/size15"
+            android:layout_marginTop="@dimen/size5"
+            android:layout_toLeftOf="@id/tv_have_count"
+            android:maxLines="1" />
 
         <TextView
             android:id="@+id/tv_price"
             style="@style/TextSize12Color666"
-            android:layout_alignBottom="@id/fg_img"
             android:layout_alignLeft="@id/tv_title"
-            android:layout_marginBottom="@dimen/size3"
-            android:text="￥300"
+            android:layout_below="@id/tv_guige"
+            android:layout_marginTop="@dimen/size15"
             android:textColor="#f73f5f" />
 
         <TextView
@@ -79,24 +91,14 @@
             android:layout_alignBottom="@id/tv_price"
             android:layout_marginLeft="@dimen/size15"
             android:layout_toRightOf="@id/tv_price"
-            android:text="￥400" />
+            android:visibility="gone" />
 
-
-        <TextView
-            android:id="@+id/tv_have_count"
-            style="@style/TextSize12Color666"
-
-            android:layout_alignBottom="@id/tv_guige"
-            android:layout_alignParentRight="true"
-            android:text="剩余：12件" />
-
-        <TextView
-            android:id="@+id/tv_guige"
-            style="@style/TextSize12Color666"
-            android:layout_alignLeft="@id/tv_title"
-            android:layout_below="@id/tv_title"
-            android:layout_marginTop="@dimen/size10"
-            android:text="规格：30ml" />
+        <com.naiqiao.mall.view.AddAndSubView
+            android:id="@+id/view_aas"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/tv_price"
+            android:layout_alignParentRight="true" />
 
         <View
             android:id="@+id/view"
@@ -111,7 +113,6 @@
             style="@style/TextSize12Color333"
             android:layout_alignParentRight="true"
             android:layout_below="@id/view"
-            android:layout_marginTop="@dimen/size10"
-            android:text="小计：￥123.00" />
+            android:layout_marginTop="@dimen/size10" />
     </RelativeLayout>
 </LinearLayout>

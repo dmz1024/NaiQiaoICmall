@@ -15,43 +15,43 @@
         <TextView
             android:id="@+id/tv_choose"
             style="@style/TextSize13Color666"
-            android:gravity="center_vertical"
             android:layout_centerVertical="true"
             android:layout_marginLeft="@dimen/size10"
             android:drawableLeft="@mipmap/icon_checked"
             android:drawablePadding="@dimen/size4"
+            android:gravity="center_vertical"
             android:text="全选" />
 
         <Button
-            android:background="#f73f5f"
-            android:textSize="@dimen/sp15"
-            android:enabled="false"
-            android:alpha="0.5"
-            android:textColor="#fff"
-            android:textStyle="bold"
-            android:text="发货"
             android:id="@+id/bt_pay"
-            android:layout_alignParentRight="true"
             android:layout_width="@dimen/size125"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:alpha="0.5"
+            android:background="#f73f5f"
+            android:enabled="false"
+            android:text="去付款"
+            android:textColor="#fff"
+            android:textSize="@dimen/sp15"
+            android:textStyle="bold" />
 
         <view.Color2Text
             android:id="@+id/tv_count"
-            android:text="合计：￥2000.00\n"
-            android:gravity="right"
-            android:layout_toLeftOf="@id/bt_pay"
-            android:layout_marginRight="@dimen/size10"
-            app:Color2Text_size="@dimen/sp12"
+            style="@style/TextSize15Color333"
             android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/size10"
+            android:layout_toLeftOf="@id/bt_pay"
+            android:gravity="right"
             android:lineSpacingExtra="@dimen/size6"
-            app:Color2Text_content=""
+            android:text="合计：￥2000.00\n"
             app:Color2Text_color="#999"
-            style="@style/TextSize15Color333"/>
+            app:Color2Text_content=""
+            app:Color2Text_size="@dimen/sp12" />
     </RelativeLayout>
 
     <FrameLayout
         android:id="@+id/fg_content"
-        android:layout_above="@id/rl_pay"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        android:layout_above="@id/rl_pay" />
 </RelativeLayout>

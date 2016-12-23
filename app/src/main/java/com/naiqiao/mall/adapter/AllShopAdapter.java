@@ -18,6 +18,7 @@ import java.util.ArrayList;
 import api.TestConstant;
 import base.adapter.BaseAdapter;
 import base.adapter.BaseViewHolder;
+import butterknife.BindView;
 
 
 /**
@@ -49,26 +50,34 @@ public class AllShopAdapter extends BaseAdapter<AllShopBean.Data> {
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         ViewHolder mHolder = ((ViewHolder) holder);
-        Glide.with(ctx).load(TestConstant.IMAGE).into(mHolder.iv_img);
+        AllShopBean.Data data = list.get(position);
+        Glide.with(ctx).load(data.goods_thumb).into(mHolder.iv_img);
+        mHolder.tv_title.setText(data.goods_name);
+        mHolder.tv_guige.setText("规格：" + data.goods_attr);
+        mHolder.tv_have_count.setText("剩余" + data.goods_number);
+        mHolder.tv_price.setText("￥" + data.goods_price);
+        mHolder.tv_count.setText("销量：" + data.sale + "件");
+        mHolder.tv_yj.setText("预警值" + data.warn);
     }
 
     public class ViewHolder extends BaseViewHolder {
-        public TextView tv_guige;
-        public TextView tv_title;
-        public TextView tv_price;
-        public TextView tv_have_count;
-        public TextView tv_count;
-        public ImageView iv_img;
-        public TextView tv_yj;
+        @BindView(R.id.tv_guige)
+        TextView tv_guige;
+        @BindView(R.id.tv_title)
+        TextView tv_title;
+        @BindView(R.id.tv_price)
+        TextView tv_price;
+        @BindView(R.id.tv_have_count)
+        TextView tv_have_count;
+        @BindView(R.id.tv_count)
+        TextView tv_count;
+        @BindView(R.id.iv_img)
+        ImageView iv_img;
+        @BindView(R.id.tv_yj)
+        TextView tv_yj;
+
         public ViewHolder(View itemView) {
             super(itemView);
-            tv_title = (TextView) itemView.findViewById(R.id.tv_title);
-            tv_guige = (TextView) itemView.findViewById(R.id.tv_guige);
-            tv_price = (TextView) itemView.findViewById(R.id.tv_price);
-            tv_yj = (TextView) itemView.findViewById(R.id.tv_yj);
-            iv_img = (ImageView) itemView.findViewById(R.id.iv_img);
-            tv_have_count = (TextView) itemView.findViewById(R.id.tv_have_count);
-            tv_count = (TextView) itemView.findViewById(R.id.tv_count);
             itemView.setOnClickListener(this);
         }
     }

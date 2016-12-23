@@ -43,7 +43,7 @@ public class AllShopContentFragment extends NotNetWorkBaseFragment implements On
     @Override
     protected void initTitleView() {
         titleBarView = (RightImageTitleBarView) getTitleBar();
-        titleBarView.setOnTitleBarListener(this).setTitleContent("我的收藏");
+        titleBarView.setOnTitleBarListener(this).setTitleContent("全部商品");
     }
 
     @Override
@@ -53,8 +53,10 @@ public class AllShopContentFragment extends NotNetWorkBaseFragment implements On
 
     @Override
     public void right() {
-        titleBarView.setRightImage((isVertical = !isVertical) ? R.mipmap.icon_display_list : R.mipmap.icon_display_block);
-        allShopFragment.right(isVertical);
+        if (allShopFragment != null && allShopFragment.right(!isVertical)) {
+            titleBarView.setRightImage((isVertical = !isVertical) ? R.mipmap.icon_display_list : R.mipmap.icon_display_block);
+        }
+
     }
 
     @Override

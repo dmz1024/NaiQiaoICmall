@@ -11,6 +11,14 @@ import base.bean.ListBaseBean;
 
 public class AllShopBean extends ListBaseBean<ArrayList<AllShopBean.Data>> {
     public static class Data{
-
+        public String id;
+        public String goods_id;
+        public String goods_name;
+        public String goods_price;
+        public String goods_thumb;
+        public String warn;
+        public String sale;
+        public String goods_number;
+        public String goods_attr;
     }
 }

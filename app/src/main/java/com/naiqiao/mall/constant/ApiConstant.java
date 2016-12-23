@@ -10,4 +10,8 @@ public interface ApiConstant {
     String USER = BASE_URL + "user.php";
     String CATEGORY = BASE_URL + "category.php";
     String PROFILE = BASE_URL + "profile.php";
+    String AREA = BASE_URL + "area.php";
+    String SHOUCANG = BASE_URL + "shoucang.php";
+    String CART = BASE_URL + "cart.php";
+    String VIRTUAL = BASE_URL + "virtual.php";
 }
