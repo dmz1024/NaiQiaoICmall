@@ -12,6 +12,7 @@ import com.bumptech.glide.Glide;
 import com.naiqiao.mall.R;
 import com.naiqiao.mall.bean.AddressBean;
 import com.naiqiao.mall.bean.SendCarBean;
+import com.naiqiao.mall.bean.rxbus.AddressRxBus;
 import com.naiqiao.mall.controller.AddressController;
 import com.naiqiao.mall.fragment.AddressEditFragment;
 
@@ -31,6 +32,11 @@ import util.RxBus;
  */
 
 public class AddressAdapter extends BaseAdapter<AddressBean.Data> {
+    private int defPosition = -1;
+
+    public void setDefPosition(int defPosition) {
+        this.defPosition = defPosition;
+    }
 
     public AddressAdapter(Context ctx, ArrayList<AddressBean.Data> list) {
         super(ctx, list);
@@ -50,6 +56,9 @@ public class AddressAdapter extends BaseAdapter<AddressBean.Data> {
         mHolder.tv_address.setText(data.group_address);
         mHolder.tv_default.setCompoundDrawables(DrawableUtil.setBounds(ctx.getResources().getDrawable(data.def == 1 ? R.mipmap.icon_checked : R.mipmap.icon_check)), null, null, null);
         mHolder.tv_default.setText(data.def == 1 ? "默认地址" : "设为默认");
+        if (data.def == 1) {
+            defPosition = position;
+        }
     }
 
 
@@ -79,16 +88,16 @@ public class AddressAdapter extends BaseAdapter<AddressBean.Data> {
             switch (id) {
                 case R.id.tv_edit:
                     AddressEditFragment addressEditFragment = new AddressEditFragment();
-                    addressEditFragment.setData(list.get(layoutPosition));
+                    addressEditFragment.setData(list.get(layoutPosition),defPosition,layoutPosition);
                     RxBus.get().post("addFragment", new AddFragmentBean(addressEditFragment));
                     break;
                 case R.id.tv_default:
                     if (list.get(layoutPosition).def != 1) {
-                        AddressController.getInstance().setDef(list.get(layoutPosition).address_id, false);
+                        AddressController.getInstance().setDef(new AddressRxBus(list.get(layoutPosition).address_id, "def", defPosition, layoutPosition));
                     }
                     break;
                 case R.id.tv_delete:
-                    AddressController.getInstance().delete(list.get(layoutPosition).address_id);
+                    AddressController.getInstance().delete(new AddressRxBus(list.get(layoutPosition).address_id, "delete", defPosition, layoutPosition));
                     break;
             }
         }

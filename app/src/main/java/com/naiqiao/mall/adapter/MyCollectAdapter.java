@@ -16,12 +16,14 @@ import com.naiqiao.mall.bean.DaoHuoTZBean;
 import com.naiqiao.mall.bean.MyCollectBean;
 import com.naiqiao.mall.bean.rxbus.CollectRxbus;
 import com.naiqiao.mall.controller.MyCollectController;
+import com.naiqiao.mall.controller.MyJHDController;
 
 import java.util.ArrayList;
 
 import api.TestConstant;
 import base.adapter.BaseAdapter;
 import base.adapter.BaseViewHolder;
+import butterknife.BindView;
 import view.pop.TipMessage;
 
 
@@ -60,40 +62,44 @@ public class MyCollectAdapter extends BaseAdapter<MyCollectBean.Data> {
         Glide.with(ctx).load(data.goods_thumb).into(mHolder.iv_img);
         mHolder.tv_price.setText(data.shop_price);
         mHolder.tv_title.setText(data.goods_name);
-        mHolder.tv_guige.setText("规格："+data.goods_attr);
+        mHolder.tv_guige.setText("规格：" + data.goods_attr);
     }
 
     public class ViewHolder extends BaseViewHolder {
-        public TextView tv_guige;
-        public TextView tv_title;
-        public TextView tv_price;
-        public Button bt_add;
-        public ImageView iv_img;
-        public ImageView iv_delete;
+        @BindView(R.id.tv_guige)
+        TextView tv_guige;
+        @BindView(R.id.tv_title)
+        TextView tv_title;
+        @BindView(R.id.tv_price)
+        TextView tv_price;
+        @BindView(R.id.bt_add)
+        Button bt_add;
+        @BindView(R.id.iv_img)
+        ImageView iv_img;
+        @BindView(R.id.iv_delete)
+        ImageView iv_delete;
 
         public ViewHolder(View itemView) {
             super(itemView);
-            tv_title = (TextView) itemView.findViewById(R.id.tv_title);
-            tv_guige = (TextView) itemView.findViewById(R.id.tv_guige);
-            tv_price = (TextView) itemView.findViewById(R.id.tv_price);
-            iv_img = (ImageView) itemView.findViewById(R.id.iv_img);
-            bt_add = (Button) itemView.findViewById(R.id.bt_add);
-            iv_delete = (ImageView) itemView.findViewById(R.id.iv_delete);
             itemView.setOnClickListener(this);
             iv_delete.setOnClickListener(this);
+            bt_add.setOnClickListener(this);
         }
 
         @Override
         protected void itemOnclick(int id, final int layoutPosition) {
             switch (id) {
                 case R.id.iv_delete:
-                    new TipMessage(ctx,new TipMessage.TipMessageBean("提示","是否取消收藏？","取消","确定")){
+                    new TipMessage(ctx, new TipMessage.TipMessageBean("提示", "是否取消收藏？", "取消", "确定")) {
                         @Override
                         protected void right() {
                             super.right();
                             MyCollectController.getInstance().collect(list.get(layoutPosition).goods_id, new CollectRxbus("cancel", layoutPosition));
                         }
                     }.showAtLocation(false);
+                    break;
+                case R.id.bt_add:
+                    MyJHDController.getInstance().add(list.get(layoutPosition).goods_id, 1);
                     break;
             }
         }

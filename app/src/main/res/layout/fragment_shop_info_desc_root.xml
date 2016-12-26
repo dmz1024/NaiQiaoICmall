@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f5f5f5">
+
+    <LinearLayout
+        android:id="@+id/ll_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size50"
+        android:layout_alignParentBottom="true"
+        android:background="#fff"
+        android:orientation="horizontal"
+        android:weightSum="5">
+
+        <TextView
+            android:id="@+id/tv_collect"
+            style="@style/TextSize10Color999"
+            android:layout_width="0dp"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:drawablePadding="@dimen/size2"
+            android:drawableTop="@mipmap/icon_detail_collect"
+            android:gravity="center"
+            android:text="收藏" />
+
+        <TextView
+            android:id="@+id/tv_add"
+            style="@style/TextSize15Color333"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:background="#50f73f5f"
+            android:gravity="center"
+            android:text="加入进货单"
+            android:textColor="#f73f5f" />
+
+        <TextView
+            android:id="@+id/tv_order"
+            style="@style/TextSize15Colorfff"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:background="#f73f5f"
+            android:gravity="center"
+            android:text="直接订购" />
+    </LinearLayout>
+
+    <view.DragSwitchLayout
+        android:id="@+id/ds_root"
+        android:layout_above="@id/ll_bottom"
+        android:layout_alignParentTop="true"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <view.CustomScrollView
+            android:id="@+id/sc_root"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@id/ll_bottom"
+            android:layout_alignParentTop="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <android.support.v4.view.ViewPager
+                    android:id="@+id/vp_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/size300" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#fff"
+                    android:padding="@dimen/size10">
+
+                    <TextView
+                        android:id="@+id/tv_share"
+                        style="@style/TextSize10Color333"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:drawablePadding="@dimen/size2"
+                        android:drawableTop="@mipmap/icon_detail_share"
+                        android:gravity="center"
+                        android:text="分享" />
+
+                    <View
+                        android:id="@+id/view_share"
+                        android:layout_width="1dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignBottom="@id/tv_title"
+                        android:layout_alignTop="@id/tv_title"
+                        android:layout_marginRight="@dimen/size5"
+                        android:layout_toLeftOf="@id/tv_share"
+                        android:background="#f5f5f5" />
+
+                    <TextView
+                        android:id="@+id/tv_title"
+                        style="@style/TextSize15Color333"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="@dimen/size2"
+                        android:layout_toLeftOf="@id/view_share"
+                        android:lineSpacingExtra="@dimen/size5"
+                        android:padding="@dimen/size3"
+                        android:text="资生堂旗下品牌肌肤之钥魂丽唇膏113#明亮鲜橙  色彩靓丽保湿性好" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#fff"
+                    android:paddingBottom="@dimen/size13"
+                    android:paddingLeft="@dimen/size13"
+                    android:paddingRight="@dimen/size13">
+
+                    <TextView
+                        android:id="@+id/tv_1"
+                        style="@style/TextSize12Color333"
+                        android:text="原价" />
+
+                    <TextView
+                        android:id="@+id/tv_2"
+                        style="@style/TextSize12Color333"
+                        android:layout_below="@id/tv_1"
+                        android:layout_marginTop="@dimen/size10"
+                        android:text="代理价" />
+
+                    <TextView
+                        android:id="@+id/tv_price"
+                        style="@style/TextSize13Color333"
+                        android:layout_marginLeft="@dimen/size40"
+                        android:layout_toRightOf="@id/tv_1"
+                        android:text="￥ 5999.99"
+                        android:textColor="#f73f5f" />
+
+                    <LinearLayout
+                        android:id="@+id/ll_price"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignLeft="@id/tv_price"
+                        android:layout_alignTop="@id/tv_2"
+                        android:orientation="vertical"
+                        android:paddingRight="@dimen/size5"
+                        android:visibility="gone">
+
+                        <TextView
+                            style="@style/TextSize15Color333"
+                            android:paddingBottom="@dimen/size5"
+                            android:text="￥ 5999.99"
+                            android:textColor="#f73f5f" />
+
+                        <TextView
+                            style="@style/TextSize15Color333"
+                            android:paddingBottom="@dimen/size5"
+                            android:text="￥ 5999.99"
+                            android:textColor="#f73f5f" />
+
+                        <TextView
+                            style="@style/TextSize15Color333"
+                            android:paddingBottom="@dimen/size5"
+                            android:text="￥ 5999.99"
+                            android:textColor="#f73f5f" />
+
+                        <TextView
+                            style="@style/TextSize15Color333"
+                            android:text="￥ 5999.99"
+                            android:textColor="#f73f5f" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/tv_login_tips"
+                        style="@style/TextSize10Color666"
+                        android:layout_alignBottom="@id/ll_price"
+                        android:layout_marginBottom="@dimen/size2"
+                        android:layout_toRightOf="@id/ll_price"
+                        android:text="满50件起订单或单品10件且5个单品以上"
+                        android:visibility="gone" />
+
+                    <TextView
+                        android:id="@+id/tv_no_login_tips"
+                        style="@style/TextSize10Color666"
+                        android:layout_alignBottom="@id/tv_2"
+                        android:layout_alignLeft="@id/tv_price"
+                        android:text="登录查看代理价" />
+                </RelativeLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="600dp">
+                </TextView>
+
+                <TextView
+                    android:id="@+id/tv_load"
+                    style="@style/TextSize12Color999"
+                    android:layout_gravity="center_horizontal"
+                    android:background="#f5f5f5"
+                    android:padding="@dimen/size40"
+                    android:text="上拉加载商品详情"
+                    android:textColor="#a7a7a7" />
+            </LinearLayout>
+        </view.CustomScrollView>
+
+        <FrameLayout
+            android:id="@+id/wv_desc"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            />
+    </view.DragSwitchLayout>
+
+</RelativeLayout>

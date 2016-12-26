@@ -3,6 +3,7 @@ package com.naiqiao.mall.controller;
 import android.content.Context;
 import android.text.TextUtils;
 
+import com.naiqiao.mall.bean.rxbus.AddressRxBus;
 import com.naiqiao.mall.constant.ApiConstant;
 import com.naiqiao.mall.constant.UserInfo;
 
@@ -52,7 +53,7 @@ public class AddressController {
         }.setOnRequestListeren(new OnSingleRequestListener<SingleBaseBean>() {
             @Override
             public void succes(boolean isWrite, SingleBaseBean bean) {
-                RxBus.get().post("address", TextUtils.isEmpty(map.get("address_id")) ? "add" : "update");
+                RxBus.get().post("address", new AddressRxBus("add_update"));
                 RxBus.get().post("back", "back");
             }
 
@@ -63,12 +64,12 @@ public class AddressController {
         }).post(new TipLoadingBean("提交中...", "提交成功", ""));
     }
 
-    public void setDef(String id, final boolean isFromEdit) {
+    public void setDef(final AddressRxBus rxBus) {
         final Map<String, String> map = new HashMap<>();
         map.put("user_id", UserInfo.uid);
         map.put("sign_token", UserInfo.token);
         map.put("act", "default_address");
-        map.put("address_id", id);
+        map.put("address_id", rxBus.id);
         new ApiRequest<SingleBaseBean>() {
             @Override
             protected Map<String, String> getMap() {
@@ -92,8 +93,8 @@ public class AddressController {
         }.setOnRequestListeren(new OnSingleRequestListener<SingleBaseBean>() {
             @Override
             public void succes(boolean isWrite, SingleBaseBean bean) {
-                RxBus.get().post("address", "def");
-                if (isFromEdit) {
+                RxBus.get().post("address", rxBus);
+                if (rxBus.isFromEdit) {
                     RxBus.get().post("back", "back");
                 }
             }
@@ -105,12 +106,12 @@ public class AddressController {
         }).post(new TipLoadingBean("提交中...", "提交成功", ""));
     }
 
-    public void delete(String id) {
+    public void delete(final AddressRxBus rxBus) {
         final Map<String, String> map = new HashMap<>();
         map.put("user_id", UserInfo.uid);
         map.put("sign_token", UserInfo.token);
         map.put("act", "drop_address");
-        map.put("address_id", id);
+        map.put("address_id", rxBus.id);
         new ApiRequest<SingleBaseBean>() {
             @Override
             protected Map<String, String> getMap() {
@@ -134,7 +135,7 @@ public class AddressController {
         }.setOnRequestListeren(new OnSingleRequestListener<SingleBaseBean>() {
             @Override
             public void succes(boolean isWrite, SingleBaseBean bean) {
-                RxBus.get().post("address", "delete");
+                RxBus.get().post("address", rxBus);
             }
 
             @Override

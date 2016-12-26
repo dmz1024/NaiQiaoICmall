@@ -15,6 +15,7 @@ import base.bean.SingleBaseBean;
 import base.bean.TipLoadingBean;
 import interfaces.OnSingleRequestListener;
 import util.ContextUtil;
+import util.MyToast;
 import util.RxBus;
 
 /**
@@ -63,7 +64,7 @@ public class MyJHDController {
             @Override
             public void error(boolean isWrite, MyJHDChangeBean bean, String msg) {
                 rxBus.num = rxBus.num - (rxBus.isAdd ? 1 : -1);
-                rxBus.isSuccess=false;
+                rxBus.isSuccess = false;
                 RxBus.get().post("myjhd", rxBus);
 
             }
@@ -72,10 +73,41 @@ public class MyJHDController {
             public void onFailed(Exception e) {
                 super.onFailed(e);
                 rxBus.num = rxBus.num - (rxBus.isAdd ? 1 : -1);
-                rxBus.isSuccess=false;
+                rxBus.isSuccess = false;
                 RxBus.get().post("myjhd", rxBus);
             }
         }).post();
     }
+
+    public void add(String id, int num) {
+        final Map<String, String> map = new HashMap<>();
+        map.put("act", "addtocart");
+        map.put("user_id", UserInfo.uid);
+        map.put("sign_token", UserInfo.token);
+        map.put("goods_id", id);
+        map.put("goods_num", num + "");
+        new ApiRequest<SingleBaseBean>() {
+            @Override
+            protected Map<String, String> getMap() {
+                return map;
+            }
+
+            @Override
+            protected String getUrl() {
+                return ApiConstant.CART;
+            }
+
+            @Override
+            protected Context getContext() {
+                return ContextUtil.getCtx();
+            }
+
+            @Override
+            protected Class<SingleBaseBean> getClx() {
+                return SingleBaseBean.class;
+            }
+        }.post(new TipLoadingBean("提交中...", "加入成功", ""));
+    }
+
 
 }

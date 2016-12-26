@@ -6,6 +6,7 @@ import android.widget.TextView;
 
 import com.naiqiao.mall.R;
 import com.naiqiao.mall.bean.AddressBean;
+import com.naiqiao.mall.bean.rxbus.AddressRxBus;
 import com.naiqiao.mall.controller.AddressController;
 
 import java.util.HashMap;
@@ -57,12 +58,17 @@ public class AddressEditFragment extends NotNetWorkBaseFragment {
     }
 
     private void changeDef() {
-        tvs.get(1).setCompoundDrawables(null, null,DrawableUtil.setBounds(getResources().getDrawable(isDefault ? R.mipmap.icon_checked : R.mipmap.icon_check)),  null);
+        tvs.get(1).setCompoundDrawables(null, null, DrawableUtil.setBounds(getResources().getDrawable(isDefault ? R.mipmap.icon_checked : R.mipmap.icon_check)), null);
 
     }
 
-    public void setData(AddressBean.Data data) {
+    private int defPosition;
+    private int position;
+
+    public void setData(AddressBean.Data data, int defPosition, int position) {
         this.data = data;
+        this.defPosition = defPosition;
+        this.position = position;
     }
 
     @Override
@@ -102,7 +108,8 @@ public class AddressEditFragment extends NotNetWorkBaseFragment {
                 isDefault = !isDefault;
                 changeDef();
             } else {
-                AddressController.getInstance().setDef(data.address_id,true);
+
+                AddressController.getInstance().setDef(new AddressRxBus(data.address_id, "def", defPosition, position, true));
             }
         }
     }

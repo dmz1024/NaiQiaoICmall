@@ -1,5 +1,7 @@
 package com.naiqiao.mall.fragment;
 
+import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
@@ -7,6 +9,7 @@ import com.naiqiao.mall.adapter.AddressAdapter;
 import com.naiqiao.mall.adapter.SendCarAdapter;
 import com.naiqiao.mall.bean.AddressBean;
 import com.naiqiao.mall.bean.SendCarBean;
+import com.naiqiao.mall.bean.rxbus.AddressRxBus;
 import com.naiqiao.mall.constant.ApiConstant;
 import com.naiqiao.mall.constant.UserInfo;
 
@@ -15,6 +18,9 @@ import java.util.Map;
 
 import api.TestConstant;
 import base.fragment.ListNetWorkBaseFragment;
+import rx.Observable;
+import rx.functions.Action1;
+import util.RxBus;
 import view.DefaultTitleBarView;
 
 /**
@@ -22,9 +28,38 @@ import view.DefaultTitleBarView;
  */
 
 public class AddressFragment extends ListNetWorkBaseFragment<AddressBean> {
+    private Observable<AddressRxBus> address;
+
     @Override
     protected RecyclerView.Adapter getAdapter() {
         return new AddressAdapter(getContext(), (ArrayList<AddressBean.Data>) totalList);
+    }
+
+    private void initRxBus() {
+        address = RxBus.get().register("address", AddressRxBus.class);
+        address.subscribe(new Action1<AddressRxBus>() {
+            @Override
+            public void call(AddressRxBus rxBus) {
+                switch (rxBus.index) {
+                    case "def":
+                        ((ArrayList<AddressBean.Data>) totalList).get(rxBus.position).def = 1;
+                        if (rxBus.oldPosition != -1) {
+                            ((ArrayList<AddressBean.Data>) totalList).get(rxBus.oldPosition).def = 0;
+                        }
+                        mAdapter.notifyDataSetChanged();
+                        break;
+                    case "delete":
+                        if (rxBus.oldPosition == rxBus.position) {
+                            ((AddressAdapter) mAdapter).setDefPosition(-1);
+                        }
+                        mAdapter.remove(rxBus.position);
+                        break;
+                    case "add_update":
+                        startRefresh();
+                        break;
+                }
+            }
+        });
     }
 
 
@@ -42,6 +77,14 @@ public class AddressFragment extends ListNetWorkBaseFragment<AddressBean> {
     }
 
     @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        if (address == null) {
+            initRxBus();
+        }
+    }
+
+    @Override
     protected Class<AddressBean> getTClass() {
         return AddressBean.class;
     }
@@ -50,5 +93,11 @@ public class AddressFragment extends ListNetWorkBaseFragment<AddressBean> {
     @Override
     protected void initTitleView() {
         ((DefaultTitleBarView) getTitleBar()).setTitleContent("收货地址");
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        RxBus.get().unregister("address", address);
     }
 }

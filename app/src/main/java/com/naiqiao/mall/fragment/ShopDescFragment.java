@@ -1,5 +1,6 @@
 package com.naiqiao.mall.fragment;
 
+import android.animation.ObjectAnimator;
 import android.graphics.Color;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -38,7 +39,7 @@ public class ShopDescFragment extends TabIndicatorBaseFragment {
         tab.setTabGravity(TabLayout.GRAVITY_CENTER);
         tab.setBackgroundColor(Color.parseColor("#00000000"));
         ViewGroup.LayoutParams layoutParams = tab.getLayoutParams();
-        layoutParams.height=Util.dp2Px(45);
+        layoutParams.height = Util.dp2Px(45);
         tab.setLayoutParams(layoutParams);
     }
 

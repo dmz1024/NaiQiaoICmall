@@ -18,24 +18,11 @@ import util.RxBus;
 public class AddressContentFragment extends NotNetWorkBaseFragment {
     @Override
     protected void initData() {
-        initRxBus();
         getChildFragmentManager().beginTransaction().add(R.id.fg_content, addressFragment = new AddressFragment()).commit();
     }
 
-    private void initRxBus() {
-        startReFreshRxBus = RxBus.get().register("startReFreshRxBus", String.class);
-        startReFreshRxBus.subscribe(new Action1<String>() {
-            @Override
-            public void call(String s) {
-                addressFragment.startRefresh();
-            }
-        });
-    }
 
     private AddressFragment addressFragment;
-
-    private Observable<String> startReFreshRxBus;
-
 
     @Override
     protected int getRId() {
@@ -53,9 +40,4 @@ public class AddressContentFragment extends NotNetWorkBaseFragment {
         RxBus.get().post("addFragment", new AddFragmentBean(new AddressEditFragment()));
     }
 
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        RxBus.get().unregister("startReFreshRxBus", startReFreshRxBus);
-    }
 }
