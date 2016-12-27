@@ -25,6 +25,7 @@ import base.bean.rxbus.AddFragmentBean;
 import butterknife.BindView;
 import util.DrawableUtil;
 import util.RxBus;
+import view.pop.TipMessage;
 
 
 /**
@@ -84,11 +85,11 @@ public class AddressAdapter extends BaseAdapter<AddressBean.Data> {
         }
 
         @Override
-        protected void itemOnclick(int id, int layoutPosition) {
+        protected void itemOnclick(int id, final int layoutPosition) {
             switch (id) {
                 case R.id.tv_edit:
                     AddressEditFragment addressEditFragment = new AddressEditFragment();
-                    addressEditFragment.setData(list.get(layoutPosition),defPosition,layoutPosition);
+                    addressEditFragment.setData(list.get(layoutPosition), defPosition, layoutPosition);
                     RxBus.get().post("addFragment", new AddFragmentBean(addressEditFragment));
                     break;
                 case R.id.tv_default:
@@ -97,7 +98,13 @@ public class AddressAdapter extends BaseAdapter<AddressBean.Data> {
                     }
                     break;
                 case R.id.tv_delete:
-                    AddressController.getInstance().delete(new AddressRxBus(list.get(layoutPosition).address_id, "delete", defPosition, layoutPosition));
+                    new TipMessage(ctx, new TipMessage.TipMessageBean("提示", "是否删除地址？", "取消", "确认")) {
+                        @Override
+                        protected void right() {
+                            super.right();
+                            AddressController.getInstance().delete(new AddressRxBus(list.get(layoutPosition).address_id, "delete", defPosition, layoutPosition));
+                        }
+                    }.showAtLocation(false);
                     break;
             }
         }

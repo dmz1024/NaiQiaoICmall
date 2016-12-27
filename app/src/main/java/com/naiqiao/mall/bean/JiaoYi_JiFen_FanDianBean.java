@@ -10,6 +10,9 @@ import base.bean.ListBaseBean;
 
 public class JiaoYi_JiFen_FanDianBean extends ListBaseBean<ArrayList<JiaoYi_JiFen_FanDianBean.Data>> {
     public static class Data {
-
+        public String change_time;
+        public String change_desc;
+        public String log_id;
+        public String user_money;
     }
 }

@@ -130,6 +130,8 @@ public class DragSwitchLayout extends RelativeLayout {
         return true;
     }
 
+
+
     /**
      * mDragHelper 内部使用了 Scroller 来实现滑动，因此 mDragHelper 要配合主布局的 computeScroll() 一起使用
      */
@@ -249,6 +251,30 @@ public class DragSwitchLayout extends RelativeLayout {
             invalidate();
         }
     }
+
+
+    public void showBottom(){
+        // 顶部视图开始显示
+
+        if (null != mDragSwitchListener) {
+            mDragSwitchListener.onDragToBottomView();
+        }
+        if (mDragHelper.smoothSlideViewTo(mTopView, 0, -mTopViewHeight)) {
+            invalidate();
+        }
+    }
+
+
+    public void showTop(){
+        // 顶部视图开始显示
+        if (null != mDragSwitchListener) {
+            mDragSwitchListener.onDragToTopView();
+        }
+        if (mDragHelper.smoothSlideViewTo(mBottomView, 0, mTopViewHeight)) {
+            invalidate();
+        }
+    }
+
 
     /**
      * 布局切换时的监听器

@@ -30,7 +30,11 @@ public class JiaoYi_JiFen_FanDianAdapter extends BaseAdapter<JiaoYi_JiFen_FanDia
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-
+        ViewHolder mholder = ((ViewHolder) holder);
+        JiaoYi_JiFen_FanDianBean.Data data = list.get(position);
+        mholder.tv_time.setText(data.change_time);
+        mholder.tv_content.setText(data.change_desc);
+        mholder.tv_count.setText(data.user_money);
     }
 
     public class ViewHolder extends BaseViewHolder {
@@ -51,7 +55,6 @@ public class JiaoYi_JiFen_FanDianAdapter extends BaseAdapter<JiaoYi_JiFen_FanDia
 
         }
     }
-
 
 
 }

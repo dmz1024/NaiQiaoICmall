@@ -19,21 +19,22 @@ public class MyOrderBackContentFragment extends TabIndicatorBaseFragment {
         fragments.add(MyOrderBackFragment.getInstance("1"));
         fragments.add(MyOrderBackFragment.getInstance("2"));
         fragments.add(MyOrderBackFragment.getInstance("3"));
+        fragments.add(MyOrderBackFragment.getInstance("5"));
         return fragments;
     }
 
     @Override
     protected void initView() {
         super.initView();
-        tab.setTabMode(TabLayout.MODE_FIXED);
-        tab.setTabGravity(TabLayout.GRAVITY_CENTER);
+//        tab.setTabMode(TabLayout.MODE_FIXED);
+//        tab.setTabGravity(TabLayout.GRAVITY_CENTER);
 
     }
 
 
     @Override
     protected String[] getTabTitles() {
-        return new String[]{"全部订单", "待审核", "退货中", "退货完成"};
+        return new String[]{"全部订单", "待审核", "退货中", "退货完成","订单回收站"};
     }
 
     @Override

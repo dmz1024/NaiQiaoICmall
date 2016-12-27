@@ -10,7 +10,11 @@ import base.bean.ListBaseBean;
 
 public class TongZhiGGBean extends ListBaseBean<ArrayList<TongZhiGGBean.Data>> {
 
-    public static class Data{
-
+    public static class Data {
+        public String id;
+        public String title;
+        public String short_title;
+        public String add_time;
+        public String content;
     }
 }

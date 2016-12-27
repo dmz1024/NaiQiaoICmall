@@ -5,6 +5,8 @@ import android.view.View;
 
 import com.naiqiao.mall.adapter.JiaoYi_JiFen_FanDianAdapter;
 import com.naiqiao.mall.bean.JiaoYi_JiFen_FanDianBean;
+import com.naiqiao.mall.constant.ApiConstant;
+import com.naiqiao.mall.constant.UserInfo;
 import com.naiqiao.mall.fragment.base.JiaoYiJiFenFanDianBaseFragment;
 import com.naiqiao.mall.view.JiaoYi_JiFen_FanDianTitleBarView;
 
@@ -22,14 +24,14 @@ public class JiaoYiJiLvFragment extends JiaoYiJiFenFanDianBaseFragment {
 
     @Override
     protected String url() {
-        return "http://www.ediancha.com/app.php";
+        return ApiConstant.USER;
     }
 
     @Override
     protected Map<String, String> map() {
-        map.put("c", "chahui");
-        map.put("a", "index");
-        map.put("type", "1");
+        map.put("act", "order_all");
+        map.put("user_id", UserInfo.uid);
+        map.put("sign_token", UserInfo.token);
         return super.map();
     }
 

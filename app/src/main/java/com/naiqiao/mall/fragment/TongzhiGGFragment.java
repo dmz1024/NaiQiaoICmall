@@ -4,6 +4,8 @@ import android.support.v7.widget.RecyclerView;
 
 import com.naiqiao.mall.adapter.TongZhiGGAdapter;
 import com.naiqiao.mall.bean.TongZhiGGBean;
+import com.naiqiao.mall.constant.ApiConstant;
+import com.naiqiao.mall.constant.UserInfo;
 
 import java.util.ArrayList;
 import java.util.Map;
@@ -23,14 +25,14 @@ public class TongzhiGGFragment extends ListNetWorkBaseFragment<TongZhiGGBean> {
 
     @Override
     protected String url() {
-        return "http://www.ediancha.com/app.php";
+        return ApiConstant.NEWSCENTER;
     }
 
     @Override
     protected Map<String, String> map() {
-        map.put("c", "chahui");
-        map.put("a", "index");
-        map.put("type", "1");
+        map.put("act", "index");
+        map.put("user_id", UserInfo.uid);
+        map.put("sign_token", UserInfo.token);
         return super.map();
     }
 

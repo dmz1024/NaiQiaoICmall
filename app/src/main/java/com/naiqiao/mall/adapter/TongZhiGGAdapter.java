@@ -33,7 +33,10 @@ public class TongZhiGGAdapter extends BaseAdapter<TongZhiGGBean.Data> {
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         final ViewHolder mHolder = (ViewHolder) holder;
-
+        TongZhiGGBean.Data data = list.get(position);
+        mHolder.tv_time.setText(data.add_time);
+        mHolder.tv_title.setText(data.short_title);
+        mHolder.tv_content.setText(data.content);
     }
 
 

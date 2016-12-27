@@ -33,7 +33,7 @@ public class YuCunHuoContentFragment extends TabIndicatorBaseFragment {
         list.add(YuCunHuoFragment.getInstance("1"));
         list.add(YuCunHuoFragment.getInstance("2"));
         list.add(YuCunHuoFragment.getInstance("3"));
-        list.add(YuCunHuoFragment.getInstance("4"));
+        list.add(YuCunHuoFragment.getInstance("5"));
         return list;
     }
 

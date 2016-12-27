@@ -15,6 +15,8 @@ import android.widget.RelativeLayout;
 
 import com.mall.naiqiao.mylibrary.R;
 
+import java.util.ArrayList;
+
 import base.bean.rxbus.AddFragmentBean;
 import rx.Observable;
 import rx.functions.Action1;
@@ -42,6 +44,10 @@ public abstract class BaseActivity extends AppCompatActivity {
         initBackRxBus();
         initFragmentRxBus();
         initData();
+    }
+
+    private void initPhoto() {
+
     }
 
     protected abstract void initData();

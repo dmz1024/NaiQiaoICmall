@@ -1,10 +1,9 @@
-package com.naiqiao.mall.activity;
+package view;
 
 import android.app.Application;
 
-import com.squareup.leakcanary.LeakCanary;
+import com.facebook.drawee.backends.pipeline.Fresco;
 import com.yanzhenjie.nohttp.OkHttpNetworkExecutor;
-import com.yolanda.nohttp.Logger;
 import com.yolanda.nohttp.NoHttp;
 import com.yolanda.nohttp.cache.DBCacheStore;
 
@@ -19,11 +18,10 @@ public class MyApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        LeakCanary.install(this);//检测内存泄漏
-
         initNoHttp();
         JLogUtils.setDebug(true);
         Util.setApplication(this);
+        Fresco.initialize(this);
     }
 
     //网络框架初始化

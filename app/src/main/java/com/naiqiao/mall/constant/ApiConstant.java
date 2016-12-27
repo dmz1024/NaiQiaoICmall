@@ -14,4 +14,6 @@ public interface ApiConstant {
     String SHOUCANG = BASE_URL + "shoucang.php";
     String CART = BASE_URL + "cart.php";
     String VIRTUAL = BASE_URL + "virtual.php";
+    String FLOW = BASE_URL + "flow.php";
+    String NEWSCENTER = BASE_URL + "newscenter.php";
 }

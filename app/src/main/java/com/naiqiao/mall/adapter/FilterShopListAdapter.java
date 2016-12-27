@@ -13,12 +13,15 @@ import com.bumptech.glide.Glide;
 import com.naiqiao.mall.R;
 import com.naiqiao.mall.bean.FilterShopListBean;
 import com.naiqiao.mall.bean.SendCarBean;
+import com.naiqiao.mall.fragment.ShopInfoDescRootFragment;
 
 import java.util.ArrayList;
 
 import api.TestConstant;
 import base.adapter.BaseAdapter;
 import base.adapter.BaseViewHolder;
+import base.bean.rxbus.AddFragmentBean;
+import util.RxBus;
 
 
 /**
@@ -72,7 +75,7 @@ public class FilterShopListAdapter extends BaseAdapter<FilterShopListBean.Data> 
 
         @Override
         protected void onClick(int layoutPosition) {
-
+            RxBus.get().post("addFragment", new AddFragmentBean(ShopInfoDescRootFragment.getInstance(list.get(layoutPosition).goods_id,list.get(layoutPosition).goods_name)));
         }
     }
 }

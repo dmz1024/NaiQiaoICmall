@@ -3,13 +3,13 @@
     android:background="#fff"
     android:id="@+id/title_bar_rl_top"
     android:layout_width="match_parent"
-    android:layout_height="45dp">
+    android:layout_height="50dp">
 
     <FrameLayout
         android:id="@+id/title_bar_fg_left"
         android:layout_width="45dp"
         android:layout_centerVertical="true"
-        android:layout_height="45dp">
+        android:layout_height="50dp">
         <ImageView
             android:id="@+id/title_bar_iv_left"
             android:layout_width="@dimen/size12"

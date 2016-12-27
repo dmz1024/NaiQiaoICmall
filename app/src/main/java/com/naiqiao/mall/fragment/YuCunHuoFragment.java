@@ -10,6 +10,8 @@ import com.naiqiao.mall.adapter.YiFaHuoAdapter;
 import com.naiqiao.mall.adapter.YuCunHuoAdapter;
 import com.naiqiao.mall.bean.YiFaHuoBean;
 import com.naiqiao.mall.bean.YuCunHuoBean;
+import com.naiqiao.mall.constant.ApiConstant;
+import com.naiqiao.mall.constant.UserInfo;
 
 import java.util.ArrayList;
 import java.util.Map;
@@ -50,14 +52,15 @@ public class YuCunHuoFragment extends ListNetWorkBaseFragment<YuCunHuoBean> {
 
     @Override
     protected String url() {
-        return "http://www.ediancha.com/app.php";
+        return ApiConstant.VIRTUAL;
     }
 
     @Override
     protected Map<String, String> map() {
-        map.put("c", "chahui");
-        map.put("a", "index");
-        map.put("type", "1");
+        map.put("act", "v_order");
+        map.put("user_id", UserInfo.uid);
+        map.put("sign_token", UserInfo.token);
+        map.put("satus", type);
         return super.map();
     }
 
