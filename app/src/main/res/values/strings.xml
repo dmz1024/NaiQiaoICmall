@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">奈乔商城</string>
+    <string name="app_name">奈乔</string>
 
     <string name="password_digits">0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ</string>
 </resources>

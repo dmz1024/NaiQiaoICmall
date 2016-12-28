@@ -1,6 +1,8 @@
 package com.naiqiao.mall.activity;
 
-import com.squareup.leakcanary.LeakCanary;
+//import com.squareup.leakcanary.LeakCanary;
+
+import android.util.Log;
 
 import view.MyApplication;
 
@@ -12,6 +14,7 @@ public class MyApp extends MyApplication {
     @Override
     public void onCreate() {
         super.onCreate();
-        LeakCanary.install(this);//检测内存泄漏
+//        LeakCanary.install(this);//检测内存泄漏
+
     }
 }
