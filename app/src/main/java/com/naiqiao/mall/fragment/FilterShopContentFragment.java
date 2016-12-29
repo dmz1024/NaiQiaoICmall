@@ -116,8 +116,9 @@ public class FilterShopContentFragment extends NotNetWorkBaseFragment {
      */
     private void count() {
         price = 0;
-        count = changeZhi(count);
+        count = count == 0 ? 2 : 0;
         changeColorAndDra();
+        startFilter();
     }
 
 
@@ -126,8 +127,19 @@ public class FilterShopContentFragment extends NotNetWorkBaseFragment {
      */
     private void price() {
         count = 0;
-        price = changeZhi(price);
+        price = price == 0 ? 1 : (price == 1 ? 2 : 1);
         changeColorAndDra();
+        startFilter();
+
+    }
+
+    private int changeZhi(int zhi) {
+        if (zhi == 0 || zhi == 2) {
+            zhi = 1;
+        } else {
+            zhi = 2;
+        }
+        return zhi;
     }
 
     /**
@@ -147,55 +159,40 @@ public class FilterShopContentFragment extends NotNetWorkBaseFragment {
 
             @Override
             protected void ok(int position) {
-
-                if (position == select) {
-                    return;
-                }
-
-                if (position == -1) {
-                    filterMap.clear();
-                } else {
-                    filterMap.put(type == 0 ? "brand_id" : "cat_id", filters.get(position).brand_id);
-                }
-
-                filterMap.put(type == 0 ? "cat_id" : "brand_id", id);
-                filterMap.put("act", type == 0 ? "get_cat_info" : "get_brand_info");
                 select = position;
-                shopListFragment.setFilterMap(filterMap);
-                shopListFragment.startRefresh();
+                if (select == -1) {
+                    price = 0;
+                    count = 0;
+                }
+                startFilter();
+
 
             }
         }.showAsDropDown(tvs.get(0), false);
     }
 
-    private int changeZhi(int zhi) {
-        if (zhi == 0 || zhi == 2) {
-            zhi = 1;
+    private void startFilter() {
+        if (select == -1) {
+            filterMap.clear();
         } else {
-            zhi = 2;
+            filterMap.put(type == 0 ? "brand_id" : "cat_id", filters.get(select).brand_id);
         }
-        return zhi;
+        changeColorAndDra();
+        filterMap.put(type == 0 ? "cat_id" : "brand_id", id);
+        filterMap.put("act", type == 0 ? "get_cat_info" : "get_brand_info");
+        filterMap.put("price_sort", price == 0 ? "" : price + "");
+        filterMap.put("saled_sort", count == 0 ? "" : count + "");
+        shopListFragment.setFilterMap(filterMap);
+        shopListFragment.startRefresh();
     }
 
+
     private void changeColorAndDra() {
-
-        int[] i = {price, count};
-
-        for (int j = 0; j < 2; j++) {
-            switch (i[j]) {
-                case 0:
-                    tvs.get(j + 1).setTextColor(Color.parseColor("#666666"));
-                    tvs.get(j + 1).setCompoundDrawables(null, null, DrawableUtil.setBounds(getResources().getDrawable(R.mipmap.icon_updown)), null);
-                    break;
-                case 1:
-                    tvs.get(j + 1).setTextColor(Color.parseColor("#f54262"));
-                    tvs.get(j + 1).setCompoundDrawables(null, null, DrawableUtil.setBounds(getResources().getDrawable(R.mipmap.icon_updown_up)), null);
-                    break;
-                case 2:
-                    tvs.get(j + 1).setTextColor(Color.parseColor("#f54262"));
-                    tvs.get(j + 1).setCompoundDrawables(null, null, DrawableUtil.setBounds(getResources().getDrawable(R.mipmap.icon_updown_down)), null);
-                    break;
-            }
-        }
+        tvs.get(1).setTextColor(Color.parseColor(price == 0 ? "#666666" : "#f54262"));
+        tvs.get(1).setCompoundDrawables(null, null, DrawableUtil.setBounds(getResources().getDrawable(price == 0 ? R.mipmap.icon_updown : (price == 1 ? R.mipmap.icon_updown_up : R.mipmap.icon_updown_down))), null);
+        tvs.get(2).setTextColor(Color.parseColor(count == 0 ? "#666666" : "#f54262"));
+        tvs.get(2).setCompoundDrawables(null, null, DrawableUtil.setBounds(getResources().getDrawable(count == 0 ? R.mipmap.icon_asc : R.mipmap.icon_asc_check)), null);
+        tvs.get(0).setBackgroundColor(Color.parseColor(select == -1 ? "#f5f5f5" : "#ffffff"));
+        tvs.get(0).setTextColor(Color.parseColor(select == -1 ? "#666666" : "#f73f5f"));
     }
 }

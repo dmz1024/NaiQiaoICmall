@@ -25,6 +25,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import interfaces.OnSingleRequestListener;
 import jp.wasabeef.glide.transformations.CropCircleTransformation;
+import util.RxBus;
 import view.DefaultTitleBarView;
 import view.TitleRelativeLayout;
 
@@ -121,6 +122,7 @@ public class UserSetFragment extends SingleNetWorkBaseFragment<UserSetBean> {
                             @Override
                             public void succes(boolean isWrite, SingleBaseBean bean) {
                                 trl_name.setContent(content);
+                                RxBus.get().post("userChange","aa");
                             }
 
                             @Override

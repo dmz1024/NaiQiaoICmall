@@ -1,45 +1,53 @@
 package com.naiqiao.mall.fragment;
 
 import android.animation.ObjectAnimator;
-import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.ViewPager;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.FrameLayout;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.canyinghao.canphotos.CanPhotoHelper;
 import com.naiqiao.mall.R;
+import com.naiqiao.mall.bean.ShopInfoDescBean;
 import com.naiqiao.mall.bean.rxbus.CollectRxbus;
+import com.naiqiao.mall.constant.ApiConstant;
+import com.naiqiao.mall.constant.UserInfo;
 import com.naiqiao.mall.controller.MyCollectController;
+import com.naiqiao.mall.fragment.login.LoginFragment;
 import com.naiqiao.mall.view.ShopDescTitleBarView;
 
 import java.util.ArrayList;
 import java.util.Map;
 
-import base.bean.SingleBaseBean;
 import base.bean.TipLoadingBean;
+import base.bean.rxbus.AddFragmentBean;
 import base.bean.rxbus.PhotoRxbus;
 import base.fragment.SingleNetWorkBaseFragment;
+import base.fragment.WebViewFragment;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import rx.Observable;
 import rx.functions.Action1;
+import util.DrawableUtil;
 import util.RxBus;
+import util.Util;
 import view.CustomScrollView;
 import view.DragSwitchLayout;
-
-import static android.app.Activity.RESULT_OK;
 
 /**
  * Created by dengmingzhi on 2016/12/26.
  */
 
-public class ShopInfoDescRootFragment extends SingleNetWorkBaseFragment<SingleBaseBean> {
+public class ShopInfoDescRootFragment extends SingleNetWorkBaseFragment<ShopInfoDescBean> {
     private String id;
     private String title;
     @BindView(R.id.sc_root)
@@ -60,6 +68,20 @@ public class ShopInfoDescRootFragment extends SingleNetWorkBaseFragment<SingleBa
     TextView tv_title;
     @BindView(R.id.tv_collect)
     TextView tv_collect;
+    @BindView(R.id.tv_page)
+    TextView tv_page;
+    @BindView(R.id.vp_content)
+    ViewPager vp_content;
+    @BindView(R.id.ll_price)
+    LinearLayout ll_price;
+    @BindView(R.id.tv_price)
+    TextView tv_price;
+    @BindView(R.id.tv_tips)
+    TextView tv_tips;
+    @BindView(R.id.tv_login_tips)
+    TextView tv_login_tips;
+    @BindView(R.id.tv_no_login_tips)
+    TextView tv_no_login_tips;
 
     public static ShopInfoDescRootFragment getInstance(String id, String title) {
         ShopInfoDescRootFragment shopInfoDescRootFragment = new ShopInfoDescRootFragment();
@@ -72,13 +94,15 @@ public class ShopInfoDescRootFragment extends SingleNetWorkBaseFragment<SingleBa
 
     @Override
     protected String url() {
-        return "http://www.ediancha.com/app.php";
+        return ApiConstant.INDEX;
     }
 
     @Override
     protected Map<String, String> map() {
-        map.put("c", "chahui");
-        map.put("a", "index");
+        map.put("act", "goods_if");
+        map.put("user_id", UserInfo.uid);
+        map.put("sign_token", UserInfo.token);
+        map.put("goods_id", id);
         return super.map();
     }
 
@@ -94,12 +118,39 @@ public class ShopInfoDescRootFragment extends SingleNetWorkBaseFragment<SingleBa
 
     @OnClick(R.id.tv_collect)
     void collect() {
-        MyCollectController.getInstance().collect(id, new CollectRxbus("add", -1));
+        initCollectRxBus();
+        MyCollectController.getInstance().collect(id, new CollectRxbus(data.collect == 0 ? "add" : "cancel", -1));
+    }
+
+    @OnClick(R.id.tv_no_login_tips)
+    void login() {
+        RxBus.get().post("addFragment", new AddFragmentBean(new LoginFragment()));
+    }
+
+    private Observable<CollectRxbus> collect;
+
+    private void initCollectRxBus() {
+        if (collect == null) {
+            collect = RxBus.get().register("collect", CollectRxbus.class);
+            collect.subscribe(new Action1<CollectRxbus>() {
+                @Override
+                public void call(CollectRxbus rxbus) {
+                    switch (rxbus.act) {
+                        case "cancel":
+                            data.collect = 0;
+                            break;
+                        case "add":
+                            data.collect = 1;
+                    }
+                    initCollect();
+                }
+            });
+        }
     }
 
     @Override
-    protected Class<SingleBaseBean> getTClass() {
-        return SingleBaseBean.class;
+    protected Class<ShopInfoDescBean> getTClass() {
+        return ShopInfoDescBean.class;
     }
 
     private boolean isFirst;
@@ -108,10 +159,13 @@ public class ShopInfoDescRootFragment extends SingleNetWorkBaseFragment<SingleBa
     protected View getHaveDataView() {
         View view = View.inflate(getContext(), R.layout.fragment_shop_info_desc_root, null);
         ButterKnife.bind(this, view);
-        initScroll();
         if (!TextUtils.isEmpty(title)) {
             tv_title.setText(title);
         }
+
+        FrameLayout.LayoutParams layoutParams = (FrameLayout.LayoutParams) vp_content.getLayoutParams();
+        layoutParams.height = Util.getWidth();
+        vp_content.setLayoutParams(layoutParams);
         return view;
     }
 
@@ -121,7 +175,7 @@ public class ShopInfoDescRootFragment extends SingleNetWorkBaseFragment<SingleBa
             public void onDragToBottomView() {
                 if (!isFirst) {
                     isFirst = true;
-                    getChildFragmentManager().beginTransaction().add(R.id.wv_desc, new AddressFragment()).commit();
+                    getChildFragmentManager().beginTransaction().add(R.id.wv_desc, WebViewFragment.getInstance(data.h5_url, false)).commit();
                 }
                 changeTopView(1);
             }
@@ -132,6 +186,89 @@ public class ShopInfoDescRootFragment extends SingleNetWorkBaseFragment<SingleBa
             }
         });
     }
+
+    private ShopInfoDescBean.Data data;
+
+    @Override
+    protected void writeData(boolean isWrite, ShopInfoDescBean bean) {
+        super.writeData(isWrite, bean);
+        this.data = bean.data;
+        initBanner();
+        initScroll();
+        goodsInfo();
+        initCollect();
+    }
+
+    /**
+     * 初始化轮播图
+     */
+    private void initBanner() {
+
+        final int count = data.gallery_arr.size();
+        tv_page.setText("1/" + count);
+        final ArrayList<Fragment> fragments = new ArrayList<>();
+        for (int i = 0; i < count; i++) {
+            fragments.add(ImageFragment.getInstance(data.gallery_arr.get(i)));
+        }
+        fragments.add(new ImageTextFragment());
+        vp_content.setAdapter(new FragmentPagerAdapter(getChildFragmentManager()) {
+            @Override
+            public Fragment getItem(int position) {
+                return fragments.get(position);
+            }
+
+            @Override
+            public int getCount() {
+                return count + 1;
+            }
+        });
+
+        vp_content.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
+            @Override
+            public void onPageSelected(int position) {
+                if (position == fragments.size() - 1) {
+                    goBottom();
+                    vp_content.setCurrentItem(fragments.size() - 2);
+                } else {
+                    tv_page.setText((position + 1) + "/" + count);
+                }
+            }
+        });
+    }
+
+
+    /**
+     * 判断是否收藏
+     */
+    private void initCollect() {
+        tv_collect.setCompoundDrawables(null, DrawableUtil.setBounds(getResources().getDrawable(data.collect == 1 ? R.mipmap.icon_detail_collected : R.mipmap.icon_detail_collect)), null, null);
+
+    }
+
+    /**
+     * 商品信息
+     */
+    private void goodsInfo() {
+        ShopInfoDescBean.Data.GoodsInfoBean goods_info = data.goods_info;
+        tv_price.setText(goods_info.promote_price);
+        tv_tips.setText(goods_info.goods_brief);
+        if (data.is_login == 1) {
+            ArrayList<ShopInfoDescBean.Data.UserRankPricesBean> user_rank_prices = data.user_rank_prices;
+            for (int i = 0; i < user_rank_prices.size(); i++) {
+                ShopInfoDescBean.Data.UserRankPricesBean userRankPricesBean = user_rank_prices.get(i);
+                View view = View.inflate(getContext(), R.layout.item_shop_desc_price, null);
+                TextView tv_price = (TextView) view.findViewById(R.id.tv_price);
+                TextView tv_level = (TextView) view.findViewById(R.id.tv_level);
+                tv_level.setText(userRankPricesBean.rank_name);
+                tv_price.setText(userRankPricesBean.price);
+                ll_price.addView(view);
+            }
+            ll_price.setVisibility(View.VISIBLE);
+            tv_login_tips.setVisibility(View.VISIBLE);
+            tv_no_login_tips.setVisibility(View.GONE);
+        }
+    }
+
 
     @OnClick(R.id.tv_shop)
     void goTop() {
@@ -215,6 +352,9 @@ public class ShopInfoDescRootFragment extends SingleNetWorkBaseFragment<SingleBa
         super.onDestroy();
         if (photoRxBus != null) {
             RxBus.get().unregister("photoRxBus", photoRxBus);
+        }
+        if (collect != null) {
+            RxBus.get().unregister("collect", collect);
         }
     }
 

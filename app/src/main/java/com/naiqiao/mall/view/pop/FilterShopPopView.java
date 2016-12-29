@@ -63,15 +63,19 @@ public class FilterShopPopView extends PopBaseView {
         view.findViewById(R.id.tv_clear).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                clear();
+                if (mAdapter != null) {
+                    clear();
+                }
             }
         });
 
         view.findViewById(R.id.tv_ok).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                dismiss();
-                ok(currentPosition);
+                if (mAdapter != null) {
+                    dismiss();
+                    ok(currentPosition);
+                }
             }
         });
 
@@ -161,8 +165,10 @@ public class FilterShopPopView extends PopBaseView {
     private FilterShopPopAdapter mAdapter;
 
     protected void clear() {
+
         currentPosition = -1;
         mAdapter.notifyDataSetChanged();
+
     }
 
 
@@ -172,7 +178,7 @@ public class FilterShopPopView extends PopBaseView {
         public FilterShopPopAdapter(Context ctx, ArrayList<FilterBean.Data> list) {
             super(ctx, list);
         }
-        
+
         @Override
         public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
             return new ViewHolder(View.inflate(ctx, R.layout.pop_filter_shop_item, null));

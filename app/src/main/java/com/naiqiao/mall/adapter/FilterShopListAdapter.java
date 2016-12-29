@@ -48,6 +48,7 @@ public class FilterShopListAdapter extends BaseAdapter<FilterShopListBean.Data> 
         mHolder.tv_price.setText("￥" + data.shop_price);
         mHolder.tv_old_price.setText("￥" + data.market_price);
         mHolder.tv_count.setText("已卖出" + data.p + "件");
+        mHolder.tv_guige.setText("规格：" + data.attr);
     }
 
 
@@ -75,7 +76,7 @@ public class FilterShopListAdapter extends BaseAdapter<FilterShopListBean.Data> 
 
         @Override
         protected void onClick(int layoutPosition) {
-            RxBus.get().post("addFragment", new AddFragmentBean(ShopInfoDescRootFragment.getInstance(list.get(layoutPosition).goods_id,list.get(layoutPosition).goods_name)));
+            RxBus.get().post("addFragment", new AddFragmentBean(ShopInfoDescRootFragment.getInstance(list.get(layoutPosition).goods_id, list.get(layoutPosition).goods_name)));
         }
     }
 }

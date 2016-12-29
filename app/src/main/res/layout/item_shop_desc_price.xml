@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="#fff"
+    android:padding="0.5dp"
+    android:orientation="horizontal">
+
+    <TextView
+        android:id="@+id/tv_price"
+        style="@style/TextSize13Color333"
+        android:layout_gravity="center_vertical"
+        android:text="￥5999"
+        android:textColor="#f73f5f"
+        />
+
+    <TextView
+        android:id="@+id/tv_level"
+        style="@style/TextSize11Colorfff"
+        android:layout_gravity="center_vertical"
+        android:layout_marginLeft="@dimen/size10"
+        android:paddingLeft="@dimen/size2"
+        android:paddingRight="@dimen/size2"
+        android:paddingBottom="@dimen/size1"
+        android:paddingTop="@dimen/size1"
+        android:background="@drawable/shape_f73f5f_radius_5"
+        android:textStyle="bold|italic" />
+</LinearLayout>

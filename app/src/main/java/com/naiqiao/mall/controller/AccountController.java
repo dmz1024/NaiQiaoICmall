@@ -69,7 +69,7 @@ public class AccountController {
         new ApiRequest<SingleBaseBean>() {
             @Override
             protected Map<String, String> getMap() {
-                map.put("act", "index");
+                map.put("act", "update_info");
                 map.put("user_id", UserInfo.uid);
                 map.put("sign_token", UserInfo.token);
                 return map;

@@ -15,10 +15,10 @@
             style="@style/TextSize12Color999"
             android:layout_width="0dp"
             android:layout_weight="1"
+            android:background="#f5f5f5"
             android:gravity="center"
             android:padding="@dimen/size10"
-            android:text="分类"
-            android:textColor="#f54262" />
+            android:text="分类" />
 
         <FrameLayout
             android:id="@+id/fg_price"
@@ -50,7 +50,7 @@
                 style="@style/TextSize12Color666"
                 android:layout_gravity="center"
                 android:drawablePadding="@dimen/size1"
-                android:drawableRight="@mipmap/icon_updown"
+                android:drawableRight="@mipmap/icon_asc"
                 android:gravity="center"
                 android:padding="@dimen/size10"
                 android:text="销量" />

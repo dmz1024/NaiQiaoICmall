@@ -14,6 +14,7 @@ import com.naiqiao.mall.bean.MyJinHuoDanBean;
 import com.naiqiao.mall.bean.rxbus.MyJHDRxBus;
 import com.naiqiao.mall.controller.MyJHDController;
 import com.naiqiao.mall.fragment.ShopDescFragment;
+import com.naiqiao.mall.fragment.ShopInfoDescRootFragment;
 import com.naiqiao.mall.view.AddAndSubView;
 
 import java.util.ArrayList;
@@ -52,8 +53,8 @@ public class MyJinHuoDanAdapter extends BaseAdapter<MyJinHuoDanBean.Data> {
         mHolder.tv_old_price.setText(data.market_price);
         mHolder.tv_have_count.setText("剩余：" + data.stock + "件");
         mHolder.tv_total.setText("小计：" + data.subtotal);
-        mHolder.tv_tip.setText("本产品可获得" + data.give_integral + "积分");
-        mHolder.tv_guige.setText("规格："+data.goods_attr);
+        mHolder.tv_tip.setText("单个产品可获得" + data.give_integral + "积分");
+        mHolder.tv_guige.setText("规格：" + data.goods_attr);
         mHolder.view_aas.setOnChangeListener(new AddAndSubView.OnChangeListener() {
             @Override
             public void add() {
@@ -97,11 +98,12 @@ public class MyJinHuoDanAdapter extends BaseAdapter<MyJinHuoDanBean.Data> {
             itemView.setOnClickListener(this);
             iv_choose.setOnClickListener(this);
             tv_old_price.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG); //中划线
+            iv_img.setOnClickListener(this);
         }
 
         @Override
         protected void onClick(int layoutPosition) {
-            RxBus.get().post("addFragment",new AddFragmentBean(new ShopDescFragment()));
+
         }
 
         @Override
@@ -109,12 +111,14 @@ public class MyJinHuoDanAdapter extends BaseAdapter<MyJinHuoDanBean.Data> {
             if (id == R.id.iv_choose) {
                 iv_choose.setImageResource((list.get(layoutPosition).isChoose = !list.get(layoutPosition).isChoose) ? R.mipmap.icon_checked : R.mipmap.icon_check);
                 choose();
+            }else if(id==R.id.iv_img){
+                RxBus.get().post("addFragment", new AddFragmentBean(ShopInfoDescRootFragment.getInstance(list.get(layoutPosition).goods_id,list.get(layoutPosition).goods_name)));
             }
         }
     }
 
 
-    protected void choose() {
+    public void choose() {
 
     }
 }

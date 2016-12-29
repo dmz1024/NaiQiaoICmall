@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fff">
+
+    <TextView
+        android:id="@+id/tv_content"
+        style="@style/TextSize13Color333"
+        android:layout_gravity="center_vertical"
+        android:layout_marginLeft="@dimen/size15"
+        android:lineSpacingExtra="@dimen/size1"
+        android:maxEms="1"
+        android:text="继续拖动查看图文详情" />
+</FrameLayout>

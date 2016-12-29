@@ -23,7 +23,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".SecondActivity" android:label="奈乔测试">
+        <activity android:name=".activity.SecondActivity" android:label="奈乔测试">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

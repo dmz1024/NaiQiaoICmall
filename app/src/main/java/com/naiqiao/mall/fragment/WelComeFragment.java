@@ -5,7 +5,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.naiqiao.mall.R;
-import com.naiqiao.mall.bean.User;
+import com.naiqiao.mall.bean.UserCenter;
 import base.bean.rxbus.AddFragmentBean;
 import com.naiqiao.mall.fragment.index.IndexFragment;
 
@@ -21,7 +21,7 @@ import view.Color2Text;
  * Created by dengmingzhi on 2016/11/25.
  */
 
-public class WelComeFragment extends SingleNetWorkBaseFragment<User> {
+public class WelComeFragment extends SingleNetWorkBaseFragment<UserCenter> {
     @BindView(R.id.view_root)
     LinearLayout view_root;
     @BindView(R.id.iv_bg)
@@ -53,12 +53,12 @@ public class WelComeFragment extends SingleNetWorkBaseFragment<User> {
     }
 
     @Override
-    protected Class<User> getTClass() {
-        return User.class;
+    protected Class<UserCenter> getTClass() {
+        return UserCenter.class;
     }
 
     @Override
-    protected void writeData(boolean isWrite, User bean) {
+    protected void writeData(boolean isWrite, UserCenter bean) {
         super.writeData(isWrite, bean);
         isHaveAd = true;
         view_root.removeCallbacks(changeRunnable);
@@ -66,7 +66,7 @@ public class WelComeFragment extends SingleNetWorkBaseFragment<User> {
     }
 
     @Override
-    protected void manageError(boolean isWrite, User user, String msg) {
+    protected void manageError(boolean isWrite, UserCenter user, String msg) {
         super.manageError(isWrite, user, msg);
 
     }

@@ -17,7 +17,7 @@
             style="@style/TextSize13Color666"
             android:layout_centerVertical="true"
             android:layout_marginLeft="@dimen/size10"
-            android:drawableLeft="@mipmap/icon_checked"
+            android:drawableLeft="@mipmap/icon_check"
             android:drawablePadding="@dimen/size4"
             android:gravity="center_vertical"
             android:text="全选" />
@@ -43,9 +43,10 @@
             android:layout_toLeftOf="@id/bt_pay"
             android:gravity="right"
             android:lineSpacingExtra="@dimen/size6"
-            android:text="合计：￥2000.00\n"
+            android:text="合计：￥0.0\n"
+
             app:Color2Text_color="#999"
-            app:Color2Text_content=""
+            app:Color2Text_content="共0件"
             app:Color2Text_size="@dimen/sp12" />
     </RelativeLayout>
 

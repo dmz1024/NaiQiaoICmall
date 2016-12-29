@@ -31,15 +31,16 @@
         android:id="@+id/title_bar_rl_right"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
+
         <TextView
             android:id="@+id/title_bar_tv_right"
-            android:text="89"
+            android:text=" 0 "
             android:background="#fff"
             android:layout_marginLeft="@dimen/size10"
             android:paddingTop="@dimen/size1"
             android:paddingBottom="@dimen/size1"
-            android:paddingLeft="@dimen/size3"
-            android:paddingRight="@dimen/size3"
+            android:paddingLeft="@dimen/size1"
+            android:paddingRight="@dimen/size1"
             android:textColor="#d7000f"
             style="@style/TextSize9Color999" />
         <ImageView

@@ -74,11 +74,11 @@ public class FourTitleBarView extends RelativeLayout implements View.OnClickList
 
 
     public FourTitleBarView setRightContent(String content) {
-        if (TextUtils.equals(content, "0") || TextUtils.isEmpty(content)) {
+        if (TextUtils.isEmpty(content)) {
             title_bar_tv_right.setVisibility(GONE);
         } else {
             title_bar_tv_right.setVisibility(VISIBLE);
-            title_bar_tv_right.setText(content);
+            title_bar_tv_right.setText(content.length()==1?" "+content+" ":content);
         }
         return this;
     }

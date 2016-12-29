@@ -31,11 +31,17 @@ public class WriteSendShopFragment extends NotNetWorkBaseFragment {
     }
 
     private void creatShop() {
-        LinearLayoutManager manager=new LinearLayoutManager(getContext());
+        LinearLayoutManager manager=new LinearLayoutManager(getContext()){
+            @Override
+            public boolean canScrollVertically() {
+                return false;
+            }
+        };
         WriteSendCarAdapter mAdapter=new WriteSendCarAdapter(getContext(),data);
 //        rv_shop.addItemDecoration(new ItemDecoration(getContext(),LinearLayoutManager.HORIZONTAL,1,"#e0e0e0"));
         rv_shop.setAdapter(mAdapter);
         rv_shop.setLayoutManager(manager);
+
     }
 
     @Override

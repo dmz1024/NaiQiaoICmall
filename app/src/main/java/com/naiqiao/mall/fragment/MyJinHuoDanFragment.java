@@ -31,7 +31,26 @@ import util.RxBus;
 public class MyJinHuoDanFragment extends ListNetWorkBaseFragment<MyJinHuoDanBean> {
     @Override
     protected RecyclerView.Adapter getAdapter() {
-        return new MyJinHuoDanAdapter(getContext(), (ArrayList<MyJinHuoDanBean.Data>) totalList);
+        return new MyJinHuoDanAdapter(getContext(), (ArrayList<MyJinHuoDanBean.Data>) totalList) {
+            @Override
+            public void choose() {
+                ArrayList<MyJinHuoDanBean.Data> totalList = (ArrayList<MyJinHuoDanBean.Data>) MyJinHuoDanFragment.this.totalList;
+                boolean allChoose = true;
+                double price = 0.00;
+                int count = 0;
+                for (MyJinHuoDanBean.Data data : totalList) {
+                    if (data.isChoose) {
+                        price += data.goods_number * data.n_goods_price;
+                        count += data.goods_number;
+                    } else {
+                        allChoose = false;
+                    }
+                }
+                if (onDataChangeListener != null) {
+                    onDataChangeListener.choose(allChoose, price, count);
+                }
+            }
+        };
     }
 
 
@@ -45,11 +64,15 @@ public class MyJinHuoDanFragment extends ListNetWorkBaseFragment<MyJinHuoDanBean
             myjhd.subscribe(new Action1<MyJHDRxBus>() {
                 @Override
                 public void call(MyJHDRxBus rxbus) {
-                    ((ArrayList<MyJinHuoDanBean.Data>) totalList).get(rxbus.position).goods_number = rxbus.num;
+                    ArrayList<MyJinHuoDanBean.Data> totalList = (ArrayList<MyJinHuoDanBean.Data>) MyJinHuoDanFragment.this.totalList;
                     if (rxbus.isSuccess) {
-                        ((ArrayList<MyJinHuoDanBean.Data>) totalList).get(rxbus.position).subtotal = rxbus.total;
+                        totalList.get(rxbus.position).subtotal = rxbus.total;
+                        if (onDataChangeListener != null && totalList.get(rxbus.position).isChoose) {
+                            onDataChangeListener.price(rxbus.num - totalList.get(rxbus.position).goods_number, totalList.get(rxbus.position).n_goods_price);
+                        }
                     }
-                    ((ArrayList<MyJinHuoDanBean.Data>) totalList).get(rxbus.position).isChange = true;
+                    totalList.get(rxbus.position).goods_number = rxbus.num;
+                    totalList.get(rxbus.position).isChange = true;
                     mAdapter.notifyItemChanged(rxbus.position);
                 }
             });
@@ -87,5 +110,34 @@ public class MyJinHuoDanFragment extends ListNetWorkBaseFragment<MyJinHuoDanBean
         tv_guangguang.getPaint().setFlags(Paint.UNDERLINE_TEXT_FLAG); //下划线
         tv_guangguang.getPaint().setAntiAlias(true);//抗锯齿
         return view;
+    }
+
+    public interface OnDataChangeListener {
+        void choose(boolean choose, double price, int count);
+
+        void price(int count, double price);
+    }
+
+    private OnDataChangeListener onDataChangeListener;
+
+    public void setOnDataChangeListener(OnDataChangeListener onDataChangeListener) {
+        this.onDataChangeListener = onDataChangeListener;
+    }
+
+    public void choose(boolean isChoose) {
+        if (mAdapter != null) {
+            int count = totalList.size();
+            ArrayList<MyJinHuoDanBean.Data> totalList = (ArrayList<MyJinHuoDanBean.Data>) this.totalList;
+            for (int i = 0; i < count; i++) {
+                totalList.get(i).isChoose = isChoose;
+            }
+            mAdapter.notifyDataSetChanged();
+            ((MyJinHuoDanAdapter) mAdapter).choose();
+        }
+    }
+
+    @Override
+    protected boolean isCanRefresh() {
+        return false;
     }
 }

@@ -8,7 +8,9 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.naiqiao.mall.R;
-import com.naiqiao.mall.bean.User;
+import com.naiqiao.mall.bean.UserCenter;
+import com.naiqiao.mall.constant.ApiConstant;
+import com.naiqiao.mall.constant.UserInfo;
 import com.naiqiao.mall.fragment.AllShopContentFragment;
 import com.naiqiao.mall.fragment.JiaoYiJiLvFragment;
 import com.naiqiao.mall.fragment.MyCollectFragment;
@@ -41,6 +43,9 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import interfaces.OnTitleBarListener;
 import interfaces.ScrollChangeViewListener;
+import rx.Observable;
+import rx.functions.Action1;
+import util.JLogUtils;
 import util.RxBus;
 import view.ScrollChangeScrollView;
 import view.TextImage;
@@ -50,7 +55,7 @@ import view.TitleRelativeLayout;
  * Created by dengmingzhi on 2016/11/16.
  */
 
-public class FourFragment extends SingleNetWorkBaseFragment<User> implements ScrollChangeViewListener, OnTitleBarListener {
+public class FourFragment extends SingleNetWorkBaseFragment<UserCenter> implements ScrollChangeViewListener, OnTitleBarListener {
     @BindViews({R.id.tv_1_1, R.id.tv_1_2, R.id.tv_1_3, R.id.tv_1_4, R.id.tv_1_5})
     List<TextView> tv1s;
     @BindViews({R.id.tv_2_1, R.id.tv_2_2, R.id.tv_2_3, R.id.tv_2_4})
@@ -76,26 +81,36 @@ public class FourFragment extends SingleNetWorkBaseFragment<User> implements Scr
 
     @Override
     protected String url() {
-        return "http://www.ediancha.com/app.php";
+        return ApiConstant.USER;
     }
 
     @Override
     protected Map<String, String> map() {
-        map.put("c", "chahui");
-        map.put("a", "index");
-        map.put("type", "1");
+        map.put("act", "my_user");
+        map.put("user_id", UserInfo.uid);
+        map.put("sign_token", UserInfo.token);
         return super.map();
     }
 
     @Override
-    protected void writeData(boolean isWrite, User bean) {
+    protected void writeData(boolean isWrite, UserCenter bean) {
         super.writeData(isWrite, bean);
-        Glide.with(getContext()).load(TestConstant.IMAGE).into(iv_head);
+        UserCenter.Data data = bean.data;
+        Glide.with(getContext()).load(data.avatar).into(iv_head);
+        tv_level.setText(data.user_rank);
+        tv_name.setText(data.user_name);
+        tv1s.get(0).setText("库存预警\n" + data.notice);
+        tv1s.get(1).setText("到货通知\n" + data.booking_goods);
+        tv1s.get(2).setText("在途中\n" + data.zaitu);
+        tv1s.get(3).setText("虚拟仓\n" + data.stock_goods);
+        tv1s.get(4).setText("积分\n" + data.integral);
+        titleBarView.setRightContent(data.news);
+        userInfoChange();
     }
 
     @Override
-    protected Class<User> getTClass() {
-        return User.class;
+    protected Class<UserCenter> getTClass() {
+        return UserCenter.class;
     }
 
     @Override
@@ -269,5 +284,27 @@ public class FourFragment extends SingleNetWorkBaseFragment<User> implements Scr
     @Override
     public void center() {
 
+    }
+
+    private Observable<String> userChangeRxbus;
+
+    private void userInfoChange() {
+        if(userChangeRxbus==null){
+            userChangeRxbus = RxBus.get().register("userChange", String.class);
+            userChangeRxbus.subscribe(new Action1<String>() {
+                @Override
+                public void call(String s) {
+                    getData();
+                    JLogUtils.D("这里");
+                }
+            });
+        }
+
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        RxBus.get().unregister("userChange",userChangeRxbus);
     }
 }

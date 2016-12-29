@@ -60,7 +60,7 @@ public class MyCollectFragment extends ListNetWorkBaseFragment<MyCollectBean> im
                 public void call(CollectRxbus rxbus) {
                     switch (rxbus.act) {
                         case "cancel":
-                            if (mAdapter != null) {
+                            if (mAdapter != null && rxbus.position >= 0) {
                                 mAdapter.remove(rxbus.position);
                             }
                             break;
@@ -70,7 +70,6 @@ public class MyCollectFragment extends ListNetWorkBaseFragment<MyCollectBean> im
             });
         }
     }
-
 
 
     @Override
@@ -123,7 +122,7 @@ public class MyCollectFragment extends ListNetWorkBaseFragment<MyCollectBean> im
      */
     @Override
     public void right() {
-        if(mAdapter==null){
+        if (mAdapter == null) {
             return;
         }
         titleBarView.setRightImage((isVertical = !isVertical) ? R.mipmap.icon_display_list : R.mipmap.icon_display_block);

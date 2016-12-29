@@ -18,5 +18,6 @@ public class FilterShopListBean extends ListBaseBean<ArrayList<FilterShopListBea
         public String goods_thumb;
         public String goods_img;
         public String p;
+        public String attr;
     }
 }

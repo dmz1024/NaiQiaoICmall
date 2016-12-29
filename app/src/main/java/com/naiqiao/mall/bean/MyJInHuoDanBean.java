@@ -10,7 +10,7 @@ import base.bean.ListBaseBean;
 
 public class MyJinHuoDanBean extends ListBaseBean<ArrayList<MyJinHuoDanBean.Data>> {
     public static class Data {
-        public boolean isChoose = true;
+        public boolean isChoose;
         public String rec_id;
         public String goods_thumb;
         public String goods_name;
@@ -18,10 +18,13 @@ public class MyJinHuoDanBean extends ListBaseBean<ArrayList<MyJinHuoDanBean.Data
         public String goods_attr;
         public String market_price;
         public String goods_price;
+        public double n_goods_price;
         public int stock;
         public String subtotal;
+        public String goods_id;
         public String give_integral;
         public boolean isChange = true;
+
     }
 
 
