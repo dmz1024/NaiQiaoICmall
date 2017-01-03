@@ -98,15 +98,15 @@ public class AddAndSubView extends LinearLayout implements View.OnClickListener 
                 if (Integer.parseInt(tv_count.getText().toString()) - 1 < min) {
                     return;
                 }
-                onChangeListener.sub();
                 tv_count.setText((Integer.parseInt(tv_count.getText().toString()) - index) + "");
+                onChangeListener.sub();
                 break;
             case R.id.fg_add_and_sub_add:
                 if (Integer.parseInt(tv_count.getText().toString()) + 1 > max) {
                     return;
                 }
-                onChangeListener.add();
                 tv_count.setText((Integer.parseInt(tv_count.getText().toString()) + index) + "");
+                onChangeListener.add();
                 break;
         }
     }

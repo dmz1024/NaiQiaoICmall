@@ -25,9 +25,11 @@ import base.adapter.BaseViewHolder;
  */
 
 public class DaoHuoTZAdapter extends BaseAdapter<DaoHuoTZBean.Data> {
+    private boolean isTz;
 
-    public DaoHuoTZAdapter(Context ctx, ArrayList<DaoHuoTZBean.Data> list) {
+    public DaoHuoTZAdapter(Context ctx, ArrayList<DaoHuoTZBean.Data> list, boolean isTz) {
         super(ctx, list);
+        this.isTz = isTz;
     }
 
     @Override
@@ -38,7 +40,15 @@ public class DaoHuoTZAdapter extends BaseAdapter<DaoHuoTZBean.Data> {
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         final ViewHolder mHolder = (ViewHolder) holder;
-        Glide.with(ctx).load(TestConstant.IMAGE).into(mHolder.iv_img);
+        DaoHuoTZBean.Data data = list.get(position);
+        Glide.with(ctx).load(data.goods_thumb).into(mHolder.iv_img);
+        mHolder.tv_title.setText(data.goods_name);
+        mHolder.tv_content.setText("您的产品'" + data.goods_name + "'已不足，请尽快进货");
+        if(!isTz){
+            mHolder.tv_time.setVisibility(View.GONE);
+        }else {
+
+        }
     }
 
 

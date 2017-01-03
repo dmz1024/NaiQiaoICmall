@@ -2,9 +2,7 @@ package com.naiqiao.mall.activity;
 
 //import com.squareup.leakcanary.LeakCanary;
 
-import android.util.Log;
-
-import view.MyApplication;
+import base.activity.MyApplication;
 
 /**
  * Created by dengmingzhi on 2016/12/27.

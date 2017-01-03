@@ -12,6 +12,8 @@ import com.naiqiao.mall.bean.UserCenter;
 import com.naiqiao.mall.constant.ApiConstant;
 import com.naiqiao.mall.constant.UserInfo;
 import com.naiqiao.mall.fragment.AllShopContentFragment;
+import com.naiqiao.mall.fragment.DaoHuoTZFragment;
+import com.naiqiao.mall.fragment.HelpCenterFragment;
 import com.naiqiao.mall.fragment.JiaoYiJiLvFragment;
 import com.naiqiao.mall.fragment.MyCollectFragment;
 import com.naiqiao.mall.fragment.MyFaPiaoFragment;
@@ -125,7 +127,7 @@ public class FourFragment extends SingleNetWorkBaseFragment<UserCenter> implemen
     void tv1Click(View view) {
         switch (view.getId()) {
             case R.id.tv_1_1:
-                Log.d("点击了", tv1s.get(0).getText().toString());
+                RxBus.get().post("addFragment", new AddFragmentBean(DaoHuoTZFragment.getInstance(false)));
                 break;
             case R.id.tv_1_2:
                 Log.d("点击了", tv1s.get(1).getText().toString());
@@ -230,7 +232,7 @@ public class FourFragment extends SingleNetWorkBaseFragment<UserCenter> implemen
                 new JiaMengSQPopView(getContext()).showAtLocation(false);
                 break;
             case R.id.trl_2:
-                new BackShopUpdateAccountPopView(getContext()).showAtLocation(false);
+                RxBus.get().post("addFragment",new AddFragmentBean(new HelpCenterFragment()));
                 break;
         }
     }
@@ -289,7 +291,7 @@ public class FourFragment extends SingleNetWorkBaseFragment<UserCenter> implemen
     private Observable<String> userChangeRxbus;
 
     private void userInfoChange() {
-        if(userChangeRxbus==null){
+        if (userChangeRxbus == null) {
             userChangeRxbus = RxBus.get().register("userChange", String.class);
             userChangeRxbus.subscribe(new Action1<String>() {
                 @Override
@@ -305,6 +307,6 @@ public class FourFragment extends SingleNetWorkBaseFragment<UserCenter> implemen
     @Override
     public void onDestroy() {
         super.onDestroy();
-        RxBus.get().unregister("userChange",userChangeRxbus);
+        RxBus.get().unregister("userChange", userChangeRxbus);
     }
 }

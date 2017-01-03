@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <FrameLayout
+        android:id="@+id/fg_count"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/size10"
+        android:background="#fff"
+        android:padding="@dimen/size10">
+
+        <TextView
+            style="@style/TextSize13Color333"
+            android:layout_gravity="center_vertical"
+            android:text="默认预警值" />
+
+        <TextView
+            android:id="@+id/tv_count"
+            style="@style/TextSize13Color666"
+            android:layout_gravity="center_vertical|right"
+            android:drawablePadding="@dimen/size5"
+            android:drawableRight="@mipmap/icon_go"
+            android:text="10" />
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/fg_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/fg_count"
+        />
+</RelativeLayout>

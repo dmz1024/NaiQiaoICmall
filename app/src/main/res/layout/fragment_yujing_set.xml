@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/size10"
+        android:background="#fff"
+        android:orientation="vertical"
+        android:padding="@dimen/size10">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+
+                style="@style/TextSize15Color333"
+                android:layout_gravity="center_vertical"
+                android:text="虚拟仓商品库存不足提醒" />
+
+            <view.SwitchButton
+                android:id="@+id/view_swich"
+                android:layout_width="50dp"
+                android:layout_height="25dp"
+                android:layout_gravity="right|center_vertical"
+                app:btncolor="#ffffff"
+                app:is_on="false"
+                app:offcolor="#eeeeee"
+                app:oncolor="#f73f5f" />
+        </FrameLayout>
+
+        <TextView
+            style="@style/TextSize11Color999"
+            android:layout_marginRight="@dimen/size20"
+            android:layout_marginTop="@dimen/size10"
+            android:lineSpacingExtra="@dimen/size3"
+            android:text="当虚拟仓内商品库存达到预警值时，系统会通过邮件、短信或网站内短信等形式通知您，以便及时补充库存" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_set"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/size10"
+        android:background="#fff"
+        android:orientation="vertical"
+        android:padding="@dimen/size10">
+
+        <TextView
+            style="@style/TextSize15Color333"
+            android:layout_width="match_parent"
+            android:layout_gravity="center_vertical"
+            android:drawableRight="@mipmap/icon_go"
+            android:text="商品预警值设置" />
+
+        <TextView
+            style="@style/TextSize11Color999"
+            android:layout_marginRight="@dimen/size20"
+            android:layout_marginTop="@dimen/size10"
+            android:lineSpacingExtra="@dimen/size3"
+            android:text="可以自己设置每个商品的预警值，以便及时提示并补货，也可以使用默认的预警值" />
+
+    </LinearLayout>
+</LinearLayout>

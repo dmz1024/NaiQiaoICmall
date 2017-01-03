@@ -61,7 +61,7 @@ public class XiaoXiTZFragment extends SingleNetWorkBaseFragment<XiaoXiTZBean> {
                 RxBus.get().post("addFragment", new AddFragmentBean(new TongzhiGGFragment()));
                 break;
             case R.id.rl_dhtz:
-                RxBus.get().post("addFragment", new AddFragmentBean(new DaoHuoTZFragment()));
+                RxBus.get().post("addFragment", new AddFragmentBean(DaoHuoTZFragment.getInstance(true)));
                 break;
         }
     }

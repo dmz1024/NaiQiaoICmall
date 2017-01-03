@@ -58,4 +58,5 @@ dependencies {
     compile 'com.facebook.fresco:fresco:0.8.1'
     //https://github.com/LuckyJayce/CoolRefreshView
     compile 'com.shizhefei:CoolRefreshView:1.0.1'
+
 }

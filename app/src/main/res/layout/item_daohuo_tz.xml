@@ -30,6 +30,8 @@
 
         <TextView
             android:id="@+id/tv_title"
+            android:maxLines="1"
+            android:drawablePadding="@dimen/size20"
             style="@style/TextSize15Color333"
             android:layout_width="match_parent"
             android:drawableRight="@mipmap/icon_go"

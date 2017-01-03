@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:background="#fff"
+    android:paddingLeft="@dimen/size10"
+    android:paddingRight="@dimen/size10"
+    android:paddingTop="@dimen/size10"
+    android:layout_height="wrap_content">
+    <TextView
+        android:id="@+id/tv_title"
+        android:maxLines="1"
+        android:drawablePadding="@dimen/size10"
+        android:gravity="center_vertical"
+        android:layout_width="match_parent"
+        android:drawableRight="@mipmap/icon_go"
+        android:paddingBottom="@dimen/size10"
+        style="@style/TextSize13Color333" />
+    <View
+        android:id="@+id/view"
+        android:background="#e8e8e8"
+        android:layout_gravity="bottom"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size0.5"/>
+</FrameLayout>

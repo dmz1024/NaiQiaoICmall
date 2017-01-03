@@ -59,13 +59,13 @@ public class MyJinHuoDanAdapter extends BaseAdapter<MyJinHuoDanBean.Data> {
             @Override
             public void add() {
                 mHolder.view_aas.setCanChange(false);
-                MyJHDController.getInstance().changeNum(new MyJHDRxBus(true, position, mHolder.view_aas.getCount() + 1, data.rec_id));
+                MyJHDController.getInstance().changeNum(new MyJHDRxBus(true, position, mHolder.view_aas.getCount(), data.rec_id));
             }
 
             @Override
             public void sub() {
                 mHolder.view_aas.setCanChange(false);
-                MyJHDController.getInstance().changeNum(new MyJHDRxBus(false, position, mHolder.view_aas.getCount() - 1, data.rec_id));
+                MyJHDController.getInstance().changeNum(new MyJHDRxBus(false, position, mHolder.view_aas.getCount(), data.rec_id));
             }
         }).setCanChange(data.isChange).setMax(data.stock).setCount(data.goods_number);
     }
