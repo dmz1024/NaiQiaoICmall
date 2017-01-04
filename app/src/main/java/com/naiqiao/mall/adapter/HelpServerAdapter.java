@@ -12,6 +12,7 @@ import com.naiqiao.mall.bean.HelpServerBean;
 import com.naiqiao.mall.bean.rxbus.AddressRxBus;
 import com.naiqiao.mall.controller.AddressController;
 import com.naiqiao.mall.fragment.AddressEditFragment;
+import com.naiqiao.mall.view.pop.JiaMengSQPopView;
 
 import java.util.ArrayList;
 
@@ -44,7 +45,7 @@ public class HelpServerAdapter extends BaseAdapter<HelpServerBean> {
         final ViewHolder mHolder = (ViewHolder) holder;
         HelpServerBean data = list.get(position);
         mHolder.tv_content.setText(data.content);
-        mHolder.tv_content.setCompoundDrawables(null,DrawableUtil.setBounds(ctx.getResources().getDrawable(data.rid)),null,null);
+        mHolder.tv_content.setCompoundDrawables(null, DrawableUtil.setBounds(ctx.getResources().getDrawable(data.rid)), null, null);
 
     }
 
@@ -52,6 +53,7 @@ public class HelpServerAdapter extends BaseAdapter<HelpServerBean> {
     public class ViewHolder extends BaseViewHolder {
         @BindView(R.id.tv_content)
         TextView tv_content;
+
         public ViewHolder(View itemView) {
             super(itemView);
             tv_content.setOnClickListener(this);
@@ -59,7 +61,11 @@ public class HelpServerAdapter extends BaseAdapter<HelpServerBean> {
 
         @Override
         protected void itemOnclick(int id, final int layoutPosition) {
-            RxBus.get().post("addFragment",new AddFragmentBean(list.get(layoutPosition).fragment));
+            if (layoutPosition == 6) {
+                new JiaMengSQPopView(ctx).showAtLocation(false);
+                return;
+            }
+            RxBus.get().post("addFragment", new AddFragmentBean(list.get(layoutPosition).fragment));
         }
     }
 }

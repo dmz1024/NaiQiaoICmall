@@ -17,6 +17,7 @@ public interface ApiConstant {
     String FLOW = BASE_URL + "flow.php";
     String NEWSCENTER = BASE_URL + "newscenter.php";
     String INDEX = BASE_URL + "index.php";
+    String INDEX_A = BASE_URL + "index_a.php";
     String HELP = BASE_URL + "help.php";
 }
 

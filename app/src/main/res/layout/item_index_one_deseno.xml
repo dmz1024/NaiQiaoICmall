@@ -129,6 +129,7 @@
             android:id="@+id/tv_title"
             style="@style/TextSize12Color666"
             android:layout_marginLeft="@dimen/size13"
+            android:maxLines="1"
             android:layout_marginTop="@dimen/size5"
             android:text="丹姿水密码专场12小时疯抢" />
     </LinearLayout>

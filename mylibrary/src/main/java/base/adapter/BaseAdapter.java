@@ -25,7 +25,6 @@ public abstract class BaseAdapter<D> extends RecyclerView.Adapter<RecyclerView.V
 
     public BaseAdapter(ArrayList<D> list) {
         this.list = list;
-
     }
 
 

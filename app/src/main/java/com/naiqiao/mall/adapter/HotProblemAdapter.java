@@ -11,12 +11,15 @@ import com.bumptech.glide.Glide;
 import com.naiqiao.mall.R;
 import com.naiqiao.mall.bean.AllShopBean;
 import com.naiqiao.mall.bean.HotProblemBean;
+import com.naiqiao.mall.fragment.ProblemAnswerFragment;
 
 import java.util.ArrayList;
 
 import base.adapter.BaseAdapter;
 import base.adapter.BaseViewHolder;
+import base.bean.rxbus.AddFragmentBean;
 import butterknife.BindView;
+import util.RxBus;
 
 
 /**
@@ -24,14 +27,20 @@ import butterknife.BindView;
  */
 
 public class HotProblemAdapter extends BaseAdapter<HotProblemBean.Data> {
+    private boolean isMore;
 
     public HotProblemAdapter(Context ctx, ArrayList<HotProblemBean.Data> list) {
         super(ctx, list);
     }
 
+    public HotProblemAdapter(Context ctx, ArrayList<HotProblemBean.Data> list,boolean isMore) {
+        this(ctx, list);
+        this.isMore=isMore;
+    }
+
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return new ViewHolder(View.inflate(ctx,R.layout.item_hot_problem, null));
+        return new ViewHolder(View.inflate(ctx, R.layout.item_hot_problem, null));
     }
 
 
@@ -40,7 +49,20 @@ public class HotProblemAdapter extends BaseAdapter<HotProblemBean.Data> {
         ViewHolder mHolder = ((ViewHolder) holder);
         HotProblemBean.Data data = list.get(position);
         mHolder.tv_title.setText(data.title);
-        mHolder.view.setVisibility(position == list.size() - 1 ? View.GONE : View.VISIBLE);
+        mHolder.view.setVisibility(position == list.size() - 1 ? View.INVISIBLE : View.VISIBLE);
+    }
+
+    @Override
+    public int getItemCount() {
+        if (isMore) {
+            return list.size();
+        }
+        return list.size() > 3 ? 3 : list.size();
+    }
+
+    public void showMore(boolean isMore) {
+        this.isMore = isMore;
+        notifyDataSetChanged();
     }
 
     public class ViewHolder extends BaseViewHolder {
@@ -52,7 +74,11 @@ public class HotProblemAdapter extends BaseAdapter<HotProblemBean.Data> {
         public ViewHolder(View itemView) {
             super(itemView);
             itemView.setOnClickListener(this);
+        }
 
+        @Override
+        protected void onClick(int layoutPosition) {
+            RxBus.get().post("addFragment", new AddFragmentBean(ProblemAnswerFragment.getInstance(list.get(layoutPosition).article_id)));
         }
     }
 

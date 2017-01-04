@@ -36,7 +36,6 @@ public class HotProblemFragment extends ListNetWorkBaseFragment<HotProblemBean> 
     }
 
 
-
     @Override
     protected String url() {
         return ApiConstant.HELP;
@@ -62,5 +61,15 @@ public class HotProblemFragment extends ListNetWorkBaseFragment<HotProblemBean> 
     @Override
     protected boolean getLoadMore() {
         return false;
+    }
+
+    @Override
+    protected LinearLayoutManager getLayoutManager() {
+        return new LinearLayoutManager(getContext()){
+            @Override
+            public boolean canScrollVertically() {
+                return false;
+            }
+        };
     }
 }

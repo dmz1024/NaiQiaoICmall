@@ -403,6 +403,11 @@ public class Util {
         context.startActivity(intent);
     }
 
+    public static void qq(Context context, String qq) {
+        String url = "mqqwpa://im/chat?chat_type=wpa&uin=" + qq;
+        context.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(url)));
+    }
+
 
     public static void navigation(Context ctx, double latitude, double longitude, int zoom,
                                   String addr) {
