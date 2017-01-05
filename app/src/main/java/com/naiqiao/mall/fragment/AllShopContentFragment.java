@@ -1,11 +1,14 @@
 package com.naiqiao.mall.fragment;
 
 import android.view.View;
+import android.widget.TextView;
 
 import com.naiqiao.mall.R;
 import com.naiqiao.mall.view.RightImageTitleBarView;
 
 import base.fragment.NotNetWorkBaseFragment;
+import butterknife.BindView;
+import butterknife.OnClick;
 import interfaces.OnTitleBarListener;
 import view.DefaultTitleBarView;
 
@@ -14,6 +17,7 @@ import view.DefaultTitleBarView;
  */
 
 public class AllShopContentFragment extends NotNetWorkBaseFragment implements OnTitleBarListener {
+
     public boolean isVertical = true;
 
     @Override
@@ -61,6 +65,12 @@ public class AllShopContentFragment extends NotNetWorkBaseFragment implements On
 
     @Override
     public void center() {
+
+    }
+
+
+    @OnClick({R.id.tv_change, R.id.tv_send})
+    void tvsOnclick(View view) {
 
     }
 }

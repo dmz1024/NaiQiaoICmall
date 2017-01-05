@@ -3,22 +3,22 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="#fff"
-    android:paddingBottom="@dimen/size15"
-    android:paddingTop="@dimen/size15">
+    android:paddingBottom="@dimen/size5"
+    android:paddingTop="@dimen/size5">
 
     <ImageView
         android:id="@+id/iv_img"
-        android:layout_width="@dimen/size65"
-        android:layout_height="@dimen/size65"
+        android:layout_width="@dimen/size40"
+        android:layout_height="@dimen/size40"
         android:layout_centerHorizontal="true"
         android:scaleType="fitXY" />
 
     <TextView
         android:id="@+id/tv_title"
-        style="@style/TextSize14Color666"
+        style="@style/TextSize12Color666"
         android:layout_below="@id/iv_img"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="@dimen/size15"
+        android:layout_marginTop="@dimen/size5"
         android:text="火爆热销" />
     <View
         android:layout_alignParentRight="true"

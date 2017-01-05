@@ -58,5 +58,9 @@ dependencies {
     compile 'com.facebook.fresco:fresco:0.8.1'
     //https://github.com/LuckyJayce/CoolRefreshView
     compile 'com.shizhefei:CoolRefreshView:1.0.1'
+    //https://github.com/mikepenz/ItemAnimators
+    compile "com.mikepenz:itemanimators:0.5.0@aar"
+    //https://github.com/ToxicBakery/ViewPagerTransforms
+    compile 'com.ToxicBakery.viewpager.transforms:view-pager-transforms:1.2.32@aar'
 
 }

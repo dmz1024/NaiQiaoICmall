@@ -1,8 +1,17 @@
 package com.naiqiao.mall.fragment;
 
 
+import android.support.v7.widget.RecyclerView;
+
 import base.bean.rxbus.AddFragmentBean;
+
+import com.naiqiao.mall.adapter.MyJiFenAdapter;
+import com.naiqiao.mall.bean.JiaoYiJLBean;
+import com.naiqiao.mall.bean.MyJIFenBean;
+import com.naiqiao.mall.constant.ApiConstant;
 import com.naiqiao.mall.fragment.base.JiaoYiJiFenFanDianBaseFragment;
+
+import java.util.ArrayList;
 import java.util.Map;
 import util.RxBus;
 
@@ -11,19 +20,27 @@ import util.RxBus;
  * 我的积分
  */
 
-public class MyJiFenFragment extends JiaoYiJiFenFanDianBaseFragment  {
+public class MyJiFenFragment extends JiaoYiJiFenFanDianBaseFragment<MyJIFenBean>  {
 
     @Override
     protected String url() {
-        return "http://www.ediancha.com/app.php";
+        return ApiConstant.USER;
     }
 
     @Override
     protected Map<String, String> map() {
-        map.put("c", "chahui");
-        map.put("a", "index");
-        map.put("type", "1");
+        map.put("act", "transform_points");
         return super.map();
+    }
+
+    @Override
+    protected Class<MyJIFenBean> getTClass() {
+        return MyJIFenBean.class;
+    }
+
+    @Override
+    protected RecyclerView.Adapter getAdapter() {
+        return new MyJiFenAdapter(getContext(), (ArrayList<MyJIFenBean.Data>) totalList);
     }
 
 
@@ -37,5 +54,11 @@ public class MyJiFenFragment extends JiaoYiJiFenFanDianBaseFragment  {
     @Override
     public void rightBt() {
         RxBus.get().post("addFragment",new AddFragmentBean(new JiFenDuiContentFragment()));
+    }
+
+    @Override
+    protected void writeData(boolean isWrite, MyJIFenBean bean) {
+        super.writeData(isWrite, bean);
+        titleBarView.setPrice("积分余额：" + bean.rank_points);
     }
 }

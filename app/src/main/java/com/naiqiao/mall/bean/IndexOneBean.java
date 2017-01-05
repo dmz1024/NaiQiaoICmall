@@ -16,10 +16,11 @@ public class IndexOneBean extends ListBaseBean<ArrayList<IndexOneBean.Data>> {
     public ArrayList<HeaderBean> header;
     public static class HeaderBean {
         public int type;
-        public Data5Bean data5;
         public ArrayList<Data1Bean> data1;
+        public ArrayList<IndexOneNavigationBean> data2;
         public ArrayList<Data3Bean> data3;
-        public ArrayList<Data4Bean> data4;
+        public ArrayList<GoodsBean> data4;
+        public Data5Bean data5;
 
         public static class Data5Bean {
             public String pic;
@@ -53,15 +54,6 @@ public class IndexOneBean extends ListBaseBean<ArrayList<IndexOneBean.Data>> {
             public int time;
         }
 
-        public static class Data4Bean {
-            public String promote_price;
-            public String goods_id;
-            public String name;
-            public String brand_name;
-            public String market_price;
-            public String shop_price;
-            public String thumb;
-        }
     }
 
     public static class Data {

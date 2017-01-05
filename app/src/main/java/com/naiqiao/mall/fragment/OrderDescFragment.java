@@ -1,13 +1,18 @@
 package com.naiqiao.mall.fragment;
 
+import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.TextView;
 
 import com.naiqiao.mall.R;
 import com.naiqiao.mall.adapter.ShopAdapter;
 import com.naiqiao.mall.bean.MyOrderDescBean;
 import com.naiqiao.mall.bean.ShopBean;
+import com.naiqiao.mall.constant.ApiConstant;
+import com.naiqiao.mall.constant.UserInfo;
 
 import java.util.ArrayList;
 import java.util.Map;
@@ -15,6 +20,7 @@ import java.util.Map;
 import base.fragment.SingleNetWorkBaseFragment;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import view.Color2Text;
 import view.DefaultTitleBarView;
 
 /**
@@ -22,40 +28,74 @@ import view.DefaultTitleBarView;
  */
 
 public class OrderDescFragment extends SingleNetWorkBaseFragment<MyOrderDescBean> {
+    private String id;
+    @BindView(R.id.tv_address)
+    Color2Text tv_address;
+    @BindView(R.id.tv_order_info)
+    TextView tv_order_info;
+    @BindView(R.id.tv_price)
+    TextView tv_price;
+
+    public static OrderDescFragment getInstance(String id) {
+        OrderDescFragment fragment = new OrderDescFragment();
+        Bundle bundle = new Bundle();
+        bundle.putString("id", id);
+        fragment.setArguments(bundle);
+        return fragment;
+    }
+
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        Bundle bundle = getArguments();
+        if (bundle != null) {
+            id = bundle.getString("id");
+        }
+    }
+
     @BindView(R.id.rv_shop)
     RecyclerView rv_shop;
 
     @Override
     protected String url() {
-        return "http://www.ediancha.com/app.php";
+        return ApiConstant.FLOW;
+    }
+
+    @Override
+    protected Map<String, String> map() {
+        map.put("act", "order_detail");
+        map.put("user_id", UserInfo.uid);
+        map.put("sign_token", UserInfo.token);
+        map.put("order_id", id);
+        return super.map();
     }
 
     @Override
     protected void writeData(boolean isWrite, MyOrderDescBean bean) {
         super.writeData(isWrite, bean);
-        creatShops();
+        creatShops(bean.data.data2);
+        goodsInfo(bean.data.data1);
     }
 
-    private void creatShops() {
-        LinearLayoutManager manager = new LinearLayoutManager(getContext());
-        ArrayList<ShopBean> shops = new ArrayList<>();
-        shops.add(new ShopBean());
-        shops.add(new ShopBean());
-        shops.add(new ShopBean());
-        shops.add(new ShopBean());
-        shops.add(new ShopBean());
-        shops.add(new ShopBean());
+
+    private void goodsInfo(MyOrderDescBean.Data.Data1Bean data) {
+
+    }
+
+
+    private void creatShops(ArrayList<ShopBean> shops) {
+        LinearLayoutManager manager = new LinearLayoutManager(getContext()) {
+            @Override
+            public boolean canScrollVertically() {
+                return false;
+            }
+        };
         ShopAdapter mAdapter = new ShopAdapter(getContext(), shops);
         rv_shop.setAdapter(mAdapter);
         rv_shop.setLayoutManager(manager);
     }
 
-    @Override
-    protected Map<String, String> map() {
-        map.put("c", "chahui");
-        map.put("a", "index");
-        return super.map();
-    }
 
     @Override
     protected Class<MyOrderDescBean> getTClass() {

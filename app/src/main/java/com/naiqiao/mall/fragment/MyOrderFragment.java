@@ -10,6 +10,8 @@ import com.naiqiao.mall.adapter.MyOrderAdapter;
 import com.naiqiao.mall.adapter.YuCunHuoAdapter;
 import com.naiqiao.mall.bean.MyOrderBean;
 import com.naiqiao.mall.bean.YuCunHuoBean;
+import com.naiqiao.mall.constant.ApiConstant;
+import com.naiqiao.mall.constant.UserInfo;
 
 import java.util.ArrayList;
 import java.util.Map;
@@ -50,14 +52,15 @@ public class MyOrderFragment extends ListNetWorkBaseFragment<MyOrderBean> {
 
     @Override
     protected String url() {
-        return "http://www.ediancha.com/app.php";
+        return ApiConstant.FLOW;
     }
 
     @Override
     protected Map<String, String> map() {
-        map.put("c", "chahui");
-        map.put("a", "index");
-        map.put("type", "1");
+        map.put("act", "order_list");
+        map.put("user_id", UserInfo.uid);
+        map.put("sign_token", UserInfo.token);
+        map.put("status", type);
         return super.map();
     }
 

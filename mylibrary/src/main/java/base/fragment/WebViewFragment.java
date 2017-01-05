@@ -29,6 +29,7 @@ public class WebViewFragment extends NotNetWorkBaseFragment {
     private String url;
     private boolean isShowTitle;
 
+
     public static WebViewFragment getInstance(String url) {
         WebViewFragment webFragment = new WebViewFragment();
         Bundle bundle = new Bundle();
@@ -51,7 +52,7 @@ public class WebViewFragment extends NotNetWorkBaseFragment {
         super.onCreate(savedInstanceState);
         Bundle bundle = getArguments();
         url = bundle.getString("url");
-        isShowTitle = bundle.getBoolean("isShowTitle", false);
+        isShowTitle = bundle.getBoolean("isShowTitle", true);
     }
 
     @SuppressLint("JavascriptInterface")

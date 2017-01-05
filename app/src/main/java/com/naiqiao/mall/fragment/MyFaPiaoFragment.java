@@ -7,6 +7,9 @@ import com.naiqiao.mall.adapter.JiaoYi_JiFen_FanDianAdapter;
 import com.naiqiao.mall.adapter.MyFaPiaoAdapter;
 import com.naiqiao.mall.bean.JiaoYi_JiFen_FanDianBean;
 import com.naiqiao.mall.bean.MyFaPiaoBean;
+import com.naiqiao.mall.bean.MyFanDianBean;
+import com.naiqiao.mall.constant.ApiConstant;
+import com.naiqiao.mall.fragment.base.JiaoYiJiFenFanDianBaseFragment;
 import com.naiqiao.mall.interfaces.OnJiaoYi_JiFen_FanDianTitleBarListener;
 import com.naiqiao.mall.view.JiaoYi_JiFen_FanDianTitleBarView;
 
@@ -19,7 +22,7 @@ import base.fragment.ListNetWorkBaseFragment;
  * Created by dengmingzhi on 2016/11/25.
  */
 
-public class MyFaPiaoFragment extends ListNetWorkBaseFragment<MyFaPiaoBean> implements OnJiaoYi_JiFen_FanDianTitleBarListener {
+public class MyFaPiaoFragment extends JiaoYiJiFenFanDianBaseFragment<MyFaPiaoBean> {
     protected JiaoYi_JiFen_FanDianTitleBarView titleBarView;
 
     @Override
@@ -27,17 +30,14 @@ public class MyFaPiaoFragment extends ListNetWorkBaseFragment<MyFaPiaoBean> impl
         return new MyFaPiaoAdapter(getContext(), (ArrayList<MyFaPiaoBean.Data>) totalList);
     }
 
-
     @Override
     protected String url() {
-        return "http://www.ediancha.com/app.php";
+        return ApiConstant.INVOICE;
     }
 
     @Override
     protected Map<String, String> map() {
-        map.put("c", "chahui");
-        map.put("a", "index");
-        map.put("type", "1");
+        map.put("act", "index");
         return super.map();
     }
 
@@ -46,39 +46,10 @@ public class MyFaPiaoFragment extends ListNetWorkBaseFragment<MyFaPiaoBean> impl
         return MyFaPiaoBean.class;
     }
 
-
-    @Override
-    protected View getTitleBarView() {
-        return titleBarView = new JiaoYi_JiFen_FanDianTitleBarView(getContext());
-    }
-
     @Override
     protected void initTitleView() {
+        super.initTitleView();
         titleBarView.setButtonTitle("申请开票").setTitleContent("我的发票");
     }
 
-    @Override
-    protected float top() {
-        return 80;
-    }
-
-    @Override
-    public void rightBt() {
-
-    }
-
-    @Override
-    public void left() {
-
-    }
-
-    @Override
-    public void right() {
-
-    }
-
-    @Override
-    public void center() {
-
-    }
 }

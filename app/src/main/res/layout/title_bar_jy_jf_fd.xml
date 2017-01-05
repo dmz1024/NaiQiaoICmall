@@ -47,6 +47,7 @@
     </RelativeLayout>
 
     <TextView
+        android:visibility="gone"
         android:layout_below="@id/title_bar_rl_top"
         android:id="@+id/title_bar_tv_total_price"
         style="@style/TextSize14Colorfff"
@@ -55,13 +56,12 @@
         android:background="#90747474"
         android:gravity="center_vertical"
         android:paddingLeft="@dimen/size14"
-        android:text="合计金额：10000元" />
+         />
     <Button
         android:visibility="gone"
         android:id="@+id/title_bar_bt"
         android:layout_alignParentRight="true"
         android:layout_marginRight="@dimen/size10"
-        android:text="返点规则"
         android:textSize="@dimen/sp11"
         android:textColor="#fff"
         android:layout_marginTop="@dimen/size5"

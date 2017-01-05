@@ -21,11 +21,11 @@
 
         <TextView
             android:id="@+id/tv_title"
-            style="@style/TextSize13Color333"
+            style="@style/TextSize12Color333"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="@dimen/size1"
             android:maxLines="1"
-            android:maxEms="8"
+            android:maxLength="8"
             android:text="有玻尿酸的洁面" />
 
         <TextView

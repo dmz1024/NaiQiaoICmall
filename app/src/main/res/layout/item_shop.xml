@@ -40,14 +40,15 @@
             android:layout_alignLeft="@id/tv_title"
             android:layout_below="@id/tv_title"
             android:layout_marginTop="@dimen/size6"
+            android:maxLines="1"
             android:text="规格：30ml" />
 
         <TextView
             android:id="@+id/tv_price"
             style="@style/TextSize12Color666"
-            android:layout_alignBottom="@id/fg_img"
+            android:layout_below="@id/tv_guige"
             android:layout_alignLeft="@id/tv_title"
-            android:layout_marginBottom="@dimen/size6"
+            android:layout_marginTop="@dimen/size6"
             android:text="￥300/瓶"
             android:textColor="#f73f5f" />
 

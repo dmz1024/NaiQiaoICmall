@@ -38,7 +38,9 @@ public class IndexOneNavigationAdapter extends BaseAdapter<IndexOneNavigationBea
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         final ViewHolder mHolder = (ViewHolder) holder;
-        Glide.with(ctx).load(TestConstant.IMAGE).bitmapTransform(new CropCircleTransformation(ctx)).into(mHolder.iv_img);
+        IndexOneNavigationBean data = list.get(position);
+        Glide.with(ctx).load(data.img).into(mHolder.iv_img);
+        mHolder.tv_title.setText(data.name);
     }
 
 

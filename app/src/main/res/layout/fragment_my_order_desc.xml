@@ -20,7 +20,6 @@
                 android:id="@+id/tv_wuliu"
                 style="@style/TextSize13Color666"
                 android:lineSpacingExtra="@dimen/size5"
-
                 android:paddingTop="@dimen/size5"
                 android:paddingLeft="@dimen/size10"
                 android:paddingRight="@dimen/size10"

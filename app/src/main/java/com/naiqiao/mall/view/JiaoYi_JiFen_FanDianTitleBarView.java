@@ -101,6 +101,10 @@ public class JiaoYi_JiFen_FanDianTitleBarView extends FrameLayout implements Vie
 
     public JiaoYi_JiFen_FanDianTitleBarView setPrice(String price) {
         title_bar_tv_total_price.setText(price);
+        title_bar_tv_total_price.setVisibility(VISIBLE);
+        if (!TextUtils.isEmpty(title_bar_bt.getText().toString())) {
+            title_bar_bt.setVisibility(VISIBLE);
+        }
         return this;
     }
 
@@ -117,9 +121,6 @@ public class JiaoYi_JiFen_FanDianTitleBarView extends FrameLayout implements Vie
 
     public JiaoYi_JiFen_FanDianTitleBarView setButtonTitle(String title) {
         title_bar_bt.setText(title);
-        if (!TextUtils.isEmpty(title)) {
-            title_bar_bt.setVisibility(VISIBLE);
-        }
         return this;
     }
 

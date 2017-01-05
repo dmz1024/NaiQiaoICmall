@@ -1,6 +1,7 @@
 package com.naiqiao.mall.fragment;
 
 import android.graphics.drawable.Drawable;
+import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.widget.Button;
@@ -8,7 +9,9 @@ import android.widget.TextView;
 
 import com.naiqiao.mall.R;
 import com.naiqiao.mall.adapter.SendMonadAdapter;
+import com.naiqiao.mall.bean.AllShopBean;
 import com.naiqiao.mall.bean.SendCarBean;
+
 import base.bean.rxbus.AddFragmentBean;
 
 import java.util.ArrayList;
@@ -36,6 +39,14 @@ public class SendMonadContentFragment extends NotNetWorkBaseFragment {
     Button bt_send_car;
     private SendMonadAdapter mAdapter;
     private boolean isChoose = true;
+
+    public static SendMonadContentFragment getInstance(ArrayList<AllShopBean.Data> datas) {
+        SendMonadContentFragment fragment = new SendMonadContentFragment();
+        Bundle bundle = new Bundle();
+        return null;
+//        bundle.putParcelableArrayList("datas",datas);
+    }
+
 
     @Override
     protected int getRId() {

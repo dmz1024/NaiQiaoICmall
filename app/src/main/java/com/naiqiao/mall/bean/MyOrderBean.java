@@ -1,6 +1,9 @@
 package com.naiqiao.mall.bean;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.ArrayList;
+import java.util.List;
 
 import base.bean.ListBaseBean;
 
@@ -9,18 +12,24 @@ import base.bean.ListBaseBean;
  */
 
 public class MyOrderBean extends ListBaseBean<ArrayList<MyOrderBean.Data>> {
+
     public static class Data {
-        public ArrayList<ShopBean> shops=new ArrayList<>();
-    }
 
+        public String order_id;
+        public int ostatus;
+        public String order_sn;
+        public String surplus;
+        public String integral;
+        public int pay_status;
+        public int shipping_status;
+        public String pay_id;
+        public String money_paid;
+        public String order_time;
+        public String order_status;
+        public String shipping_fee;
+        public String total_fee;
+        public String handler;
+        public ArrayList<ShopBean> goods;
 
-
-    @Override
-    public ArrayList<Data> getData() {
-        for (int i = 0; i < data.size(); i++) {
-            data.get(i).shops.add(new ShopBean());
-            data.get(i).shops.add(new ShopBean());
-        }
-        return data;
     }
 }

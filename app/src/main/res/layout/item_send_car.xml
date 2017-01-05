@@ -13,24 +13,22 @@
 
         <FrameLayout
             android:id="@+id/fg_img"
-            android:layout_width="@dimen/size100"
-            android:layout_height="@dimen/size100"
+            android:layout_width="@dimen/size90"
+            android:layout_height="@dimen/size90"
             android:background="@drawable/shape_fff_f5f5f5_ra"
             android:padding="1dp">
 
             <ImageView
                 android:id="@+id/iv_img"
-                android:layout_width="@dimen/size100"
-                android:layout_height="@dimen/size100"
-                android:scaleType="fitXY"
-                 />
+                android:layout_width="@dimen/size90"
+                android:layout_height="@dimen/size90"
+                android:scaleType="fitXY" />
 
             <TextView
                 android:id="@+id/tv_yj"
                 style="@style/TextSize10Colorfff"
                 android:background="@drawable/icon_tip_yj"
                 android:gravity="center_vertical"
-
                 android:text="预警值2" />
         </FrameLayout>
 
@@ -59,12 +57,23 @@
             android:layout_below="@id/tv_title"
             android:layout_marginTop="@dimen/size6" />
 
+
+        <com.naiqiao.mall.view.AddAndSubView
+            android:id="@+id/view_aas"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_below="@id/tv_price"
+            android:layout_marginTop="@dimen/size3" />
+
         <TextView
             android:id="@+id/tv_guige"
             style="@style/TextSize13Color666"
-            android:layout_alignBottom="@id/fg_img"
-            android:text="规格：30ml"
+            android:layout_alignBottom="@id/view_aas"
             android:layout_alignLeft="@id/tv_title"
-            android:layout_marginBottom="@dimen/size6" />
+            android:layout_marginRight="@dimen/size5"
+            android:layout_toLeftOf="@id/view_aas"
+            android:maxLines="1"
+            android:text="规格：30ml" />
     </RelativeLayout>
 </FrameLayout>

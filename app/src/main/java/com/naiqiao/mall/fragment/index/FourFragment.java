@@ -1,5 +1,6 @@
 package com.naiqiao.mall.fragment.index;
 
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.FrameLayout;
@@ -111,6 +112,14 @@ public class FourFragment extends SingleNetWorkBaseFragment<UserCenter> implemen
     }
 
     @Override
+    protected void manageError(boolean isWrite, UserCenter userCenter, String msg) {
+        super.manageError(isWrite, userCenter, msg);
+        if (TextUtils.equals("请先登陆", msg)) {
+            RxBus.get().post("addFragment", new AddFragmentBean(new LoginFragment()));
+        }
+    }
+
+    @Override
     protected Class<UserCenter> getTClass() {
         return UserCenter.class;
     }
@@ -130,7 +139,7 @@ public class FourFragment extends SingleNetWorkBaseFragment<UserCenter> implemen
                 RxBus.get().post("addFragment", new AddFragmentBean(DaoHuoTZFragment.getInstance(false)));
                 break;
             case R.id.tv_1_2:
-                Log.d("点击了", tv1s.get(1).getText().toString());
+                RxBus.get().post("addFragment", new AddFragmentBean(DaoHuoTZFragment.getInstance(true)));
                 break;
             case R.id.tv_1_3:
                 Log.d("点击了", tv1s.get(2).getText().toString());
@@ -232,7 +241,7 @@ public class FourFragment extends SingleNetWorkBaseFragment<UserCenter> implemen
                 new JiaMengSQPopView(getContext()).showAtLocation(false);
                 break;
             case R.id.trl_2:
-                RxBus.get().post("addFragment",new AddFragmentBean(new HelpCenterFragment()));
+                RxBus.get().post("addFragment", new AddFragmentBean(new HelpCenterFragment()));
                 break;
         }
     }

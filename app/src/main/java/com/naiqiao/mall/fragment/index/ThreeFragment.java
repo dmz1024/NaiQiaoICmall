@@ -37,7 +37,10 @@ public class ThreeFragment extends NotNetWorkBaseFragment {
 
     @OnClick(R.id.bt_send_car)
     void sendCar() {
-        RxBus.get().post("addFragment",new AddFragmentBean(new SendMonadContentFragment()));
+        if(sendCarFragment!=null){
+            sendCarFragment.sendCar();
+        }
+
     }
 
     @Override
@@ -51,4 +54,6 @@ public class ThreeFragment extends NotNetWorkBaseFragment {
         DefaultTitleBarView defaultTitleBarView= (DefaultTitleBarView) getTitleBar();
         defaultTitleBarView.showVisiLeft(View.GONE).setTitleContent("我要发货");
     }
+
+
 }

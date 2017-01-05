@@ -1,5 +1,8 @@
 package com.naiqiao.mall.bean;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.util.ArrayList;
 
 import base.bean.ListBaseBean;
@@ -10,7 +13,7 @@ import base.bean.ListBaseBean;
  */
 
 public class AllShopBean extends ListBaseBean<ArrayList<AllShopBean.Data>> {
-    public static class Data{
+    public static class Data {
         public String id;
         public String goods_id;
         public String goods_name;
@@ -18,7 +21,11 @@ public class AllShopBean extends ListBaseBean<ArrayList<AllShopBean.Data>> {
         public String goods_thumb;
         public String warn;
         public String sale;
-        public String goods_number;
+        public int goods_number;
         public String goods_attr;
+        public int currenTcount;
+
+
+
     }
 }

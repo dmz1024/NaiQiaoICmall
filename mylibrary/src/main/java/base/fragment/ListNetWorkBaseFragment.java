@@ -4,6 +4,9 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
+import com.mikepenz.itemanimators.SlideInOutBottomAnimator;
+import com.mikepenz.itemanimators.SlideLeftAlphaAnimator;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -173,9 +176,7 @@ public abstract class ListNetWorkBaseFragment<D extends ListBaseBean> extends Ne
     @Override
     protected View getHaveDataView() {
         view = showListView();
-
         recyclerView = view.getRecy();
-
         recyclerView.setAdapter(mAdapter = (BaseAdapter) getAdapter());
         mAdapter.setOnDataCountListener(new OnAdapterDataListener() {
             @Override

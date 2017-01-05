@@ -6,7 +6,7 @@
 
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/size45"
+        android:layout_height="@dimen/size40"
         android:background="#fff"
         android:paddingLeft="@dimen/size10"
         android:paddingRight="@dimen/size10">
@@ -18,12 +18,11 @@
             android:drawablePadding="@dimen/size5"
             android:gravity="center_vertical"
             android:text="猜你喜欢"
-            android:textSize="@dimen/sp18"
             android:textStyle="bold" />
 
         <TextView
             android:id="@+id/tv_more"
-            style="@style/TextSize14Color666"
+            style="@style/TextSize13Color666"
             android:layout_gravity="center_vertical|right"
             android:drawablePadding="@dimen/size5"
             android:drawableRight="@mipmap/icon_go"
@@ -39,6 +38,7 @@
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rv_content"
+        android:background="#fff"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/size40" />

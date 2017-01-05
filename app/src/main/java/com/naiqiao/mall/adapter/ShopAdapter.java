@@ -1,10 +1,12 @@
 package com.naiqiao.mall.adapter;
 
 import android.content.Context;
+import android.graphics.Paint;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.naiqiao.mall.R;
@@ -37,34 +39,40 @@ public class ShopAdapter extends BaseAdapter<ShopBean> {
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         final ViewHolder mHolder = (ViewHolder) holder;
-        Glide.with(ctx).load(TestConstant.IMAGE).into(mHolder.iv_img);
-        if(position==getItemCount()-1){
+        ShopBean data = list.get(position);
+        Glide.with(ctx).load(data.goods_thumb).into(mHolder.iv_img);
+        if (position == getItemCount() - 1) {
             mHolder.view_line.setVisibility(View.GONE);
         }
+        mHolder.tv_title.setText(data.goods_name);
+        mHolder.tv_guige.setText("规格：" + data.goods_attr);
+        mHolder.tv_price.setText(data.goods_price + "元");
+        mHolder.tv_old_price.setText("￥" + data.market_price + "元");
+        mHolder.tv_count.setText("x" + data.goods_number);
+
     }
 
 
     public class ViewHolder extends BaseViewHolder {
-//        @BindView(R.id.tv_title)
-//        public TextView tv_title;
-//        @BindView(R.id.tv_have_count)
-//        public TextView tv_have_count;
-//        @BindView(R.id.tv_guige)
-//        public TextView tv_guige;
-//        @BindView(R.id.tv_yj)
-//        public TextView tv_yj;
         @BindView(R.id.iv_img)
         public ImageView iv_img;
         @BindView(R.id.view_line)
         public View view_line;
+        @BindView(R.id.tv_title)
+        public TextView tv_title;
+        @BindView(R.id.tv_guige)
+        public TextView tv_guige;
+        @BindView(R.id.tv_price)
+        public TextView tv_price;
+        @BindView(R.id.tv_old_price)
+        public TextView tv_old_price;
+        @BindView(R.id.tv_count)
+        public TextView tv_count;
 
         public ViewHolder(View itemView) {
             super(itemView);
-//            tv_have_count = (TextView) itemView.findViewById(R.id.tv_have_count);
-//            tv_guige = (TextView) itemView.findViewById(R.id.tv_guige);
-//            tv_yj = (TextView) itemView.findViewById(R.id.tv_yj);
-//            iv_img = (ImageView) itemView.findViewById(R.id.iv_img);
             itemView.setOnClickListener(this);
+            tv_old_price.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG); //中划线
         }
 
         @Override
