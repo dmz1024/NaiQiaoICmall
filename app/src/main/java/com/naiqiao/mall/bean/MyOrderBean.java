@@ -21,6 +21,7 @@ public class MyOrderBean extends ListBaseBean<ArrayList<MyOrderBean.Data>> {
         public String surplus;
         public String integral;
         public int pay_status;
+        public int status;
         public int shipping_status;
         public String pay_id;
         public String money_paid;

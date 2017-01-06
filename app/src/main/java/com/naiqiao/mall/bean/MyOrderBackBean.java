@@ -10,15 +10,26 @@ import base.bean.ListBaseBean;
 
 public class MyOrderBackBean extends ListBaseBean<ArrayList<MyOrderBackBean.Data>> {
     public static class Data {
-        public ArrayList<ShopBean> shops=new ArrayList<>();
+        public String back_id;
+        public String status;
+        public String finance_time;
+        public String update_price;
+        public String order_id;
+        public String pay_status;
+        public String amount;
+        public String pic1;
+        public String back_reason;
+        public String back_type;
+        public String refund_type;
+        public String money;
+        public String money_paid;
+        public String user_id;
+        public String order_sn;
+        public String add_time;
+        public String pic3;
+        public String pic2;
+        public String type;
+        public ArrayList<ShopBean> goods;
     }
 
-    @Override
-    public ArrayList<Data> getData() {
-        for (int i = 0; i <data.size() ; i++) {
-            data.get(i).shops.add(new ShopBean());
-            data.get(i).shops.add(new ShopBean());
-        }
-        return data;
-    }
 }

@@ -20,5 +20,7 @@ public interface ApiConstant {
     String INDEX_A = BASE_URL + "index_a.php";
     String HELP = BASE_URL + "help.php";
     String INVOICE = BASE_URL + "invoice.php";
+    String EXCHANGE = BASE_URL + "exchange.php";
+    String EXGOODS = BASE_URL + "exgoods.php";
 }
 

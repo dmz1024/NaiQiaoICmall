@@ -5,6 +5,7 @@ import android.support.v7.widget.RecyclerView;
 
 import com.naiqiao.mall.R;
 import com.naiqiao.mall.adapter.WriteSendCarAdapter;
+import com.naiqiao.mall.bean.AllShopBean;
 import com.naiqiao.mall.bean.SendCarBean;
 import com.naiqiao.mall.view.pop.AffirmSendPopView;
 
@@ -65,9 +66,9 @@ public class WriteSendShopFragment extends NotNetWorkBaseFragment {
         ((DefaultTitleBarView) getTitleBar()).setTitleContent("填写发货单");
     }
 
-    private ArrayList<SendCarBean.Data> data;
+    private ArrayList<AllShopBean.Data> data;
 
-    public void setData(ArrayList<SendCarBean.Data> data) {
+    public void setData(ArrayList<AllShopBean.Data> data) {
         this.data = data;
     }
 }

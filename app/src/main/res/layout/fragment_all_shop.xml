@@ -21,7 +21,7 @@
                 style="@style/TextSize12Color666"
                 android:layout_gravity="center"
                 android:drawablePadding="@dimen/size1"
-                android:drawableRight="@mipmap/icon_updown"
+                android:drawableRight="@mipmap/icon_asc"
                 android:gravity="center"
                 android:padding="@dimen/size10"
                 android:text="销量" />
@@ -38,7 +38,7 @@
                 style="@style/TextSize12Color666"
                 android:layout_gravity="center"
                 android:drawablePadding="@dimen/size1"
-                android:drawableRight="@mipmap/icon_updown"
+                android:drawableRight="@mipmap/icon_asc"
                 android:gravity="center"
                 android:padding="@dimen/size10"
                 android:text="库存" />
@@ -55,7 +55,7 @@
                 style="@style/TextSize12Color666"
                 android:layout_gravity="center"
                 android:drawablePadding="@dimen/size1"
-                android:drawableRight="@mipmap/icon_updown"
+                android:drawableRight="@mipmap/icon_asc"
                 android:gravity="center"
                 android:padding="@dimen/size10"
                 android:text="价格" />

@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.naiqiao.mall.R;
+import com.naiqiao.mall.bean.AllShopBean;
 import com.naiqiao.mall.bean.SendCarBean;
 
 import java.util.ArrayList;
@@ -24,9 +25,9 @@ import butterknife.BindView;
  * Created by dengmingzhi on 2016/11/21.
  */
 
-public class WriteSendCarAdapter extends BaseAdapter<SendCarBean.Data> {
+public class WriteSendCarAdapter extends BaseAdapter<AllShopBean.Data> {
 
-    public WriteSendCarAdapter(Context ctx, ArrayList<SendCarBean.Data> list) {
+    public WriteSendCarAdapter(Context ctx, ArrayList<AllShopBean.Data> list) {
         super(ctx, list);
     }
 
@@ -38,12 +39,13 @@ public class WriteSendCarAdapter extends BaseAdapter<SendCarBean.Data> {
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         final ViewHolder mHolder = (ViewHolder) holder;
-        Glide.with(ctx).load(TestConstant.IMAGE).into(mHolder.iv_img);
-        if(position==getItemCount()-1){
-            mHolder.view.setVisibility(View.GONE);
-        }else {
-            mHolder.view.setVisibility(View.VISIBLE);
-        }
+        AllShopBean.Data data = list.get(position);
+        Glide.with(ctx).load(data.goods_thumb).into(mHolder.iv_img);
+        mHolder.tv_count.setText("x"+data.currenTcount);
+        mHolder.tv_guige.setText("规格:"+data.goods_attr);
+        mHolder.tv_price.setText("￥"+data.goods_price);
+        mHolder.tv_title.setText(data.goods_name);
+        mHolder.view.setVisibility(position==list.size()-1?View.GONE:View.VISIBLE);
     }
 
 

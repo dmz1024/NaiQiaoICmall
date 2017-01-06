@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.naiqiao.mall.R;
 import com.naiqiao.mall.bean.MyOrderBackBean;
+import com.naiqiao.mall.bean.ShopBean;
 import com.naiqiao.mall.fragment.OrderDescFragment;
 
 import java.util.ArrayList;
@@ -17,6 +18,7 @@ import java.util.ArrayList;
 import base.adapter.BaseAdapter;
 import base.adapter.BaseViewHolder;
 import base.bean.rxbus.AddFragmentBean;
+import butterknife.BindView;
 import util.RxBus;
 
 
@@ -39,30 +41,37 @@ public class MyOrderBackAdapter extends BaseAdapter<MyOrderBackBean.Data> {
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         final ViewHolder mHolder = (ViewHolder) holder;
         MyOrderBackBean.Data data = list.get(position);
-        creatShop(mHolder.rv_shop, position);
+        creatShop(mHolder.rv_shop, data.goods);
+        mHolder.tv_price.setText("总价:￥" + data.amount + "   实付:￥" + data.money_paid);
+        mHolder.tv_statu.setText(data.status);
     }
 
 
-    private void creatShop(RecyclerView rv_shop, int position) {
-        BackShopAdapter mAdapter = new BackShopAdapter(ctx, list.get(position).shops);
-        LinearLayoutManager manager = new LinearLayoutManager(ctx);
+    private void creatShop(RecyclerView rv_shop, ArrayList<ShopBean> shops) {
+        ShopAdapter mAdapter = new ShopAdapter(ctx, shops);
+        LinearLayoutManager manager = new LinearLayoutManager(ctx) {
+            @Override
+            public boolean canScrollVertically() {
+                return false;
+            }
+        };
         rv_shop.setLayoutManager(manager);
         rv_shop.setAdapter(mAdapter);
     }
 
 
     public class ViewHolder extends BaseViewHolder {
-        public TextView tv_sn;
-        public TextView tv_statu;
-        public TextView tv_price;
-        public RecyclerView rv_shop;
+        @BindView(R.id.tv_sn)
+        TextView tv_sn;
+        @BindView(R.id.tv_statu)
+        TextView tv_statu;
+        @BindView(R.id.tv_price)
+        TextView tv_price;
+        @BindView(R.id.rv_shop)
+        RecyclerView rv_shop;
 
         public ViewHolder(View itemView) {
             super(itemView);
-            tv_sn = (TextView) itemView.findViewById(R.id.tv_sn);
-            tv_statu = (TextView) itemView.findViewById(R.id.tv_statu);
-            tv_price = (TextView) itemView.findViewById(R.id.tv_price);
-            rv_shop = (RecyclerView) itemView.findViewById(R.id.rv_shop);
             itemView.setOnClickListener(this);
         }
 
@@ -73,7 +82,7 @@ public class MyOrderBackAdapter extends BaseAdapter<MyOrderBackBean.Data> {
 
         @Override
         protected void onClick(int layoutPosition) {
-            RxBus.get().post("addFragment",new AddFragmentBean(new OrderDescFragment()));
+            RxBus.get().post("addFragment", new AddFragmentBean(OrderDescFragment.getInstance(list.get(layoutPosition).order_id)));
         }
     }
 }

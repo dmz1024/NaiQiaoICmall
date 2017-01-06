@@ -69,10 +69,11 @@
 
         <TextView
             android:id="@+id/tv_guige"
-            style="@style/TextSize13Color666"
-            android:layout_alignBottom="@id/fg_img"
+            style="@style/TextSize12Color666"
+            android:layout_below="@id/tv_price"
+            android:maxLines="1"
             android:text="规格：30ml"
             android:layout_alignLeft="@id/tv_title"
-            android:layout_marginBottom="@dimen/size6" />
+            android:layout_marginTop="@dimen/size6" />
     </RelativeLayout>
 </FrameLayout>

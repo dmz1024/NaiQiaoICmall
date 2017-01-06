@@ -49,18 +49,32 @@ public class MyOrderAdapter extends BaseAdapter<MyOrderBean.Data> {
         mHolder.tv_price.setText("总价:" + data.total_fee + "   运费:" + data.money_paid);
 
 
-        showBt(mHolder.bt_left, mHolder.bt_right, data.pay_status, data.ostatus, data.shipping_status);
+        showBt(mHolder.bt_left, mHolder.bt_right, data.status);
     }
 
-    private void showBt(Button left, Button right, int pay_status, int ostatus, int shipping_status) {
+    private void showBt(Button left, Button right, int status) {
         left.setVisibility(View.GONE);
         right.setVisibility(View.GONE);
-        if (pay_status == 0 && ostatus != 2 && ostatus != 3 && ostatus != 4) {
-            right.setText("去支付");
-            right.setVisibility(View.VISIBLE);
-        }else {
-            right.setText("申请售后");
-            right.setVisibility(View.VISIBLE);
+
+        switch (status) {
+            case 1:
+                right.setVisibility(View.VISIBLE);
+                right.setText("去支付");
+                break;
+            case 2:
+                right.setVisibility(View.VISIBLE);
+                right.setText("申请售后");
+                break;
+            case 3:
+                right.setVisibility(View.VISIBLE);
+                left.setVisibility(View.VISIBLE);
+                left.setText("取消订单");
+                right.setText("去支付");
+                break;
+            case 4:
+                right.setVisibility(View.VISIBLE);
+                right.setText("查看物流");
+                break;
         }
     }
 

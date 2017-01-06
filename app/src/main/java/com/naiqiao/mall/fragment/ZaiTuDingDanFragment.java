@@ -3,8 +3,12 @@ package com.naiqiao.mall.fragment;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
+import com.naiqiao.mall.adapter.MyOrderAdapter;
 import com.naiqiao.mall.adapter.ZaiTuDingDanAdapter;
+import com.naiqiao.mall.bean.MyOrderBean;
 import com.naiqiao.mall.bean.ZaiTuDingDanBean;
+import com.naiqiao.mall.constant.ApiConstant;
+import com.naiqiao.mall.constant.UserInfo;
 
 import java.util.ArrayList;
 import java.util.Map;
@@ -16,28 +20,29 @@ import view.DefaultTitleBarView;
  * Created by dengmingzhi on 2016/11/25.
  */
 
-public class ZaiTuDingDanFragment extends ListNetWorkBaseFragment<ZaiTuDingDanBean> {
+public class ZaiTuDingDanFragment extends ListNetWorkBaseFragment<MyOrderBean> {
     @Override
     protected RecyclerView.Adapter getAdapter() {
-        return new ZaiTuDingDanAdapter(getContext(), (ArrayList<ZaiTuDingDanBean.Data>) totalList);
+        return new MyOrderAdapter(getContext(), (ArrayList<MyOrderBean.Data>) totalList);
     }
 
     @Override
     protected String url() {
-        return "http://www.ediancha.com/app.php";
+        return ApiConstant.FLOW;
     }
 
     @Override
     protected Map<String, String> map() {
-        map.put("c", "chahui");
-        map.put("a", "index");
-        map.put("type", "1");
+        map.put("act", "order_list");
+        map.put("user_id", UserInfo.uid);
+        map.put("sign_token", UserInfo.token);
+        map.put("status", "3");
         return super.map();
     }
 
     @Override
-    protected Class<ZaiTuDingDanBean> getTClass() {
-        return ZaiTuDingDanBean.class;
+    protected Class<MyOrderBean> getTClass() {
+        return MyOrderBean.class;
     }
 
     @Override

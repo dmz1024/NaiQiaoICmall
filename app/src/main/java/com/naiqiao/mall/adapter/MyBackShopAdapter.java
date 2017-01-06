@@ -40,24 +40,24 @@ public class MyBackShopAdapter extends BaseAdapter<MyBackShopBean.Data> {
         final ViewHolder mHolder = (ViewHolder) holder;
         MyBackShopBean.Data data = list.get(position);
         mHolder.tv_statu.setTextColor(Color.parseColor("#333333"));
-        switch (data.type) {
-            case 0:
-                mHolder.tv_statu.setText("待审核");
-                break;
-            case 1:
-                mHolder.tv_statu.setText("支付差价");
-                mHolder.tv_statu.setTextColor(Color.parseColor("#f73f5f"));
-                break;
-            case 2:
-                mHolder.tv_statu.setText("换货成功");
-                break;
-            case 3:
-                mHolder.tv_statu.setText("审核失败");
-                break;
-            case 4:
-                mHolder.tv_statu.setText("差价确认中");
-                break;
-        }
+//        switch (data.type) {
+//            case 0:
+//                mHolder.tv_statu.setText("待审核");
+//                break;
+//            case 1:
+//                mHolder.tv_statu.setText("支付差价");
+//                mHolder.tv_statu.setTextColor(Color.parseColor("#f73f5f"));
+//                break;
+//            case 2:
+//                mHolder.tv_statu.setText("换货成功");
+//                break;
+//            case 3:
+//                mHolder.tv_statu.setText("审核失败");
+//                break;
+//            case 4:
+//                mHolder.tv_statu.setText("差价确认中");
+//                break;
+//        }
     }
 
 
@@ -76,8 +76,8 @@ public class MyBackShopAdapter extends BaseAdapter<MyBackShopBean.Data> {
 
         @Override
         protected void onClick(int layoutPosition) {
-            int type = list.get(layoutPosition).type;
-            RxBus.get().post("addFragment", new AddFragmentBean(ChangeShopDescContentFragment.getInstance(type > 2 ? 2 : type)));
+//            int type = list.get(layoutPosition).type;
+//            RxBus.get().post("addFragment", new AddFragmentBean(ChangeShopDescContentFragment.getInstance(type > 2 ? 2 : type)));
         }
     }
 }

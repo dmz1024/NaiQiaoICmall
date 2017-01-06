@@ -1,7 +1,7 @@
 package com.naiqiao.mall.fragment;
 
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.widget.Button;
@@ -10,7 +10,6 @@ import android.widget.TextView;
 import com.naiqiao.mall.R;
 import com.naiqiao.mall.adapter.SendMonadAdapter;
 import com.naiqiao.mall.bean.AllShopBean;
-import com.naiqiao.mall.bean.SendCarBean;
 
 import base.bean.rxbus.AddFragmentBean;
 
@@ -40,31 +39,37 @@ public class SendMonadContentFragment extends NotNetWorkBaseFragment {
     private SendMonadAdapter mAdapter;
     private boolean isChoose = true;
 
-    public static SendMonadContentFragment getInstance(ArrayList<AllShopBean.Data> datas) {
+    private ArrayList<AllShopBean.Data> data;
+    private int count;
+
+    public static SendMonadContentFragment getInstance(ArrayList<AllShopBean.Data> data, int count) {
         SendMonadContentFragment fragment = new SendMonadContentFragment();
         Bundle bundle = new Bundle();
-        return null;
-//        bundle.putParcelableArrayList("datas",datas);
+        bundle.putParcelableArrayList("data", data);
+        bundle.putInt("count", count);
+        fragment.setArguments(bundle);
+        return fragment;
     }
 
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        Bundle bundle = getArguments();
+        if (bundle != null) {
+            data = bundle.getParcelableArrayList("data");
+            count = bundle.getInt("count");
+        }
+    }
 
     @Override
     protected int getRId() {
         return R.layout.fragment_send_monad;
     }
 
-    ArrayList<SendCarBean.Data> data;
-    private int count;
 
     @Override
     protected void initView() {
-        data = new ArrayList<>();
-        for (int i = 0; i < 10; i++) {
-            SendCarBean.Data send = new SendCarBean.Data();
-            send.count = i;
-            data.add(send);
-        }
-        count = data.size();
+        changeButton(data.size(), count);
         creatSendAdapter();
 
     }
@@ -77,15 +82,15 @@ public class SendMonadContentFragment extends NotNetWorkBaseFragment {
                 isChoose = true;
                 int count = 0;
                 int chooseCount = 0;
-                for (int i = 0; i < SendMonadContentFragment.this.count; i++) {
-                    if (!data.get(i).isChoose) {
+                for (int i = 0; i < data.size(); i++) {
+                    if (data.get(i).isChoose == 1) {
                         isChoose = false;
                     } else {
-                        count += data.get(i).count;
+                        count += data.get(i).currenTcount;
                         chooseCount += 1;
                     }
                 }
-                ChangeButton(chooseCount, count);
+                changeButton(chooseCount, count);
 
                 changeChoose();
             }
@@ -107,9 +112,9 @@ public class SendMonadContentFragment extends NotNetWorkBaseFragment {
     @OnClick(R.id.bt_send_car)
     void sendCar() {
         WriteSendShopFragment writeSendShopFragment = new WriteSendShopFragment();
-        ArrayList<SendCarBean.Data> sendData = new ArrayList<>();
+        ArrayList<AllShopBean.Data> sendData = new ArrayList<>();
         for (int i = 0; i < data.size(); i++) {
-            if (data.get(i).isChoose) {
+            if (data.get(i).isChoose == 0) {
                 sendData.add(data.get(i));
             }
         }
@@ -125,25 +130,20 @@ public class SendMonadContentFragment extends NotNetWorkBaseFragment {
         notifyData();
     }
 
-    private void changeChoose() {
-        tv_choose.setCompoundDrawables(DrawableUtil.setBounds(isChoose ? getResources().getDrawable(R.mipmap.icon_checked) : getResources().getDrawable(R.mipmap.icon_check)), null, null, null);
-    }
 
     private boolean isFirst = true;
 
     private void notifyData() {
         int count = 0;
         int chooseCount = 0;
-        for (int i = 0; i < this.count; i++) {
-            data.get(i).isChoose = isChoose;
+        for (int i = 0; i < data.size(); i++) {
+            data.get(i).isChoose = isChoose ? 0 : 1;
             if (isChoose) {
-                count += data.get(i).count;
+                count += data.get(i).currenTcount;
                 chooseCount += 1;
             }
         }
-
-
-        ChangeButton(chooseCount, count);
+        changeButton(chooseCount, count);
         if (!isFirst) {
             mAdapter.notifyDataSetChanged();
         } else {
@@ -153,7 +153,7 @@ public class SendMonadContentFragment extends NotNetWorkBaseFragment {
     }
 
 
-    private void ChangeButton(int chooseCount, int count) {
+    private void changeButton(int chooseCount, int count) {
         if (count > 0) {
             bt_send_car.setEnabled(true);
             bt_send_car.setAlpha(1);
@@ -163,6 +163,10 @@ public class SendMonadContentFragment extends NotNetWorkBaseFragment {
             bt_send_car.setAlpha(0.5f);
             tv_count.setTextNotChange("请选择发货商品");
         }
+    }
+
+    private void changeChoose() {
+        tv_choose.setCompoundDrawables(DrawableUtil.setBounds(isChoose ? getResources().getDrawable(R.mipmap.icon_checked) : getResources().getDrawable(R.mipmap.icon_check)), null, null, null);
     }
 
 

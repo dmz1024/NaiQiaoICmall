@@ -4,7 +4,10 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.View;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.naiqiao.mall.R;
@@ -35,6 +38,14 @@ public class OrderDescFragment extends SingleNetWorkBaseFragment<MyOrderDescBean
     TextView tv_order_info;
     @BindView(R.id.tv_price)
     TextView tv_price;
+    @BindView(R.id.ll_wiliu)
+    LinearLayout ll_wiliu;
+    @BindView(R.id.tv_wuliu)
+    TextView tv_wuliu;
+    @BindView(R.id.rl_wuliu)
+    RelativeLayout rl_wuliu;
+    @BindView(R.id.tv_wuliu_info)
+    TextView tv_wuliu_info;
 
     public static OrderDescFragment getInstance(String id) {
         OrderDescFragment fragment = new OrderDescFragment();
@@ -76,11 +87,35 @@ public class OrderDescFragment extends SingleNetWorkBaseFragment<MyOrderDescBean
         super.writeData(isWrite, bean);
         creatShops(bean.data.data2);
         goodsInfo(bean.data.data1);
+        wuliuInfo(bean.data.data3);
+    }
+
+
+    /**
+     * 物流信息
+     *
+     * @param data
+     */
+    private void wuliuInfo(MyOrderDescBean.Data.Wuliu data) {
+        if (TextUtils.isEmpty(data.shipping_name)) {
+            return;
+        }
+        ll_wiliu.setVisibility(View.VISIBLE);
+
+        if (data.info != null && data.info.size() > 0) {
+            rl_wuliu.setVisibility(View.VISIBLE);
+            tv_wuliu_info.setText(data.info.get(0).qsname + "\n" + data.info.get(0).time);
+
+        }
+        tv_wuliu.setText("物流公司：" + data.shipping_name + "\n物流单号：" + data.no);
     }
 
 
     private void goodsInfo(MyOrderDescBean.Data.Data1Bean data) {
-
+        tv_address.setContentNotChange("收件人："+data.consignee+"     "+data.mobile+"\n");
+        tv_address.setTextNotChange(data.group_address);
+        tv_price.setText(data.formated_total_fee+"\n"+data.formated_shipping_fee);
+        tv_order_info.setText("订单状态："+data.order_status+"\n订单编号："+data.order_sn+"\n操作时间："+data.pay_time);
     }
 
 

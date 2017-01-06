@@ -6,7 +6,6 @@ import android.support.v7.widget.RecyclerView;
 import base.bean.rxbus.AddFragmentBean;
 
 import com.naiqiao.mall.adapter.MyJiFenAdapter;
-import com.naiqiao.mall.bean.JiaoYiJLBean;
 import com.naiqiao.mall.bean.MyJIFenBean;
 import com.naiqiao.mall.constant.ApiConstant;
 import com.naiqiao.mall.fragment.base.JiaoYiJiFenFanDianBaseFragment;
@@ -53,7 +52,7 @@ public class MyJiFenFragment extends JiaoYiJiFenFanDianBaseFragment<MyJIFenBean>
 
     @Override
     public void rightBt() {
-        RxBus.get().post("addFragment",new AddFragmentBean(new JiFenDuiContentFragment()));
+        RxBus.get().post("addFragment",new AddFragmentBean(new JiFenShopContentFragment()));
     }
 
     @Override

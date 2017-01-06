@@ -5,6 +5,8 @@ import android.support.v7.widget.RecyclerView;
 
 import com.naiqiao.mall.adapter.MyBackShopAdapter;
 import com.naiqiao.mall.bean.MyBackShopBean;
+import com.naiqiao.mall.constant.ApiConstant;
+import com.naiqiao.mall.constant.UserInfo;
 
 import java.util.ArrayList;
 import java.util.Map;
@@ -29,14 +31,14 @@ public class MyBackShopFragment extends ListNetWorkBaseFragment<MyBackShopBean> 
 
     @Override
     protected String url() {
-        return "http://www.ediancha.com/app.php";
+        return ApiConstant.EXGOODS;
     }
 
     @Override
     protected Map<String, String> map() {
-        map.put("c", "chahui");
-        map.put("a", "index");
-        map.put("type", "1");
+        map.put("act", "change_list");
+        map.put("user_id", UserInfo.uid);
+        map.put("sign_token", UserInfo.token);
         return super.map();
     }
 
@@ -53,7 +55,7 @@ public class MyBackShopFragment extends ListNetWorkBaseFragment<MyBackShopBean> 
 
     @Override
     protected void initTitleView() {
-        ((DefaultTitleBarView) getTitleBar()).setTitleContent("我的进货")
+        ((DefaultTitleBarView) getTitleBar()).setTitleContent("我的换货")
                 .setRightContent("申请换货")
                 .setRightColor("#f73f5f")
                 .setRightSize(14).setOnTitleBarListener(this);

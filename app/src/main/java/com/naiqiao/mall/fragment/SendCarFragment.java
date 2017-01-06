@@ -59,13 +59,16 @@ public class SendCarFragment extends ListNetWorkBaseFragment<AllShopBean> {
     public void sendCar() {
         if (mAdapter != null && totalList.size() > 0) {
             ArrayList<AllShopBean.Data> datas = new ArrayList<>();
+            int count = 0;
             for (AllShopBean.Data data : ((ArrayList<AllShopBean.Data>) totalList)) {
                 if (data.currenTcount > 0) {
+                    count += data.currenTcount;
+                    data.isChoose = 0;
                     datas.add(data);
                 }
             }
             if (datas.size() > 0) {
-                RxBus.get().post("addFragment", new AddFragmentBean(SendMonadContentFragment.getInstance(datas)));
+                RxBus.get().post("addFragment", new AddFragmentBean(SendMonadContentFragment.getInstance(datas, count)));
             } else {
                 MyToast.showToast("请选择发货数量");
             }

@@ -10,14 +10,8 @@ import base.bean.ListBaseBean;
 
 public class MyBackShopBean extends ListBaseBean<ArrayList<MyBackShopBean.Data>> {
     public static class Data {
-        public int type;
+
     }
 
-    @Override
-    public ArrayList<Data> getData() {
-        for (int i = 0; i < data.size(); i++) {
-            data.get(i).type = i % 4;
-        }
-        return data;
-    }
+
 }

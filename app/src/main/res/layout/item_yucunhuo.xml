@@ -43,7 +43,7 @@
 
     <TextView
         android:id="@+id/tv_price"
-        style="@style/TextSize13Color333"
+        style="@style/TextSize12Color333"
         android:layout_width="match_parent"
         android:layout_below="@id/rl_1"
         android:layout_marginTop="@dimen/size0.5"

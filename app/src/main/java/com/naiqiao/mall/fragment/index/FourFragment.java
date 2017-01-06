@@ -114,7 +114,7 @@ public class FourFragment extends SingleNetWorkBaseFragment<UserCenter> implemen
     @Override
     protected void manageError(boolean isWrite, UserCenter userCenter, String msg) {
         super.manageError(isWrite, userCenter, msg);
-        if (TextUtils.equals("请先登陆", msg)) {
+        if (TextUtils.equals("token不正确", msg)) {
             RxBus.get().post("addFragment", new AddFragmentBean(new LoginFragment()));
         }
     }
@@ -142,13 +142,13 @@ public class FourFragment extends SingleNetWorkBaseFragment<UserCenter> implemen
                 RxBus.get().post("addFragment", new AddFragmentBean(DaoHuoTZFragment.getInstance(true)));
                 break;
             case R.id.tv_1_3:
-                Log.d("点击了", tv1s.get(2).getText().toString());
+                RxBus.get().post("addFragment", new AddFragmentBean(new ZaiTuDingDanFragment()));
                 break;
             case R.id.tv_1_4:
-                Log.d("点击了", tv1s.get(3).getText().toString());
+                RxBus.get().post("addFragment", new AddFragmentBean(new AllShopContentFragment()));
                 break;
             case R.id.tv_1_5:
-                Log.d("点击了", tv1s.get(4).getText().toString());
+                RxBus.get().post("addFragment", new AddFragmentBean(new MyJiFenFragment()));
                 break;
         }
     }
@@ -222,7 +222,6 @@ public class FourFragment extends SingleNetWorkBaseFragment<UserCenter> implemen
                 Log.d("点击了", tv5s.get(0).getText().toString());
                 break;
             case R.id.fg_2:
-                Log.d("点击了", tv5s.get(1).getText().toString());
                 RxBus.get().post("addFragment", new AddFragmentBean(new XiaoLiangPaiHangFragment()));
                 break;
         }
@@ -230,7 +229,6 @@ public class FourFragment extends SingleNetWorkBaseFragment<UserCenter> implemen
 
     @OnClick(R.id.iv_head)
     void headClick() {
-        Log.d("点击了", "图像点击了");
         RxBus.get().post("addFragment", new AddFragmentBean(new LoginFragment()));
     }
 

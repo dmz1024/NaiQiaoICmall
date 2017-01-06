@@ -11,6 +11,8 @@
         android:orientation="vertical">
 
         <LinearLayout
+            android:id="@+id/ll_wiliu"
+            android:visibility="gone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#fff"
@@ -20,7 +22,7 @@
                 android:id="@+id/tv_wuliu"
                 style="@style/TextSize13Color666"
                 android:lineSpacingExtra="@dimen/size5"
-                android:paddingTop="@dimen/size5"
+                android:paddingTop="@dimen/size10"
                 android:paddingLeft="@dimen/size10"
                 android:paddingRight="@dimen/size10"
                 android:text="物流公司：中通快递\n物流单号：N548132458" />
@@ -32,9 +34,10 @@
                 android:background="#f5f5f5" />
 
             <RelativeLayout
+                android:id="@+id/rl_wuliu"
+                android:visibility="gone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingBottom="@dimen/size10"
                 android:layout_marginTop="@dimen/size5"
                 android:paddingLeft="@dimen/size10"
                 android:paddingRight="@dimen/size10">
@@ -88,14 +91,15 @@
 
         <view.Color2Text
             android:id="@+id/tv_address"
+
             style="@style/TextSize13Color333"
             android:layout_width="match_parent"
             android:background="#fff"
             android:lineSpacingExtra="@dimen/size5"
-            android:paddingBottom="@dimen/size5"
+
+            android:paddingTop="@dimen/size10"
             android:paddingLeft="@dimen/size10"
             android:paddingRight="@dimen/size10"
-
             android:text="收件人：邓如果     18326167257\n"
             app:Color2Text_color="#f666"
             app:Color2Text_content="北京市朝阳区北辰东路北辰公寓M座1708"
@@ -156,7 +160,7 @@
                 android:id="@+id/tv_order_info"
                 style="@style/TextSize12Color999"
                 android:lineSpacingExtra="@dimen/size5"
-                android:paddingBottom="@dimen/size10"
+                android:paddingBottom="@dimen/size5"
                 android:paddingTop="@dimen/size5"
                 android:paddingLeft="@dimen/size10"
                 android:paddingRight="@dimen/size10"

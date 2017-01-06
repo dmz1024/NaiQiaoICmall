@@ -49,6 +49,7 @@ public class AllShopFragment extends ListNetWorkBaseFragment<AllShopBean> {
         map.put("act", "index");
         map.put("user_id", UserInfo.uid);
         map.put("sign_token", UserInfo.token);
+        map.put("sort",sort);
         return super.map();
     }
 
@@ -59,7 +60,7 @@ public class AllShopFragment extends ListNetWorkBaseFragment<AllShopBean> {
 
 
     public boolean right(boolean isVertical) {
-        if(mAdapter==null){
+        if (mAdapter == null) {
             return false;
         }
         ((AllShopAdapter) mAdapter).setVertical(isVertical ? 1 : 2);
@@ -70,5 +71,11 @@ public class AllShopFragment extends ListNetWorkBaseFragment<AllShopBean> {
         return true;
     }
 
+    private String sort;
+
+    public void filter(String sort) {
+        this.sort = sort;
+        startRefresh();
+    }
 
 }

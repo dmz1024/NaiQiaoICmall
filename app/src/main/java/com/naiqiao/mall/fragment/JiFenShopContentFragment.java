@@ -11,12 +11,12 @@ import java.util.ArrayList;
  * Created by dengmingzhi on 2016/12/12.
  */
 
-public class JiFenDuiContentFragment extends TabIndicatorBaseFragment {
+public class JiFenShopContentFragment extends TabIndicatorBaseFragment {
     @Override
     protected ArrayList<Fragment> getFragments() {
         ArrayList<Fragment> fragments=new ArrayList<>();
-        fragments.add(new JiFenShopTeJiaFragment());
-        fragments.add(new JiFenShopTeJiaFragment());
+        fragments.add(JiFenShopFragment.getInstance(0));
+        fragments.add(JiFenShopFragment.getInstance(1));
         return fragments;
     }
 

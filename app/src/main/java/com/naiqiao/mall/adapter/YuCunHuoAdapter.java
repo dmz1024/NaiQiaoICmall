@@ -9,12 +9,14 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.naiqiao.mall.R;
+import com.naiqiao.mall.bean.ShopBean;
 import com.naiqiao.mall.bean.YuCunHuoBean;
 
 import java.util.ArrayList;
 
 import base.adapter.BaseAdapter;
 import base.adapter.BaseViewHolder;
+import butterknife.BindView;
 
 
 /**
@@ -36,12 +38,15 @@ public class YuCunHuoAdapter extends BaseAdapter<YuCunHuoBean.Data> {
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         final ViewHolder mHolder = (ViewHolder) holder;
         YuCunHuoBean.Data data = list.get(position);
-        creatShop(mHolder.rv_shop, position);
+        creatShop(mHolder.rv_shop, data.goods);
+        mHolder.tv_sn.setText("订单编号："+data.order_sn);
+        mHolder.tv_statu.setText(data.order_status);
+        mHolder.tv_price.setText("总价:￥"+data.total_fee+"  运费:￥"+data.shipping_fee);
     }
 
 
-    private void creatShop(RecyclerView rv_shop, int position) {
-        ShopAdapter mAdapter = new ShopAdapter(ctx, list.get(position).shops);
+    private void creatShop(RecyclerView rv_shop, ArrayList<ShopBean> shops) {
+        ShopAdapter mAdapter = new ShopAdapter(ctx, shops);
         LinearLayoutManager manager = new LinearLayoutManager(ctx);
         rv_shop.setLayoutManager(manager);
         rv_shop.setAdapter(mAdapter);
@@ -49,21 +54,21 @@ public class YuCunHuoAdapter extends BaseAdapter<YuCunHuoBean.Data> {
 
 
     public class ViewHolder extends BaseViewHolder {
-        public TextView tv_sn;
-        public TextView tv_statu;
-        public TextView tv_price;
-        public Button bt_left;
-        public Button bt_right;
-        public RecyclerView rv_shop;
+        @BindView(R.id.tv_sn)
+        TextView tv_sn;
+        @BindView(R.id.tv_statu)
+        TextView tv_statu;
+        @BindView(R.id.tv_price)
+        TextView tv_price;
+        @BindView(R.id.bt_left)
+        Button bt_left;
+        @BindView(R.id.bt_right)
+        Button bt_right;
+        @BindView(R.id.rv_shop)
+        RecyclerView rv_shop;
 
         public ViewHolder(View itemView) {
             super(itemView);
-            tv_sn = (TextView) itemView.findViewById(R.id.tv_sn);
-            tv_statu = (TextView) itemView.findViewById(R.id.tv_statu);
-            tv_price = (TextView) itemView.findViewById(R.id.tv_price);
-            bt_left = (Button) itemView.findViewById(R.id.bt_left);
-            bt_right = (Button) itemView.findViewById(R.id.bt_right);
-            rv_shop = (RecyclerView) itemView.findViewById(R.id.rv_shop);
         }
 
     }
