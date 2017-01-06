@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
+    android:background="#fff"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     <Button
@@ -10,9 +11,16 @@
         android:layout_height="wrap_content" />
     <FrameLayout
         android:id="@+id/fg_content"
+        android:visibility="gone"
+
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
-
+    <ImageView
+        android:id="@+id/iv_img"
+        android:scaleType="fitXY"
+        android:src="@drawable/icon_loading"
+        android:layout_width="@dimen/size30"
+        android:layout_height="@dimen/size30" />
     <!--<com.naiqiao.mall.view.ViewProgress-->
         <!--android:layout_width="match_parent"-->
         <!--android:layout_height="wrap_content"/>-->

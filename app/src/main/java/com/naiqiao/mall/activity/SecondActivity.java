@@ -5,7 +5,12 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.view.animation.LinearInterpolator;
+import android.widget.ImageView;
 
+import com.bumptech.glide.Glide;
 import com.canyinghao.canphotos.CanPhotoHelper;
 import com.naiqiao.mall.R;
 import com.naiqiao.mall.fragment.ShopInfoDescRootFragment;
@@ -20,10 +25,14 @@ public class SecondActivity extends FragmentActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test);
-        getSupportFragmentManager().beginTransaction().add(R.id.fg_content, new WebViewFragment()).commit();
-        findViewById(R.id.bt_test).setVisibility(View.GONE);
+//
+        ImageView iv_img = (ImageView) findViewById(R.id.iv_img);
+//        Glide.with(this).load(R.drawable.icon_loader).asGif().into(iv_img);
+        Animation operatingAnim = AnimationUtils.loadAnimation(this, com.mall.naiqiao.mylibrary.R.anim.rotate);
+        LinearInterpolator lin = new LinearInterpolator();
+        operatingAnim.setInterpolator(lin);
+        iv_img.setAnimation(operatingAnim);
     }
-
 
 
 }
