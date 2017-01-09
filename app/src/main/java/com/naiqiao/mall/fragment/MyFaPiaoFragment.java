@@ -23,7 +23,6 @@ import base.fragment.ListNetWorkBaseFragment;
  */
 
 public class MyFaPiaoFragment extends JiaoYiJiFenFanDianBaseFragment<MyFaPiaoBean> {
-    protected JiaoYi_JiFen_FanDianTitleBarView titleBarView;
 
     @Override
     protected RecyclerView.Adapter getAdapter() {
@@ -37,7 +36,7 @@ public class MyFaPiaoFragment extends JiaoYiJiFenFanDianBaseFragment<MyFaPiaoBea
 
     @Override
     protected Map<String, String> map() {
-        map.put("act", "index");
+        map.put("act", "invoice_list");
         return super.map();
     }
 
@@ -52,4 +51,9 @@ public class MyFaPiaoFragment extends JiaoYiJiFenFanDianBaseFragment<MyFaPiaoBea
         titleBarView.setButtonTitle("申请开票").setTitleContent("我的发票");
     }
 
+    @Override
+    protected void writeData(boolean isWrite, MyFaPiaoBean bean) {
+        super.writeData(isWrite, bean);
+        titleBarView.setPrice("可开发票额度：" + bean.cou_money);
+    }
 }

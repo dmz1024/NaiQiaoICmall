@@ -28,12 +28,13 @@
             android:layout_width="@dimen/size80"
             android:layout_height="@dimen/size80"
             android:scaleType="fitXY"
-            android:src="@mipmap/icon_search_gray" />
+            />
     </FrameLayout>
 
     <TextView
         android:id="@+id/tv_title"
         style="@style/TextSize12Color333"
+        android:layout_width="match_parent"
         android:layout_marginLeft="@dimen/size10"
         android:layout_toRightOf="@id/fg_img"
         android:lineSpacingExtra="@dimen/size1"
@@ -46,13 +47,15 @@
         android:layout_alignLeft="@id/tv_title"
         android:layout_below="@id/tv_title"
         android:layout_marginTop="@dimen/size6"
+        android:textColor="#f73f5f"
         android:text="￥899.00" />
 
     <com.naiqiao.mall.view.AddAndSubView
         android:id="@+id/view_as"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@id/fg_img"
+        android:layout_below="@id/tv_price"
+        android:layout_marginTop="@dimen/size5"
         android:layout_alignLeft="@id/tv_title" />
 
     <TextView

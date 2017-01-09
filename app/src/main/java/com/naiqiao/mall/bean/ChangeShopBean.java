@@ -9,13 +9,24 @@ import base.bean.ListBaseBean;
  */
 
 public class ChangeShopBean extends ListBaseBean<ArrayList<ChangeShopBean.Data>> {
-    public static class Data{
+    public Info info;
 
+    public static class Data {
+        public String format_goods_price;
+        public String goods_id;
+        public String goods_name;
+        public int goods_number;
+        public double goods_price;
+        public String goods_sn;
+        public String goods_thumb;
+        public String id;
+        public int count;
+        public boolean isChoose;
     }
 
-    @Override
-    public ArrayList<Data> getData() {
-        data.clear();
-        return data;
+    public static class Info {
+        public String rebate_stock;
+        public double stockprice;
     }
+
 }

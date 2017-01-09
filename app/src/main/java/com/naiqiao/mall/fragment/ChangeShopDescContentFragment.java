@@ -48,6 +48,8 @@ public class ChangeShopDescContentFragment extends NotNetWorkBaseFragment {
         getChildFragmentManager().beginTransaction().add(R.id.fg_content, new ChangeShopDescFragment()).commit();
     }
 
+
+
     @Override
     protected void initView() {
         view_pro.setTitle("待审核,待支付差价,换货成功");
@@ -78,4 +80,6 @@ public class ChangeShopDescContentFragment extends NotNetWorkBaseFragment {
     protected void initTitleView() {
         ((DefaultTitleBarView) getTitleBar()).setTitleContent("申请换货");
     }
+
+
 }

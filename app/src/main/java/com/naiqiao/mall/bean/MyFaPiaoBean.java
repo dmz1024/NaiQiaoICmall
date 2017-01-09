@@ -9,6 +9,7 @@ import base.bean.ListBaseBean;
  */
 
 public class MyFaPiaoBean extends ListBaseBean<ArrayList<MyFaPiaoBean.Data>> {
+    public String cou_money;
     public static class Data {
 
     }

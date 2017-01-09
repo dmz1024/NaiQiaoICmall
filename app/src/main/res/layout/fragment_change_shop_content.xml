@@ -38,7 +38,7 @@
             android:gravity="center_vertical"
             android:text="合计金额："
             app:Color2Text_color="#f73f5f"
-            app:Color2Text_content="1234元"
+            app:Color2Text_content="0元"
             app:Color2Text_size="@dimen/sp15" />
 
         <view.Color2Text

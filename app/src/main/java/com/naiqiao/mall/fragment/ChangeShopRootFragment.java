@@ -1,23 +1,18 @@
 package com.naiqiao.mall.fragment;
 
-import android.graphics.Color;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
 
 import com.naiqiao.mall.R;
 import com.naiqiao.mall.view.ViewProgress;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import base.fragment.NotNetWorkBaseFragment;
 import butterknife.BindView;
-import butterknife.BindViews;
 import butterknife.OnClick;
-import util.DrawableUtil;
 import view.DefaultTitleBarView;
 import view.NoScrollViewPager;
 
@@ -38,11 +33,14 @@ public class ChangeShopRootFragment extends NotNetWorkBaseFragment {
 
     }
 
+    private ArrayList<Fragment> fragments;
+
     @Override
     protected void initView() {
-        final ArrayList<Fragment> fragments = new ArrayList<>();
-        fragments.add(new ChangeShopContentFragment());
-        fragments.add(new ChangeShopContentFragment());
+
+        fragments = new ArrayList<>();
+        fragments.add(new ChangeShopOneContentFragment());
+        fragments.add(new ChangeShopTwoContentFragment());
         fragments.add(new AffirmChangeShopFragment());
         fragments.add(new ChangeShopSuccessFragment());
         vp_content.setOffscreenPageLimit(fragments.size());
@@ -73,16 +71,38 @@ public class ChangeShopRootFragment extends NotNetWorkBaseFragment {
 
     @OnClick(R.id.bt_next)
     void next() {
+        switch (vp_content.getCurrentItem()) {
+            case 0:
+                ((ChangeShopOneContentFragment) fragments.get(0)).saveChange();
+                setCurrent();
+                break;
+            case 1:
+                ((ChangeShopTwoContentFragment) fragments.get(1)).saveChange();
+                setCurrent();
+                break;
+            case 2:
+                setCurrent();
+                break;
+            case 3:
+
+                break;
+        }
+    }
+
+
+
+
+
+    private void setCurrent() {
         vp_content.setCurrentItem(vp_content.getCurrentItem() + 1, false);
         if (vp_content.getCurrentItem() == 1) {
             bt_next.setText("去确认换货单");
         } else if (vp_content.getCurrentItem() == 2) {
             bt_next.setText("提交审核");
         } else {
-            bt_next.setVisibility(View.GONE);
+            bt_next.setText("返回");
         }
 
         view_pro.setCurrentPosition(vp_content.getCurrentItem());
     }
-
 }
