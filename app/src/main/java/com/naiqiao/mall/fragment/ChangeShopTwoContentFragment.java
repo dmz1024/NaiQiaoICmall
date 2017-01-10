@@ -51,10 +51,11 @@ public class ChangeShopTwoContentFragment extends NotNetWorkBaseFragment {
     }
 
 
-    public void saveChange() {
+    public boolean saveChange() {
         if (fragment != null) {
-            fragment.saveChange();
+            return fragment.saveChange();
         }
+        return false;
     }
 
     public void setPrice() {

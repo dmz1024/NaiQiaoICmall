@@ -18,9 +18,8 @@
     <ImageView
         android:id="@+id/iv_img"
         android:scaleType="fitXY"
-        android:src="@drawable/icon_loading"
-        android:layout_width="@dimen/size30"
-        android:layout_height="@dimen/size30" />
+        android:layout_width="@dimen/size250"
+        android:layout_height="@dimen/size250" />
     <!--<com.naiqiao.mall.view.ViewProgress-->
         <!--android:layout_width="match_parent"-->
         <!--android:layout_height="wrap_content"/>-->

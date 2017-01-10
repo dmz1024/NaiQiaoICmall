@@ -27,11 +27,8 @@ public class SecondActivity extends FragmentActivity {
         setContentView(R.layout.activity_test);
 //
         ImageView iv_img = (ImageView) findViewById(R.id.iv_img);
-//        Glide.with(this).load(R.drawable.icon_loader).asGif().into(iv_img);
-        Animation operatingAnim = AnimationUtils.loadAnimation(this, com.mall.naiqiao.mylibrary.R.anim.rotate);
-        LinearInterpolator lin = new LinearInterpolator();
-        operatingAnim.setInterpolator(lin);
-        iv_img.setAnimation(operatingAnim);
+        Glide.with(this).load("http://qr.topscan.com/api.php?text=123456").into(iv_img);
+
     }
 
 

@@ -1,6 +1,8 @@
 package com.naiqiao.mall.fragment;
 
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 
 import com.naiqiao.mall.R;
@@ -14,6 +16,7 @@ import java.util.ArrayList;
 import java.util.Map;
 
 import base.fragment.ListNetWorkBaseFragment;
+import util.MyToast;
 import util.SharedPreferenUtil;
 
 /**
@@ -79,10 +82,30 @@ public class ChangeShopTwoFragment extends ListNetWorkBaseFragment<ChangeShopBea
         return view;
     }
 
-    public void saveChange() {
+    public boolean saveChange() {
         if (mAdapter != null) {
-            new SharedPreferenUtil(getContext(), "changeGoods").setData("id_two", "139|1");
+            ArrayList<ChangeShopBean.Data> totalList = (ArrayList<ChangeShopBean.Data>) this.totalList;
+            StringBuffer oneStr = new StringBuffer();
+            int chooseCount = 0;
+            double price = 0;
+            for (ChangeShopBean.Data data : totalList) {
+                if (data.isChoose && data.count > 0) {
+                    oneStr.append(data.goods_id).append("|").append(data.count);
+                    chooseCount += data.count;
+                    price += data.goods_price * data.count;
+                    oneStr.append(",");
+                }
+            }
+            if (TextUtils.isEmpty(oneStr.toString())) {
+                MyToast.showToast("请选择进货商品");
+                return false;
+            }
+            Log.d("进货", oneStr.substring(0,oneStr.length()-1));
+
+            new SharedPreferenUtil(getContext(), "changeGoods").setData(new String[]{"two", oneStr.substring(0,oneStr.length()-1), "two_price", price + "", "two_count", chooseCount + ""});
+            return true;
         }
+        return false;
     }
 
 

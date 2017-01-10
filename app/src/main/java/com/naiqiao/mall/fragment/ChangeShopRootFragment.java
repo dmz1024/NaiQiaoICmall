@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import base.fragment.NotNetWorkBaseFragment;
 import butterknife.BindView;
 import butterknife.OnClick;
+import util.RxBus;
 import view.DefaultTitleBarView;
 import view.NoScrollViewPager;
 
@@ -73,25 +74,23 @@ public class ChangeShopRootFragment extends NotNetWorkBaseFragment {
     void next() {
         switch (vp_content.getCurrentItem()) {
             case 0:
-                ((ChangeShopOneContentFragment) fragments.get(0)).saveChange();
-                setCurrent();
+                if (((ChangeShopOneContentFragment) fragments.get(0)).saveChange()) {
+                    setCurrent();
+                }
                 break;
             case 1:
-                ((ChangeShopTwoContentFragment) fragments.get(1)).saveChange();
-                setCurrent();
+                if (((ChangeShopTwoContentFragment) fragments.get(1)).saveChange()) {
+                    setCurrent();
+                }
                 break;
             case 2:
                 setCurrent();
                 break;
             case 3:
-
+                RxBus.get().post("back", "back");
                 break;
         }
     }
-
-
-
-
 
     private void setCurrent() {
         vp_content.setCurrentItem(vp_content.getCurrentItem() + 1, false);

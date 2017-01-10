@@ -24,11 +24,13 @@
             android:paddingTop="@dimen/size20">
 
             <TextView
+                android:id="@+id/tv_huan"
                 style="@style/TextSize15Color333"
                 android:gravity="center_horizontal"
                 android:text="虚拟仓商品\n\n共9件" />
 
             <TextView
+                android:id="@+id/tv_huan_price"
                 style="@style/TextSize15Color333"
                 android:layout_marginTop="@dimen/size20"
                 android:text="总价值￥2368.00"
@@ -78,11 +80,13 @@
             android:paddingTop="@dimen/size20">
 
             <TextView
+                android:id="@+id/tv_jin"
                 style="@style/TextSize15Color333"
                 android:gravity="center_horizontal"
                 android:text="新进商品\n\n共9件" />
 
             <TextView
+                android:id="@+id/tv_jin_price"
                 style="@style/TextSize15Color333"
                 android:layout_marginTop="@dimen/size20"
                 android:text="总价值￥2368.00"

@@ -44,10 +44,11 @@ public class ChangeShopOneContentFragment extends NotNetWorkBaseFragment {
     }
 
 
-    public void saveChange() {
+    public boolean saveChange() {
         if (fragment != null) {
-            fragment.saveChange();
+            return fragment.saveChange();
         }
+        return false;
     }
 
     private Drawable dra;
@@ -79,6 +80,6 @@ public class ChangeShopOneContentFragment extends NotNetWorkBaseFragment {
         if (draed == null) {
             draed = getResources().getDrawable(R.mipmap.icon_checked);
         }
-        tv_choose.setCompoundDrawables(DrawableUtil.setBounds(this.isChoose? draed : dra), null, null, null);
+        tv_choose.setCompoundDrawables(DrawableUtil.setBounds(this.isChoose ? draed : dra), null, null, null);
     }
 }
