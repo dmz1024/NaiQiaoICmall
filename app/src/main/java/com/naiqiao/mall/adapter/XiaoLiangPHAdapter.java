@@ -25,6 +25,7 @@ import util.Util;
 
 public class XiaoLiangPHAdapter extends BaseAdapter<XiaoLiangPHBean.Data> {
     private int itemLenght;
+    private int width;
 
     public XiaoLiangPHAdapter(Context ctx, ArrayList<XiaoLiangPHBean.Data> list) {
         super(ctx, list);
@@ -32,23 +33,26 @@ public class XiaoLiangPHAdapter extends BaseAdapter<XiaoLiangPHBean.Data> {
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        width = (Util.getWidth() - Util.dp2Px(20)) / 2;
         return new ViewHolder(View.inflate(ctx, R.layout.item_xiao_liang_ph, null));
     }
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         ViewHolder mHolder = (ViewHolder) holder;
+        XiaoLiangPHBean.Data data = list.get(position);
         if (position == 0) {
-            itemLenght = Util.getWidth() / (list.get(position).length * 2);
-            Log.d("itemLenght", Util.getWidth() + "");
+            itemLenght = width / (data.a_sale);
+            LinearLayout.LayoutParams layoutParams = (LinearLayout.LayoutParams) mHolder.rl_length.getLayoutParams();
+            layoutParams.width = 2 * width;
+            mHolder.rl_length.setLayoutParams(layoutParams);
         } else {
             LinearLayout.LayoutParams layoutParams = (LinearLayout.LayoutParams) mHolder.rl_length.getLayoutParams();
-            layoutParams.width = (Util.getWidth() / 2) + (list.get(position).length * itemLenght);
-
-            Log.d("ddd", ((Util.getWidth() / 2) + (list.get(position).length * itemLenght)) + "");
+            layoutParams.width = width + (data.a_sale * itemLenght);
             mHolder.rl_length.setLayoutParams(layoutParams);
         }
 
+        mHolder.tv_name.setText(data.name);
         if (position <= 2) {
             mHolder.tv_name.setTextColor(Color.parseColor("#f73f5f"));
             mHolder.tv_top.setTextSize(18 - position);
@@ -59,7 +63,7 @@ public class XiaoLiangPHAdapter extends BaseAdapter<XiaoLiangPHBean.Data> {
             mHolder.tv_name.setTextSize(16);
         }
         mHolder.tv_top.setText("TOP" + (position + 1));
-        mHolder.tv_count.setText(list.get(position).length+"");
+        mHolder.tv_count.setText(data.a_sale + "");
     }
 
     public class ViewHolder extends BaseViewHolder {

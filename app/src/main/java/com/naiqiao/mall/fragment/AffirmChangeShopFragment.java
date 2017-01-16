@@ -31,9 +31,9 @@ public class AffirmChangeShopFragment extends NotNetWorkBaseFragment {
 
     @Override
     protected void initData() {
-        Map<String, String> map = new SharedPreferenUtil(getContext(), "changeGoods").getData(new String[]{"one", "one_price", "two", "two_price", "one_count", "two_count"});
-        String one = map.get("one");
-        String two = map.get("two");
+        Map<String, String> map = new SharedPreferenUtil(getContext(), "changeGoods").getData(new String[]{"goods_ids", "one_price", "rec_ids", "two_price", "one_count", "two_count"});
+        String one = map.get("goods_ids");
+        String two = map.get("rec_ids");
         String one_count = map.get("one_count");
         String two_count = map.get("two_count");
         double one_price = Double.parseDouble(map.get("one_price"));

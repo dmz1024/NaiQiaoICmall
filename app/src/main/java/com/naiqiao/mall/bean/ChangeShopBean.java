@@ -20,6 +20,7 @@ public class ChangeShopBean extends ListBaseBean<ArrayList<ChangeShopBean.Data>>
         public String goods_sn;
         public String goods_thumb;
         public String id;
+        public String rec_id;
         public int count;
         public boolean isChoose;
     }

@@ -49,6 +49,7 @@ public class SetFragment extends NotNetWorkBaseFragment {
             case R.id.tv_fankui:
                 break;
             case R.id.tv_about:
+                RxBus.get().post("addFragment",new AddFragmentBean(new AboutUsFragment()));
                 break;
             case R.id.tv_cache:
                 break;

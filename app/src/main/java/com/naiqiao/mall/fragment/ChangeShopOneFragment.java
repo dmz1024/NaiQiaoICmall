@@ -102,7 +102,7 @@ public class ChangeShopOneFragment extends ListNetWorkBaseFragment<ChangeShopBea
                 return false;
             }
             Log.d("换货", oneStr.substring(0,oneStr.length()-1));
-            new SharedPreferenUtil(getContext(), "changeGoods").setData(new String[]{"one", oneStr.substring(0,oneStr.length()-1), "one_price", price + "", "one_count", chooseCount + ""});
+            new SharedPreferenUtil(getContext(), "changeGoods").setData(new String[]{"goods_ids", oneStr.substring(0,oneStr.length()-1), "one_price", price + "", "one_count", chooseCount + ""});
             return true;
         }
 

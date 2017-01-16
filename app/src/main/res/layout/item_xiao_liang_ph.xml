@@ -3,8 +3,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="#fff"
-    android:paddingLeft="@dimen/size10"
-    android:paddingRight="@dimen/size10"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp"
     android:orientation="vertical"
     android:paddingTop="@dimen/size10">
 
@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:background="#f73f5f"
         android:paddingBottom="@dimen/size5"
-        android:paddingLeft="@dimen/size2"
+        android:paddingLeft="2dp"
         android:paddingTop="@dimen/size5">
 
         <TextView
@@ -28,7 +28,7 @@
             android:id="@+id/tv_count"
             style="@style/TextSize14Colorfff"
             android:layout_alignParentRight="true"
-            android:layout_marginRight="@dimen/size3"
+            android:layout_marginRight="@dimen/size5"
             android:layout_centerVertical="true"
             android:text="50006445"
             android:textStyle="bold" />
@@ -40,6 +40,7 @@
         android:layout_gravity="right"
         android:layout_marginTop="@dimen/size5"
         android:text="日本参天眼药水"
+        android:maxLines="1"
         android:textColor="#f73f5f"
          />
 </LinearLayout>

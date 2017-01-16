@@ -1,9 +1,13 @@
 package com.naiqiao.mall.fragment;
 
+import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
 
 import com.naiqiao.mall.adapter.XiaoLiangPHAdapter;
 import com.naiqiao.mall.bean.XiaoLiangPHBean;
+import com.naiqiao.mall.constant.ApiConstant;
+import com.naiqiao.mall.constant.UserInfo;
 
 import java.util.ArrayList;
 import java.util.Map;
@@ -17,6 +21,25 @@ import view.DefaultTitleBarView;
  */
 
 public class XiaoLiangPaiHangFragment extends ListNetWorkBaseFragment<XiaoLiangPHBean> {
+    private int type;
+
+    public static XiaoLiangPaiHangFragment getInstance(int type) {
+        XiaoLiangPaiHangFragment fragment = new XiaoLiangPaiHangFragment();
+        Bundle bundle = new Bundle();
+        bundle.putInt("type", type);
+        fragment.setArguments(bundle);
+        return fragment;
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        Bundle bundle = getArguments();
+        if (bundle != null) {
+            type = bundle.getInt("type");
+        }
+    }
+
     @Override
     protected RecyclerView.Adapter getAdapter() {
         return new XiaoLiangPHAdapter(getContext(), (ArrayList<XiaoLiangPHBean.Data>) totalList);
@@ -25,14 +48,17 @@ public class XiaoLiangPaiHangFragment extends ListNetWorkBaseFragment<XiaoLiangP
 
     @Override
     protected String url() {
-        return "http://www.ediancha.com/app.php";
+        return ApiConstant.SALE;
     }
 
     @Override
     protected Map<String, String> map() {
-        map.put("c", "chahui");
-        map.put("a", "index");
-        map.put("type", "1");
+        map.put("user_id", UserInfo.uid);
+        map.put("sign_token", UserInfo.token);
+        map.put("act", "index");
+        if (type == 2) {
+            map.put("type", 2 + "");
+        }
         return super.map();
     }
 
@@ -55,6 +81,6 @@ public class XiaoLiangPaiHangFragment extends ListNetWorkBaseFragment<XiaoLiangP
     @Override
     protected void initTitleView() {
         DefaultTitleBarView titleBarView = (DefaultTitleBarView) getTitleBar();
-        titleBarView.setTitleContent("单品销量排行");
+        titleBarView.setTitleContent(type!=2?"单品销量排行":"分类销量排行");
     }
 }

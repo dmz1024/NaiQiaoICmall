@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:padding="@dimen/size30"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:padding="@dimen/size10"
+        android:layout_width="match_parent"
+        android:layout_centerInParent="true"
+        android:layout_height="wrap_content"
+        android:background="#fff">
+        <EditText
+            android:id="@+id/et_name"
+            android:hint="手机号"
+            android:textColor="#666"
+            android:textColorHint="#999"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <EditText
+            android:id="@+id/et_password"
+            android:hint="密码"
+            android:layout_marginTop="@dimen/size20"
+            android:textColor="#666"
+            android:textColorHint="#999"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <Button
+            android:id="@+id/bt_login"
+            android:text="登陆"
+            android:textColor="#fff"
+            android:textSize="@dimen/sp15"
+            android:layout_marginTop="@dimen/size20"
+            android:background="#f00"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size35" />
+    </LinearLayout>
+</RelativeLayout>

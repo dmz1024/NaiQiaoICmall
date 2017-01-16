@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fff">
+
+
+    <LinearLayout
+        android:id="@+id/ll_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal"
+        android:padding="@dimen/size5">
+
+        <EditText
+            android:id="@+id/et_content"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="请输入聊天内容"
+            android:textColor="#333"
+            android:textColorHint="#999"
+            android:textSize="@dimen/sp13" />
+
+        <Button
+            android:id="@+id/bt_send"
+            android:layout_width="@dimen/size35"
+            android:layout_height="@dimen/size25"
+            android:layout_gravity="bottom"
+            android:background="#f00"
+            android:text="发送"
+            android:textColor="#fff"
+            android:textSize="@dimen/sp12" />
+    </LinearLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/ll_content"
+        android:layout_alignParentTop="true" />
+</RelativeLayout>

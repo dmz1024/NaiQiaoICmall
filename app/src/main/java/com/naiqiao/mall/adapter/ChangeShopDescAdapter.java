@@ -34,16 +34,21 @@ public class ChangeShopDescAdapter extends BaseAdapter<ChangeShopDescBean.Data> 
         return new ViewHolder(View.inflate(ctx, R.layout.item_change_shop_desc, null));
     }
 
-
+//    @Override
+//    public int getItemViewType(int position) {
+//        return position;
+//    }
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         final ViewHolder mHolder = (ViewHolder) holder;
         ChangeShopDescBean.Data data = list.get(position);
-        mHolder.tv_title.setText(data.title);
+
+        mHolder.tv_title.setText(position==0?"虚拟仓商品":"新进商品");
         mHolder.tv_more.setText(list.get(position).isMore ? "收起" : "展开");
-        mHolder.tv_more.setVisibility(data.shops.size() <= 2 ? View.GONE : View.VISIBLE);
-        creatShop(mHolder.rv_shop, data.shops, data.isMore);
+        mHolder.tv_more.setVisibility(data.goods.size() <= 2 ? View.GONE : View.VISIBLE);
+        mHolder.tv_price.setText("共"+data.count.goods_count+"件商品    总价值￥"+data.count.total_fee);
+        creatShop(mHolder.rv_shop, data.goods, data.isMore);
     }
 
     private void creatShop(RecyclerView rv_shop, ArrayList<ShopBean> shops, boolean isMore) {
@@ -66,12 +71,14 @@ public class ChangeShopDescAdapter extends BaseAdapter<ChangeShopDescBean.Data> 
         public RecyclerView rv_shop;
         public TextView tv_title;
         public TextView tv_more;
+        public TextView tv_price;
 
         public ViewHolder(View itemView) {
             super(itemView);
             rv_shop = (RecyclerView) itemView.findViewById(R.id.rv_shop);
             tv_title = (TextView) itemView.findViewById(R.id.tv_title);
             tv_more = (TextView) itemView.findViewById(R.id.tv_more);
+            tv_price = (TextView) itemView.findViewById(R.id.tv_price);
             tv_more.setOnClickListener(this);
         }
 

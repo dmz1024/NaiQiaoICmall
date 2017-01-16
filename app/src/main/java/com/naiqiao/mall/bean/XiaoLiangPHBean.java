@@ -10,16 +10,10 @@ import base.bean.ListBaseBean;
 
 public class XiaoLiangPHBean extends ListBaseBean<ArrayList<XiaoLiangPHBean.Data>> {
     public static class Data {
-        public int length;
+        public String name;
+        public int a_sale;
+        public int max_sale;
     }
 
 
-    @Override
-    public ArrayList<Data> getData() {
-        for (int i = 0; i < data.size(); i++) {
-
-            data.get(i).length = 100 - (i * 10) <= 0 ? 0 : 100 - (i * 10);
-        }
-        return data;
-    }
 }

@@ -67,4 +67,6 @@ public class BackShopDescFragment extends SingleNetWorkBaseFragment<BackShopDesc
     protected boolean isCanRefresh() {
         return false;
     }
+
+
 }

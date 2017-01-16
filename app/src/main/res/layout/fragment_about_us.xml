@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="500dp"
+            android:layout_marginTop="@dimen/size20">
+
+            <TextView
+                style="@style/TextSize13Color666"
+                android:lineSpacingExtra="@dimen/size3"
+                android:padding="@dimen/size10"
+                android:text="    上海奈乔电子商务有限公司是一家以经营海外药妆产品进出口为主的新兴跨境电子商务公司。公司拥有先进的国际化市场营销经验和众多互联网运营高精尖人才，我们以市场需求为导向，为用户提供最优、最新、最全的海外药妆产品。
+公司拥有成熟、独立的渠道分发体系,全面覆盖海外进口、境内分发品牌、及零售自主销售品牌等领域。我们运用最先进的国际化市场营销经验及技术，完成第三方供货，为客户提供一站式服务，帮助商家优化整个体系的业务链。公司以“诚信创造品牌，魅力成就自信！”为核心价值，为打造专业、优质、便捷的电商平台而不懈努力！
+上海奈乔电子商务有限公司拥有目前市场上单品数量最多的药妆进口权，公司以海外知名品牌为核心供货来源，并以严格的质量管理及信用管理体系为依托，以彻底改变我国现有恶意竞争、假冒泛滥的网购环境为诉求，通过创新性的产品服务形式及完善的营销管理体系，建立一个公平、专业、安全的网络交易平台，为商家提供稳定充足的货源保障，让中国日用消费品生产企业、采购商、经销商运用先进的电子商务技术实现发展，让消费者充分享受“足不出户，坐享其成”的便捷服务，得到质量更高、服务更好、价格更低、消费更安心的日用消费品网购服务。" />
+        </ScrollView>
+
+        <TextView
+            style="@style/TextSize12Color999"
+            android:layout_alignParentBottom="true"
+            android:lineSpacingExtra="@dimen/sp2"
+            android:gravity="center_horizontal"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="@dimen/size10"
+            android:text="Copyright©2016 - 2017\n上海奈乔电子商户有限公司" />
+    </RelativeLayout>
+
+</ScrollView>

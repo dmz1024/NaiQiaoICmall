@@ -219,10 +219,10 @@ public class FourFragment extends SingleNetWorkBaseFragment<UserCenter> implemen
     void fgClick(View view) {
         switch (view.getId()) {
             case R.id.fg_1:
-                Log.d("点击了", tv5s.get(0).getText().toString());
+                RxBus.get().post("addFragment", new AddFragmentBean(XiaoLiangPaiHangFragment.getInstance(2)));
                 break;
             case R.id.fg_2:
-                RxBus.get().post("addFragment", new AddFragmentBean(new XiaoLiangPaiHangFragment()));
+                RxBus.get().post("addFragment", new AddFragmentBean(XiaoLiangPaiHangFragment.getInstance(0)));
                 break;
         }
     }

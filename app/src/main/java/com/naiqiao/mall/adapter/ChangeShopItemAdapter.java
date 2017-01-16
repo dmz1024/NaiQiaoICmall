@@ -37,7 +37,11 @@ public class ChangeShopItemAdapter extends BaseAdapter<ShopBean> {
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         final ViewHolder mHolder = (ViewHolder) holder;
-        Glide.with(ctx).load(TestConstant.IMAGE).into(mHolder.iv_img);
+        ShopBean data = list.get(position);
+        Glide.with(ctx).load(data.goods_thumb).into(mHolder.iv_img);
+        mHolder.tv_title.setText(data.goods_name);
+        mHolder.tv_price.setText("￥" + data.goods_price);
+        mHolder.tv_count.setText("x" + data.goods_number);
     }
 
 

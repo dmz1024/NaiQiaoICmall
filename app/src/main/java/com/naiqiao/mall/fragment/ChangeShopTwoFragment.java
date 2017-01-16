@@ -90,7 +90,7 @@ public class ChangeShopTwoFragment extends ListNetWorkBaseFragment<ChangeShopBea
             double price = 0;
             for (ChangeShopBean.Data data : totalList) {
                 if (data.isChoose && data.count > 0) {
-                    oneStr.append(data.goods_id).append("|").append(data.count);
+                    oneStr.append(data.rec_id).append("|").append(data.count);
                     chooseCount += data.count;
                     price += data.goods_price * data.count;
                     oneStr.append(",");
@@ -102,7 +102,7 @@ public class ChangeShopTwoFragment extends ListNetWorkBaseFragment<ChangeShopBea
             }
             Log.d("进货", oneStr.substring(0,oneStr.length()-1));
 
-            new SharedPreferenUtil(getContext(), "changeGoods").setData(new String[]{"two", oneStr.substring(0,oneStr.length()-1), "two_price", price + "", "two_count", chooseCount + ""});
+            new SharedPreferenUtil(getContext(), "changeGoods").setData(new String[]{"rec_ids", oneStr.substring(0,oneStr.length()-1), "two_price", price + "", "two_count", chooseCount + ""});
             return true;
         }
         return false;
