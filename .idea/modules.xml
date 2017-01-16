@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/NaiQiaoICmall.iml" filepath="$PROJECT_DIR$/NaiQiaoICmall.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/haoshishop/haoshishop.iml" filepath="$PROJECT_DIR$/haoshishop/haoshishop.iml" />
       <module fileurl="file://$PROJECT_DIR$/mylibrary/mylibrary.iml" filepath="$PROJECT_DIR$/mylibrary/mylibrary.iml" />
       <module fileurl="file://$PROJECT_DIR$/mywechat/mywechat.iml" filepath="$PROJECT_DIR$/mywechat/mywechat.iml" />
     </modules>

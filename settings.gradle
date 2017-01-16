@@ -1,1 +1,1 @@
-include ':app', ':mylibrary', ':mywechat'
+include ':app', ':mylibrary', ':mywechat', ':haoshishop'
