@@ -1,5 +1,7 @@
 package com.naiqiao.mall.fragment.index;
 
+import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
@@ -95,6 +97,13 @@ public class FourFragment extends SingleNetWorkBaseFragment<UserCenter> implemen
         return super.map();
     }
 
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        userInfoChange();
+    }
+
     @Override
     protected void writeData(boolean isWrite, UserCenter bean) {
         super.writeData(isWrite, bean);
@@ -108,7 +117,7 @@ public class FourFragment extends SingleNetWorkBaseFragment<UserCenter> implemen
         tv1s.get(3).setText("虚拟仓\n" + data.stock_goods);
         tv1s.get(4).setText("积分\n" + data.integral);
         titleBarView.setRightContent(data.news);
-        userInfoChange();
+
     }
 
     @Override
@@ -157,7 +166,6 @@ public class FourFragment extends SingleNetWorkBaseFragment<UserCenter> implemen
     void tv2Click(View view) {
         switch (view.getId()) {
             case R.id.tv_2_1:
-                Log.d("点击了", tv2s.get(0).getText().toString());
                 RxBus.get().post("addFragment", new AddFragmentBean(new MyOrderContentFragment()));
                 break;
             case R.id.tv_2_2:
@@ -165,11 +173,9 @@ public class FourFragment extends SingleNetWorkBaseFragment<UserCenter> implemen
                 break;
             case R.id.tv_2_3:
                 RxBus.get().post("addFragment", new AddFragmentBean(new MyJInHuoDanContentFragment()));
-                Log.d("点击了", tv2s.get(2).getText().toString());
                 break;
             case R.id.tv_2_4:
                 RxBus.get().post("addFragment", new AddFragmentBean(new ZaiTuDingDanFragment()));
-                Log.d("点击了", tv2s.get(3).getText().toString());
                 break;
         }
     }
@@ -179,19 +185,15 @@ public class FourFragment extends SingleNetWorkBaseFragment<UserCenter> implemen
         switch (view.getId()) {
             case R.id.tv_3_1:
                 RxBus.get().post("addFragment", new AddFragmentBean(new MyJiFenFragment()));
-                Log.d("点击了", tv3s.get(0).getText().toString());
                 break;
             case R.id.tv_3_2:
                 RxBus.get().post("addFragment", new AddFragmentBean(new MyFanDianFragment()));
-                Log.d("点击了", tv3s.get(1).getText().toString());
                 break;
             case R.id.tv_3_3:
                 RxBus.get().post("addFragment", new AddFragmentBean(new MyCollectFragment()));
-                Log.d("点击了", tv3s.get(2).getText().toString());
                 break;
             case R.id.tv_3_4:
                 RxBus.get().post("addFragment", new AddFragmentBean(new MyFaPiaoFragment()));
-                Log.d("点击了", tv3s.get(3).getText().toString());
                 break;
         }
     }
@@ -304,7 +306,6 @@ public class FourFragment extends SingleNetWorkBaseFragment<UserCenter> implemen
                 @Override
                 public void call(String s) {
                     getData();
-                    JLogUtils.D("这里");
                 }
             });
         }

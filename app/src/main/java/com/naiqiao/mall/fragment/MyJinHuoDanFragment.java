@@ -22,6 +22,7 @@ import java.util.Map;
 import base.fragment.ListNetWorkBaseFragment;
 import rx.Observable;
 import rx.functions.Action1;
+import util.JLogUtils;
 import util.RxBus;
 
 /**
@@ -139,5 +140,21 @@ public class MyJinHuoDanFragment extends ListNetWorkBaseFragment<MyJinHuoDanBean
     @Override
     protected boolean isCanRefresh() {
         return false;
+    }
+
+    public String getIds() {
+        ArrayList<MyJinHuoDanBean.Data> totalList = (ArrayList<MyJinHuoDanBean.Data>) this.totalList;
+        StringBuffer sb = new StringBuffer();
+        for (MyJinHuoDanBean.Data data : totalList) {
+            if (data.isChoose && data.goods_number > 0) {
+                sb.append(data.rec_id).append("|").append(data.goods_number).append(",");
+            }
+        }
+
+        if (sb.toString().endsWith(",")) {
+            return sb.substring(0, sb.length() - 1);
+        }
+        JLogUtils.D("dd");
+        return sb.toString();
     }
 }

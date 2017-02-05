@@ -30,9 +30,20 @@ import view.DefaultTitleBarView;
 public class AddressFragment extends ListNetWorkBaseFragment<AddressBean> {
     private Observable<AddressRxBus> address;
 
+    private boolean isChoose;
+
+    public static AddressFragment getInstance(boolean isChoose) {
+        AddressFragment addressFragment = new AddressFragment();
+        Bundle bundle = new Bundle();
+        bundle.putBoolean("isChoose", isChoose);
+        addressFragment.setArguments(bundle);
+        return addressFragment;
+    }
+
+
     @Override
     protected RecyclerView.Adapter getAdapter() {
-        return new AddressAdapter(getContext(), (ArrayList<AddressBean.Data>) totalList);
+        return new AddressAdapter(getContext(), (ArrayList<AddressBean.Data>) totalList,isChoose);
     }
 
     private void initRxBus() {
@@ -81,6 +92,10 @@ public class AddressFragment extends ListNetWorkBaseFragment<AddressBean> {
         super.onCreate(savedInstanceState);
         if (address == null) {
             initRxBus();
+        }
+        Bundle bundle = getArguments();
+        if (bundle != null) {
+            isChoose = bundle.getBoolean("isChoose");
         }
     }
 

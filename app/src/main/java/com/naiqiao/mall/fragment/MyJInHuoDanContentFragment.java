@@ -1,5 +1,6 @@
 package com.naiqiao.mall.fragment;
 
+import android.text.TextUtils;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.TextView;
@@ -12,6 +13,7 @@ import base.fragment.NotNetWorkBaseFragment;
 import butterknife.BindView;
 import butterknife.OnClick;
 import util.DrawableUtil;
+import util.MyToast;
 import util.RxBus;
 import view.Color2Text;
 import view.DefaultTitleBarView;
@@ -45,7 +47,12 @@ public class MyJInHuoDanContentFragment extends NotNetWorkBaseFragment implement
 
     @OnClick(R.id.bt_pay)
     void payCar() {
-        RxBus.get().post("addFragment",new AddFragmentBean(new PayFragment()));
+        String ids = danFragment.getIds();
+        if (TextUtils.isEmpty(ids)) {
+            MyToast.showToast("请先选择商品");
+            return;
+        }
+        RxBus.get().post("addFragment", new AddFragmentBean(GoPayFragment.getInstance(ids)));
     }
 
     @OnClick(R.id.tv_choose)
@@ -82,8 +89,8 @@ public class MyJInHuoDanContentFragment extends NotNetWorkBaseFragment implement
 
     @Override
     public void price(int count, double price) {
-        Log.d("price",price+"--"+count);
-        this.price =this.price+( price * count);
+        Log.d("price", price + "--" + count);
+        this.price = this.price + (price * count);
         this.count += count;
         showPriceInfo();
     }

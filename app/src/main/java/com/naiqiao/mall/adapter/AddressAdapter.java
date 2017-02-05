@@ -43,6 +43,12 @@ public class AddressAdapter extends BaseAdapter<AddressBean.Data> {
         super(ctx, list);
     }
 
+    private boolean isChoose;
+    public AddressAdapter(Context ctx, ArrayList<AddressBean.Data> list,boolean isChoose) {
+        this(ctx, list);
+        this.isChoose=isChoose;
+    }
+
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         return new ViewHolder(View.inflate(ctx, R.layout.item_address, null));
@@ -82,6 +88,16 @@ public class AddressAdapter extends BaseAdapter<AddressBean.Data> {
             tv_edit.setOnClickListener(this);
             tv_default.setOnClickListener(this);
             tv_delete.setOnClickListener(this);
+            if(isChoose){
+                itemView.setOnClickListener(this);
+            }
+        }
+
+        @Override
+        protected void onClick(int layoutPosition) {
+            AddressBean.Data data=list.get(layoutPosition);
+            RxBus.get().post("back","back");
+            RxBus.get().post("chooseAddress",data.address_id);
         }
 
         @Override
