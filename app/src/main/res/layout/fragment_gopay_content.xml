@@ -224,7 +224,6 @@
                         android:padding="@dimen/size10"
                         android:layout_gravity="top"
                         android:drawableRight="@mipmap/icon_go"
-                        android:text="【增值税专票】生活用品"
                         android:layout_width="match_parent"
                         style="@style/TextSize12Color666" />
                     <TextView

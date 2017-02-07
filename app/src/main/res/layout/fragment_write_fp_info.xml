@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tv_affirm"
+        android:layout_width="@dimen/size136"
+        android:layout_height="@dimen/size45"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="@dimen/size15"
+        android:background="#f73f5f"
+        android:gravity="center"
+        android:text="确定修改"
+        android:textColor="#fff"
+        android:textSize="@dimen/sp17" />
+
+    <ScrollView
+        android:id="@+id/sv_root"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/tv_affirm"
+        android:layout_alignParentTop="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#fff"
+            android:orientation="vertical">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/size10"
+                android:background="#f5f5f5" />
+
+            <TextView
+                style="@style/TextSize15Color333"
+                android:background="#fff"
+                android:padding="@dimen/size10"
+                android:text="发票类型" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/size0.5"
+                android:layout_marginLeft="@dimen/size10"
+                android:layout_marginRight="@dimen/size10"
+                android:background="#b2b2b2" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#fff"
+                android:padding="@dimen/size10">
+
+                <TextView
+                    android:id="@+id/tv_pu"
+                    style="@style/TextSize14Color333"
+                    android:background="@drawable/shape_fff_f73f5f_ra"
+                    android:paddingBottom="@dimen/size5"
+                    android:paddingLeft="@dimen/size10"
+                    android:paddingRight="@dimen/size10"
+                    android:paddingTop="@dimen/size5"
+                    android:text="增值税普通发票"
+                    android:textColor="#f73f5f" />
+
+                <TextView
+                    android:id="@+id/tv_zhuan"
+                    style="@style/TextSize14Color999"
+                    android:layout_marginLeft="@dimen/size10"
+                    android:background="@drawable/shape_fff_b2b2b2_ra"
+                    android:paddingBottom="@dimen/size5"
+                    android:paddingLeft="@dimen/size10"
+                    android:paddingRight="@dimen/size10"
+                    android:paddingTop="@dimen/size5"
+                    android:text="增值税专票" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/size10"
+                android:background="#f5f5f5" />
+
+            <TextView
+                style="@style/TextSize15Color333"
+                android:background="#fff"
+                android:padding="@dimen/size10"
+                android:text="基本信息" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/size0.5"
+                android:layout_marginLeft="@dimen/size10"
+                android:layout_marginRight="@dimen/size10"
+                android:background="#b2b2b2" />
+
+            <FrameLayout
+                android:id="@+id/fg_content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>

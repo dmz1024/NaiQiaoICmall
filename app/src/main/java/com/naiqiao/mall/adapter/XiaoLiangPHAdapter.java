@@ -17,6 +17,7 @@ import java.util.ArrayList;
 
 import base.adapter.BaseAdapter;
 import base.adapter.BaseViewHolder;
+import util.JLogUtils;
 import util.Util;
 
 /**
@@ -24,16 +25,17 @@ import util.Util;
  */
 
 public class XiaoLiangPHAdapter extends BaseAdapter<XiaoLiangPHBean.Data> {
-    private int itemLenght;
+    private float itemLenght;
     private int width;
 
     public XiaoLiangPHAdapter(Context ctx, ArrayList<XiaoLiangPHBean.Data> list) {
         super(ctx, list);
+        width = (Util.getWidth() - Util.dp2Px(20)) / 2;
+        JLogUtils.D("高"+width);
     }
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        width = (Util.getWidth() - Util.dp2Px(20)) / 2;
         return new ViewHolder(View.inflate(ctx, R.layout.item_xiao_liang_ph, null));
     }
 
@@ -48,7 +50,8 @@ public class XiaoLiangPHAdapter extends BaseAdapter<XiaoLiangPHBean.Data> {
             mHolder.rl_length.setLayoutParams(layoutParams);
         } else {
             LinearLayout.LayoutParams layoutParams = (LinearLayout.LayoutParams) mHolder.rl_length.getLayoutParams();
-            layoutParams.width = width + (data.a_sale * itemLenght);
+            layoutParams.width = (int) (width + (data.a_sale * itemLenght));
+            JLogUtils.D("width"+(int) (width + (data.a_sale * itemLenght)));
             mHolder.rl_length.setLayoutParams(layoutParams);
         }
 

@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f5f5f5">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="@dimen/size10">
+
+        <TextView
+            android:id="@+id/tv_1"
+            style="@style/TextSize14Color333"
+            android:text="基本信息" />
+
+        <View
+            android:id="@+id/view_1"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/size0.5"
+            android:layout_alignLeft="@id/tv_1"
+            android:layout_alignRight="@id/tv_1"
+            android:layout_below="@id/tv_1"
+            android:layout_marginTop="@dimen/size5"
+            android:background="#333" />
+
+        <TextView
+            android:id="@+id/tv_pay_type"
+            style="@style/TextSize12Color666"
+            android:layout_below="@id/view_1"
+            android:layout_marginTop="@dimen/size5"
+            android:text="购买方式：直接购买" />
+
+        <TextView
+            android:id="@+id/tv_2"
+            style="@style/TextSize12Color666"
+            android:layout_below="@id/tv_pay_type"
+            android:layout_marginTop="@dimen/size5"
+            android:text="收货人信息：" />
+
+        <TextView
+            android:id="@+id/tv_address"
+            style="@style/TextSize12Color666"
+            android:layout_alignTop="@id/tv_2"
+            android:layout_toRightOf="@id/tv_2"
+            android:lineSpacingExtra="@dimen/size5"
+            android:text="邓如果    北京市朝阳区北辰东路8号北辰公寓M座1708      18326167257" />
+
+        <View
+            android:id="@+id/view_3"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size0.5"
+            android:layout_below="@id/tv_address"
+            android:layout_marginTop="@dimen/size5"
+            android:background="#b2b2b2" />
+
+        <TextView
+            android:id="@+id/tv_3"
+            style="@style/TextSize14Color333"
+            android:layout_below="@id/view_3"
+            android:layout_marginTop="@dimen/size10"
+            android:text="商品信息" />
+
+        <View
+            android:id="@+id/view_4"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/size0.5"
+            android:layout_alignLeft="@id/tv_3"
+            android:layout_alignRight="@id/tv_3"
+            android:layout_below="@id/tv_3"
+            android:layout_marginTop="@dimen/size5"
+            android:background="#333" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_shop"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/view_4"
+            android:layout_marginTop="@dimen/size5" />
+
+        <TextView
+            android:id="@+id/tv_bei"
+            style="@style/TextSize11Color999"
+            android:layout_below="@id/rv_shop"
+            android:layout_marginTop="@dimen/size5"
+            android:text="备注：啦啦啦啦啦啦啦啦啦啦啦" />
+
+        <View
+            android:id="@+id/view_5"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size0.5"
+            android:layout_below="@id/tv_bei"
+            android:layout_marginTop="@dimen/size5"
+            android:background="#b2b2b2" />
+
+        <TextView
+            android:id="@+id/tv_5"
+            style="@style/TextSize14Color333"
+            android:layout_below="@id/view_5"
+            android:layout_marginTop="@dimen/size10"
+            android:text="发票信息" />
+
+        <View
+            android:id="@+id/view_6"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/size0.5"
+            android:layout_alignLeft="@id/tv_5"
+            android:layout_alignRight="@id/tv_5"
+            android:layout_below="@id/tv_5"
+            android:layout_marginTop="@dimen/size5"
+            android:background="#333" />
+
+        <TextView
+            android:id="@+id/tv_fp"
+            style="@style/TextSize12Color666"
+            android:layout_below="@id/view_6"
+            android:layout_marginTop="@dimen/size5"
+            android:lineSpacingExtra="@dimen/size7"
+            android:text="【增值税普通发票】  生活用品\n北京东方盈科技有限公司" />
+
+        <View
+            android:id="@+id/view_7"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size0.5"
+            android:layout_below="@id/tv_fp"
+            android:layout_marginTop="@dimen/size5"
+            android:background="#b2b2b2" />
+
+        <TextView
+            android:id="@+id/tv_price"
+            style="@style/TextSize13Color333"
+            android:layout_below="@id/view_7"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/size10"
+            android:text="共10件商品，总计：￥1234.00(包含运费)" />
+
+        <com.naiqiao.mall.view.ViewSendCode
+            android:id="@+id/vsc_code"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_price"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/size20" />
+
+        <TextView
+            android:id="@+id/tv_submit"
+            style="@style/TextSize15Colorfff"
+            android:layout_below="@id/vsc_code"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/size20"
+            android:background="#f73f5f"
+            android:paddingBottom="@dimen/size5"
+            android:paddingLeft="@dimen/size25"
+            android:paddingRight="@dimen/size25"
+            android:paddingTop="@dimen/size5"
+            android:text="确定" />
+    </RelativeLayout>
+</ScrollView>

@@ -16,6 +16,7 @@ import com.bumptech.glide.Glide;
 import com.canyinghao.canphotos.CanPhotoHelper;
 import com.naiqiao.mall.R;
 import com.naiqiao.mall.fragment.ShopInfoDescRootFragment;
+import com.naiqiao.mall.pay.PayUtil;
 
 import java.util.ArrayList;
 
@@ -36,50 +37,56 @@ public class SecondActivity extends FragmentActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test);
-        ip = (EditText) findViewById(R.id.ip);
-        name = (EditText) findViewById(R.id.name);
-        content = (EditText) findViewById(R.id.content);
-        lianjie = (Button) findViewById(R.id.lianjie);
-        send = (Button) findViewById(R.id.send);
-
-
-        lianjie.setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.lianjie).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                final String wsuri = "ws://oa.east-profit.com:7272";
 
-                try {
-                    mConnection.connect(wsuri, new WebSocketHandler() {
-
-                        @Override
-                        public void onOpen() {
-                            mConnection.sendTextMessage("{\"type\":\"login\",\"client_name\":\"杨工吊小\",\"room_id\":\"3\"}");
-                        }
-
-                        @Override
-                        public void onTextMessage(String payload) {
-                            Log.d("onTextMessage", "Got echo: " + payload);
-                        }
-
-                        @Override
-                        public void onClose(int code, String reason) {
-                            Log.d("onClose", "Connection lost." + reason);
-                        }
-                    });
-                } catch (WebSocketException e) {
-                    Log.d("WebSocketException", "Got echo: " + e.getMessage());
-                }
             }
         });
-
-        send.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String say = content.getText().toString();
-                String id = name.getText().toString();
-                mConnection.sendTextMessage("{\"type\":\"say\",\"from_client_id\":\"" + id + "\",\"from_client_name\":\"\\u6768\\u5de5\\u540a\\u5c0f\",\"to_client_id\":\"all\",\"content\":\"" + say + "\",\"time\":\"2017-01-11 16:18:19\"}");
-            }
-        });
+//        ip = (EditText) findViewById(R.id.ip);
+//        name = (EditText) findViewById(R.id.name);
+//        content = (EditText) findViewById(R.id.content);
+//        lianjie = (Button) findViewById(R.id.lianjie);
+//        send = (Button) findViewById(R.id.send);
+//
+//
+//        lianjie.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                final String wsuri = "ws://oa.east-profit.com:7272";
+//
+//                try {
+//                    mConnection.connect(wsuri, new WebSocketHandler() {
+//
+//                        @Override
+//                        public void onOpen() {
+//                            mConnection.sendTextMessage("{\"type\":\"login\",\"client_name\":\"杨工吊小\",\"room_id\":\"3\"}");
+//                        }
+//
+//                        @Override
+//                        public void onTextMessage(String payload) {
+//                            Log.d("onTextMessage", "Got echo: " + payload);
+//                        }
+//
+//                        @Override
+//                        public void onClose(int code, String reason) {
+//                            Log.d("onClose", "Connection lost." + reason);
+//                        }
+//                    });
+//                } catch (WebSocketException e) {
+//                    Log.d("WebSocketException", "Got echo: " + e.getMessage());
+//                }
+//            }
+//        });
+//
+//        send.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                String say = content.getText().toString();
+//                String id = name.getText().toString();
+//                mConnection.sendTextMessage("{\"type\":\"say\",\"from_client_id\":\"" + id + "\",\"from_client_name\":\"\\u6768\\u5de5\\u540a\\u5c0f\",\"to_client_id\":\"all\",\"content\":\"" + say + "\",\"time\":\"2017-01-11 16:18:19\"}");
+//            }
+//        });
     }
 
 

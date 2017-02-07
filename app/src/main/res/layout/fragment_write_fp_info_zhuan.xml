@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <LinearLayout
+        android:id="@+id/ll_left_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#fff"
+        android:orientation="vertical">
+        <TextView
+            style="@style/TextSize15Color666"
+            android:padding="@dimen/size10"
+            android:text="开票金额" />
+
+        <TextView
+            style="@style/TextSize15Color666"
+            android:padding="@dimen/size10"
+            android:text="开票抬头" />
+
+        <TextView
+            style="@style/TextSize15Color666"
+            android:padding="@dimen/size10"
+            android:text="纳税人识别号" />
+
+        <TextView
+            style="@style/TextSize15Color666"
+            android:padding="@dimen/size10"
+            android:text="注册地址" />
+        <TextView
+            style="@style/TextSize15Color666"
+            android:padding="@dimen/size10"
+            android:text="注册电话" />
+        <TextView
+            style="@style/TextSize15Color666"
+            android:padding="@dimen/size10"
+            android:text="开户银行" />
+        <TextView
+            style="@style/TextSize15Color666"
+            android:padding="@dimen/size10"
+            android:text="开具内容" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/ll_left_1"
+        android:layout_alignTop="@id/ll_left_1"
+        android:layout_toRightOf="@id/ll_left_1"
+        android:background="#fff"
+        android:divider="@drawable/linear_f5f5f5_shpe"
+        android:orientation="vertical"
+        android:showDividers="middle"
+        android:weightSum="7">
+        <EditText
+            android:id="@+id/et_price"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:digits="0123456789"
+            android:maxLines="1"
+            android:background="@null"
+            android:gravity="center_vertical|right"
+            android:paddingRight="@dimen/size26"
+            android:hint="最多可开10000元"
+            android:textColorHint="#999"
+            android:textColor="#666"
+            android:textSize="@dimen/sp15" />
+
+        <EditText
+            android:maxLines="1"
+            android:id="@+id/et_taitou"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="@null"
+            android:gravity="center_vertical|right"
+            android:paddingRight="@dimen/size26"
+            android:textColor="#666"
+            android:textSize="@dimen/sp15" />
+        <EditText
+            android:maxLines="1"
+            android:id="@+id/et_sn"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="@null"
+            android:gravity="center_vertical|right"
+            android:paddingRight="@dimen/size26"
+            android:textColor="#666"
+            android:textSize="@dimen/sp15" />
+        <EditText
+            android:maxLines="1"
+            android:id="@+id/et_address"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="@null"
+            android:gravity="center_vertical|right"
+            android:paddingRight="@dimen/size26"
+            android:textColor="#666"
+            android:textSize="@dimen/sp15" />
+        <EditText
+            android:maxLines="1"
+            android:id="@+id/et_tel"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="@null"
+            android:gravity="center_vertical|right"
+            android:paddingRight="@dimen/size26"
+            android:textColor="#666"
+            android:textSize="@dimen/sp15" />
+        <EditText
+            android:maxLines="1"
+            android:id="@+id/et_bank"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="@null"
+            android:gravity="center_vertical|right"
+            android:paddingRight="@dimen/size26"
+            android:textColor="#666"
+            android:textSize="@dimen/sp15" />
+
+        <TextView
+            android:id="@+id/tv_content"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:drawablePadding="@dimen/size10"
+            android:drawableRight="@mipmap/icon_go"
+            android:gravity="center_vertical|right"
+            android:paddingRight="@dimen/size10"
+            android:text="请选择开具内容"
+            android:textColor="#666" />
+
+    </LinearLayout>
+</RelativeLayout>

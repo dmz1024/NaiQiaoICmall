@@ -1,6 +1,7 @@
 package com.naiqiao.mall.controller;
 
 import android.content.Context;
+import android.text.TextUtils;
 
 import com.naiqiao.mall.bean.rxbus.CollectRxbus;
 import com.naiqiao.mall.constant.ApiConstant;
@@ -48,6 +49,13 @@ public class MyCollectController {
             }
 
             @Override
+            protected boolean getShowSucces() {
+                return false;
+            }
+
+
+
+            @Override
             protected Class<SingleBaseBean> getClx() {
                 return SingleBaseBean.class;
             }
@@ -61,7 +69,7 @@ public class MyCollectController {
             public void error(boolean isWrite, SingleBaseBean bean, String msg) {
 
             }
-        }).post(new TipLoadingBean("提交中...", "提交成功", ""));
+        }).post(new TipLoadingBean(TextUtils.equals(rxbus.act,"add")?"添加收藏":"取消收藏", "", ""));
     }
 
 }

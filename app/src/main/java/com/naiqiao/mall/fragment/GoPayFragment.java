@@ -17,11 +17,13 @@ import android.widget.TextView;
 
 import com.naiqiao.mall.R;
 import com.naiqiao.mall.adapter.ShopAdapter;
+import com.naiqiao.mall.bean.AffirmGoPayBean;
 import com.naiqiao.mall.bean.GoPayBean;
 import com.naiqiao.mall.bean.ShopBean;
 import com.naiqiao.mall.constant.ApiConstant;
 import com.naiqiao.mall.constant.UserInfo;
 import com.naiqiao.mall.interfaces.SingleTextWatcher;
+import com.naiqiao.mall.pay.PayUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,6 +40,7 @@ import rx.Observable;
 import rx.functions.Action1;
 import util.DrawableUtil;
 import util.JLogUtils;
+import util.MyToast;
 import util.RxBus;
 import view.Color2Text;
 import view.DefaultTitleBarView;
@@ -118,8 +121,8 @@ public class GoPayFragment extends SingleNetWorkBaseFragment<GoPayBean> {
         map.put("sign_token", UserInfo.token);
         map.put("act", "checkout");
         map.put("rec_ids", ids);
-        if (!TextUtils.isEmpty(address_id)) {
-            map.put("address_id", address_id);
+        if (!TextUtils.isEmpty(addressId)) {
+            map.put("address_id", addressId);
         }
         return super.map();
     }
@@ -131,9 +134,12 @@ public class GoPayFragment extends SingleNetWorkBaseFragment<GoPayBean> {
         return view;
     }
 
+    private GoPayBean bean;
+
     @Override
     protected void writeData(boolean isWrite, GoPayBean bean) {
         super.writeData(isWrite, bean);
+        this.bean = bean;
         initShop(bean.data.data2);
         initAddress(bean.data.data1);
         initInfo(bean.data.data3);
@@ -183,7 +189,8 @@ public class GoPayFragment extends SingleNetWorkBaseFragment<GoPayBean> {
                     et_fan.setSelection(fan.length());
                 }
 
-                tv_price.setContentNotChange("合计：￥" + (data.amount - Integer.parseInt(fan)) + "\n");
+                price=(data.amount - Integer.parseInt(fan))+"";
+                tv_price.setContentNotChange("合计：￥" + price+ "(包含运费)\n");
                 isChangeIng = false;
 
             }
@@ -194,6 +201,7 @@ public class GoPayFragment extends SingleNetWorkBaseFragment<GoPayBean> {
         showFp();
 
     }
+    private String price;
 
     /**
      * 收件人信息
@@ -202,6 +210,7 @@ public class GoPayFragment extends SingleNetWorkBaseFragment<GoPayBean> {
      */
     private void initAddress(GoPayBean.Data.Data1Bean data) {
         if (!TextUtils.isEmpty(data.address_id)) {
+            address_id = data.address_id;
             tv_address.setLineSpacing(1, 1.3f);
             tv_address.setText(data.consignee + "    " + data.mobile + "\n" + data.address_short_name);
         }
@@ -213,6 +222,7 @@ public class GoPayFragment extends SingleNetWorkBaseFragment<GoPayBean> {
      * @param data
      */
     private void initShop(ArrayList<ShopBean> data) {
+        count = 0;
         LinearLayoutManager manager = new LinearLayoutManager(getContext()) {
             @Override
             public boolean canScrollVertically() {
@@ -223,7 +233,15 @@ public class GoPayFragment extends SingleNetWorkBaseFragment<GoPayBean> {
         rv_shop.setLayoutManager(manager);
         rv_shop.setAdapter(adapter);
 
+        for (ShopBean shop : data) {
+            count += shop.goods_number;
+        }
+
+        tv_price.setTextNotChange("共" + count + "件商品");
+
     }
+
+    int count = 0;
 
     @Override
     protected boolean isCanRefresh() {
@@ -263,9 +281,10 @@ public class GoPayFragment extends SingleNetWorkBaseFragment<GoPayBean> {
     @OnClick(R.id.tv_fp_yes)
     void fgYes() {
         if (TextUtils.isEmpty(tv_fp_type.getText())) {
+            initFpRxBus();
             RxBus.get().post("addFragment", new AddFragmentBean(new WriteFpInfoFragment()));
         } else {
-            if(isFp){
+            if (isFp) {
                 return;
             }
             isFp = true;
@@ -274,10 +293,9 @@ public class GoPayFragment extends SingleNetWorkBaseFragment<GoPayBean> {
     }
 
 
-
     @OnClick(R.id.tv_fp_no)
     void fgNo() {
-        if(!isFp){
+        if (!isFp) {
             return;
         }
         isFp = false;
@@ -285,16 +303,61 @@ public class GoPayFragment extends SingleNetWorkBaseFragment<GoPayBean> {
     }
 
     @OnClick(R.id.tv_fp_type)
-    void fgType(){
+    void fgType() {
         RxBus.get().post("addFragment", new AddFragmentBean(new WriteFpInfoFragment()));
     }
 
+    @OnClick(R.id.tv_pay)
+    void goPay() {
+        AffirmGoPayBean goPayBean = new AffirmGoPayBean();
+        if (!payType) {
+            if (TextUtils.isEmpty(address_id)) {
+                MyToast.showToast("请选择收货地址");
+                return;
+            }
+            goPayBean.address_id = address_id;
+            goPayBean.address = new StringBuffer(bean.data.data1.consignee).append("   ").append(bean.data.data1.address_short_name).append("    ").append(bean.data.data1.mobile).toString();
+        }
+        if (isFp) {
+            goPayBean.inv_type = TextUtils.equals("1", fpContent[0]) ? "增值税普通发票" : "增值税专票";
+            goPayBean.inv_content = fpContent[1];
+            goPayBean.fp_content = new StringBuffer("【")
+                    .append(goPayBean.inv_type).append("】")
+                    .append("  ")
+                    .append(goPayBean.inv_content).append("\n")
+                    .append(fpContent[2])
+                    .toString();
+
+
+            fpContent[2] = fpContent[2].replace("\n", "：");
+            String[] fgInfo = fpContent[2].split("：");
+            StringBuffer fpSb = new StringBuffer();
+            for (int i = 1; i < fgInfo.length; i = i + 2) {
+                JLogUtils.D(i + "");
+                fpSb.append(fgInfo[i]).append("|");
+            }
+
+            goPayBean.inv_payee = fpSb.toString().substring(0, fpSb.toString().length() - 1);
+            JLogUtils.D(goPayBean.inv_payee);
+        }
+        goPayBean.count = count;
+        goPayBean.price = price;
+        JLogUtils.D(goPayBean.price);
+        goPayBean.type = payType ? 1 : 0;
+        goPayBean.shops = bean.data.data2;
+        goPayBean.postscript = et_bei.getText().toString();
+        String fan = et_fan.getText().toString();
+        goPayBean.surplus = TextUtils.isEmpty(fan) ? "0" : fan;
+        RxBus.get().post("addFragment", new AddFragmentBean(new AffirmGoPayFragment()));
+    }
+
+
     private void showFp() {
-        ll_show_fp.setVisibility(isFp?View.VISIBLE:View.GONE);
-        tv_fp_yes.setCompoundDrawables(DrawableUtil.setBounds(getResources().getDrawable(isFp?R.mipmap.icon_checked:R.mipmap.icon_check)),null,null,null);
-        tv_fp_no.setCompoundDrawables(DrawableUtil.setBounds(getResources().getDrawable(!isFp?R.mipmap.icon_checked:R.mipmap.icon_check)),null,null,null);
-        tv_fp_yes.setTextColor(Color.parseColor(isFp?"#f73f5f":"#999999"));
-        tv_fp_no.setTextColor(Color.parseColor(!isFp?"#f73f5f":"#999999"));
+        ll_show_fp.setVisibility(isFp ? View.VISIBLE : View.GONE);
+        tv_fp_yes.setCompoundDrawables(DrawableUtil.setBounds(getResources().getDrawable(isFp ? R.mipmap.icon_checked : R.mipmap.icon_check)), null, null, null);
+        tv_fp_no.setCompoundDrawables(DrawableUtil.setBounds(getResources().getDrawable(!isFp ? R.mipmap.icon_checked : R.mipmap.icon_check)), null, null, null);
+        tv_fp_yes.setTextColor(Color.parseColor(isFp ? "#f73f5f" : "#999999"));
+        tv_fp_no.setTextColor(Color.parseColor(!isFp ? "#f73f5f" : "#999999"));
     }
 
     @Override
@@ -303,6 +366,7 @@ public class GoPayFragment extends SingleNetWorkBaseFragment<GoPayBean> {
     }
 
     private Observable<String> chooseAddressRxBus;
+    private String addressId;
 
     private void initAddressRxBus() {
         if (chooseAddressRxBus == null) {
@@ -310,10 +374,32 @@ public class GoPayFragment extends SingleNetWorkBaseFragment<GoPayBean> {
             chooseAddressRxBus.subscribe(new Action1<String>() {
                 @Override
                 public void call(String id) {
-                    address_id = id;
+                    addressId = id;
                     isShowLoading = true;
-
                     getData();
+                }
+            });
+        }
+
+    }
+
+    private Observable<String> fpRxBus;
+    private String[] fpContent;
+
+    private void initFpRxBus() {
+        if (fpRxBus == null) {
+            fpRxBus = RxBus.get().register("fpInfoRxBus", String.class);
+            fpRxBus.subscribe(new Action1<String>() {
+                @Override
+                public void call(String content) {
+                    fpContent = content.split(",");
+                    if (TextUtils.equals("1", fpContent[0])) {
+                        tv_fp_type.setText("【增值税普通发票】" + fpContent[1]);
+                    } else {
+                        tv_fp_type.setText("【增值税专票】" + fpContent[1]);
+                    }
+                    tv_fp_info.setText(fpContent[2]);
+                    fgYes();
                 }
             });
         }
@@ -332,5 +418,6 @@ public class GoPayFragment extends SingleNetWorkBaseFragment<GoPayBean> {
     public void onDestroy() {
         super.onDestroy();
         RxBus.get().unregister("chooseAddress", chooseAddressRxBus);
+        RxBus.get().unregister("fpInfoRxBus", fpRxBus);
     }
 }

@@ -8,7 +8,7 @@ public class ShopBean {
     public String rec_id;
     public String goods_id;
     public String goods_name;
-    public String goods_number;
+    public int goods_number;
     public String market_price;
     public String goods_price;
     public String goods_attr;
