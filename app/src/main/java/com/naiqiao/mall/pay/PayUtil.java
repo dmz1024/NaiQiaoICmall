@@ -18,6 +18,7 @@ import java.util.Map;
 
 import base.bean.BaseBean;
 import util.MyToast;
+import util.RxBus;
 
 
 /**
@@ -83,10 +84,9 @@ public class PayUtil {
                 case 1: {
                     PayResult payResult = new PayResult((Map<String, String>) msg.obj);
                     String resultStatus = payResult.getResultStatus();
-                    Intent intent = new Intent(ctx, MainActivity.class);
                     if (TextUtils.equals(resultStatus, "9000")) {
                         MyToast.showToast("支付成功");
-                        intent.putExtra("pay_result", 0);
+                        RxBus.get().post("payRxBus","0");
                     } else {
                         if (TextUtils.equals(resultStatus, "8000")) {
                             MyToast.showToast("系统处理中");
@@ -97,10 +97,9 @@ public class PayUtil {
                         } else {
                             MyToast.showToast("支付失败");
                         }
-                        intent.putExtra("pay_result", 1);
+                        RxBus.get().post("payRxBus","1");
 
                     }
-                    ctx.startActivity(intent);
                     break;
                 }
             }
@@ -117,5 +116,9 @@ public class PayUtil {
             public String sign;
             public String timestamp;
         }
+    }
+
+    public static class AliPayInfo extends BaseBean<String> {
+
     }
 }

@@ -156,7 +156,7 @@ public class GoPayFragment extends SingleNetWorkBaseFragment<GoPayBean> {
      * @param data
      */
     private void initInfo(final GoPayBean.Data.Data3Bean data) {
-        tv_shop_info.setText("￥" + data.amount + "\n" + data.will_get_integral + "\n" + data.weight + "g\n￥" + data.shipping_fee);
+        tv_shop_info.setText("￥" + data.amount + "\n" + data.will_get_integral + "\n" + data.weight + "\n￥" + data.shipping_fee);
 
         tv_fan_num.setText("您的可用返点为：" + data.user_money);
         et_fan.addTextChangedListener(new SingleTextWatcher() {
@@ -310,6 +310,8 @@ public class GoPayFragment extends SingleNetWorkBaseFragment<GoPayBean> {
     @OnClick(R.id.tv_pay)
     void goPay() {
         AffirmGoPayBean goPayBean = new AffirmGoPayBean();
+        String[] fp=fpContent.clone();
+
         if (!payType) {
             if (TextUtils.isEmpty(address_id)) {
                 MyToast.showToast("请选择收货地址");
@@ -317,29 +319,28 @@ public class GoPayFragment extends SingleNetWorkBaseFragment<GoPayBean> {
             }
             goPayBean.address_id = address_id;
             goPayBean.address = new StringBuffer(bean.data.data1.consignee).append("   ").append(bean.data.data1.address_short_name).append("    ").append(bean.data.data1.mobile).toString();
-        }
-        if (isFp) {
-            goPayBean.inv_type = TextUtils.equals("1", fpContent[0]) ? "增值税普通发票" : "增值税专票";
-            goPayBean.inv_content = fpContent[1];
-            goPayBean.fp_content = new StringBuffer("【")
-                    .append(goPayBean.inv_type).append("】")
-                    .append("  ")
-                    .append(goPayBean.inv_content).append("\n")
-                    .append(fpContent[2])
-                    .toString();
 
+            if (isFp) {
+                goPayBean.inv_type = TextUtils.equals("1", fp[0]) ? "增值税普通发票" : "增值税专票";
+                goPayBean.inv_content = fp[1];
+                goPayBean.fp_content = new StringBuffer("【")
+                        .append(goPayBean.inv_type).append("】")
+                        .append("  ")
+                        .append(goPayBean.inv_content).append("\n")
+                        .append(fp[2])
+                        .toString();
 
-            fpContent[2] = fpContent[2].replace("\n", "：");
-            String[] fgInfo = fpContent[2].split("：");
-            StringBuffer fpSb = new StringBuffer();
-            for (int i = 1; i < fgInfo.length; i = i + 2) {
-                JLogUtils.D(i + "");
-                fpSb.append(fgInfo[i]).append("|");
+                fp[2] = fp[2].replace("\n", "：");
+                String[] fgInfo = fp[2].split("：");
+                StringBuffer fpSb = new StringBuffer();
+                for (int i = 1; i < fgInfo.length; i = i + 2) {
+                    JLogUtils.D(i + "");
+                    fpSb.append(fgInfo[i]).append("|");
+                }
+                goPayBean.inv_payee = fpSb.toString().substring(0, fpSb.toString().length() - 1);
             }
-
-            goPayBean.inv_payee = fpSb.toString().substring(0, fpSb.toString().length() - 1);
-            JLogUtils.D(goPayBean.inv_payee);
         }
+
         goPayBean.count = count;
         goPayBean.price = price;
         JLogUtils.D(goPayBean.price);
@@ -348,7 +349,7 @@ public class GoPayFragment extends SingleNetWorkBaseFragment<GoPayBean> {
         goPayBean.postscript = et_bei.getText().toString();
         String fan = et_fan.getText().toString();
         goPayBean.surplus = TextUtils.isEmpty(fan) ? "0" : fan;
-        RxBus.get().post("addFragment", new AddFragmentBean(new AffirmGoPayFragment()));
+        RxBus.get().post("addFragment", new AddFragmentBean(AffirmGoPayFragment.getInstance(goPayBean)));
     }
 
 

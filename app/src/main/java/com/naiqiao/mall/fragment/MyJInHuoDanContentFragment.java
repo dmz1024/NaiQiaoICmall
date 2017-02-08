@@ -6,7 +6,6 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.naiqiao.mall.R;
-import com.naiqiao.mall.fragment.login.PayFragment;
 
 import base.bean.rxbus.AddFragmentBean;
 import base.fragment.NotNetWorkBaseFragment;

@@ -12,5 +12,7 @@ public class UserLoginInfo extends BaseBean<UserLoginInfo.Data> {
         public String user_name;
         public String nikename;
         public String sign_token;
+        public String jm;
+        public String mobile;
     }
 }

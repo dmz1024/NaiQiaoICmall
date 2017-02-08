@@ -7,4 +7,5 @@ package com.naiqiao.mall.constant;
 public class UserInfo {
     public static String uid;
     public static String token;
+    public static String mobile;
 }

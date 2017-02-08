@@ -23,5 +23,7 @@ public interface ApiConstant {
     String EXCHANGE = BASE_URL + "exchange.php";
     String EXGOODS = BASE_URL + "exgoods.php";
     String SALE = BASE_URL + "sale.php";
+    String WEIXINAPP = "http://nq.website-art.com/weixinApp.php";
+    String ALIPAY = "http://nq.website-art.com/alipay.php";
 }
 

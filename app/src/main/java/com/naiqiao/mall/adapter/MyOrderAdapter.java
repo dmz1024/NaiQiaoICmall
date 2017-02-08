@@ -13,7 +13,9 @@ import com.naiqiao.mall.bean.MyOrderBean;
 
 import base.bean.rxbus.AddFragmentBean;
 
+import com.naiqiao.mall.bean.ShopBean;
 import com.naiqiao.mall.fragment.OrderDescFragment;
+import com.naiqiao.mall.fragment.PayFragment;
 import com.naiqiao.mall.view.pop.ChooseShouhouCountPopView;
 
 import java.util.ArrayList;
@@ -114,11 +116,24 @@ public class MyOrderAdapter extends BaseAdapter<MyOrderBean.Data> {
 
         @Override
         protected void itemOnclick(int id, int layoutPosition) {
+            MyOrderBean.Data data = list.get(layoutPosition);
             switch (id) {
                 case R.id.bt_left:
                     break;
                 case R.id.bt_right:
-                    new ChooseShouhouCountPopView(ctx).showAtLocation(false);
+                    switch (data.status) {
+                        case 3:
+                            int count = 0;
+                            for (ShopBean shop : data.goods) {
+                                count += shop.goods_number;
+                            }
+                            RxBus.get().post("addFragment", new AddFragmentBean(PayFragment.getInstance(data.order_id, data.total_fee, count)));
+                            break;
+                        case 2:
+                            new ChooseShouhouCountPopView(ctx,data.goods,data.order_id).showAtLocation(false);
+                            break;
+                    }
+
                     break;
             }
         }

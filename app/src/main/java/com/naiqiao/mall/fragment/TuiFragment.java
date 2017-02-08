@@ -1,6 +1,13 @@
 package com.naiqiao.mall.fragment;
 
+import android.os.Bundle;
+import android.support.annotation.Nullable;
+
 import com.naiqiao.mall.R;
+import com.naiqiao.mall.bean.ShopBean;
+
+import java.util.ArrayList;
+
 import base.bean.rxbus.AddFragmentBean;
 
 import base.fragment.NotNetWorkBaseFragment;
@@ -13,6 +20,27 @@ import view.DefaultTitleBarView;
  */
 
 public class TuiFragment extends NotNetWorkBaseFragment {
+    private ArrayList<ShopBean> shops;
+    private String id;
+
+    public static TuiFragment getInstance(ArrayList<ShopBean> shops, String id) {
+        TuiFragment fragment = new TuiFragment();
+        Bundle bundle = new Bundle();
+        bundle.putParcelableArrayList("data", shops);
+        bundle.putString("id", id);
+        fragment.setArguments(bundle);
+        return fragment;
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        Bundle bundle = getArguments();
+        if (bundle != null) {
+            shops = bundle.getParcelableArrayList("data");
+            id = bundle.getString("id");
+        }
+    }
 
     @Override
     protected void initData() {
@@ -31,7 +59,11 @@ public class TuiFragment extends NotNetWorkBaseFragment {
     }
 
     @OnClick(R.id.tv_tui_kuan)
-    void backOnlyKuan(){
-        RxBus.get().post("addFragment",new AddFragmentBean(new OnlyBackMoneyFragment()));
+    void backOnlyKuan() {
+        RxBus.get().post("addFragment", new AddFragmentBean(OnlyBackMoneyFragment.getInstance(shops,id,"1")));
+    }
+    @OnClick(R.id.tv_tui_all)
+    void backAllKuan() {
+        RxBus.get().post("addFragment", new AddFragmentBean(OnlyBackMoneyFragment.getInstance(shops,id,"2")));
     }
 }

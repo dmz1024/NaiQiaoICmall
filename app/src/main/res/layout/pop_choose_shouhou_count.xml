@@ -21,8 +21,8 @@
 
     <Button
         android:id="@+id/bt_sq"
-        android:layout_width="@dimen/size80"
-        android:layout_height="@dimen/size30"
+        android:layout_width="@dimen/size150"
+        android:layout_height="@dimen/size35"
         android:layout_below="@id/sc_shop"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="@dimen/size20"

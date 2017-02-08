@@ -24,9 +24,10 @@ public class MainActivity extends BaseActivity {
     }
 
     private void initUserInfo() {
-        Map<String, String> map = new SharedPreferenUtil(this, "userLogin").getData(new String[]{"uid", "token"});
+        Map<String, String> map = new SharedPreferenUtil(this, "userLogin").getData(new String[]{"uid", "token","tel"});
         UserInfo.uid = map.get("uid");
         UserInfo.token = map.get("token");
+        UserInfo.mobile = map.get("tel");
     }
 
     private void sendFragment() {

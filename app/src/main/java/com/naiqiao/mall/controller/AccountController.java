@@ -43,6 +43,12 @@ public class AccountController {
             }
 
             @Override
+            protected boolean getShowSucces() {
+                return false;
+            }
+
+
+            @Override
             protected Context getContext() {
                 return ctx;
             }
@@ -56,7 +62,7 @@ public class AccountController {
             protected Class<UserLoginInfo> getClx() {
                 return UserLoginInfo.class;
             }
-        }.setOnRequestListeren(onRequestListeren).get(new TipLoadingBean("正在登录...", "登录成功", ""));
+        }.setOnRequestListeren(onRequestListeren).get(new TipLoadingBean("正在登录...", "", ""));
     }
 
 
@@ -140,13 +146,13 @@ public class AccountController {
     /**
      * 获取验证码
      */
-    public void code(final String name, final String type) {
+    public void code(final String tel, final String type) {
         new ApiRequest<SingleBaseBean>() {
             @Override
             protected Map<String, String> getMap() {
                 Map<String, String> map = new HashMap<>();
                 map.put("act", "get_sms");
-                map.put("mobile_phone", name);
+                map.put("mobile_phone", tel);
                 map.put("type", type);
                 return map;
             }

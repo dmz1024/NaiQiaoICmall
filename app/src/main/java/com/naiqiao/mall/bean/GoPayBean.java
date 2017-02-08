@@ -42,7 +42,7 @@ public class GoPayBean extends BaseBean<GoPayBean.Data> {
             public String amount_formated;
             public String formated_goods_price;
             public String formated_market_price;
-            public int weight;
+            public String weight;
             public int user_money;
             public String rank_points;
         }

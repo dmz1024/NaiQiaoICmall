@@ -8,6 +8,7 @@ import com.naiqiao.mall.activity.MainActivity;
 import com.tencent.mm.sdk.modelmsg.SendAuth;
 
 import util.MyToast;
+import util.RxBus;
 
 public class WXPayEntryActivity extends Activity {
 
@@ -28,13 +29,13 @@ public class WXPayEntryActivity extends Activity {
         Intent intent1 = new Intent(this, MainActivity.class);
         if (resp.errCode == 0) {
             MyToast.showToast("支付成功");
-            intent1.putExtra("pay_result", 0);
+            RxBus.get().post("payRxBus","0");
         } else if (resp.errCode == -2) {
             MyToast.showToast("用户取消");
-            intent1.putExtra("pay_result", 1);
+            RxBus.get().post("payRxBus","1");
         } else {
             MyToast.showToast("支付失败");
-            intent1.putExtra("pay_result", 2);
+            RxBus.get().post("payRxBus","1");
         }
         startActivity(intent1);
     }

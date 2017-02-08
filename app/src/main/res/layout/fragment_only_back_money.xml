@@ -10,12 +10,12 @@
 
         <LinearLayout
             android:id="@+id/ll_shop"
-            android:padding="@dimen/size10"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/size10"
             android:background="#fff"
-            android:orientation="vertical" />
+            android:orientation="vertical"
+            android:padding="@dimen/size10" />
 
         <FrameLayout
             android:layout_width="match_parent"
@@ -27,7 +27,8 @@
             <TextView
                 android:id="@+id/tv_price"
                 style="@style/TextSize13Color666"
-                android:text="商品金额：2345元      邮费：50元" />
+                android:text="商品金额：2345元      邮费：50元"
+                android:visibility="gone" />
 
             <TextView
                 android:id="@+id/tv_total_money"
@@ -63,19 +64,16 @@
                     android:textColor="#f73f5f" />
 
                 <TextView
+                    android:id="@+id/tv_return_type"
                     style="@style/TextSize15Color999"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginLeft="@dimen/size10"
-                    android:text="退款原因" />
-
-                <EditText
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/size30"
-                    android:layout_marginLeft="@dimen/size20"
-                    android:background="@null"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="@dimen/size10"
                     android:drawableRight="@mipmap/icon_drop_zh"
-                    android:textColor="#333"
-                    android:textSize="@dimen/sp15" />
+                    android:gravity="center_vertical"
+                    android:text="退款原因       " />
+
             </LinearLayout>
 
             <LinearLayout
@@ -96,19 +94,21 @@
                     style="@style/TextSize15Color999"
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="@dimen/size10"
-                    android:text="退款金额" />
+                    android:text="退款金额      " />
 
                 <EditText
+                    android:id="@+id/et_price"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/size30"
-                    android:layout_marginLeft="@dimen/size20"
                     android:background="@null"
+                    android:maxLines="1"
                     android:text="￥3452.00"
                     android:textColor="#333"
                     android:textSize="@dimen/sp15" />
             </LinearLayout>
 
             <TextView
+                android:id="@+id/tv_max_price"
                 style="@style/TextSize12Color999"
                 android:layout_marginLeft="@dimen/size24"
                 android:layout_marginTop="@dimen/size5"
@@ -129,20 +129,15 @@
                     android:textColor="#f73f5f" />
 
                 <TextView
+                    android:id="@+id/tv_back_acc"
                     style="@style/TextSize15Color999"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginLeft="@dimen/size10"
-                    android:text="收款账号" />
-
-                <EditText
-                    android:layout_width="match_parent"
                     android:layout_height="@dimen/size30"
+                    android:layout_gravity="center_vertical"
+                    android:layout_width="match_parent"
+                    android:layout_marginLeft="@dimen/size10"
+                    android:gravity="center_vertical"
+                    android:text="收款账号       " />
 
-                    android:layout_marginLeft="@dimen/size20"
-                    android:background="@null"
-                    android:text="支付宝894350911@qq.com"
-                    android:textColor="#333"
-                    android:textSize="@dimen/sp15" />
             </LinearLayout>
 
             <LinearLayout
@@ -163,12 +158,12 @@
                     style="@style/TextSize15Color999"
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="@dimen/size10"
-                    android:text="退款说明" />
+                    android:text="退款说明       " />
 
                 <EditText
+                    android:id="@+id/et_back_desc"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/size30"
-                    android:layout_marginLeft="@dimen/size20"
                     android:background="@null"
                     android:hint="最多200字"
                     android:maxLength="200"

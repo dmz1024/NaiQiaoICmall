@@ -112,9 +112,11 @@ public class LoginFragment extends NotNetWorkBaseFragment implements OnTitleBarL
                 Log.d("登录", bean.data.sign_token);
                 Log.d("登录", bean.data.user_name);
                 Log.d("登录", bean.data.user_id);
+                Log.d("登录", bean.data.mobile);
                 UserInfo.uid = bean.data.user_id;
                 UserInfo.token = bean.data.sign_token;
-                new SharedPreferenUtil(getContext(), "userLogin").setData(new String[]{"uid", UserInfo.uid, "token", UserInfo.token});
+                UserInfo.mobile = bean.data.mobile;
+                new SharedPreferenUtil(getContext(), "userLogin").setData(new String[]{"uid", UserInfo.uid, "token", UserInfo.token,"tel",UserInfo.mobile});
                 RxBus.get().post("userChange", "userChange");
                 RxBus.get().post("back", "back");
             }
