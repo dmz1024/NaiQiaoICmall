@@ -66,6 +66,8 @@ public class AddressAdapter extends BaseAdapter<AddressBean.Data> {
         if (data.def == 1) {
             defPosition = position;
         }
+        mHolder.tv_delete.setEnabled(!isChoose);
+        mHolder.tv_delete.setAlpha(isChoose?0.5f:1f);
     }
 
 

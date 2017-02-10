@@ -16,6 +16,7 @@ import util.RxBus;
  */
 
 public class AddressContentFragment extends NotNetWorkBaseFragment {
+
     @Override
     protected void initData() {
         getChildFragmentManager().beginTransaction().add(R.id.fg_content, addressFragment = new AddressFragment()).commit();

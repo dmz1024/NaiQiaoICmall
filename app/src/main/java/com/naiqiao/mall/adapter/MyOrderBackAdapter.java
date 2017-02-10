@@ -11,6 +11,7 @@ import android.widget.TextView;
 import com.naiqiao.mall.R;
 import com.naiqiao.mall.bean.MyOrderBackBean;
 import com.naiqiao.mall.bean.ShopBean;
+import com.naiqiao.mall.fragment.BackShopDescFragment;
 import com.naiqiao.mall.fragment.OrderDescFragment;
 
 import java.util.ArrayList;
@@ -44,6 +45,7 @@ public class MyOrderBackAdapter extends BaseAdapter<MyOrderBackBean.Data> {
         creatShop(mHolder.rv_shop, data.goods);
         mHolder.tv_price.setText("总价:￥" + data.amount + "   实付:￥" + data.money_paid);
         mHolder.tv_statu.setText(data.status);
+        mHolder.tv_sn.setText("订单编号："+data.order_sn);
     }
 
 
@@ -82,7 +84,7 @@ public class MyOrderBackAdapter extends BaseAdapter<MyOrderBackBean.Data> {
 
         @Override
         protected void onClick(int layoutPosition) {
-            RxBus.get().post("addFragment", new AddFragmentBean(OrderDescFragment.getInstance(list.get(layoutPosition).order_id)));
+            RxBus.get().post("addFragment", new AddFragmentBean(BackShopDescFragment.getInstance(list.get(layoutPosition).back_id)));
         }
     }
 }

@@ -10,6 +10,7 @@
         android:layout_height="match_parent" />
 
     <TextView
+        android:visibility="gone"
         android:id="@+id/tv_load"
         style="@style/TextSize15Color333"
         android:layout_width="match_parent"

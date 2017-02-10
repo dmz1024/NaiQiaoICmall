@@ -17,7 +17,9 @@ import java.util.ArrayList;
 import java.util.Map;
 
 import api.TestConstant;
+import base.bean.rxbus.AddFragmentBean;
 import base.fragment.ListNetWorkBaseFragment;
+import interfaces.OnTitleBarListener;
 import rx.Observable;
 import rx.functions.Action1;
 import util.RxBus;
@@ -27,7 +29,7 @@ import view.DefaultTitleBarView;
  * Created by dengmingzhi on 2016/11/23.
  */
 
-public class AddressFragment extends ListNetWorkBaseFragment<AddressBean> {
+public class AddressFragment extends ListNetWorkBaseFragment<AddressBean> implements OnTitleBarListener {
     private Observable<AddressRxBus> address;
 
     private boolean isChoose;
@@ -107,12 +109,30 @@ public class AddressFragment extends ListNetWorkBaseFragment<AddressBean> {
 
     @Override
     protected void initTitleView() {
-        ((DefaultTitleBarView) getTitleBar()).setTitleContent("收货地址");
+        ((DefaultTitleBarView) getTitleBar())
+                .setTitleContent("收货地址")
+                .setRightContent(isChoose?"添加地址":"")
+                .setOnTitleBarListener(this);
     }
 
     @Override
     public void onDestroy() {
         super.onDestroy();
         RxBus.get().unregister("address", address);
+    }
+
+    @Override
+    public void left() {
+        RxBus.get().post("back","back");
+    }
+
+    @Override
+    public void right() {
+        RxBus.get().post("addFragment", new AddFragmentBean(new AddressEditFragment()));
+    }
+
+    @Override
+    public void center() {
+
     }
 }

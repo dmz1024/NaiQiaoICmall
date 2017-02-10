@@ -310,8 +310,6 @@ public class GoPayFragment extends SingleNetWorkBaseFragment<GoPayBean> {
     @OnClick(R.id.tv_pay)
     void goPay() {
         AffirmGoPayBean goPayBean = new AffirmGoPayBean();
-        String[] fp=fpContent.clone();
-
         if (!payType) {
             if (TextUtils.isEmpty(address_id)) {
                 MyToast.showToast("请选择收货地址");
@@ -321,6 +319,7 @@ public class GoPayFragment extends SingleNetWorkBaseFragment<GoPayBean> {
             goPayBean.address = new StringBuffer(bean.data.data1.consignee).append("   ").append(bean.data.data1.address_short_name).append("    ").append(bean.data.data1.mobile).toString();
 
             if (isFp) {
+                String[] fp=fpContent.clone();
                 goPayBean.inv_type = TextUtils.equals("1", fp[0]) ? "增值税普通发票" : "增值税专票";
                 goPayBean.inv_content = fp[1];
                 goPayBean.fp_content = new StringBuffer("【")
