@@ -12,6 +12,7 @@ import java.util.Map;
 import base.activity.BaseActivity;
 import base.bean.rxbus.AddFragmentBean;
 import base.bean.rxbus.PhotoRxbus;
+import util.JLogUtils;
 import util.RxBus;
 import util.SharedPreferenUtil;
 
@@ -28,6 +29,7 @@ public class MainActivity extends BaseActivity {
         UserInfo.uid = map.get("uid");
         UserInfo.token = map.get("token");
         UserInfo.mobile = map.get("tel");
+        JLogUtils.D("用户信息："+UserInfo.uid+"  "+UserInfo.token);
     }
 
     private void sendFragment() {

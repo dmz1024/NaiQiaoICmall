@@ -13,11 +13,16 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import base.bean.rxbus.AddFragmentBean;
+import base.fragment.AreaFragment;
 import base.fragment.NotNetWorkBaseFragment;
 import butterknife.BindView;
 import butterknife.BindViews;
 import butterknife.OnClick;
+import rx.Observable;
+import rx.functions.Action1;
 import util.DrawableUtil;
+import util.RxBus;
 import view.DefaultTitleBarView;
 
 /**
@@ -30,9 +35,9 @@ public class AddressEditFragment extends NotNetWorkBaseFragment {
     List<EditText> ets;
     @BindViews({R.id.tv_address, R.id.tv_default})
     List<TextView> tvs;
-    private String province = "2";
-    private String city = "52";
-    private String distric = "500";
+    private String province;
+    private String city;
+    private String distric;
 
     @Override
     protected void initData() {
@@ -102,7 +107,8 @@ public class AddressEditFragment extends NotNetWorkBaseFragment {
     @OnClick({R.id.tv_address, R.id.tv_default})
     void tvsOnClick(View view) {
         if (view == tvs.get(0)) {
-
+            initAreaRxBus();
+            RxBus.get().post("addFragment", new AddFragmentBean(new AreaFragment()));
         } else {
             if (data == null) {
                 isDefault = !isDefault;
@@ -112,5 +118,42 @@ public class AddressEditFragment extends NotNetWorkBaseFragment {
                 AddressController.getInstance().setDef(new AddressRxBus(data.address_id, "def", defPosition, position, true));
             }
         }
+    }
+
+    private Observable<String> areaData;
+
+    private void initAreaRxBus() {
+        if (areaData == null) {
+            areaData = RxBus.get().register("area_data", String.class);
+            areaData.subscribe(new Action1<String>() {
+                @Override
+                public void call(String s) {
+                    String[] areas = s.split(",");
+                    if (areas != null && areas.length > 0) {
+                        String[] area = areas[0].split("-");
+                        province = area[1];
+                        tvs.get(0).setText(area[0]);
+                        if (areas.length > 1) {
+                            area = areas[1].split("-");
+                            city = area[1];
+                            tvs.get(0).setText(tvs.get(0).getText().toString() + "-" + area[0]);
+                            if (areas.length > 2) {
+                                area = areas[2].split("-");
+                                distric = area[1];
+                                tvs.get(0).setText(tvs.get(0).getText().toString() + "-" + area[0]);
+                            }
+                        }
+
+                    }
+                }
+            });
+        }
+
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        RxBus.get().unregister("area_data",areaData);
     }
 }

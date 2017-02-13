@@ -193,8 +193,7 @@ public class BackShopDescFragment extends SingleNetWorkBaseFragment<BackShopDesc
                 case 2:
                     tv_2.setText("审核失败");
                     tv_shenhe.setContentNotChange("退货申请审核失败，详情请");
-                    rl_wuliu.setVisibility(View.VISIBLE);
-                    rl_back.setVisibility(View.VISIBLE);
+                    tv_shenhe.setVisibility(View.VISIBLE);
                     break;
                 case 5:
                     tv_2.setText("审核通过\n填写物流");
@@ -241,19 +240,21 @@ public class BackShopDescFragment extends SingleNetWorkBaseFragment<BackShopDesc
                 case 0:
                     tv_shenhe.setVisibility(View.VISIBLE);
                     tv_2.setText("正在审核");
+                    tv_shenhe.setVisibility(View.VISIBLE);
                     tv_2.setTextColor(Color.parseColor("#666666"));
                     tv_2.setCompoundDrawables(null, null, DrawableUtil.setBounds(getResources().getDrawable(R.mipmap.icon_path_no)), null);
                     break;
                 case 2:
                     tv_2.setText("审核失败");
                     tv_shenhe.setContentNotChange("退货申请审核失败，详情请");
-                    rl_wuliu.setVisibility(View.VISIBLE);
-                    rl_back.setVisibility(View.VISIBLE);
+                    tv_shenhe.setVisibility(View.VISIBLE);
                     break;
-                case 4:
+                case 1:
                     tv_2.setText("审核通过");
                     rl_back.setVisibility(View.VISIBLE);
                     tv_3.setText("财务审核");
+                    tv_shenhe.setVisibility(View.VISIBLE);
+                    tv_shenhe.setContentNotChange("退货申请审核成功，详情请");
                     tv_caiwu_tip.setVisibility(View.VISIBLE);
                     view_3.setVisibility(View.VISIBLE);
                     tv_3.setTextColor(Color.parseColor("#666666"));
@@ -273,6 +274,8 @@ public class BackShopDescFragment extends SingleNetWorkBaseFragment<BackShopDesc
                     view_3.setBackgroundColor(Color.parseColor("#f73f5f"));
                     tv_3.setText("财务通过");
                     tv_2.setText("审核通过");
+                    tv_shenhe.setVisibility(View.VISIBLE);
+                    tv_shenhe.setContentNotChange("退货申请审核成功，详情请");
                     tv_caiwu_tip.setVisibility(View.VISIBLE);
                     tv_3.setTextColor(Color.parseColor("#f73f5f"));
                     tv_3.setCompoundDrawables(null, null, DrawableUtil.setBounds(getResources().getDrawable(R.mipmap.icon_checked)), null);
